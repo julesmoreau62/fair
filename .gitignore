@@ -1,0 +1,8 @@
+# Système / éditeurs
+Thumbs.db
+desktop.ini
+.DS_Store
+*.tmp
+
+# Réglages Claude Code propres à cet appareil
+.claude/settings.local.json

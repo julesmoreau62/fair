@@ -1,0 +1,1364 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>FAIR · Former les associations sportives à l'IA responsable</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="FAIR forme gratuitement les dirigeants et bénévoles de clubs sportifs à utiliser l'IA de façon responsable : sur vos vrais dossiers, avec des outils gratuits. Tous les sports, partout en France.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="FAIR · Moins de paperasse. Plus de terrain.">
+<meta property="og:description" content="Ateliers gratuits pour les clubs sportifs : utiliser l'IA de façon responsable, sur vos vrais dossiers.">
+<meta property="og:image" content="assets/img/poster-hero.jpg">
+<meta name="theme-color" content="#07111F">
+<link rel="icon" href="assets/logo/fair-icone.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="preload" as="image" href="assets/img/poster-hero.jpg">
+<style>
+:root{
+  /* Layout : cinéma de nuit. Vidéo plein cadre, typo condensée géante, alternance nuit / craie, le vert du logo comme seul accent. */
+  --night:#07111F;
+  --night-2:#0C1B33;
+  --navy:#13294B;
+  --turf:#1FB57A;
+  --turf-hi:#43D99A;
+  --turf-ink:#0A7348;
+  --chalk:#EDF0EA;
+  --chalk-2:#E1E6DE;
+  --paper:#FFFFFF;
+  --ink:#0A1525;
+  --ink-2:#4A5668;
+  --fog:#A7B3C5;
+  --mist:#CBD3DE;
+  --on-turf:#03140C;
+  --line-n:rgba(237,240,234,.14);
+  --line-c:rgba(10,21,37,.14);
+  --shade:rgba(7,17,31,.78);
+  --f-display:"Archivo","Arial Narrow","Roboto Condensed","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"Martian Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --pad:clamp(16px,4vw,64px);
+  --ease:cubic-bezier(.2,.75,.1,1);
+  color-scheme:dark;
+}
+
+/* ---------- Base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped,html.menu-open{overflow:hidden}
+body{margin:0;background:var(--night);color:var(--chalk);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:clip}
+img,video,svg{display:block;max-width:100%}
+a{color:inherit}
+p,h1,h2,h3,figure{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--turf);outline-offset:3px}
+:focus:not(:focus-visible){outline:none}
+::selection{background:var(--turf);color:var(--on-turf)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip{position:fixed;left:max(16px,env(safe-area-inset-left,0px));top:-80px;z-index:100;background:var(--turf);color:var(--on-turf);padding:12px 18px;border-radius:999px;font-weight:700;text-decoration:none}
+.skip:focus{top:calc(12px + env(safe-area-inset-top,0px))}
+.wrap{width:100%;max-width:1560px;margin-inline:auto;padding-left:max(var(--pad),env(safe-area-inset-left,0px));padding-right:max(var(--pad),env(safe-area-inset-right,0px))}
+.sec{position:relative;padding-block:clamp(80px,9vw,140px)}
+.chalk{background:var(--chalk);color:var(--ink);color-scheme:light}
+
+/* ---------- Typo ---------- */
+.label{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:.7rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;line-height:1.35;color:var(--fog)}
+.label .sq{width:7px;height:7px;background:var(--turf);flex:none}
+.chalk .label{color:var(--ink-2)}
+.h2{font-family:var(--f-display);font-weight:850;font-stretch:62%;text-transform:uppercase;font-size:clamp(2.8rem,6.4vw,6.6rem);line-height:.86;letter-spacing:-.006em;text-wrap:balance;overflow-wrap:break-word}
+.h3{font-family:var(--f-display);font-weight:850;font-stretch:66%;text-transform:uppercase;font-size:clamp(1.8rem,2.6vw,2.5rem);line-height:.92}
+.lead{font-size:clamp(1.1rem,1.45vw,1.34rem);line-height:1.5;max-width:50ch}
+.turf{color:var(--turf)}
+.chalk .turf{color:var(--turf-ink)}
+.sec-head{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:24px 64px;align-items:end;margin-bottom:clamp(44px,5.5vw,84px)}
+.sec-head .lft{display:grid;gap:20px;justify-items:start;min-width:0}
+.sec-head .rgt{display:grid;gap:22px;min-width:0}
+.sec-head .lead{color:var(--fog)}
+.chalk .sec-head .lead{color:var(--ink-2)}
+@media (max-width:900px){.sec-head{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- Boutons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:54px;padding:0 26px;border-radius:999px;font:600 .98rem/1.1 var(--f-body);text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background-color .25s,color .25s,border-color .25s;white-space:nowrap}
+.btn-turf{background:var(--turf);color:var(--on-turf)}
+.btn-turf:hover{background:var(--turf-hi)}
+.btn-ghost{border-color:rgba(237,240,234,.35);color:var(--chalk);background:rgba(7,17,31,.18)}
+.btn-ghost:hover{border-color:var(--chalk)}
+.chalk .btn-ghost{border-color:var(--line-c);color:var(--ink);background:transparent}
+.chalk .btn-ghost:hover{border-color:var(--ink)}
+.btn-ar{position:relative;width:18px;height:18px;overflow:hidden;flex:none}
+.btn-ar svg{position:absolute;inset:0;width:18px;height:18px;transition:transform .5s var(--ease)}
+.btn-ar svg+svg{transform:translateX(-150%)}
+.btn:hover .btn-ar svg{transform:translateX(150%)}
+.btn:hover .btn-ar svg+svg{transform:translateX(0)}
+.ico-arr{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ico-ck{fill:none;stroke:var(--turf);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.chalk .ico-ck{stroke:var(--turf-ink)}
+.lg-disc{fill:var(--lg-disc)}.lg-spark{fill:var(--lg-spark)}.lg-word{fill:var(--lg-word)}
+
+/* ---------- Habillage : grain, progression, curseur ---------- */
+.grain{position:fixed;inset:0;z-index:70;pointer-events:none;opacity:.055;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain 1s steps(5) infinite}
+@keyframes grain{0%{background-position:0 0}20%{background-position:-40px 30px}40%{background-position:30px -50px}60%{background-position:-60px -20px}80%{background-position:50px 40px}100%{background-position:0 0}}
+.progress{position:fixed;inset:0 0 auto;height:2px;z-index:60;pointer-events:none}
+.progress i{display:block;height:100%;background:var(--turf);transform-origin:left;transform:scaleX(0)}
+.cursor{position:fixed;left:0;top:0;z-index:80;width:34px;height:34px;margin:-17px 0 0 -17px;border:1.5px solid var(--turf);border-radius:50%;pointer-events:none;opacity:0;transition:width .35s var(--ease),height .35s var(--ease),margin .35s var(--ease),background-color .3s,opacity .3s}
+.cursor.is-vis{opacity:1}
+.cursor.is-link{width:66px;height:66px;margin:-33px 0 0 -33px;background:rgba(31,181,122,.16)}
+.follow{position:fixed;left:0;top:0;z-index:40;width:clamp(220px,19vw,300px);aspect-ratio:4/5;pointer-events:none;opacity:0;transition:opacity .35s;border-radius:4px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(10,21,37,.5)}
+.follow.is-on{opacity:1}
+.follow img{width:100%;height:100%;object-fit:cover}
+
+/* ---------- En-tête ---------- */
+.hdr{position:fixed;inset:0 0 auto;z-index:50;padding-top:env(safe-area-inset-top,0px);border-bottom:1px solid transparent;transition:transform .55s var(--ease),background-color .35s,border-color .35s;--lg-disc:#FFFFFF;--lg-spark:var(--navy);--lg-word:#FFFFFF}
+.hdr.is-scrolled{background:var(--shade);-webkit-backdrop-filter:blur(16px) saturate(150%);backdrop-filter:blur(16px) saturate(150%);border-bottom-color:var(--line-n)}
+.hdr.is-hidden{transform:translateY(-110%)}
+.menu-open .hdr{transform:none;background:transparent;border-bottom-color:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
+.hdr-in{display:flex;align-items:center;gap:clamp(16px,2.6vw,40px);height:76px}
+.brand{display:flex;margin-right:auto;text-decoration:none}
+.brand svg{height:38px;width:auto}
+.nav{display:flex;align-items:center;gap:clamp(18px,2.2vw,32px);font-size:.94rem;font-weight:500}
+.nav a{position:relative;text-decoration:none;padding-block:6px}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:var(--turf);transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease)}
+.nav a:hover::after{transform:scaleX(1);transform-origin:left}
+.hdr .btn{min-height:46px;padding:0 20px;font-size:.92rem}
+.menu-btn{display:none;align-items:center;gap:10px;min-height:46px;padding:0 18px;border-radius:999px;border:1.5px solid rgba(237,240,234,.35);background:transparent;cursor:pointer;font-weight:600;font-size:.92rem}
+.mb-i{position:relative;width:16px;height:10px}
+.mb-i::before,.mb-i::after{content:"";position:absolute;left:0;right:0;height:2px;background:currentColor;transition:transform .4s var(--ease),top .4s var(--ease)}
+.mb-i::before{top:0}.mb-i::after{top:8px}
+.menu-open .mb-i::before{top:4px;transform:rotate(45deg)}
+.menu-open .mb-i::after{top:4px;transform:rotate(-45deg)}
+@media (max-width:1000px){.nav{display:none}.menu-btn{display:inline-flex}}
+@media (max-width:560px){.hdr .btn{display:none}.brand svg{height:34px}}
+.menu{position:fixed;inset:0;z-index:45;background:var(--night);display:flex;flex-direction:column;justify-content:space-between;gap:32px;padding-top:calc(104px + env(safe-area-inset-top,0px));padding-bottom:calc(28px + env(safe-area-inset-bottom,0px));clip-path:inset(0 0 100% 0);transition:clip-path .7s var(--ease);overflow-y:auto}
+.menu.is-open{clip-path:inset(0 0 0 0)}
+.menu nav{display:grid}
+.menu nav a{display:flex;justify-content:space-between;align-items:baseline;gap:16px;font-family:var(--f-display);font-weight:900;font-stretch:62%;text-transform:uppercase;font-size:clamp(2.6rem,11vw,5.4rem);line-height:1;text-decoration:none;padding-block:10px 6px;border-bottom:1px solid var(--line-n)}
+.menu nav a small{font-family:var(--f-mono);font-size:.7rem;font-weight:500;letter-spacing:.07em;color:var(--fog);font-stretch:100%}
+.menu-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;isolation:isolate;background:var(--night)}
+.hero-media{position:absolute;inset:0;z-index:-2;transform-origin:50% 35%;will-change:transform}
+.hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,17,31,.72) 0%,rgba(7,17,31,.12) 26%,rgba(7,17,31,.2) 50%,rgba(7,17,31,.88) 84%,var(--night) 100%),radial-gradient(70% 55% at 80% 15%,rgba(31,181,122,.18),transparent 70%)}
+.hero-in{position:relative;display:grid;gap:clamp(16px,2.4vw,28px);padding-top:calc(112px + env(safe-area-inset-top,0px));padding-bottom:clamp(24px,3vw,40px)}
+.eyebrow{color:var(--chalk)}
+.hero-title{font-family:var(--f-display);font-weight:900;font-stretch:62%;text-transform:uppercase;font-size:clamp(4.2rem,min(23vw,22svh),16rem);line-height:.8;letter-spacing:-.014em}
+.hero-title .ln{display:block}
+.hero-title .ln>span{display:inline-block}
+.hero-title .ln-sm{font-size:.3em;line-height:1.05;font-stretch:72%;letter-spacing:.004em;margin-bottom:.2em}
+.hero-title .ln-g{color:var(--turf)}
+.hero-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:22px 56px;align-items:end}
+.hero-row .lead{color:var(--mist);max-width:46ch}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.hero-meta{position:absolute;top:calc(108px + env(safe-area-inset-top,0px));right:max(var(--pad),env(safe-area-inset-right,0px));display:grid;gap:10px;justify-items:end}
+.hero-meta li{display:inline-flex;align-items:center;gap:8px;color:var(--chalk)}
+.hero-meta svg{width:14px;height:14px}
+.vbtn{display:inline-flex;align-items:center;gap:8px;margin-top:6px;padding:7px 12px 7px 10px;border-radius:999px;border:1px solid rgba(237,240,234,.3);background:rgba(7,17,31,.35);cursor:pointer;font:500 .62rem/1 var(--f-mono);letter-spacing:.07em;text-transform:uppercase;color:var(--chalk)}
+.vbtn:hover{border-color:var(--chalk)}
+.vbtn svg{width:11px;height:11px;fill:var(--chalk)}
+.vbtn .i-play,.is-paused .vbtn .i-pause{display:none}
+.is-paused .vbtn .i-play{display:block}
+.hero-stats{border-top:1px solid var(--line-n);background:rgba(7,17,31,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.hs-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.hs{display:flex;align-items:center;gap:14px;padding-block:18px;min-width:0}
+.hs+.hs{padding-left:clamp(14px,2vw,28px);border-left:1px solid var(--line-n)}
+.hs-n{font-family:var(--f-display);font-weight:900;font-stretch:62%;font-size:clamp(2rem,3.1vw,3rem);line-height:.9;flex:none;font-variant-numeric:tabular-nums}
+.hs:first-child .hs-n{color:var(--turf)}
+.hs-l{font-size:.9rem;line-height:1.3;color:var(--mist)}
+@media (max-width:900px){
+  .hero-row{grid-template-columns:minmax(0,1fr)}
+  .hero-meta{position:static;display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px}
+  .vbtn{margin-top:0}
+  .hs-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hs{flex-direction:column;align-items:flex-start;gap:6px;padding-block:14px}
+  .hs:nth-child(3){padding-left:0;border-left:0}
+  .hs:nth-child(n+3){border-top:1px solid var(--line-n)}
+}
+
+/* ---------- La deuxième soirée ---------- */
+.soiree{background:var(--night)}
+.soiree-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"head media" "list media";gap:clamp(24px,3vw,40px) clamp(36px,5vw,84px);align-items:start}
+.s-head{grid-area:head;display:grid;gap:clamp(18px,2.2vw,26px);justify-items:start;align-self:end;min-width:0}
+.soiree .h2{font-size:clamp(2.5rem,4.3vw,4.6rem)}
+.s-head .lead{color:var(--fog)}
+.tl{grid-area:list;border-top:1px solid var(--line-n);min-width:0}
+.tl li{border-bottom:1px solid var(--line-n)}
+.tl button{display:grid;grid-template-columns:70px minmax(0,1fr) auto;gap:6px 16px;align-items:center;width:100%;padding:13px 0;border:0;background:none;text-align:left;cursor:pointer;color:rgba(237,240,234,.5);transition:color .4s}
+.tl button:hover{color:var(--mist)}
+.tl time{font-family:var(--f-mono);font-size:.9rem;font-variant-numeric:tabular-nums;transition:color .4s}
+.tl .t{font-weight:600;line-height:1.3;min-width:0}
+.tl .t small{display:block;font-weight:400;font-size:.86rem;opacity:.85}
+.tl .tag{justify-self:start;font-family:var(--f-mono);font-size:.6rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;border-radius:999px;border:1px solid var(--line-n);white-space:nowrap;transition:background-color .4s,color .4s,border-color .4s}
+.tl .tag.help{color:var(--turf);border-color:rgba(31,181,122,.45)}
+.tl button[aria-pressed="true"]{color:var(--chalk)}
+.tl button[aria-pressed="true"] time{color:var(--turf)}
+.tl button[aria-pressed="true"] .tag.help{background:var(--turf);border-color:var(--turf);color:var(--on-turf)}
+.soiree-media{grid-area:media;position:relative;width:100%;aspect-ratio:4/5;max-height:80vh;max-height:80svh;border-radius:4px;overflow:hidden;background:var(--night-2)}
+.sm{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.07);transition:opacity .8s ease,transform 1.6s var(--ease)}
+.sm.is-on{opacity:1;transform:scale(1)}
+.soiree-media::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(7,17,31,.35) 0%,transparent 28%,transparent 52%,rgba(7,17,31,.88) 100%)}
+.s-cap{position:absolute;z-index:2;top:clamp(14px,1.8vw,24px);left:clamp(14px,1.8vw,24px);right:clamp(14px,1.8vw,24px);color:var(--chalk)}
+.clock{position:absolute;z-index:2;left:clamp(14px,2vw,28px);bottom:clamp(14px,2vw,26px);font-family:var(--f-mono);font-weight:400;font-stretch:112.5%;font-size:clamp(3.2rem,6.4vw,6.8rem);line-height:1;letter-spacing:-.05em;color:var(--chalk);font-variant-numeric:tabular-nums}
+.s-prog{position:absolute;z-index:3;left:0;right:0;bottom:0;height:3px;background:rgba(237,240,234,.14)}
+.s-prog i{display:block;height:100%;background:var(--turf);transform-origin:left;transform:scaleX(0)}
+.s-prog.run i{animation:sprog var(--sdur,3s) linear forwards}
+@keyframes sprog{to{transform:scaleX(1)}}
+@media (max-width:899px){
+  .soiree-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "media" "list"}
+  .s-head{align-self:start}
+  .soiree-media{aspect-ratio:4/3;max-height:none}
+}
+@media (max-width:520px){.tl button{grid-template-columns:56px minmax(0,1fr)}.tl .tag{grid-column:2}}
+
+/* ---------- Auto-diagnostic ---------- */
+.diag{background:var(--night-2);border-top:1px solid var(--line-n)}
+.diag-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(36px,5vw,84px);align-items:center}
+.d-head{display:grid;gap:22px;justify-items:start;min-width:0}
+.diag .h2{font-size:clamp(2.4rem,4vw,4.3rem)}
+.d-head .lead{color:var(--fog)}
+.d-card{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);border:1px solid var(--line-n);border-radius:10px;background:var(--night);overflow:hidden;min-width:0}
+.d-qs{display:grid;gap:20px;padding:clamp(20px,2.4vw,30px);min-width:0}
+.d-qs fieldset{border:0;margin:0;padding:0;min-width:0}
+.d-qs legend{padding:0;margin-bottom:10px;font-weight:600;font-size:.98rem;line-height:1.35}
+.d-opts{display:flex;flex-wrap:wrap;gap:8px}
+.d-opts input{position:absolute;opacity:0;width:1px;height:1px}
+.d-opts label{display:inline-flex;align-items:center;min-height:40px;padding:0 15px;border-radius:999px;border:1px solid var(--line-n);font-size:.88rem;font-weight:600;color:var(--mist);cursor:pointer;transition:background-color .25s,color .25s,border-color .25s}
+.d-opts label:hover{border-color:var(--mist)}
+.d-opts input:checked+label{background:var(--turf);border-color:var(--turf);color:var(--on-turf)}
+.d-opts input:focus-visible+label{outline:3px solid var(--turf);outline-offset:3px}
+.d-res{display:grid;gap:14px;align-content:center;padding:clamp(22px,2.4vw,30px);background:var(--navy);border-left:1px solid var(--line-n);min-width:0}
+.d-res .label{color:var(--mist)}
+.d-num{font-family:var(--f-display);font-weight:900;font-stretch:62%;font-size:clamp(4.4rem,7vw,7rem);line-height:.8;color:var(--turf);font-variant-numeric:tabular-nums}
+.d-num small{font-size:.38em;color:var(--chalk);margin-left:.12em}
+.d-prio{font-size:.95rem;line-height:1.45;color:var(--mist)}
+.d-prio b{display:block;color:var(--chalk);font-size:1.05rem}
+.d-res .btn{min-height:48px;padding:0 20px;font-size:.92rem;white-space:normal;text-align:center}
+.d-fine{font-size:.78rem;color:var(--fog);line-height:1.45}
+@media (max-width:1100px){.diag-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:700px){.d-card{grid-template-columns:minmax(0,1fr)}.d-res{border-left:0;border-top:1px solid var(--line-n)}}
+
+/* ---------- Parcours club ---------- */
+.themes{border-top:3px solid var(--ink)}
+.theme{display:grid;grid-template-columns:80px minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start;padding-block:clamp(24px,2.6vw,38px);border-bottom:1px solid var(--line-c)}
+.theme .num{font-family:var(--f-mono);font-size:.78rem;color:var(--ink-2);padding-top:.5em}
+.theme-t{font-family:var(--f-display);font-weight:900;font-stretch:62%;text-transform:uppercase;font-size:clamp(2.6rem,5vw,5.2rem);line-height:.86;transition:transform .55s var(--ease),color .3s}
+.theme:hover .theme-t{transform:translateX(12px);color:var(--turf-ink)}
+.theme-d{color:var(--ink-2)}
+.theme-x{font-size:.95rem;padding-left:16px;border-left:3px solid var(--turf)}
+.theme-x .label{display:flex;color:var(--turf-ink);margin-bottom:6px}
+@media (max-width:1000px){.theme{grid-template-columns:52px minmax(0,1fr);gap:12px 16px}.theme-d,.theme-x{grid-column:2}}
+.mods{margin-top:clamp(40px,4.5vw,64px)}
+.mods-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 32px;margin-bottom:18px}
+.mods-head p{color:var(--ink-2);font-size:.95rem;max-width:56ch}
+.mods-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.mod{display:grid;gap:10px;align-content:start;padding:22px 22px 24px;border-radius:6px;background:var(--paper);border:1px solid var(--line-c);transition:border-color .3s,transform .5s var(--ease)}
+.mod:hover{border-color:var(--ink);transform:translateY(-4px)}
+.mod .label{color:var(--turf-ink)}
+.mod h3{font-family:var(--f-display);font-weight:850;font-stretch:66%;text-transform:uppercase;font-size:clamp(1.55rem,2vw,1.95rem);line-height:.95}
+.mod p{color:var(--ink-2);font-size:.94rem;line-height:1.5}
+.mod.risk{background:var(--ink);border-color:var(--ink);color:var(--chalk)}
+.mod.risk .label{color:var(--turf)}
+.mod.risk p{color:var(--mist)}
+@media (max-width:1100px){.mods-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.mods-grid{grid-template-columns:minmax(0,1fr)}}
+.steps-wrap{position:relative;margin-top:clamp(56px,6vw,96px);padding-top:38px}
+.steps-line{position:absolute;top:6px;left:0;right:0;height:3px;background:var(--line-c)}
+.steps-line i{position:absolute;inset:0;background:var(--turf);transform-origin:left}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+.steps li{position:relative;display:grid;gap:8px;align-content:start}
+.steps li::before{content:"";position:absolute;top:-38px;left:0;width:15px;height:15px;border-radius:50%;background:var(--chalk);border:3px solid var(--ink)}
+.steps .sn{font-family:var(--f-display);font-weight:900;font-stretch:62%;font-size:3.4rem;line-height:.82;color:var(--turf-ink)}
+.steps b{font-size:1.1rem}
+.steps .sd{color:var(--ink-2);font-size:.95rem}
+@media (max-width:900px){.steps-wrap{padding-top:0}.steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 24px}.steps-line,.steps li::before{display:none}.steps li{padding-top:18px;border-top:3px solid var(--ink)}}
+@media (max-width:520px){.steps{grid-template-columns:minmax(0,1fr)}}
+.caps-note{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 32px;margin-top:clamp(52px,5.5vw,80px);padding:20px 22px;border-radius:6px;background:var(--paper);border:1px solid var(--line-c)}
+.cn-l{display:flex;align-items:center;gap:16px;min-width:0;flex:1 1 420px}
+.cn-play{width:48px;height:48px;border-radius:50%;background:var(--navy);display:grid;place-items:center;flex:none}
+.cn-play svg{width:14px;height:14px;fill:var(--chalk);margin-left:3px}
+.cn-l b{display:block;font-size:1.04rem}
+.cn-l span span{color:var(--ink-2);font-size:.94rem}
+
+/* ---------- Atelier : démo + kit ---------- */
+.atelier{background:var(--navy);color:var(--chalk);overflow:hidden}
+.atelier-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(44px,6vw,100px);align-items:center}
+.atelier-text{display:grid;gap:26px;min-width:0}
+.atelier .h2{font-size:clamp(2.6rem,5vw,5.4rem)}
+.kit{display:grid;gap:16px}
+.kit li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:14px;font-size:1.02rem;line-height:1.45}
+.kit svg{width:22px;height:22px;margin-top:1px}
+.note{color:var(--fog);font-size:.92rem;padding-top:22px;border-top:1px solid var(--line-n)}
+.demo{position:relative;background:var(--chalk);color:var(--ink);border-radius:14px;overflow:hidden;box-shadow:0 60px 120px -50px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.08);color-scheme:light;min-width:0}
+.demo-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;background:var(--paper);border-bottom:1px solid var(--line-c)}
+.demo-bar .who{display:flex;align-items:center;gap:10px;font-weight:700;font-size:.95rem}
+.spark-ico{width:30px;height:30px;border-radius:8px;background:var(--navy);display:grid;place-items:center;flex:none}
+.spark-ico svg{width:15px;height:15px;fill:var(--paper)}
+.tag-ex{font-family:var(--f-mono);font-size:.62rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--turf-ink);background:rgba(31,181,122,.14);padding:6px 10px;border-radius:999px}
+.demo-tabs{display:flex;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line-c);overflow-x:auto;scrollbar-width:none}
+.demo-tabs::-webkit-scrollbar{display:none}
+.demo-tabs button{flex:none;border:1px solid var(--line-c);background:transparent;border-radius:999px;padding:8px 14px;font-size:.84rem;font-weight:600;cursor:pointer;transition:background-color .25s,color .25s,border-color .25s}
+.demo-tabs button:hover{border-color:var(--ink)}
+.demo-tabs button[aria-selected="true"]{background:var(--ink);color:var(--chalk);border-color:var(--ink)}
+.demo-body{display:grid;gap:16px;align-content:start;padding:22px 20px 70px;min-height:500px}
+.msg-user{justify-self:end;max-width:88%;background:var(--navy);color:var(--paper);padding:12px 16px;border-radius:14px 14px 4px 14px;font-size:.93rem;line-height:1.5}
+.msg-ai{display:grid;gap:12px;max-width:96%}
+.ai-intro{color:var(--ink-2);font-size:.93rem}
+.doc{display:grid;gap:10px;padding:18px 20px;border:1px solid var(--line-c);border-radius:10px;background:var(--paper)}
+.doc-title{font-family:var(--f-display);font-weight:800;font-stretch:76%;text-transform:uppercase;font-size:1.12rem;letter-spacing:.01em;line-height:1.1}
+.doc-text{font-size:.93rem;line-height:1.6}
+.doc-text ul{display:grid;gap:8px}
+.doc-text li{position:relative;padding-left:18px}
+.doc-text li::before{content:"";position:absolute;left:0;top:.72em;width:8px;height:2px;background:var(--turf)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;padding:6px 11px;border-radius:999px;border:1px solid var(--line-c)}
+.chip svg{width:13px;height:13px}
+.chip.ok{background:rgba(31,181,122,.14);border-color:transparent;color:var(--turf-ink)}
+.chip.pop{animation:pop .45s var(--ease) both}
+@keyframes pop{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}
+.caret::after{content:"";display:inline-block;width:2px;height:1em;margin-left:2px;vertical-align:-2px;background:currentColor;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.dots{display:inline-flex;gap:5px;padding:12px 14px;border-radius:12px;background:var(--paper);border:1px solid var(--line-c);justify-self:start}
+.dots i{width:6px;height:6px;border-radius:50%;background:var(--ink-2);animation:dot 1s ease-in-out infinite}
+.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+@keyframes dot{0%,100%{transform:translateY(0);opacity:.4}50%{transform:translateY(-4px);opacity:1}}
+.fade-in{animation:fadein .5s ease both}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.replay{position:absolute;right:14px;bottom:14px;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-c);background:var(--paper);border-radius:999px;padding:8px 14px;font-size:.8rem;font-weight:600;cursor:pointer}
+.replay:hover{border-color:var(--ink)}
+.replay svg{width:14px;height:14px}
+@media (max-width:1000px){.atelier-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.demo-body{min-height:560px;padding-inline:14px}}
+
+/* ---------- Tous les terrains ---------- */
+.terrains{background:var(--night);padding-block:clamp(80px,9vw,130px);overflow:hidden}
+.t-head{margin-bottom:clamp(34px,4vw,56px)}
+.t-head .lead{color:var(--fog)}
+.t-marquee{overflow:hidden}
+.t-track{display:flex;width:max-content;animation:tmarq 70s linear infinite}
+.t-marquee:hover .t-track,.is-paused .t-track{animation-play-state:paused}
+.t-set{display:flex;gap:16px;padding-right:16px}
+@keyframes tmarq{to{transform:translateX(-50%)}}
+.t-card{position:relative;flex:none;width:clamp(210px,19vw,290px);height:clamp(290px,26vw,400px);overflow:hidden;border-radius:4px;background:var(--night-2)}
+.t-card img{width:100%;height:100%;object-fit:cover;filter:grayscale(.92) brightness(.7) contrast(1.08);transition:filter .7s ease,transform 1.1s var(--ease)}
+.t-card:hover img{filter:none;transform:scale(1.05)}
+.t-card figcaption{position:absolute;left:0;right:0;bottom:0;display:grid;gap:8px;padding:20px 18px;background:linear-gradient(180deg,transparent,rgba(7,17,31,.92))}
+.t-card figcaption .label{color:var(--turf)}
+.t-card strong{font-family:var(--f-display);font-weight:900;font-stretch:62%;text-transform:uppercase;font-size:clamp(2rem,2.6vw,2.8rem);line-height:.86}
+
+/* ---------- Partenaires ---------- */
+.partners{position:relative;overflow:hidden;isolation:isolate;background:var(--night)}
+.p-media{position:absolute;inset:0;z-index:-2}
+.p-media video{width:100%;height:100%;object-fit:cover;opacity:.6}
+.p-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,var(--night) 0%,rgba(7,17,31,.5) 26%,rgba(7,17,31,.62) 66%,var(--night) 100%)}
+.chips-n{display:flex;flex-wrap:wrap;gap:8px}
+.chips-n li{font-size:.86rem;font-weight:600;padding:8px 14px;border-radius:999px;border:1px solid var(--line-n);background:rgba(7,17,31,.45)}
+.pillars{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,1.6vw,22px)}
+.pillar.key{border-color:rgba(31,181,122,.55);background:rgba(10,52,40,.62)}
+.pillar{display:grid;gap:16px;align-content:start;padding:clamp(24px,2.6vw,36px);border:1px solid var(--line-n);border-radius:6px;background:rgba(7,17,31,.6);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);min-width:0}
+.pillar .label{color:var(--turf)}
+.pillar ul{display:grid;gap:10px;color:var(--mist);font-size:.98rem}
+.pillar li{position:relative;padding-left:20px}
+.pillar li::before{content:"";position:absolute;left:0;top:.72em;width:9px;height:2px;background:var(--turf)}
+.p-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 40px;margin-top:clamp(36px,4.5vw,60px)}
+.p-foot p{color:var(--fog);max-width:58ch}
+@media (max-width:1200px){.pillars{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:700px){.pillars{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- Approche ---------- */
+.ap-head{display:grid;grid-template-columns:auto minmax(0,1.15fr) minmax(0,.85fr);gap:24px clamp(28px,4vw,64px);align-items:end;margin-bottom:clamp(40px,5vw,72px)}
+.ap-head .lft{display:grid;gap:20px;justify-items:start;min-width:0}
+.ap-head .lead{color:var(--ink-2)}
+.bigR{display:grid;font-family:var(--f-display);font-weight:900;font-stretch:62%;font-size:clamp(8rem,13vw,13rem);line-height:.74;user-select:none}
+.bigR span{grid-area:1/1}
+.r-out{color:transparent;-webkit-text-stroke:2px var(--ink)}
+.r-fill{color:var(--turf)}
+.rules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:3px solid var(--ink)}
+.rules li{display:grid;gap:10px;align-content:start;padding:26px 26px 30px 0;border-bottom:1px solid var(--line-c);min-width:0}
+.rules li:not(:nth-child(3n+1)){padding-left:26px;border-left:1px solid var(--line-c)}
+.rules .label{color:var(--turf-ink)}
+.rules h3{font-family:var(--f-display);font-weight:850;font-stretch:66%;text-transform:uppercase;font-size:clamp(1.6rem,2.2vw,2.1rem);line-height:.95}
+.rules p{color:var(--ink-2);font-size:.96rem}
+@media (max-width:1000px){
+  .ap-head{grid-template-columns:minmax(0,1fr)}
+  .bigR{display:none}
+  .rules{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rules li:not(:nth-child(3n+1)){padding-left:0;border-left:0}
+  .rules li:nth-child(2n){padding-left:22px;border-left:1px solid var(--line-c)}
+}
+@media (max-width:600px){.rules{grid-template-columns:minmax(0,1fr)}.rules li,.rules li:nth-child(2n){padding:22px 0 24px;border-left:0}}
+
+/* ---------- Contact ---------- */
+.contact{background:var(--chalk-2)}
+.contact-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(40px,6vw,100px);align-items:start}
+.c-text{display:grid;gap:22px;justify-items:start;min-width:0}
+.c-text .lead{color:var(--ink-2)}
+.mailbox{display:flex;flex-wrap:wrap;align-items:center;gap:12px;width:100%;padding:10px 10px 10px 22px;border-radius:999px;background:var(--paper);border:1.5px solid var(--ink)}
+.mailbox code{flex:1 1 200px;min-width:0;font-family:var(--f-body);font-weight:700;font-size:clamp(1.05rem,1.6vw,1.3rem);color:var(--ink);word-break:break-all;-webkit-user-select:all;user-select:all}
+.copy{font:600 .88rem/1 var(--f-body);padding:12px 16px;border-radius:999px;border:1.5px solid var(--ink);background:var(--ink);color:var(--chalk);cursor:pointer;transition:background-color .25s,border-color .25s,color .25s}
+.copy:hover{background:var(--navy);border-color:var(--navy)}
+.copy[data-done]{background:var(--turf);border-color:var(--turf);color:var(--on-turf)}
+.mail-link{display:inline-flex;align-items:center;gap:10px;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--turf);padding-bottom:2px}
+.mail-link svg{width:16px;height:16px}
+.fed-hint{color:var(--ink-2);font-size:.95rem;max-width:52ch}
+.fed-hint b{color:var(--ink)}
+.person{display:flex;align-items:center;gap:16px;width:100%;margin-top:8px;padding-top:24px;border-top:1px solid var(--line-c)}
+.avatar{width:64px;height:64px;border-radius:50%;background:var(--navy);color:var(--turf);display:grid;place-items:center;font-family:var(--f-display);font-weight:900;font-stretch:70%;font-size:1.45rem;flex:none}
+.person b{display:block;font-size:1.05rem}
+.person span span{color:var(--ink-2);font-size:.92rem}
+.sheet{background:var(--paper);border-radius:6px;border:1px solid var(--line-c);overflow:hidden;box-shadow:0 50px 90px -60px rgba(10,21,37,.55);min-width:0}
+.sheet-pitch{display:block;width:100%;height:auto;background:var(--turf)}
+.sheet-pitch *{fill:none;stroke:rgba(255,255,255,.85);stroke-width:2}
+.sheet-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line-c);background:var(--chalk-2)}
+.sheet pre{margin:0;padding:22px 22px 26px;font-family:var(--f-mono);font-size:.8rem;line-height:1.95;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--ink)}
+.sheet pre i{font-style:normal;color:var(--turf-ink);background:rgba(31,181,122,.13);padding:1px 4px;border-radius:3px}
+@media (max-width:900px){.contact-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- Pied de page ---------- */
+.foot{background:var(--night);color:var(--fog);padding-top:clamp(64px,7vw,100px);overflow:hidden;font-size:.94rem;--lg-disc:#FFFFFF;--lg-spark:var(--navy);--lg-word:#FFFFFF}
+.foot-top{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:32px}
+.foot-brand{display:grid;gap:16px;align-content:start}
+.foot-brand svg{height:44px;width:auto}
+.foot-brand p{max-width:36ch}
+.foot-col{display:grid;gap:10px;align-content:start}
+.foot-col .label{color:var(--chalk);margin-bottom:6px}
+.foot-col a{text-decoration:none;justify-self:start}
+.foot-col a:hover{color:var(--chalk)}
+.foot-word{display:block;width:100%;height:auto;margin-top:clamp(44px,6vw,84px);fill:var(--chalk)}
+.foot-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:12px 28px;padding-top:22px;padding-bottom:calc(26px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line-n);font-size:.85rem}
+.credits summary{cursor:pointer;color:var(--chalk)}
+.credits p{max-width:90ch;margin-top:10px;line-height:1.7}
+.credits a{color:var(--mist)}
+@media (max-width:860px){.foot-top{grid-template-columns:repeat(2,minmax(0,1fr))}.foot-brand{grid-column:1/-1}}
+
+/* ---------- Mouvement réduit ---------- */
+@media (prefers-reduced-motion:reduce){
+  .grain,.dots i,.caret::after,.t-track{animation:none}
+  .t-marquee{overflow-x:auto}
+  *,*::before,*::after{transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="fair-logo" viewBox="10 10 330 120">
+      <circle class="lg-disc" cx="70" cy="70" r="56"/>
+      <path d="M44.80 73.73 L62.53 91.47 L95.20 57.87" fill="none" stroke="#1FB57A" stroke-width="12.13" stroke-linecap="round" stroke-linejoin="round"/>
+      <path class="lg-spark" d="M92.40 26.13 Q92.40 38.27 104.53 38.27 Q92.40 38.27 92.40 50.40 Q92.40 38.27 80.27 38.27 Q92.40 38.27 92.40 26.13Z"/>
+      <path class="lg-spark" d="M73.73 27.07 Q73.73 32.67 79.33 32.67 Q73.73 32.67 73.73 38.27 Q73.73 32.67 68.13 32.67 Q73.73 32.67 73.73 27.07Z"/>
+      <path class="lg-word" d="M190.482 37.244V47.93H168.174V59.474H184.866V69.848H168.174V92.0H154.836V37.244Z M235.588 82.328H215.152L211.876 92.0H197.914L217.726 37.244H233.17L252.982 92.0H238.864ZM232.156 72.032 225.37 51.986 218.662 72.032Z M276.326 37.244V92.0H262.988V37.244Z M317.922 92.0 306.534 71.33H303.336V92.0H289.998V37.244H312.384Q318.858 37.244 323.421 39.506Q327.984 41.768 330.246 45.707Q332.508 49.646 332.508 54.482Q332.508 59.942 329.427 64.232Q326.346 68.522 320.34 70.316L332.976 92.0ZM303.336 61.892H311.604Q315.27 61.892 317.103 60.098Q318.936 58.304 318.936 55.028Q318.936 51.908 317.103 50.114Q315.27 48.32 311.604 48.32H303.336Z"/>
+    </symbol>
+    <symbol id="fair-word" viewBox="154.3 36.7 179.2 55.8">
+      <path d="M190.482 37.244V47.93H168.174V59.474H184.866V69.848H168.174V92.0H154.836V37.244Z M235.588 82.328H215.152L211.876 92.0H197.914L217.726 37.244H233.17L252.982 92.0H238.864ZM232.156 72.032 225.37 51.986 218.662 72.032Z M276.326 37.244V92.0H262.988V37.244Z M317.922 92.0 306.534 71.33H303.336V92.0H289.998V37.244H312.384Q318.858 37.244 323.421 39.506Q327.984 41.768 330.246 45.707Q332.508 49.646 332.508 54.482Q332.508 59.942 329.427 64.232Q326.346 68.522 320.34 70.316L332.976 92.0ZM303.336 61.892H311.604Q315.27 61.892 317.103 60.098Q318.936 58.304 318.936 55.028Q318.936 51.908 317.103 50.114Q315.27 48.32 311.604 48.32H303.336Z"/>
+    </symbol>
+    <symbol id="spark" viewBox="0 0 24 24"><path d="M12 1.5Q12 12 22.5 12Q12 12 12 22.5Q12 12 1.5 12Q12 12 12 1.5Z"/></symbol>
+    <symbol id="check" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></symbol>
+    <symbol id="arr" viewBox="0 0 24 24"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></symbol>
+    <symbol id="play" viewBox="0 0 14 14"><path d="M2.5 1.2v11.6l10-5.8z"/></symbol>
+    <symbol id="pause" viewBox="0 0 14 14"><path d="M3 1.5h3v11H3zM8 1.5h3v11H8z"/></symbol>
+    <symbol id="replay" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#contenu">Aller au contenu</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"><i></i></div>
+
+<header class="hdr" id="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="#top" aria-label="FAIR, retour en haut de page"><svg viewBox="0 0 330 120" aria-hidden="true"><use href="#fair-logo"/></svg></a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#clubs">Clubs</a>
+      <a href="#partenaires">Fédérations</a>
+      <a href="#approche">Notre approche</a>
+      <a href="formation.html">Formation</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-turf" href="#contact">Demander un atelier</a>
+    <button class="menu-btn" type="button" id="menu-btn" aria-expanded="false" aria-controls="menu"><span class="mb-i" aria-hidden="true"></span><span class="mb-l">Menu</span></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <nav class="wrap" aria-label="Menu">
+    <a href="#clubs">Clubs <small>Le parcours</small></a>
+    <a href="#partenaires">Fédérations <small>Le programme</small></a>
+    <a href="#approche">Approche <small>IA responsable</small></a>
+    <a href="formation.html">Formation <small>Module 1</small></a>
+    <a href="#contact">Contact <small>Un mail suffit</small></a>
+  </nav>
+  <div class="wrap menu-foot">
+    <a class="btn btn-turf" href="#contact"><span>Demander un atelier</span><span class="btn-ar" aria-hidden="true"><svg class="ico-arr"><use href="#arr"/></svg><svg class="ico-arr"><use href="#arr"/></svg></span></a>
+    <span class="label">Gratuit pour les clubs · Partout en France</span>
+  </div>
+</div>
+
+<main id="contenu">
+
+  <!-- HERO -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="hero-media" aria-hidden="true">
+      <video id="hero-video" muted loop playsinline preload="auto" poster="assets/img/poster-hero.jpg" src="assets/video/hero.mp4"></video>
+    </div>
+    <div class="hero-shade" aria-hidden="true"></div>
+
+    <div class="wrap hero-in">
+      <p class="label eyebrow"><span class="sq" aria-hidden="true"></span><span class="sr-only">Former les Associations à l'IA Responsable</span><span class="scr" aria-hidden="true">Former les Associations à l'IA Responsable</span></p>
+      <h1 class="hero-title" id="hero-title">
+        <span class="ln ln-sm"><span>Moins de paperasse.</span></span>
+        <span class="ln"><span>Plus de</span></span>
+        <span class="ln ln-g"><span>terrain.</span></span>
+      </h1>
+      <div class="hero-row">
+        <p class="lead">FAIR forme gratuitement les dirigeants et bénévoles de clubs à utiliser l'intelligence artificielle de façon responsable&nbsp;: sur vos vrais dossiers, avec des outils gratuits, à votre rythme.</p>
+        <div class="actions">
+          <a class="btn btn-turf" href="#contact" data-magnetic><span>Demander un atelier</span><span class="btn-ar" aria-hidden="true"><svg class="ico-arr"><use href="#arr"/></svg><svg class="ico-arr"><use href="#arr"/></svg></span></a>
+          <a class="btn btn-ghost" href="#partenaires" data-magnetic>Vous êtes une fédération&nbsp;?</a>
+        </div>
+      </div>
+      <ul class="hero-meta label" aria-label="En bref">
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Gratuit pour les clubs</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Tous les sports</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Partout en France</li>
+        <li><button class="vbtn" id="vbtn" type="button" aria-pressed="false"><svg class="i-pause" aria-hidden="true"><use href="#pause"/></svg><svg class="i-play" aria-hidden="true"><use href="#play"/></svg><span class="vb-l">Pause</span></button></li>
+      </ul>
+    </div>
+
+    <div class="hero-stats">
+      <div class="wrap hs-grid">
+        <p class="hs"><span class="hs-n">0&nbsp;€</span><span class="hs-l">pour les clubs, ateliers et capsules compris</span></p>
+        <p class="hs"><span class="hs-n">3</span><span class="hs-l">thèmes, plus quatre modules courts à la carte</span></p>
+        <p class="hs"><span class="hs-n">3&nbsp;h</span><span class="hs-l">d'atelier sur un document réel du club</span></p>
+        <p class="hs"><span class="hs-n">J+30</span><span class="hs-l">un suivi pour mesurer le temps gagné</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LA DEUXIÈME SOIRÉE -->
+  <section class="sec soiree" id="soiree" aria-labelledby="soiree-title">
+    <div class="wrap soiree-grid">
+      <div class="s-head" data-rise>
+        <p class="label"><span class="sq" aria-hidden="true"></span>Mardi soir, chez un dirigeant bénévole</p>
+        <h2 class="h2" id="soiree-title">Après l'entraînement, la deuxième soirée commence.</h2>
+        <p class="lead">Mails, dossiers, affiches, comptes rendus&nbsp;: dans la plupart des clubs, ce travail repose sur deux ou trois bénévoles. C'est ce temps-là que FAIR vous aide à récupérer.</p>
+      </div>
+      <figure class="soiree-media" aria-hidden="true">
+        <img class="sm is-on" data-step="0" src="assets/img/jeunes.jpg" alt="" width="1000" height="1500" loading="lazy">
+        <video class="sm" data-step="1" data-gated="step" muted loop playsinline preload="none" poster="assets/img/poster-soiree.jpg" data-src="assets/video/soiree.mp4"></video>
+        <img class="sm" data-step="2" src="assets/img/tableau.jpg" alt="" width="1000" height="1500" loading="lazy">
+        <video class="sm" data-step="3" data-gated="step" muted loop playsinline preload="none" poster="assets/img/poster-nuit.jpg" data-src="assets/video/nuit.mp4"></video>
+        <img class="sm" data-step="4" src="assets/img/vestiaire.jpg" alt="" width="1400" height="934" loading="lazy">
+        <span class="label s-cap" id="s-cap">Le cœur du club</span>
+        <span class="clock" id="clock">19:00</span>
+        <span class="s-prog" id="s-prog"><i></i></span>
+      </figure>
+      <ol class="tl" aria-label="Exemple : mardi soir d'un dirigeant bénévole">
+        <li><button type="button" aria-pressed="true" data-cap="Le cœur du club"><time>19:00</time><span class="t">Entraînement des moins de 11 ans<small>La raison pour laquelle on est là</small></span><span class="tag">Le cœur</span></button></li>
+        <li><button type="button" aria-pressed="false" data-cap="FAIR peut aider"><time>20:45</time><span class="t">Répondre aux mails des parents<small>Horaires, covoiturage, licences</small></span><span class="tag help">FAIR peut aider</span></button></li>
+        <li><button type="button" aria-pressed="false" data-cap="FAIR peut aider"><time>21:20</time><span class="t">Dossier de subvention à rendre vendredi<small>Projet associatif, budget, bilan</small></span><span class="tag help">FAIR peut aider</span></button></li>
+        <li><button type="button" aria-pressed="false" data-cap="FAIR peut aider"><time>22:30</time><span class="t">Affiche du match de dimanche<small>Réseaux sociaux, panneau du club-house</small></span><span class="tag help">FAIR peut aider</span></button></li>
+        <li><button type="button" aria-pressed="false" data-cap="FAIR peut aider"><time>23:10</time><span class="t">Compte rendu du dernier bureau<small>Des notes à remettre au propre</small></span><span class="tag help">FAIR peut aider</span></button></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- AUTO-DIAGNOSTIC -->
+  <section class="sec diag" id="diagnostic" aria-labelledby="diag-title">
+    <div class="wrap diag-grid">
+      <div class="d-head" data-rise>
+        <p class="label"><span class="sq" aria-hidden="true"></span>Auto-diagnostic · 1 minute</p>
+        <h2 class="h2" id="diag-title">Combien d'heures votre club peut récupérer&nbsp;?</h2>
+        <p class="lead">Quatre questions sur votre quotidien. On vous dit par où commencer, et le résultat se glisse directement dans votre demande d'atelier.</p>
+      </div>
+      <div class="d-card" data-rise>
+        <form class="d-qs" id="diag-form" aria-label="Questions du diagnostic">
+          <fieldset>
+            <legend>Dossiers de subvention par an</legend>
+            <div class="d-opts">
+              <input type="radio" name="sub" id="sub1" value="1"><label for="sub1">0 à 1</label>
+              <input type="radio" name="sub" id="sub2" value="2.5" checked><label for="sub2">2 à 3</label>
+              <input type="radio" name="sub" id="sub3" value="6"><label for="sub3">4 ou plus</label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Affiches et publications par semaine</legend>
+            <div class="d-opts">
+              <input type="radio" name="com" id="com1" value="1"><label for="com1">0 à 1</label>
+              <input type="radio" name="com" id="com2" value="3" checked><label for="com2">2 à 4</label>
+              <input type="radio" name="com" id="com3" value="6"><label for="com3">5 ou plus</label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Mails et messages aux parents par semaine</legend>
+            <div class="d-opts">
+              <input type="radio" name="mail" id="mail1" value="15"><label for="mail1">Moins de 20</label>
+              <input type="radio" name="mail" id="mail2" value="35" checked><label for="mail2">20 à 50</label>
+              <input type="radio" name="mail" id="mail3" value="70"><label for="mail3">Plus de 50</label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Inscriptions et licences, vous les suivez…</legend>
+            <div class="d-opts">
+              <input type="radio" name="ins" id="ins1" value="3"><label for="ins1">Sur papier</label>
+              <input type="radio" name="ins" id="ins2" value="1.5" checked><label for="ins2">Dans un tableur</label>
+              <input type="radio" name="ins" id="ins3" value="0.5"><label for="ins3">Avec un formulaire en ligne</label>
+            </div>
+          </fieldset>
+        </form>
+        <div class="d-res" aria-live="polite">
+          <span class="label">Temps récupérable</span>
+          <p class="d-num"><span id="d-h">12</span><small>h / mois</small></p>
+          <p class="d-prio"><b id="d-prio">La communication</b>Le thème par lequel commencer.</p>
+          <a class="btn btn-turf" id="d-cta" href="mailto:contact@fair-asso.fr">Demander un atelier avec ce résultat</a>
+          <p class="d-fine">Estimation indicative, affinée lors de l'appel de cadrage. Rien n'est enregistré.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARCOURS CLUB -->
+  <section class="chalk sec" id="clubs" aria-labelledby="clubs-title">
+    <div class="wrap">
+      <div class="sec-head" data-rise>
+        <div class="lft">
+          <p class="label"><span class="sq" aria-hidden="true"></span>Parcours club</p>
+          <h2 class="h2" id="clubs-title">Trois thèmes, vos vrais dossiers.</h2>
+        </div>
+        <p class="lead">Suivez le parcours complet ou commencez par le thème qui vous presse le plus. Chaque atelier part d'un document dont votre club a réellement besoin.</p>
+      </div>
+
+      <ol class="themes">
+        <li class="theme" data-img="assets/img/coachs.jpg">
+          <span class="num">01</span>
+          <h3 class="theme-t">L'administratif</h3>
+          <p class="theme-d">Dossiers de subvention, courriers aux collectivités, comptes rendus de réunion, assemblée générale.</p>
+          <p class="theme-x"><span class="label">En atelier</span>On avance ensemble sur votre prochain dossier de subvention.</p>
+        </li>
+        <li class="theme" data-img="assets/img/regroupement.jpg">
+          <span class="num">02</span>
+          <h3 class="theme-t">La communication</h3>
+          <p class="theme-d">Affiches de match, publications pour les réseaux sociaux, lettres aux adhérents, présentation aux partenaires.</p>
+          <p class="theme-x"><span class="label">En atelier</span>On prépare la communication de votre prochain événement.</p>
+        </li>
+        <li class="theme" data-img="assets/img/mains.jpg">
+          <span class="num">03</span>
+          <h3 class="theme-t">Les outils sans code</h3>
+          <p class="theme-d">Formulaires d'inscription, planning des bénévoles, suivi des licences et des cotisations, tableaux partagés.</p>
+          <p class="theme-x"><span class="label">En atelier</span>On construit l'outil interne dont votre club a besoin.</p>
+        </li>
+      </ol>
+
+      <div class="mods" data-rise>
+        <div class="mods-head">
+          <p class="label"><span class="sq" aria-hidden="true"></span>Modules courts, à ajouter au parcours</p>
+          <p>À la carte, selon ce qui pèse le plus dans votre club.</p>
+        </div>
+        <ul class="mods-grid">
+          <li class="mod"><span class="label">Module</span><h3>Sponsors et mécénat</h3><p>Dossier partenaire, prospection des commerces du quartier, bilan à envoyer aux partenaires en fin de saison.</p></li>
+          <li class="mod"><span class="label">Module</span><h3>Bénévoles</h3><p>Annonces de recrutement, accueil des nouveaux, planning des permanences, messages de remerciement.</p></li>
+          <li class="mod"><span class="label">Module</span><h3>Côté terrain</h3><p>Pour les éducateurs&nbsp;: préparer ses séances, adapter un exercice à l'âge et au niveau du groupe.</p></li>
+          <li class="mod risk"><span class="label">Module · recommandé</span><h3>L'IA sans risque</h3><p>Photos de mineurs, arnaques générées par IA, fausses informations, fichiers d'adhérents&nbsp;: les bons réflexes, et la charte IA du club.</p></li>
+        </ul>
+      </div>
+
+      <div class="steps-wrap" data-rise>
+        <div class="steps-line" aria-hidden="true"><i></i></div>
+        <ol class="steps" aria-label="Comment se déroule l'accompagnement">
+          <li><span class="sn">01</span><b>Vous nous écrivez</b><span class="sd">Votre club, votre sport, votre ville et la tâche qui vous prend le plus de temps.</span></li>
+          <li><span class="sn">02</span><b>Un appel de cadrage</b><span class="sd">On choisit ensemble le dossier ou le projet sur lequel travailler.</span></li>
+          <li><span class="sn">03</span><b>L'atelier</b><span class="sd">Environ trois heures, sur votre document, avec des outils gratuits.</span></li>
+          <li><span class="sn">04</span><b>Le suivi à un mois</b><span class="sd">On fait le point sur ce que vous utilisez vraiment et le temps gagné. Les attestations sont remises.</span></li>
+        </ol>
+      </div>
+
+      <div class="caps-note" data-rise>
+        <div class="cn-l">
+          <span class="cn-play" aria-hidden="true"><svg><use href="#play"/></svg></span>
+          <span><b>Bientôt en ligne&nbsp;: des capsules vidéo gratuites</b><span>Subvention, affiche du week-end, formulaire d'inscription, données des adhérents&nbsp;: une tâche par vidéo, pour apprendre entre deux entraînements.</span></span>
+        </div>
+        <a class="btn btn-ghost" href="#contact">Être prévenu du lancement</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ATELIER : DÉMO + KIT -->
+  <section class="sec atelier" id="atelier" aria-labelledby="atelier-title">
+    <div class="wrap atelier-grid">
+      <div class="atelier-text" data-rise>
+        <p class="label"><span class="sq" aria-hidden="true"></span>Concrètement</p>
+        <h2 class="h2" id="atelier-title">Ce que votre club garde après l'atelier.</h2>
+        <ul class="kit">
+          <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Une fiche de présentation du club, à réutiliser dans chaque demande à l'IA</span></li>
+          <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Des modèles de demandes prêts à l'emploi pour vos tâches courantes</span></li>
+          <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Un assistant IA paramétré pour votre club</span></li>
+          <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Une charte IA du club, prête à faire voter en assemblée générale</span></li>
+          <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Un référent IA formé, qui transmet au reste du bureau</span></li>
+          <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Une attestation pour chaque bénévole formé, et le label «&nbsp;Club IA responsable&nbsp;» à la fin du parcours</span></li>
+        </ul>
+        <p class="note">Toutes les demandes sont lues, d'où qu'elles viennent en France. Les interventions sont programmées selon les disponibilités et les besoins de chaque club.</p>
+      </div>
+
+      <div class="demo" id="demo" data-rise>
+        <div class="demo-bar">
+          <span class="who"><span class="spark-ico" aria-hidden="true"><svg><use href="#spark"/></svg></span>Assistant du club</span>
+          <span class="tag-ex">Exemple</span>
+        </div>
+        <div class="demo-tabs" role="tablist" aria-label="Exemples de demandes">
+          <button type="button" role="tab" id="tab-sub" aria-controls="demo-panel" aria-selected="true" data-k="sub">Subvention</button>
+          <button type="button" role="tab" id="tab-aff" aria-controls="demo-panel" aria-selected="false" tabindex="-1" data-k="aff">Affiche</button>
+          <button type="button" role="tab" id="tab-spo" aria-controls="demo-panel" aria-selected="false" tabindex="-1" data-k="spo">Sponsor</button>
+          <button type="button" role="tab" id="tab-cr" aria-controls="demo-panel" aria-selected="false" tabindex="-1" data-k="cr">Compte rendu</button>
+          <button type="button" role="tab" id="tab-ins" aria-controls="demo-panel" aria-selected="false" tabindex="-1" data-k="ins">Inscriptions</button>
+        </div>
+        <div class="demo-body" id="demo-panel" role="tabpanel" aria-labelledby="tab-sub">
+          <div class="msg-user">À partir de notre fiche club, rédige la partie «&nbsp;projet associatif&nbsp;» de notre demande de subvention. Ton simple, quinze lignes maximum.</div>
+          <div class="msg-ai">
+            <p class="ai-intro">Voici une première version, à relire avec votre bureau&nbsp;:</p>
+            <div class="doc"><span class="doc-title">Projet associatif 2026-2027</span><div class="doc-text"><p>Notre club accueille des pratiquants de 6 à 70 ans autour de trois priorités&nbsp;: rendre le sport accessible à tous, former nos jeunes éducateurs et renforcer notre présence dans le quartier. Cette saison, nous voulons ouvrir un créneau découverte le samedi matin et accompagner deux bénévoles vers un diplôme d'encadrement.</p></div></div>
+            <div class="chips"><span class="chip ok"><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Aucune donnée personnelle</span><span class="chip">À relire par le bureau</span></div>
+          </div>
+        </div>
+        <button class="replay" type="button" id="replay"><svg class="ico-arr" aria-hidden="true"><use href="#replay"/></svg>Rejouer</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOUS LES TERRAINS -->
+  <section class="terrains" id="terrains" aria-labelledby="terrains-title">
+    <div class="wrap sec-head t-head" data-rise>
+      <div class="lft">
+        <p class="label"><span class="sq" aria-hidden="true"></span>Tous les sports</p>
+        <h2 class="h2" id="terrains-title">Tous les terrains.</h2>
+      </div>
+      <p class="lead">Gazon, tatami ou terre battue&nbsp;: d'un club à l'autre, les dossiers se ressemblent. Votre sport n'est pas dans la liste&nbsp;? Il est le bienvenu.</p>
+    </div>
+    <div class="t-marquee">
+      <div class="t-track">
+        <div class="t-set">
+          <figure class="t-card"><img src="assets/img/terrain-football.jpg" alt="But de football éclairé par les projecteurs, de nuit" width="1000" height="1250" loading="lazy"><figcaption><span class="label">Football</span><strong>Gazon</strong></figcaption></figure>
+          <figure class="t-card"><img src="assets/img/terrain-judo.jpg" alt="Deux judokas pendant une projection" width="1400" height="1152" loading="lazy"><figcaption><span class="label">Judo</span><strong>Tatami</strong></figcaption></figure>
+          <figure class="t-card"><img src="assets/img/terrain-basket.jpg" alt="Deux ballons de basket posés sur un parquet" width="1400" height="934" loading="lazy"><figcaption><span class="label">Basket</span><strong>Parquet</strong></figcaption></figure>
+          <figure class="t-card"><img src="assets/img/terrain-tennis.jpg" alt="Balle de tennis sur un court en terre battue" width="1000" height="1500" loading="lazy"><figcaption><span class="label">Tennis</span><strong>Terre battue</strong></figcaption></figure>
+          <figure class="t-card"><img src="assets/img/terrain-petanque.jpg" alt="Joueurs de pétanque et boules sur le sable" width="1400" height="934" loading="lazy"><figcaption><span class="label">Pétanque</span><strong>Sable</strong></figcaption></figure>
+          <figure class="t-card"><img src="assets/img/terrain-athletisme.jpg" alt="Couloirs numérotés d'une piste d'athlétisme" width="1400" height="934" loading="lazy"><figcaption><span class="label">Athlétisme</span><strong>Tartan</strong></figcaption></figure>
+          <figure class="t-card"><img src="assets/img/terrain-natation.jpg" alt="Ligne d'eau rouge dans un bassin" width="1400" height="788" loading="lazy"><figcaption><span class="label">Natation</span><strong>Bassin</strong></figcaption></figure>
+          <figure class="t-card"><img src="assets/img/terrain-rugby.jpg" alt="Ballon de rugby sur la pelouse, devant les poteaux" width="1400" height="939" loading="lazy"><figcaption><span class="label">Rugby</span><strong>Pelouse</strong></figcaption></figure>
+          <figure class="t-card"><img src="assets/img/terrain-boxe.jpg" alt="Sacs de frappe suspendus dans une salle de boxe" width="1400" height="934" loading="lazy"><figcaption><span class="label">Boxe</span><strong>Salle</strong></figcaption></figure>
+          <figure class="t-card"><img src="assets/img/terrain-handball.jpg" alt="Handballeur en suspension dans un gymnase" width="1000" height="1487" loading="lazy"><figcaption><span class="label">Handball</span><strong>Gymnase</strong></figcaption></figure>
+        </div>
+        <div class="t-set" aria-hidden="true">
+          <figure class="t-card"><img src="assets/img/terrain-football.jpg" alt="" width="1000" height="1250" loading="lazy"><figcaption><span class="label">Football</span><strong>Gazon</strong></figcaption></figure>
+          <figure class="t-card"><img src="assets/img/terrain-judo.jpg" alt="" width="1400" height="1152" loading="lazy"><figcaption><span class="label">Judo</span><strong>Tatami</strong></figcaption></figure>
+          <figure class="t-card"><img src="assets/img/terrain-basket.jpg" alt="" width="1400" height="934" loading="lazy"><figcaption><span class="label">Basket</span><strong>Parquet</strong></figcaption></figure>
+          <figure class="t-card"><img src="assets/img/terrain-tennis.jpg" alt="" width="1000" height="1500" loading="lazy"><figcaption><span class="label">Tennis</span><strong>Terre battue</strong></figcaption></figure>
+          <figure class="t-card"><img src="assets/img/terrain-petanque.jpg" alt="" width="1400" height="934" loading="lazy"><figcaption><span class="label">Pétanque</span><strong>Sable</strong></figcaption></figure>
+          <figure class="t-card"><img src="assets/img/terrain-athletisme.jpg" alt="" width="1400" height="934" loading="lazy"><figcaption><span class="label">Athlétisme</span><strong>Tartan</strong></figcaption></figure>
+          <figure class="t-card"><img src="assets/img/terrain-natation.jpg" alt="" width="1400" height="788" loading="lazy"><figcaption><span class="label">Natation</span><strong>Bassin</strong></figcaption></figure>
+          <figure class="t-card"><img src="assets/img/terrain-rugby.jpg" alt="" width="1400" height="939" loading="lazy"><figcaption><span class="label">Rugby</span><strong>Pelouse</strong></figcaption></figure>
+          <figure class="t-card"><img src="assets/img/terrain-boxe.jpg" alt="" width="1400" height="934" loading="lazy"><figcaption><span class="label">Boxe</span><strong>Salle</strong></figcaption></figure>
+          <figure class="t-card"><img src="assets/img/terrain-handball.jpg" alt="" width="1000" height="1487" loading="lazy"><figcaption><span class="label">Handball</span><strong>Gymnase</strong></figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FÉDÉRATIONS ET PARTENAIRES -->
+  <section class="sec partners" id="partenaires" aria-labelledby="part-title">
+    <div class="p-media" aria-hidden="true"><video muted loop playsinline preload="none" poster="assets/img/poster-aerien.jpg" data-src="assets/video/aerien.mp4"></video></div>
+    <div class="p-shade" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="sec-head" data-rise>
+        <div class="lft">
+          <p class="label"><span class="sq" aria-hidden="true"></span>Fédérations, comités, collectivités</p>
+          <h2 class="h2" id="part-title">Un programme prêt à déployer auprès de vos clubs.</h2>
+        </div>
+        <div class="rgt">
+          <p class="lead">FAIR accompagne les clubs de votre territoire ou de votre discipline, gratuitement pour eux, avec des résultats mesurés pour vous.</p>
+          <ul class="chips-n" aria-label="Partenaires visés"><li>Fédérations et ligues</li><li>Districts et comités</li><li>CDOS et CROS</li><li>Collectivités</li><li>Fondations</li></ul>
+        </div>
+      </div>
+      <div class="pillars">
+        <article class="pillar" data-rise>
+          <p class="label">Pour vos clubs</p>
+          <h3 class="h3">Un parcours complet</h3>
+          <ul><li>Ateliers gratuits, sur leurs propres dossiers</li><li>Trois thèmes et des modules à la carte</li><li>Un référent IA formé dans chaque club</li><li>Capsules en ligne pour aller plus loin</li></ul>
+        </article>
+        <article class="pillar key" data-rise>
+          <p class="label">Pour vos équipes</p>
+          <h3 class="h3">Former vos formateurs</h3>
+          <ul><li>Agents de développement et conseillers formés à animer les ateliers</li><li>Supports d'animation et modèles prêts à réutiliser</li><li>Un réseau de référents qui démultiplie l'action sur tout le territoire</li></ul>
+        </article>
+        <article class="pillar" data-rise>
+          <p class="label">Pour vous</p>
+          <h3 class="h3">Des résultats mesurés</h3>
+          <ul><li>Diagnostic numérique de chaque club, avant et après</li><li>Temps passé sur les tâches mesuré avant et après</li><li>Suivi à un mois et bilan transmis</li><li>Le label «&nbsp;Club IA responsable&nbsp;» pour les clubs qui terminent le parcours</li></ul>
+        </article>
+        <article class="pillar" data-rise>
+          <p class="label">Pour tous</p>
+          <h3 class="h3">Un cadre responsable</h3>
+          <ul><li>Outils gratuits, sans abonnement imposé</li><li>Données personnelles des adhérents protégées</li><li>Relecture humaine de tout ce que produit l'IA</li><li>Une charte IA adoptée par chaque club</li></ul>
+        </article>
+      </div>
+      <div class="p-foot">
+        <p>La démarche s'appuie sur un travail de recherche universitaire en management du sport, mené à l'Université de Lille.</p>
+        <a class="btn btn-turf" href="#contact" data-magnetic><span>Parler d'un programme</span><span class="btn-ar" aria-hidden="true"><svg class="ico-arr"><use href="#arr"/></svg><svg class="ico-arr"><use href="#arr"/></svg></span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROCHE -->
+  <section class="chalk sec" id="approche" aria-labelledby="ap-title">
+    <div class="wrap">
+      <div class="ap-head" data-rise>
+        <div class="bigR" aria-hidden="true"><span class="r-out">R</span><span class="r-fill">R</span></div>
+        <div class="lft">
+          <p class="label"><span class="sq" aria-hidden="true"></span>Notre approche</p>
+          <h2 class="h2" id="ap-title">Une IA responsable, concrètement.</h2>
+        </div>
+        <p class="lead">Le «&nbsp;R&nbsp;» de FAIR n'est pas décoratif. Six règles guident chaque atelier et chaque capsule.</p>
+      </div>
+      <ol class="rules">
+        <li><span class="label">Règle 1</span><h3>Vos vrais dossiers</h3><p>Pas d'exercice fictif&nbsp;: on travaille sur un document dont votre club a réellement besoin.</p></li>
+        <li><span class="label">Règle 2</span><h3>Des outils gratuits</h3><p>Aucun abonnement à payer. Ce que vous apprenez reste utilisable après notre passage.</p></li>
+        <li><span class="label">Règle 3</span><h3>Un humain relit toujours</h3><p>L'IA propose, le bénévole décide. Chaque texte est relu avant d'être envoyé ou publié.</p></li>
+        <li><span class="label">Règle 4</span><h3>Des données protégées</h3><p>Aucune information personnelle sur vos adhérents n'est saisie dans un outil d'IA.</p></li>
+        <li><span class="label">Règle 5</span><h3>L'autonomie comme but</h3><p>Votre club repart avec ses propres outils et sait s'en servir sans nous.</p></li>
+        <li><span class="label">Règle 6</span><h3>Tous les sports</h3><p>Football, judo, basket ou pétanque&nbsp;: d'un club à l'autre, les dossiers se ressemblent.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="chalk sec contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap contact-grid">
+      <div class="c-text" data-rise>
+        <p class="label"><span class="sq" aria-hidden="true"></span>Contact</p>
+        <h2 class="h2" id="contact-title">Un mail suffit.</h2>
+        <p class="lead">Club, fédération, collectivité ou simple curiosité&nbsp;: nous répondons à chaque message.</p>
+        <div class="mailbox">
+          <code id="mail">contact@fair-asso.fr</code>
+          <button class="copy" type="button" id="copy-mail" data-target="mail">Copier l'adresse</button>
+        </div>
+        <a class="mail-link" href="mailto:contact@fair-asso.fr">Ouvrir ma messagerie <svg class="ico-arr" aria-hidden="true"><use href="#arr"/></svg></a>
+        <p class="fed-hint"><b>Fédération ou collectivité&nbsp;?</b> Indiquez le nombre de clubs que vous accompagnez et votre territoire&nbsp;: on revient vers vous avec une proposition de programme.</p>
+        <div class="person">
+          <span class="avatar" aria-hidden="true">JM</span>
+          <span><b>Jules Moreau, fondateur</b><span>Master International Sport Administration, Université de Lille. Ancien responsable communication d'un club de football amateur.</span></span>
+        </div>
+      </div>
+      <div class="sheet" data-rise>
+        <svg class="sheet-pitch" viewBox="0 0 600 120" aria-hidden="true" preserveAspectRatio="xMidYMid slice"><rect x="12" y="12" width="576" height="96"/><path d="M300 12V108"/><circle cx="300" cy="60" r="26"/><rect x="12" y="34" width="54" height="52"/><rect x="534" y="34" width="54" height="52"/></svg>
+        <div class="sheet-head"><span class="label">Feuille de match · Modèle de message pour les clubs</span><button class="copy" type="button" id="copy-tpl" data-target="tpl">Copier le modèle</button></div>
+<pre id="tpl">Bonjour,
+
+Je suis <i>[votre rôle]</i> au club <i>[nom du club]</i>, à <i>[ville]</i>.
+Sport : <i>[discipline]</i> · Bénévoles actifs : <i>[nombre]</i>
+
+La tâche qui nous prend le plus de temps : <i>[subventions, communication, inscriptions…]</i>
+
+Merci et à bientôt,
+<i>[prénom, nom, téléphone]</i></pre>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <svg viewBox="0 0 330 120" role="img" aria-label="FAIR"><use href="#fair-logo"/></svg>
+        <p>Former les Associations à l'IA Responsable. Accompagnement gratuit des clubs sportifs, partout en France.</p>
+      </div>
+      <nav class="foot-col" aria-label="Clubs"><p class="label">Clubs</p><a href="#diagnostic">L'auto-diagnostic</a><a href="#clubs">Le parcours</a><a href="#atelier">L'atelier</a><a href="formation.html">La formation en ligne</a><a href="#contact">Demander un atelier</a></nav>
+      <nav class="foot-col" aria-label="Fédérations"><p class="label">Fédérations</p><a href="#partenaires">Le programme</a><a href="#approche">Notre approche</a><a href="#contact">Nous contacter</a></nav>
+      <nav class="foot-col" aria-label="L'association"><p class="label">L'association</p><a href="#soiree">Le constat</a><a href="#contact">Contact</a></nav>
+    </div>
+    <svg class="foot-word" viewBox="154.3 36.7 179.2 55.8" aria-hidden="true"><use href="#fair-word"/></svg>
+    <div class="foot-bottom">
+      <span>Association loi 1901 en cours de création</span>
+      <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
+      <details class="credits">
+        <summary>Crédits photos et vidéos</summary>
+        <p>Images et vidéos issues de <a href="https://www.pexels.com" rel="noopener" target="_blank">Pexels</a>, sous licence Pexels (utilisation libre)&nbsp;: Pressmaster, Hugo Butery, Gokuldham Nar, just a hobby, nn.TON.nn, cottonbro studio, Polina Tankilevitch, Franco Monsalvo, Omar Ramadan, juan idier Alba Enriquez, Reinis Brūzītis, Daniel Neves Cotta, Bohdan Hyrovych, SHVETS production, Pablo Hsm, Tima Miroshnichenko, Bechir Lachiheb.</p>
+      </details>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/gsap.min.js"></script>
+<script src="assets/js/ScrollTrigger.min.js"></script>
+<script src="assets/js/lenis.min.js"></script>
+<script>
+(() => {
+  'use strict';
+  const d = document, w = window, root = d.documentElement;
+  root.lang = 'fr';
+  const reduce = w.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = w.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const G = !!(w.gsap && w.ScrollTrigger);
+  if (G) gsap.registerPlugin(ScrollTrigger);
+  const $ = (s, c = d) => c.querySelector(s);
+  const $$ = (s, c = d) => Array.from(c.querySelectorAll(s));
+  const mk = (tag, cls, txt) => { const e = d.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+  const hasIO = 'IntersectionObserver' in w;
+
+  /* ---------- Défilement doux ---------- */
+  let lenis = null;
+  if (!reduce && fine && w.Lenis) {
+    lenis = new w.Lenis({ lerp: 0.1, smoothWheel: true });
+    if (G) {
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(t => lenis.raf(t * 1000));
+      gsap.ticker.lagSmoothing(0);
+    } else {
+      const raf = t => { lenis.raf(t); requestAnimationFrame(raf); };
+      requestAnimationFrame(raf);
+    }
+  }
+
+  /* ---------- Menu ---------- */
+  const hdr = $('#hdr'), menuBtn = $('#menu-btn'), menu = $('#menu');
+  let menuOpen = false;
+  function openMenu() {
+    menu.hidden = false;
+    void menu.offsetWidth;
+    menu.classList.add('is-open');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    $('.mb-l', menuBtn).textContent = 'Fermer';
+    root.classList.add('menu-open');
+    menuOpen = true;
+    if (lenis) lenis.stop();
+  }
+  function closeMenu() {
+    if (!menuOpen) return;
+    menu.classList.remove('is-open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    $('.mb-l', menuBtn).textContent = 'Menu';
+    root.classList.remove('menu-open');
+    menuOpen = false;
+    if (lenis) lenis.start();
+    setTimeout(() => { if (!menuOpen) menu.hidden = true; }, 700);
+  }
+  menuBtn.addEventListener('click', () => (menuOpen ? closeMenu() : openMenu()));
+  d.addEventListener('keydown', e => { if (e.key === 'Escape' && menuOpen) { closeMenu(); menuBtn.focus(); } });
+
+  /* ---------- Ancres ---------- */
+  $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+    const id = a.getAttribute('href').slice(1);
+    const t = id && d.getElementById(id);
+    if (!t) return;
+    e.preventDefault();
+    const wasOpen = menuOpen;
+    closeMenu();
+    const go = () => {
+      if (lenis) lenis.scrollTo(t, { duration: 1.4 });
+      else t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      if (!t.hasAttribute('tabindex')) t.setAttribute('tabindex', '-1');
+      t.focus({ preventScroll: true });
+    };
+    if (wasOpen) setTimeout(go, 80); else go();
+  }));
+
+  /* ---------- Vidéos : chargement différé, pause hors écran ---------- */
+  let paused = false;
+  const vids = $$('video');
+  const stepOk = v => v.dataset.gated !== 'step' || v.classList.contains('is-on');
+  function playVid(v) {
+    if (paused) return;
+    if (!v.getAttribute('src') && v.dataset.src) v.src = v.dataset.src;
+    const p = v.play();
+    if (p && p.catch) p.catch(() => {});
+  }
+  const vio = hasIO ? new IntersectionObserver(es => es.forEach(en => {
+    const v = en.target;
+    v._vis = en.isIntersecting;
+    if (en.isIntersecting) { if (stepOk(v)) playVid(v); } else v.pause();
+  }), { rootMargin: '200px 0px' }) : null;
+  vids.forEach(v => { v.muted = true; if (vio) vio.observe(v); else if (stepOk(v)) playVid(v); });
+
+  /* Images du bandeau « Tous les terrains » : chargées avant d'entrer à l'écran */
+  if (hasIO) {
+    const gio = new IntersectionObserver(es => {
+      if (!es.some(e => e.isIntersecting)) return;
+      gio.disconnect();
+      $$('.t-card img').forEach(img => { img.loading = 'eager'; });
+    }, { rootMargin: '100% 0px' });
+    gio.observe($('#terrains'));
+  }
+
+  /* ---------- Texte qui se décode ---------- */
+  function scramble(el, dur) {
+    const fin = el.textContent, g = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let t0 = null;
+    const step = now => {
+      if (t0 === null) t0 = now;
+      const p = Math.min(1, (now - t0) / dur), n = Math.floor(fin.length * p);
+      let s = fin.slice(0, n);
+      for (let i = n; i < fin.length; i++) s += /\s/.test(fin[i]) ? fin[i] : g[(Math.random() * g.length) | 0];
+      el.textContent = s;
+      if (p < 1) requestAnimationFrame(step); else el.textContent = fin;
+    };
+    requestAnimationFrame(step);
+  }
+  if (!reduce) {
+    const scr = $('.scr');
+    if (scr) setTimeout(() => scramble(scr, 1100), 300);
+  }
+
+  /* ---------- La deuxième soirée : étapes automatiques ou au clic ---------- */
+  const STEP_MS = 3200;
+  const sBtns = $$('.tl button'), sMedia = $$('#soiree .sm');
+  const clock = $('#clock'), sCap = $('#s-cap'), sProg = $('#s-prog');
+  let cur = 0, auto = null, sVis = false, userPicked = false, hover = false;
+  function tickClock(target) {
+    if (reduce) { clock.textContent = target; return; }
+    clearInterval(clock._t);
+    let f = 0;
+    clock._t = setInterval(() => {
+      f++;
+      clock.textContent = target.replace(/\d/g, (c, i) => (f > 5 + i ? c : String((Math.random() * 10) | 0)));
+      if (f > 6 + target.length) { clearInterval(clock._t); clock.textContent = target; }
+    }, 40);
+  }
+  function runProg() {
+    sProg.classList.remove('run');
+    if (!auto) return;
+    void sProg.offsetWidth;
+    sProg.style.setProperty('--sdur', STEP_MS + 'ms');
+    sProg.classList.add('run');
+  }
+  function setStep(i) {
+    cur = i;
+    sBtns.forEach((b, k) => b.setAttribute('aria-pressed', String(k === i)));
+    sMedia.forEach(m => {
+      const on = +m.dataset.step === i;
+      m.classList.toggle('is-on', on);
+      if (m.tagName === 'VIDEO') { if (on && m._vis !== false) playVid(m); else m.pause(); }
+    });
+    tickClock($('time', sBtns[i]).textContent);
+    sCap.textContent = sBtns[i].dataset.cap;
+    runProg();
+  }
+  function startAuto() {
+    if (auto || reduce || paused || userPicked || hover || !sVis) return;
+    auto = setInterval(() => setStep((cur + 1) % sBtns.length), STEP_MS);
+    runProg();
+  }
+  function stopAuto() {
+    clearInterval(auto);
+    auto = null;
+    sProg.classList.remove('run');
+  }
+  sBtns.forEach((b, i) => b.addEventListener('click', () => { userPicked = true; stopAuto(); setStep(i); }));
+  const sGrid = $('.soiree-grid');
+  sGrid.addEventListener('mouseenter', () => { hover = true; stopAuto(); });
+  sGrid.addEventListener('mouseleave', () => { hover = false; startAuto(); });
+  if (hasIO) {
+    new IntersectionObserver(es => es.forEach(en => { sVis = en.isIntersecting; if (sVis) startAuto(); else stopAuto(); }), { threshold: 0.35 }).observe($('#soiree'));
+  }
+
+  /* ---------- Pause globale (vidéos, bandeau, étapes) ---------- */
+  const vbtn = $('#vbtn');
+  function setPaused(p) {
+    paused = p;
+    root.classList.toggle('is-paused', p);
+    vbtn.setAttribute('aria-pressed', String(p));
+    $('.vb-l', vbtn).textContent = p ? 'Lecture' : 'Pause';
+    vbtn.setAttribute('aria-label', p ? 'Relancer les vidéos et animations' : 'Mettre en pause les vidéos et animations');
+    vids.forEach(v => { if (p) v.pause(); else if (v._vis && stepOk(v)) playVid(v); });
+    if (p) stopAuto(); else startAuto();
+  }
+  vbtn.addEventListener('click', () => setPaused(!paused));
+  setPaused(reduce);
+
+  /* ---------- En-tête, barre de progression ---------- */
+  const bar = $('.progress i');
+  let lastY = w.scrollY, ticking = false;
+  function onScroll() {
+    const y = w.scrollY, max = root.scrollHeight - w.innerHeight;
+    hdr.classList.toggle('is-scrolled', y > 30);
+    if (!menuOpen) {
+      if (y > 420 && y > lastY + 1) hdr.classList.add('is-hidden');
+      else if (y < lastY - 1 || y <= 420) hdr.classList.remove('is-hidden');
+    }
+    lastY = y;
+    bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')';
+  }
+  w.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => { ticking = false; onScroll(); });
+  }, { passive: true });
+  w.addEventListener('resize', onScroll);
+  hdr.addEventListener('focusin', () => hdr.classList.remove('is-hidden'));
+  onScroll();
+
+  /* ---------- Démo de l'assistant ---------- */
+  const DEMO = {
+    sub: {
+      prompt: 'À partir de notre fiche club, rédige la partie « projet associatif » de notre demande de subvention. Ton simple, quinze lignes maximum.',
+      intro: 'Voici une première version, à relire avec votre bureau :',
+      title: 'Projet associatif 2026-2027',
+      text: 'Notre club accueille des pratiquants de 6 à 70 ans autour de trois priorités : rendre le sport accessible à tous, former nos jeunes éducateurs et renforcer notre présence dans le quartier. Cette saison, nous voulons ouvrir un créneau découverte le samedi matin et accompagner deux bénévoles vers un diplôme d\'encadrement.',
+      chips: [['ok', 'Aucune donnée personnelle'], ['', 'À relire par le bureau']]
+    },
+    aff: {
+      prompt: 'Propose trois accroches pour l\'affiche du match de dimanche, 15 h, au stade municipal. Ton chaleureux, public familial.',
+      intro: 'Trois pistes, à adapter aux couleurs du club :',
+      title: 'Affiche · Match de dimanche',
+      list: ['Dimanche 15 h, tout le club au bord du terrain.', 'Venez en famille, la buvette ouvre dès 14 h.', 'Un match, un quartier, un club : on vous attend.'],
+      chips: [['ok', 'Formats affiche et réseaux sociaux'], ['', 'À valider par le bureau']]
+    },
+    spo: {
+      prompt: 'Écris un mail court pour proposer à la boulangerie du quartier de devenir partenaire du club. Trois contreparties concrètes, ton direct.',
+      intro: 'Un premier jet, à personnaliser avant l\'envoi :',
+      title: 'Proposition de partenariat',
+      list: ['Votre logo sur l\'affiche de chaque match à domicile', 'Une publication de remerciement par mois sur nos réseaux', 'Une table réservée à votre stand lors du tournoi de fin de saison'],
+      chips: [['ok', 'Contreparties réalistes'], ['', 'À relire par le trésorier']]
+    },
+    cr: {
+      prompt: 'Remets au propre ces notes de bureau : décisions, responsables, échéances. Remplace les noms par les fonctions.',
+      intro: 'Compte rendu structuré, prêt à relire :',
+      title: 'Réunion de bureau · Compte rendu',
+      list: ['Tournoi des jeunes : date validée, le secrétaire réserve le gymnase.', 'Subvention municipale : la trésorière prépare le budget prévisionnel.', 'Prochaine réunion : dans un mois, même horaire.'],
+      chips: [['ok', 'Noms remplacés par les fonctions'], ['', 'À diffuser après relecture']]
+    },
+    ins: {
+      prompt: 'Liste les champs d\'un formulaire d\'inscription pour la saison. Seulement ce qui est nécessaire.',
+      intro: 'Une proposition sobre, qui ne collecte que l\'essentiel :',
+      title: 'Inscription · Saison 2026-2027',
+      list: ['Nom, prénom et date de naissance du licencié', 'Catégorie et créneau souhaités', 'Contact d\'un responsable légal pour les mineurs', 'Autorisation de prise de photos : oui ou non'],
+      chips: [['ok', 'Données limitées au nécessaire'], ['', 'Prêt pour un formulaire gratuit']]
+    }
+  };
+  const nb = s => s.replace(/ ([:;!?»])/g, ' $1').replace(/« /g, '« ');
+  const tabs = $$('.demo-tabs [role="tab"]'), panel = $('#demo-panel');
+  let demoKey = 'sub', runId = 0;
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  function chipEl(c, animate) {
+    const s = mk('span', 'chip' + (c[0] ? ' ' + c[0] : '') + (animate ? ' pop' : ''));
+    if (c[0] === 'ok') s.innerHTML = '<svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>';
+    s.appendChild(d.createTextNode(c[1]));
+    return s;
+  }
+  async function renderDemo(k, animate) {
+    const D = DEMO[k], id = ++runId, live = () => id === runId;
+    panel.setAttribute('aria-busy', 'true');
+    panel.textContent = '';
+    const user = mk('div', 'msg-user'), ai = mk('div', 'msg-ai');
+    const intro = mk('p', 'ai-intro', nb(D.intro));
+    const doc = mk('div', 'doc'), title = mk('span', 'doc-title', D.title), body = mk('div', 'doc-text');
+    const chips = mk('div', 'chips');
+    doc.append(title, body);
+    if (!animate) {
+      user.textContent = nb(D.prompt);
+      if (D.text) body.appendChild(mk('p', '', nb(D.text)));
+      else { const ul = mk('ul'); D.list.forEach(t => ul.appendChild(mk('li', '', nb(t)))); body.appendChild(ul); }
+      D.chips.forEach(c => chips.appendChild(chipEl(c, false)));
+      ai.append(intro, doc, chips);
+      panel.append(user, ai);
+      panel.removeAttribute('aria-busy');
+      return;
+    }
+    const prompt = nb(D.prompt);
+    user.classList.add('caret');
+    panel.appendChild(user);
+    const per = Math.min(16, 1500 / prompt.length);
+    for (let i = 1; i <= prompt.length; i += 2) {
+      if (!live()) return;
+      user.textContent = prompt.slice(0, i);
+      await wait(per * 2);
+    }
+    user.textContent = prompt;
+    user.classList.remove('caret');
+    const dots = mk('div', 'dots');
+    dots.innerHTML = '<i></i><i></i><i></i>';
+    panel.appendChild(dots);
+    await wait(750);
+    if (!live()) return;
+    dots.remove();
+    intro.classList.add('fade-in');
+    doc.classList.add('fade-in');
+    ai.append(intro, doc);
+    panel.appendChild(ai);
+    await wait(250);
+    if (D.text) {
+      const p = mk('p', 'caret');
+      body.appendChild(p);
+      const words = nb(D.text).split(' ');
+      for (let i = 0; i < words.length; i++) {
+        if (!live()) return;
+        p.textContent = words.slice(0, i + 1).join(' ');
+        await wait(26);
+      }
+      p.classList.remove('caret');
+    } else {
+      const ul = mk('ul');
+      body.appendChild(ul);
+      for (const t of D.list) {
+        const li = mk('li', 'caret');
+        ul.appendChild(li);
+        const words = nb(t).split(' ');
+        for (let i = 0; i < words.length; i++) {
+          if (!live()) return;
+          li.textContent = words.slice(0, i + 1).join(' ');
+          await wait(30);
+        }
+        li.classList.remove('caret');
+        await wait(120);
+      }
+    }
+    ai.appendChild(chips);
+    for (const c of D.chips) {
+      if (!live()) return;
+      chips.appendChild(chipEl(c, true));
+      await wait(160);
+    }
+    panel.removeAttribute('aria-busy');
+  }
+  function selectTab(btn, animate) {
+    tabs.forEach(t => {
+      const on = t === btn;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+    });
+    panel.setAttribute('aria-labelledby', btn.id);
+    demoKey = btn.dataset.k;
+    renderDemo(demoKey, animate && !reduce);
+  }
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => selectTab(t, true));
+    t.addEventListener('keydown', e => {
+      let j = -1;
+      if (e.key === 'ArrowRight') j = (i + 1) % tabs.length;
+      else if (e.key === 'ArrowLeft') j = (i - 1 + tabs.length) % tabs.length;
+      else if (e.key === 'Home') j = 0;
+      else if (e.key === 'End') j = tabs.length - 1;
+      if (j < 0) return;
+      e.preventDefault();
+      tabs[j].focus();
+      selectTab(tabs[j], true);
+    });
+  });
+  $('#replay').addEventListener('click', () => renderDemo(demoKey, !reduce));
+  if (!reduce && hasIO) {
+    const dio = new IntersectionObserver(es => {
+      if (es.some(e => e.isIntersecting)) { dio.disconnect(); renderDemo(demoKey, true); }
+    }, { threshold: 0.45 });
+    dio.observe($('#demo'));
+  }
+
+  /* ---------- Auto-diagnostic ---------- */
+  /* Hypothèses : 15 h par dossier de subvention (45 % gagnés) plus 1 h de courriers et comptes rendus, 40 min par publication (50 %),
+     4 min par mail (35 %), suivi des inscriptions selon l'outil actuel ; 4,3 semaines par mois. */
+  const dForm = $('#diag-form');
+  function diag() {
+    const v = n => $('input[name="' + n + '"]:checked', dForm);
+    const lbl = n => $('label[for="' + v(n).id + '"]', dForm).textContent;
+    const admin = +v('sub').value * 15 * 0.45 / 12 + 1;
+    const comm = +v('com').value * (40 / 60) * 0.5 * 4.3 + +v('mail').value * (4 / 60) * 0.35 * 4.3;
+    const tools = +v('ins').value;
+    const h = Math.max(1, Math.round(admin + comm + tools));
+    const prio = admin >= comm && admin >= tools ? "L'administratif" : comm >= tools ? 'La communication' : 'Les outils sans code';
+    $('#d-h').textContent = h;
+    $('#d-prio').textContent = prio;
+    const body = 'Bonjour,\n\nNotre auto-diagnostic FAIR : environ ' + h + ' h récupérables par mois. Thème prioritaire : ' + prio + '.\n' +
+      '(Subventions par an : ' + lbl('sub') + ' · Publications par semaine : ' + lbl('com') + ' · Mails par semaine : ' + lbl('mail') + ' · Inscriptions : ' + lbl('ins').toLowerCase() + ')\n\n' +
+      'Je suis [votre rôle] au club [nom du club], à [ville].\nSport : [discipline] · Bénévoles actifs : [nombre]\n\nMerci et à bientôt,\n[prénom, nom, téléphone]';
+    $('#d-cta').href = 'mailto:contact@fair-asso.fr?subject=' + encodeURIComponent('Demande d\'atelier FAIR') + '&body=' + encodeURIComponent(body);
+  }
+  dForm.addEventListener('change', diag);
+  dForm.addEventListener('submit', e => e.preventDefault());
+  diag();
+
+  /* ---------- Copier ---------- */
+  $$('.copy').forEach(b => {
+    const label = b.textContent;
+    b.addEventListener('click', () => {
+      const el = d.getElementById(b.dataset.target);
+      const done = () => {
+        b.textContent = 'Copié';
+        b.setAttribute('data-done', '');
+        setTimeout(() => { b.textContent = label; b.removeAttribute('data-done'); }, 1800);
+      };
+      const fallback = () => {
+        try {
+          const r = d.createRange(); r.selectNodeContents(el);
+          const s = w.getSelection(); s.removeAllRanges(); s.addRange(r);
+          b.textContent = 'Texte sélectionné';
+          setTimeout(() => { b.textContent = label; }, 2200);
+        } catch (err) { /* sélection impossible */ }
+      };
+      try { navigator.clipboard.writeText(el.innerText).then(done, fallback); } catch (err) { fallback(); }
+    });
+  });
+
+  /* ---------- Curseur et image qui suit (souris uniquement) ---------- */
+  if (fine && !reduce) {
+    const ring = mk('div', 'cursor'), fol = mk('div', 'follow'), fimg = mk('img');
+    ring.setAttribute('aria-hidden', 'true');
+    fol.setAttribute('aria-hidden', 'true');
+    fimg.alt = '';
+    fol.appendChild(fimg);
+    d.body.append(ring, fol);
+    let mx = -200, my = -200, rx = mx, ry = my, fx = mx, fy = my, raf = 0;
+    const loop = () => {
+      raf = 0;
+      rx += (mx - rx) * 0.24; ry += (my - ry) * 0.24;
+      fx += (mx - fx) * 0.12; fy += (my - fy) * 0.12;
+      ring.style.transform = `translate3d(${rx}px,${ry}px,0)`;
+      const rot = Math.max(-10, Math.min(10, (mx - fx) * 0.06));
+      fol.style.transform = `translate3d(${fx}px,${fy}px,0) translate(-50%,-50%) rotate(${rot}deg)`;
+      if (Math.abs(mx - rx) + Math.abs(my - ry) + Math.abs(mx - fx) + Math.abs(my - fy) > 0.6) raf = requestAnimationFrame(loop);
+    };
+    w.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      ring.classList.add('is-vis');
+      if (!raf) raf = requestAnimationFrame(loop);
+    }, { passive: true });
+    root.addEventListener('mouseleave', () => ring.classList.remove('is-vis'));
+    d.addEventListener('mouseover', e => {
+      ring.classList.toggle('is-link', !!e.target.closest('a, button, summary, .t-card'));
+    });
+    $$('.theme[data-img]').forEach(li => {
+      li.addEventListener('mouseenter', () => { fimg.src = li.dataset.img; fol.classList.add('is-on'); });
+      li.addEventListener('mouseleave', () => fol.classList.remove('is-on'));
+    });
+    if (G) {
+      $$('[data-magnetic]').forEach(b => {
+        const xTo = gsap.quickTo(b, 'x', { duration: 0.6, ease: 'power3' });
+        const yTo = gsap.quickTo(b, 'y', { duration: 0.6, ease: 'power3' });
+        b.addEventListener('mousemove', e => {
+          const r = b.getBoundingClientRect();
+          xTo((e.clientX - r.left - r.width / 2) * 0.25);
+          yTo((e.clientY - r.top - r.height / 2) * 0.35);
+        });
+        b.addEventListener('mouseleave', () => { xTo(0); yTo(0); });
+      });
+    }
+  }
+
+  /* ---------- Animations au défilement ---------- */
+  if (!G) return;
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    gsap.from('.hero-title .ln > span', { yPercent: 38, skewY: 4, duration: 1.4, ease: 'expo.out', stagger: 0.09, delay: 0.1 });
+    gsap.from('.hero-row, .hero-meta, .hero-stats', { y: 34, duration: 1.3, ease: 'expo.out', stagger: 0.1, delay: 0.4 });
+    const heroST = { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true };
+    gsap.to('.hero-media', { scale: 1.14, yPercent: 9, ease: 'none', scrollTrigger: heroST });
+    gsap.to('.hero-in', { yPercent: -14, ease: 'none', scrollTrigger: { ...heroST } });
+    $$('[data-rise]').forEach(el => gsap.from(el, { y: 60, duration: 1.2, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 92%', once: true } }));
+    gsap.fromTo('.steps-line i', { scaleX: 0 }, { scaleX: 1, ease: 'none', scrollTrigger: { trigger: '.steps', start: 'top 85%', end: 'bottom 55%', scrub: true } });
+    gsap.fromTo('.r-fill', { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', scrollTrigger: { trigger: '.ap-head', start: 'top 85%', end: 'bottom 40%', scrub: true } });
+    gsap.fromTo('.foot-word', { yPercent: 28 }, { yPercent: 0, ease: 'none', scrollTrigger: { trigger: '.foot', start: 'top bottom', end: 'bottom bottom', scrub: true } });
+  });
+  w.addEventListener('load', () => ScrollTrigger.refresh());
+  if (d.fonts && d.fonts.ready) d.fonts.ready.then(() => ScrollTrigger.refresh());
+})();
+</script>
+</body>
+</html>

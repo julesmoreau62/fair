@@ -1,0 +1,18 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "refonte",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "5173", "--bind", "127.0.0.1", "--directory", "refonte"],
+      "port": 5173
+    },
+    {
+      "name": "refonte-bis",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "5175", "--bind", "127.0.0.1", "--directory", "C:/Users/Jules/Desktop/FAIR/refonte"],
+      "port": 5175,
+      "autoPort": false
+    }
+  ]
+}
