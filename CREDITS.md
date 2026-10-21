@@ -44,7 +44,7 @@ Les fichiers `poster-*.jpg` sont les images d'attente de ces vidéos (même aute
 | terrain-boxe.jpg | Tima Miroshnichenko | https://www.pexels.com/photo/hanging-punching-bags-in-a-gym-5750886/ |
 | terrain-handball.jpg | Bechir Lachiheb | https://www.pexels.com/photo/dynamic-handball-match-in-indoor-sports-arena-32250680/ |
 
-## Médias en réserve (`../medias-bonus/`)
+## Médias en réserve (`medias-bonus/`)
 
 Non utilisés sur la page, gardés pour d'autres supports (réseaux sociaux, présentations) :
 

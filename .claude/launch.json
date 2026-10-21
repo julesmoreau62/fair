@@ -2,21 +2,21 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "refonte",
+      "name": "site",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "5173", "--bind", "127.0.0.1", "--directory", "refonte"],
+      "runtimeArgs": ["-m", "http.server", "5173", "--bind", "127.0.0.1", "--directory", "."],
       "port": 5173
     },
     {
-      "name": "refonte-mac",
+      "name": "site-mac",
       "runtimeExecutable": "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
-      "runtimeArgs": ["-m", "http.server", "5174", "--bind", "127.0.0.1", "--directory", "/Users/julesmoreau/Desktop/fair-main/refonte"],
+      "runtimeArgs": ["-m", "http.server", "5174", "--bind", "127.0.0.1", "--directory", "/Users/julesmoreau/Desktop/fair-main"],
       "port": 5174
     },
     {
-      "name": "refonte-bis",
+      "name": "site-bis",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "5175", "--bind", "127.0.0.1", "--directory", "C:/Users/Jules/Desktop/FAIR/refonte"],
+      "runtimeArgs": ["-m", "http.server", "5175", "--bind", "127.0.0.1", "--directory", "C:/Users/Jules/Desktop/FAIR"],
       "port": 5175,
       "autoPort": false
     }
