@@ -4,11 +4,35 @@ Former les Associations à l'IA Responsable : site et supports de formation pour
 
 ## Contenu
 
-- `refonte/` : nouveau site (accueil `index.html`, `formation.html`, pages légales, `assets/`)
+- `refonte/` : nouveau site (accueil `index.html`, pages légales, `assets/`)
+- `refonte/formation.html` : accueil de la formation, niveau 0 et progression
+- `refonte/formation-1.html` à `formation-5.html` : les cinq modules du niveau 0
+  1. Créer ses comptes
+  2. Bien demander (méthode C.L.U.B.)
+  3. L'IA sans risque (vérifier, protéger, arnaques, charte IA)
+  4. Fichiers, photos, voix
+  5. Mon premier dossier (feuille de route, quiz, attestation)
+- `refonte/formation-n1.html` : accueil du niveau 1 « L'IA au quotidien du club » (sur accès, pas de lien public pour l'instant)
+- `refonte/formation-n1-1.html` à `formation-n1-5.html` : les cinq modules du niveau 1, avec le club fil rouge « AS Exemple Handball »
+  1. Écrire aux adhérents (fiche du club, convocations en série, méthode C.A.L.M.E., FALC et traduction)
+  2. Réseaux et affiches (ligne éditoriale, calendrier, posts, visuels, droit à l'image)
+  3. Réunions et AG (ordre du jour, transcription, compte rendu fidèle, suivi, assemblée générale)
+  4. Préparer ses séances (fiche du groupe, séance, imprévus, inclusion, cycle, limites)
+  5. La rentrée du club (feuille de route en 8 étapes, quiz final, attestation « Niveau 1 validé »)
+- `refonte/formation-fiches.html` : fiches mémo A4 à imprimer
+- `refonte/formation-animateur.html` : guide de l'animateur (2 séances de 2 h)
+- `refonte/assets/css/formation.css` et `assets/js/formation.js` : style et comportements communs aux pages de formation
+- `refonte/assets/css/niveau.css` : composants des modules du niveau 1 (objectifs, générateurs, exercices, « repérez les erreurs », bibliothèques, quiz)
 - `refonte/assets/formation/` : captures du module 1 (`claude-N.png`, `chatgpt-N.png`, `gemini-N.png`)
 - `Site FAIR.html` : ancien site, conservé tel quel
 - `medias-bonus/` : médias non utilisés
 - Logos FAIR (SVG) à la racine
+
+La progression (check-lists, quiz, brouillons) est enregistrée dans le `localStorage` du navigateur, sous les clés `fair-module1` à `fair-module5`, `fair-quiz0` et `fair-attestation` pour le niveau 0, et `fair-n1-module1` à `fair-n1-module5`, `fair-n1-quiz1` à `fair-n1-quiz4`, `fair-n1-quiz` (quiz final) et `fair-n1-club` (la fiche du club, reprise dans les demandes des modules 2 à 5) pour le niveau 1. Rien n'est envoyé.
+
+Pour ajouter un module, déclarez-le dans `MODULES` (niveau 0) ou `N1` (niveau 1) de `assets/js/formation.js` avec sa clé et son nombre de cases.
+
+Après une modification de `formation.css` ou `niveau.css`, augmentez le numéro `?v=` du lien dans les pages `formation*.html`, sinon les navigateurs peuvent garder l'ancienne version en cache.
 
 ## Aperçu local
 

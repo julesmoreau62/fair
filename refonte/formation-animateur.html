@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guide animateur · Niveau 0 · FAIR</title>
+<meta name="description" content="Guide de l'animateur FAIR : le niveau 0 en deux séances de deux heures, avec le déroulé, les exercices de groupe, le matériel et les questions fréquentes.">
+<meta name="theme-color" content="#07111F">
+<link rel="icon" href="assets/logo/fair-icone.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/css/formation.css?v=2">
+<style>
+/* Préparer */
+.prep{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.prep article{background:var(--paper);border:1px solid var(--line-c);border-radius:6px;padding:24px 22px 26px;display:grid;gap:12px;align-content:start}
+.prep .n{font-family:var(--f-mono);font-size:.7rem;color:var(--turf-ink);letter-spacing:.07em;text-transform:uppercase}
+.prep h3{font-size:1.1rem;line-height:1.25;font-weight:700}
+.prep ul{display:grid;gap:8px}
+.prep li{display:flex;gap:10px;color:var(--ink-2);font-size:.94rem;line-height:1.45}
+.prep li svg{margin-top:4px}
+.prep li b{color:var(--ink)}
+@media (max-width:900px){.prep{grid-template-columns:minmax(0,1fr)}}
+
+/* Déroulé */
+.session{margin-bottom:clamp(48px,6vw,80px)}
+.session:last-child{margin-bottom:0}
+.session-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 24px;margin-bottom:20px}
+.session-head .label{color:var(--turf)}
+.run{border:1px solid var(--line-n);border-radius:6px;overflow:hidden}
+.slot{display:grid;grid-template-columns:110px minmax(0,1fr) minmax(0,1fr);gap:16px 28px;padding:22px clamp(18px,2.5vw,28px);border-top:1px solid var(--line-n)}
+.slot:first-child{border-top:0}
+.slot.pause{background:var(--night-2);grid-template-columns:110px minmax(0,1fr);padding-block:14px}
+.time{display:grid;gap:4px;align-content:start}
+.time b{font-family:var(--f-display);font-weight:900;font-stretch:62%;font-size:2.2rem;line-height:.85;color:var(--turf)}
+.time span{font-family:var(--f-mono);font-size:.68rem;color:var(--fog);letter-spacing:.05em;text-transform:uppercase}
+.slot h3{font-size:1.1rem;line-height:1.25;font-weight:700;margin-bottom:6px}
+.slot p,.slot li{color:var(--mist);font-size:.94rem;line-height:1.5}
+.slot ul{display:grid;gap:6px}
+.slot li{display:flex;gap:10px}
+.slot li svg{margin-top:5px}
+.slot .act{border-left:3px solid var(--turf);padding:2px 0 2px 14px}
+.slot .act .label{display:block;margin-bottom:6px}
+.slot a{color:var(--turf-hi)}
+@media (max-width:860px){.slot{grid-template-columns:minmax(0,1fr)}.slot.pause{grid-template-columns:minmax(0,1fr)}}
+
+/* Vigilance et FAQ */
+.watch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.watch li{display:grid;gap:6px;padding:18px 20px;border:1px solid var(--line-c);border-radius:6px;background:var(--paper)}
+.watch b{font-weight:700}
+.watch span{color:var(--ink-2);font-size:.94rem;line-height:1.5}
+@media (max-width:760px){.watch{grid-template-columns:minmax(0,1fr)}}
+.faq{display:grid;gap:10px;max-width:860px}
+.faq details{border:1px solid var(--line-n);border-radius:6px;background:var(--night-2)}
+.faq summary{cursor:pointer;padding:18px 20px;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--f-mono);color:var(--turf);flex:none}
+.faq details[open] summary::after{content:"−"}
+.faq details p{padding:0 20px 20px;color:var(--mist);font-size:.95rem;line-height:1.55}
+
+@media print{
+  @page{size:A4;margin:14mm}
+  body{background:#fff;color:#0A1525;font-size:13px}
+  .hdr,.foot,.toolbar,.next-sec{display:none!important}
+  .sec,.hero{padding-block:18px;background:#fff!important;color:#0A1525}
+  .hero h1{font-size:3rem}
+  .lead,.slot p,.slot li,.faq details p,.time span{color:#4A5668}
+  .run,.slot,.faq details{border-color:#ccc;background:#fff!important}
+  .slot{break-inside:avoid}
+  .faq details{break-inside:avoid}
+  .faq details>p{display:block}
+  .time b,.session-head .label{color:#0A7348}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="check" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></symbol>
+</svg>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="index.html" aria-label="FAIR, retour à l'accueil"><img src="assets/logo/fair-logo-blanc.svg" alt="FAIR"></a>
+    <nav aria-label="Navigation">
+      <a class="opt" href="index.html#clubs">Clubs</a>
+      <a class="opt" href="index.html#partenaires">Fédérations</a>
+      <a href="formation.html" aria-current="page">Formation</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <section class="hero">
+    <div class="wrap hero-in">
+      <p class="label"><span class="sq"></span><a href="formation.html">Formation FAIR · Niveau 0</a> · Ressources</p>
+      <h1><small>Pour les ateliers</small>Guide de<br>l'<span class="turf">animateur</span></h1>
+      <p class="lead">Le niveau 0 en deux séances de deux heures, pour 6 à 12 bénévoles d'un même club. Les pages des modules servent de support projeté ; les participants travaillent sur leur téléphone ou leur ordinateur.</p>
+      <ul class="meta">
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>2 séances de 2 h</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>6 à 12 participants</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Aucun prérequis</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Données fictives uniquement</li>
+      </ul>
+      <div class="toolbar" style="display:flex;flex-wrap:wrap;gap:12px">
+        <button class="btn btn-turf" type="button" onclick="document.querySelectorAll('.faq details').forEach(function(d){d.open=true});window.print()">Imprimer le guide</button>
+        <a class="btn btn-ghost" href="formation-fiches.html">Les fiches mémo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="preparer">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Une semaine avant</p>
+        <h2 class="h2">Préparer<br>l'atelier</h2>
+      </div>
+      <div class="prep">
+        <article>
+          <span class="n">Avec le club</span>
+          <h3>Ce que le club doit prévoir</h3>
+          <ul>
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>L'adresse e-mail du club</b> et l'accès à sa boîte pendant l'atelier, pour recevoir les codes de vérification</span></li>
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>Un vrai besoin</b> pour le module 5 : un événement, un recrutement, un sponsor</span></li>
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>Un document du club</b> sans données personnelles : règlement intérieur, planning, budget</span></li>
+          </ul>
+        </article>
+        <article>
+          <span class="n">Matériel</span>
+          <h3>Dans la salle</h3>
+          <ul>
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Vidéoprojecteur et ordinateur de l'animateur</span></li>
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Wi-Fi testé, ou partage de connexion en secours</span></li>
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Téléphones chargés, multiprises</span></li>
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Paperboard ou tableau blanc et feutres</span></li>
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Les 5 fiches mémo imprimées, une série par participant</span></li>
+          </ul>
+        </article>
+        <article>
+          <span class="n">Animateur</span>
+          <h3>Vos comptes de démonstration</h3>
+          <ul>
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Comptes Claude, ChatGPT et Gemini déjà connectés sur votre ordinateur</span></li>
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Historique vidé, pour ne rien montrer d'un autre club</span></li>
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Un faux tableur d'inscriptions et une photo de tableau blanc, prêts pour le module 4</span></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="deroule">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Le déroulé</p>
+        <h2 class="h2">Deux séances,<br><span class="turf">cinq modules</span></h2>
+        <p class="lead">Idéalement à une semaine d'intervalle : les participants testent chez eux entre les deux séances. Les horaires sont indicatifs.</p>
+      </div>
+
+      <div class="session">
+        <div class="session-head"><h3 class="h3">Séance 1 · Démarrer</h3><span class="label">Modules 1 et 2 · 2 h</span></div>
+        <div class="run">
+          <div class="slot">
+            <div class="time"><b>0:00</b><span>15 min</span></div>
+            <div><h3>Accueil et tour de table</h3><p>Chacun dit son rôle au club et une tâche qui lui prend trop de temps. Notez-les au tableau : elles serviront d'exemples toute la journée.</p></div>
+            <div class="act"><span class="label">À dire</span><p>« L'IA ne remplace personne. Elle fait le premier jet, c'est vous qui décidez et qui signez. »</p></div>
+          </div>
+          <div class="slot">
+            <div class="time"><b>0:15</b><span>30 min</span></div>
+            <div><h3>Module 1 · Créer les comptes</h3><p>Démonstration projetée avec un outil, puis chacun crée au moins un compte. Projetez <a href="formation-1.html">formation-1.html</a>.</p></div>
+            <div class="act"><span class="label">En pratique</span><ul><li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Travail en binôme : un plus à l'aise avec un moins à l'aise</span></li><li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Qui ne veut pas créer de compte suit sur le téléphone de son binôme</span></li></ul></div>
+          </div>
+          <div class="slot">
+            <div class="time"><b>0:45</b><span>15 min</span></div>
+            <div><h3>Premier essai collectif</h3><p>La demande du module 1 collée dans les trois outils, projetés côte à côte. Lecture à voix haute et vote : quelle réponse enverriez-vous ?</p></div>
+            <div class="act"><span class="label">Objectif</span><p>Montrer que les outils se valent pour l'usage courant, et que la retouche fait toute la différence.</p></div>
+          </div>
+          <div class="slot pause"><div class="time"><b>1:00</b><span>10 min</span></div><div><h3>Pause</h3></div></div>
+          <div class="slot">
+            <div class="time"><b>1:10</b><span>35 min</span></div>
+            <div><h3>Module 2 · La méthode C.L.U.B.</h3><p>Projetez le comparatif « flou dedans, flou dehors », puis les quatre briques. Projetez <a href="formation-2.html">formation-2.html</a>.</p></div>
+            <div class="act"><span class="label">Exercice de groupe</span><p>Par trois, chaque groupe prend une tâche du tour de table et écrit sa demande C.L.U.B. sur une feuille. Un groupe voisin la teste et dit ce qui manquait.</p></div>
+          </div>
+          <div class="slot">
+            <div class="time"><b>1:45</b><span>15 min</span></div>
+            <div><h3>Bilan et défi de la semaine</h3><p>Distribuez les fiches mémo 1 et 2. Chacun repart avec un défi : utiliser une demande de la bibliothèque pour un vrai besoin du club avant la séance 2.</p></div>
+            <div class="act"><span class="label">À rappeler</span><p>La règle d'or : aucune donnée de licencié, même à la maison.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="session">
+        <div class="session-head"><h3 class="h3">Séance 2 · Maîtriser</h3><span class="label">Modules 3, 4 et 5 · 2 h</span></div>
+        <div class="run">
+          <div class="slot">
+            <div class="time"><b>0:00</b><span>10 min</span></div>
+            <div><h3>Retour sur le défi</h3><p>Deux ou trois volontaires racontent ce qu'ils ont fait. Qu'est-ce qui a marché, qu'est-ce qui a coincé ?</p></div>
+            <div class="act"><span class="label">Astuce</span><p>Les ratés sont les meilleurs exemples : une erreur de l'IA introduit parfaitement le module 3.</p></div>
+          </div>
+          <div class="slot">
+            <div class="time"><b>0:10</b><span>40 min</span></div>
+            <div><h3>Module 3 · L'IA sans risque</h3><p>Projetez <a href="formation-3.html">formation-3.html</a>. Faites les deux réglages de confidentialité tous ensemble, sur les téléphones.</p></div>
+            <div class="act"><span class="label">Exercices de groupe</span><ul><li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>« Je colle, ou pas ? » à main levée : OK, Anonymiser ou Jamais</span></li><li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Jeu de rôle du faux président : l'animateur appelle, un participant doit tenir bon</span></li></ul></div>
+          </div>
+          <div class="slot">
+            <div class="time"><b>0:50</b><span>25 min</span></div>
+            <div><h3>Module 4 · Fichiers, photos, voix</h3><p>Projetez <a href="formation-4.html">formation-4.html</a>. Faites l'exercice du tableau à nettoyer en direct.</p></div>
+            <div class="act"><span class="label">Exercice</span><p>Photographiez le tableau blanc de la séance 1 et faites-en le compte rendu avec l'IA, en direct. Chacun dicte ensuite une demande sur son téléphone.</p></div>
+          </div>
+          <div class="slot pause"><div class="time"><b>1:15</b><span>5 min</span></div><div><h3>Pause</h3></div></div>
+          <div class="slot">
+            <div class="time"><b>1:20</b><span>30 min</span></div>
+            <div><h3>Module 5 · Un dossier en équipe</h3><p>Le groupe choisit le vrai besoin apporté par le club et suit les six étapes de <a href="formation-5.html">formation-5.html</a>, projeté. Un participant tape, les autres dictent et vérifient.</p></div>
+            <div class="act"><span class="label">Objectif</span><p>Repartir avec un livrable réellement utilisable, relu par un membre du bureau présent.</p></div>
+          </div>
+          <div class="slot">
+            <div class="time"><b>1:50</b><span>10 min</span></div>
+            <div><h3>Quiz et clôture</h3><p>Quiz final en équipes, à main levée. Rappelez que chacun peut le repasser en ligne pour obtenir son attestation. Proposez de désigner le référent IA du club et de voter la charte au prochain bureau.</p></div>
+            <div class="act"><span class="label">À remettre</span><p>Les fiches mémo 3, 4 et 5, et le lien vers <a href="formation.html">formation.html</a>.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="vigilance">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Points de vigilance</p>
+        <h2 class="h2">Ce qui coince<br>le plus souvent</h2>
+      </div>
+      <ul class="watch">
+        <li><b>Le code de vérification n'arrive pas</b><span>Regardez dans les indésirables. Si la boîte du club n'est pas accessible, créez le compte plus tard et suivez en binôme.</span></li>
+        <li><b>Un participant a moins de 18 ans</b><span>Claude est réservé aux majeurs, ChatGPT et Gemini ont des conditions d'âge. Faites-le travailler en binôme sur le compte d'un adulte.</span></li>
+        <li><b>La limite de l'offre gratuite est atteinte</b><span>Basculez sur un autre des trois outils : c'est aussi l'occasion de les comparer.</span></li>
+        <li><b>Quelqu'un colle de vraies données</b><span>Arrêtez l'exercice gentiment, supprimez la conversation ensemble, et transformez le moment en exemple pour tout le groupe.</span></li>
+        <li><b>Le groupe est très hétérogène</b><span>Donnez aux plus rapides la bibliothèque du module 2 à explorer, pendant que vous accompagnez les autres.</span></li>
+        <li><b>Méfiance ou rejet de l'IA</b><span>Ne cherchez pas à convaincre. Montrez une tâche concrète du club faite en deux minutes, et laissez juger.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="faq">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Questions fréquentes</p>
+        <h2 class="h2">Ce qu'on vous<br><span class="turf">demandera</span></h2>
+      </div>
+      <div class="faq">
+        <details><summary>C'est vraiment gratuit ?</summary><p>Oui, les offres gratuites des trois outils suffisent pour tout le niveau 0. Elles limitent le nombre de messages ou de fichiers par jour. Un abonnement ne se justifie qu'après quelques mois d'usage régulier, et se décide en bureau.</p></details>
+        <details><summary>Nos données sont-elles revendues ?</summary><p>Les éditeurs ne revendent pas les conversations, mais elles peuvent servir à entraîner les modèles si on ne le désactive pas, et elles sont stockées sur leurs serveurs. D'où les réglages du module 3 et la règle d'or : aucune donnée de licencié.</p></details>
+        <details><summary>Quel outil choisir ?</summary><p>Pour un usage courant, les trois se valent. Le meilleur est celui que les bénévoles utilisent vraiment. Si le club travaille déjà avec Gmail et Google Drive, Gemini s'y intègre naturellement.</p></details>
+        <details><summary>L'IA va-t-elle remplacer les bénévoles ?</summary><p>Non. Elle fait gagner du temps sur l'administratif et la communication, pour en laisser davantage au terrain et aux personnes. Le lien humain, l'encadrement et les décisions restent aux bénévoles.</p></details>
+        <details><summary>Est-ce autorisé par la fédération ?</summary><p>Rien n'interdit à un club d'utiliser ces outils pour sa gestion, dans le respect du RGPD et du droit à l'image. Certaines fédérations publient leurs propres recommandations : renseignez-vous auprès de votre comité.</p></details>
+        <details><summary>Et si l'IA écrit une erreur que l'on publie ?</summary><p>C'est le club qui publie, donc le club qui est responsable. C'est pour cela que chaque texte est relu et vérifié, et validé par une deuxième personne pour tout ce qui est officiel.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk next-sec">
+    <div class="wrap next">
+      <div class="head" style="margin:0">
+        <p class="label"><span class="sq"></span>Besoin d'aide</p>
+        <h2 class="h2">Animer avec<br><span class="turf">l'équipe FAIR</span></h2>
+        <p class="lead">Pour une première animation, un membre de FAIR peut co-animer avec vous.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-turf" href="index.html#contact">Nous contacter</a>
+        <a class="btn btn-ghost" href="formation.html">Retour au niveau 0</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>FAIR · Former les Associations à l'IA Responsable</span>
+    <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
+  </div>
+</footer>
+</body>
+</html>

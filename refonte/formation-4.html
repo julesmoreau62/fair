@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Formation · Module 4 · FAIR</title>
+<meta name="description" content="Module 4 de la formation FAIR : faire travailler l'IA sur vos documents, vos photos et votre voix, sans exposer les données des licenciés.">
+<meta name="theme-color" content="#07111F">
+<link rel="icon" href="assets/logo/fair-icone.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/css/formation.css?v=2">
+<style>
+/* Trois gestes */
+.ways{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:clamp(40px,5vw,64px)}
+.way{background:var(--paper);border:1px solid var(--line-c);border-radius:6px;padding:24px 22px 26px;display:grid;gap:10px;align-content:start}
+.way .ic{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--chalk);border:1px solid var(--line-c)}
+.way .ic svg{width:22px;height:22px;fill:none;stroke:var(--ink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.way h3{font-size:1.08rem;line-height:1.25;font-weight:700}
+.way p{color:var(--ink-2);font-size:.95rem;line-height:1.5}
+.formats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:clamp(40px,5vw,64px)}
+.formats li{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.05em;padding:8px 12px;border-radius:4px;background:var(--paper);border:1px solid var(--line-c);color:var(--ink-2)}
+.formats li b{color:var(--ink);font-weight:600}
+@media (max-width:860px){.ways{grid-template-columns:minmax(0,1fr)}}
+
+/* Cartes de demandes */
+.lib{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.card{background:var(--paper);border:1px solid var(--line-c);border-radius:6px;display:grid;grid-template-rows:auto 1fr auto;overflow:hidden;color:var(--ink)}
+.card-top{padding:20px 20px 0;display:grid;gap:6px}
+.card-top .label{color:var(--turf-ink)}
+.card h3{font-size:1.1rem;line-height:1.25;font-weight:700}
+.card pre{margin:0;padding:14px 20px 18px;white-space:pre-wrap;font-family:var(--f-body);font-size:.92rem;line-height:1.55;color:var(--ink-2)}
+.card pre i{font-style:normal;color:var(--turf-ink);font-weight:600}
+.card-foot{padding:0 20px 20px}
+@media (max-width:760px){.lib{grid-template-columns:minmax(0,1fr)}}
+
+/* Photo */
+.photo{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:28px clamp(28px,4vw,56px);align-items:start}
+.photo .lib{grid-template-columns:repeat(2,minmax(0,1fr))}
+.shoot{border:1px solid var(--line-n);border-radius:6px;padding:26px 24px 28px;display:grid;gap:14px;position:sticky;top:96px;background:var(--night-2)}
+.shoot ul{display:grid;gap:10px}
+.shoot li{display:flex;gap:10px;color:var(--mist);font-size:.95rem;line-height:1.5}
+.shoot li svg{margin-top:5px}
+.shoot li b{color:var(--chalk)}
+.shoot .no{border-top:1px solid var(--line-n);padding-top:14px;font-size:.92rem;color:var(--chalk)}
+.shoot .no b{color:var(--red)}
+@media (max-width:980px){.photo{grid-template-columns:minmax(0,1fr)}.shoot{position:static}}
+@media (max-width:620px){.photo .lib{grid-template-columns:minmax(0,1fr)}}
+
+/* Dicter */
+.voice{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px clamp(28px,4vw,56px);align-items:start}
+.modes{display:grid;gap:12px}
+.mode{background:var(--paper);border:1px solid var(--line-c);border-radius:6px;padding:22px;display:grid;gap:8px}
+.mode .n{font-family:var(--f-mono);font-size:.7rem;color:var(--turf-ink);letter-spacing:.07em;text-transform:uppercase}
+.mode h3{font-size:1.08rem;line-height:1.25;font-weight:700}
+.mode p{color:var(--ink-2);font-size:.95rem;line-height:1.5}
+.voice .prompt{background:var(--ink);border-color:var(--ink)}
+.voice .prompt .label{color:var(--fog)}
+.voice-tips{display:grid;gap:8px;margin-top:16px}
+.voice-tips li{display:flex;gap:10px;color:var(--ink-2);font-size:.95rem}
+.voice-tips svg{margin-top:5px}
+@media (max-width:860px){.voice{grid-template-columns:minmax(0,1fr)}}
+
+/* Exercice : nettoyer un tableau */
+.mission{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;padding:16px 18px;border:1px solid var(--line-n);border-radius:6px;margin-bottom:16px;background:var(--night-2)}
+.mission b{color:var(--turf-hi)}
+.sheet-wrap{overflow-x:auto;border:1px solid var(--line-n);border-radius:6px}
+.sheet{width:100%;min-width:720px;border-collapse:collapse;font-size:.9rem}
+.sheet th,.sheet td{padding:10px 12px;border-bottom:1px solid var(--line-n);border-right:1px solid var(--line-n);text-align:left;white-space:nowrap}
+.sheet th:last-child,.sheet td:last-child{border-right:0}
+.sheet thead th{padding:6px}
+.sheet thead button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:40px;padding:0 10px;border-radius:4px;border:1.5px solid var(--line-n);background:rgba(237,240,234,.04);cursor:pointer;font-weight:600;font-size:.86rem}
+.sheet thead button:hover{border-color:rgba(237,240,234,.4)}
+.sheet thead button i{font-style:normal;font-family:var(--f-mono);font-size:.64rem;color:var(--fog)}
+.sheet thead button[aria-pressed="true"]{border-color:var(--red);color:var(--red)}
+.sheet thead button[aria-pressed="true"] i{color:var(--red)}
+.sheet td{color:var(--mist)}
+.sheet .cut{color:transparent;background:repeating-linear-gradient(135deg,rgba(229,103,79,.18) 0 6px,transparent 6px 12px)}
+.sheet-act{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:16px}
+.sheet-fb{font-size:.95rem;color:var(--mist);border-left:3px solid var(--turf);padding:2px 0 2px 14px;margin-top:16px}
+.sheet-fb.ko{border-color:var(--red)}
+.sheet-fb b{color:var(--chalk)}
+.sheet-fb[hidden]{display:none}
+.after{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:clamp(56px,7vw,96px)}
+.after article{border-top:3px solid var(--turf);padding-top:18px;display:grid;gap:10px;align-content:start}
+.after .n{font-family:var(--f-mono);font-size:.7rem;color:var(--fog);letter-spacing:.07em;text-transform:uppercase}
+.after h3{font-size:1.1rem;line-height:1.25;font-weight:700}
+.after p{color:var(--mist);font-size:.95rem;line-height:1.5}
+@media (max-width:860px){.after{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="check" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></symbol>
+</svg>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="index.html" aria-label="FAIR, retour à l'accueil"><img src="assets/logo/fair-logo-blanc.svg" alt="FAIR"></a>
+    <nav aria-label="Navigation">
+      <a class="opt" href="index.html#clubs">Clubs</a>
+      <a class="opt" href="index.html#partenaires">Fédérations</a>
+      <a href="formation.html" aria-current="page">Formation</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <section class="hero">
+    <div class="wrap hero-in">
+      <p class="label"><span class="sq"></span><a href="formation.html">Formation FAIR · Niveau 0</a> · Module 4 sur 5</p>
+      <h1><small>Au-delà du texte</small>Fichiers,<br>photos, <span class="turf">voix</span></h1>
+      <p class="lead">Un règlement de 40 pages, une photo du tableau blanc, un compte rendu dicté en rentrant de l'entraînement : l'IA sait les lire et les mettre au propre. À condition de lui donner les bons documents.</p>
+      <ul class="meta">
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>20 minutes</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Modules 1 à 3 terminés</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Ordinateur et téléphone</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>À jour en octobre 2026</li>
+      </ul>
+      <nav class="steps-nav" aria-label="Étapes du module">
+        <a href="#joindre"><b>1. Joindre</b><span>PDF, Word, tableurs</span></a>
+        <a href="#photo"><b>2. Photographier</b><span>Le tableau blanc, une facture</span></a>
+        <a href="#dicter"><b>3. Dicter</b><span>Depuis le bord du terrain</span></a>
+        <a href="#nettoyer"><b>4. Nettoyer</b><span>Avant et après l'envoi</span></a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="joindre">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Joindre un document</p>
+        <h2 class="h2">Donnez-lui<br>de quoi lire</h2>
+        <p class="lead">Plutôt que de tout recopier, donnez directement le document à l'IA. Les trois outils fonctionnent de la même façon.</p>
+      </div>
+      <div class="ways">
+        <article class="way">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 11.5l-8.6 8.6a5 5 0 01-7.1-7.1l8.6-8.6a3.3 3.3 0 014.7 4.7L10 17.7a1.7 1.7 0 01-2.4-2.4l7.9-7.9"/></svg></span>
+          <h3>Le bouton « + » ou trombone</h3>
+          <p>À gauche de la zone de saisie. Choisissez le fichier sur l'ordinateur ou le téléphone, puis écrivez votre demande.</p>
+        </article>
+        <article class="way">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 17v3h16v-3"/></svg></span>
+          <h3>Glisser-déposer</h3>
+          <p>Sur ordinateur, faites glisser le fichier depuis vos dossiers directement dans la fenêtre de conversation.</p>
+        </article>
+        <article class="way">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 00-1-1H5a1 1 0 00-1 1v10a1 1 0 001 1h3"/></svg></span>
+          <h3>Copier-coller un extrait</h3>
+          <p>Pour quelques paragraphes, un simple copier-coller suffit. Pratique pour ne transmettre que la partie utile.</p>
+        </article>
+      </div>
+      <ul class="formats" aria-label="Formats acceptés">
+        <li><b>PDF</b> règlements, conventions</li>
+        <li><b>Word</b> courriers, comptes rendus</li>
+        <li><b>Excel, CSV</b> plannings, budgets</li>
+        <li><b>Images</b> photos, captures</li>
+      </ul>
+
+      <div class="head" style="margin-bottom:24px">
+        <h3 class="h3">Quatre demandes à tester</h3>
+        <p class="lead">Joignez le document, puis collez la demande. Les offres gratuites limitent le nombre de fichiers par jour : choisissez un vrai document utile.</p>
+      </div>
+      <div class="lib">
+        <article class="card">
+          <div class="card-top"><span class="label">PDF</span><h3>Résumer un règlement</h3></div>
+<pre>Voici le règlement <i>[de la compétition, de la ligue…]</i> en pièce jointe. Je suis bénévole dans un club de <i>[sport]</i>. Résume en 10 points ce qui change pour un club amateur cette saison, en citant à chaque fois la page concernée pour que je puisse vérifier.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="label">Tableur</span><h3>Faire un planning lisible</h3></div>
+<pre>Voici le tableau des créneaux d'entraînement de la saison en pièce jointe. Transforme-le en planning hebdomadaire clair, un jour par ligne, avec catégorie, horaire et lieu, à afficher au club-house. N'invente aucun créneau : signale-moi les cases vides ou incohérentes.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="label">Deux PDF</span><h3>Comparer deux devis</h3></div>
+<pre>Voici deux devis pour <i>[les maillots, le car du tournoi…]</i>. Compare-les dans un tableau : prix total, ce qui est inclus, délais, conditions de paiement. Puis liste les questions à poser aux deux fournisseurs avant de choisir.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="label">Word ou PDF</span><h3>Repérer les dates clés</h3></div>
+<pre>Voici la convention de mise à disposition du gymnase signée avec la mairie. Liste toutes les dates, échéances et obligations du club (assurance, état des lieux, clés…), dans l'ordre chronologique, sous forme de check-list.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="photo">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Photographier</p>
+        <h2 class="h2">Une photo,<br><span class="turf">un texte propre</span></h2>
+        <p class="lead">Sur téléphone, le bouton « + » propose aussi l'appareil photo. L'IA lit l'écriture manuscrite, les tableaux et les affiches.</p>
+      </div>
+      <div class="photo">
+        <div class="lib">
+          <article class="card">
+            <div class="card-top"><span class="label">Réunion</span><h3>Le tableau blanc</h3></div>
+<pre>Voici la photo du tableau blanc de notre réunion de bureau. Transforme-la en compte rendu : décisions, actions à mener avec la fonction de la personne responsable, et échéances.</pre>
+            <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+          </article>
+          <article class="card">
+            <div class="card-top"><span class="label">Terrain</span><h3>Le schéma d'exercice</h3></div>
+<pre>Voici la photo d'un exercice dessiné à la main par un éducateur de <i>[sport]</i>. Rédige une fiche claire : objectif, matériel, mise en place, consignes, variantes pour les plus jeunes.</pre>
+            <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+          </article>
+          <article class="card">
+            <div class="card-top"><span class="label">Trésorerie</span><h3>La facture ou le ticket</h3></div>
+<pre>Voici la photo d'une facture fournisseur. Donne-moi une ligne pour mon tableau de trésorerie : date, fournisseur, objet, montant TTC, catégorie de dépense. Si un chiffre est illisible, dis-le plutôt que de le deviner.</pre>
+            <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+          </article>
+          <article class="card">
+            <div class="card-top"><span class="label">Agenda</span><h3>L'affiche reçue</h3></div>
+<pre>Voici la photo d'une affiche de tournoi reçue d'un autre club. Extrais les informations utiles pour notre agenda : date, horaires, lieu, catégories, tarif, date limite et contact d'inscription.</pre>
+            <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+          </article>
+        </div>
+        <aside class="shoot">
+          <p class="label"><span class="sq"></span>Bien prendre la photo</p>
+          <ul>
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>À plat et de face</b>, sans angle ni reflet.</span></li>
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>Une page par photo</b>, bien éclairée.</span></li>
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>Recadrez</b> pour ne garder que l'utile.</span></li>
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>Vérifiez les chiffres</b> recopiés : l'IA peut confondre un 1 et un 7.</span></li>
+          </ul>
+          <p class="no"><b>Jamais :</b> une personne dans le cadre, une feuille de match ou d'émargement avec des noms, un certificat médical.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="dicter">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Dicter</p>
+        <h2 class="h2">Parler plutôt<br>que taper</h2>
+        <p class="lead">Sur téléphone, l'icône micro de l'appli vous évite de taper. Idéal pour noter à chaud, en rentrant de l'entraînement ou du match.</p>
+      </div>
+      <div class="voice">
+        <div>
+          <div class="modes">
+            <article class="mode"><span class="n">Mode 1 · Dictée</span><h3>Le micro dans la zone de saisie</h3><p>Vous parlez, le texte s'écrit, vous relisez puis envoyez. Le plus simple pour démarrer.</p></article>
+            <article class="mode"><span class="n">Mode 2 · Conversation vocale</span><h3>L'icône d'onde sonore</h3><p>Vous échangez à voix haute avec l'IA, comme au téléphone. Pratique pour réfléchir à une idée en marchant.</p></article>
+          </div>
+          <ul class="voice-tips">
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Parlez naturellement, en vrac : c'est à l'IA de remettre en ordre.</span></li>
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Relisez les noms propres et les chiffres, souvent mal compris.</span></li>
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Pas de sujet sensible à voix haute dans un lieu public.</span></li>
+          </ul>
+        </div>
+        <div class="prompt">
+          <div class="prompt-top">
+            <span class="label">À dire en début de dictée</span>
+            <button class="copy" type="button" data-copy>Copier</button>
+          </div>
+<pre>Je vais te dicter en vrac mes notes sur l'entraînement des <i>[catégorie]</i> de ce soir. Remets-les en forme en trois parties : ce qu'on a travaillé, ce qui a bien marché, ce qu'il faut revoir la prochaine fois. Ne cite aucun prénom, parle du groupe. Voici mes notes :</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="nettoyer">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Nettoyer · Exercice</p>
+        <h2 class="h2">Avant d'envoyer,<br><span class="turf">on fait le tri</span></h2>
+        <p class="lead">Un tableur du club contient presque toujours des données personnelles. Avant de le joindre, supprimez les colonnes dont l'IA n'a pas besoin.</p>
+      </div>
+      <p class="mission">Votre besoin : <b>compter les tailles de maillots et les repas à commander</b> pour le tournoi. Cliquez sur les colonnes à supprimer avant d'envoyer le fichier.</p>
+      <div class="sheet-wrap">
+        <table class="sheet" id="sheet">
+          <caption class="sr-only">Inscriptions au tournoi U13, données fictives</caption>
+          <thead><tr>
+            <th scope="col"><button type="button" aria-pressed="false" data-need="0">Nom <i>garder</i></button></th>
+            <th scope="col"><button type="button" aria-pressed="false" data-need="0">Prénom <i>garder</i></button></th>
+            <th scope="col"><button type="button" aria-pressed="false" data-need="0">Naissance <i>garder</i></button></th>
+            <th scope="col"><button type="button" aria-pressed="false" data-need="0">Tél. parent <i>garder</i></button></th>
+            <th scope="col"><button type="button" aria-pressed="false" data-need="1">Catégorie <i>garder</i></button></th>
+            <th scope="col"><button type="button" aria-pressed="false" data-need="1">Maillot <i>garder</i></button></th>
+            <th scope="col"><button type="button" aria-pressed="false" data-need="1">Repas <i>garder</i></button></th>
+          </tr></thead>
+          <tbody>
+            <tr><td>Exemple</td><td>Léa</td><td>12/03/2014</td><td>06 00 00 00 01</td><td>U13</td><td>M</td><td>Oui</td></tr>
+            <tr><td>Exemple</td><td>Noah</td><td>04/09/2013</td><td>06 00 00 00 02</td><td>U13</td><td>S</td><td>Oui</td></tr>
+            <tr><td>Exemple</td><td>Inès</td><td>23/01/2014</td><td>06 00 00 00 03</td><td>U13</td><td>M</td><td>Non</td></tr>
+            <tr><td>Exemple</td><td>Sacha</td><td>30/06/2013</td><td>06 00 00 00 04</td><td>U13</td><td>L</td><td>Oui</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sheet-act">
+        <button class="btn btn-turf" type="button" id="sheet-ok">Vérifier mon tri</button>
+        <button class="chip" type="button" id="sheet-reset">Recommencer</button>
+      </div>
+      <p class="sheet-fb" id="sheet-fb" aria-live="polite" hidden></p>
+
+      <div class="after">
+        <article><span class="n">Après · 01</span><h3>Supprimer la conversation</h3><p>Une fois le travail fini, supprimez la conversation qui contenait un document du club. Le menu « … » à côté de son titre le permet.</p></article>
+        <article><span class="n">Après · 02</span><h3>Garder le résultat, pas le fichier</h3><p>Copiez la réponse utile dans vos documents du club. L'outil d'IA n'est pas un espace de stockage.</p></article>
+        <article><span class="n">Après · 03</span><h3>Le mode temporaire</h3><p>Pour un document un peu sensible, ouvrez d'emblée une conversation temporaire ou incognito (voir le module 3).</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="bilan">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Check-list de fin</p>
+        <h2 class="h2">Module 4,<br>validé&nbsp;?</h2>
+        <p class="lead">Cochez au fur et à mesure. Votre progression reste sur cet appareil, rien n'est envoyé.</p>
+      </div>
+      <div class="check" id="check" data-key="fair-module4" data-name="Module 4">
+        <label><input type="checkbox" data-k="fichier"><span>J'ai joint un document du club et obtenu un résumé ou un tableau</span></label>
+        <label><input type="checkbox" data-k="photo"><span>J'ai envoyé une photo (tableau blanc, facture, affiche) et vérifié le résultat</span></label>
+        <label><input type="checkbox" data-k="voix"><span>J'ai dicté au moins une demande depuis mon téléphone</span></label>
+        <label><input type="checkbox" data-k="tri"><span>J'ai réussi l'exercice du tableau à nettoyer</span></label>
+        <label><input type="checkbox" data-k="colonnes"><span>Avant de joindre un tableur, je supprime les colonnes personnelles</span></label>
+        <label><input type="checkbox" data-k="supprimer"><span>Je supprime les conversations qui contenaient un document du club</span></label>
+      </div>
+      <p class="score" id="score" aria-live="polite">0 sur 6</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap next">
+      <div class="head" style="margin:0">
+        <p class="label"><span class="sq"></span>Et ensuite</p>
+        <h2 class="h2">Module 5 :<br><span class="turf">mon premier dossier</span></h2>
+        <p class="lead">Dernière étape du niveau 0 : un vrai projet du club traité de bout en bout, un quiz, et votre attestation.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-turf" href="formation-5.html">Passer au module 5</a>
+        <a class="btn btn-ghost" href="formation.html">Tout le niveau 0</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>FAIR · Former les Associations à l'IA Responsable</span>
+    <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/formation.js"></script>
+<script>
+(function(){
+  // Exercice : supprimer les colonnes inutiles avant d'envoyer
+  var heads=[].slice.call(document.querySelectorAll('#sheet thead button'));
+  var rows=[].slice.call(document.querySelectorAll('#sheet tbody tr'));
+  var fb=document.getElementById('sheet-fb');
+  function paint(){
+    heads.forEach(function(h,i){
+      var cut=h.getAttribute('aria-pressed')==='true';
+      h.querySelector('i').textContent=cut?'supprimée':'garder';
+      rows.forEach(function(r){r.children[i].classList.toggle('cut',cut)});
+    });
+  }
+  heads.forEach(function(h){
+    h.addEventListener('click',function(){
+      h.setAttribute('aria-pressed',h.getAttribute('aria-pressed')!=='true');
+      fb.hidden=true;
+      paint();
+    });
+  });
+  document.getElementById('sheet-ok').addEventListener('click',function(){
+    var kept=heads.filter(function(h){return h.dataset.need==='0'&&h.getAttribute('aria-pressed')!=='true'});
+    var lost=heads.filter(function(h){return h.dataset.need==='1'&&h.getAttribute('aria-pressed')==='true'});
+    var name=function(h){return h.firstChild.textContent.trim()};
+    fb.innerHTML='';
+    var b=document.createElement('b');
+    var msg;
+    if(!kept.length&&!lost.length){
+      b.textContent='Parfait. ';
+      msg="Catégorie, taille et repas suffisent pour compter. Aucun enfant n'est identifiable : vous pouvez envoyer ce fichier.";
+    }else if(kept.length){
+      b.textContent='Encore des données personnelles. ';
+      msg='Il reste : '+kept.map(name).join(', ')+". L'IA n'en a pas besoin pour compter, et ce sont des données de mineurs.";
+    }else{
+      b.textContent='Trop supprimé. ';
+      msg="Sans la colonne "+lost.map(name).join(', ')+", l'IA ne pourra pas faire le calcul demandé.";
+    }
+    fb.appendChild(b);fb.appendChild(document.createTextNode(msg));
+    fb.classList.toggle('ko',!!(kept.length||lost.length));
+    fb.hidden=false;
+  });
+  document.getElementById('sheet-reset').addEventListener('click',function(){
+    heads.forEach(function(h){h.setAttribute('aria-pressed','false')});
+    fb.hidden=true;paint();
+  });
+})();
+</script>
+</body>
+</html>

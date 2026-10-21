@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Formation · Module 3 · FAIR</title>
+<meta name="description" content="Module 3 de la formation FAIR : vérifier les réponses de l'IA, protéger les données des licenciés, régler la confidentialité, déjouer les arnaques et rédiger la charte IA du club.">
+<meta name="theme-color" content="#07111F">
+<link rel="icon" href="assets/logo/fair-icone.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/css/formation.css?v=2">
+<style>
+/* Vérifier */
+.verify{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:28px clamp(28px,4vw,56px);align-items:start}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.fact{background:var(--paper);border:1px solid var(--line-c);border-radius:6px;padding:20px 20px 22px;display:grid;gap:8px;align-content:start}
+.fact h3{font-size:1.02rem;line-height:1.25;font-weight:700}
+.fact p{color:var(--ink-2);font-size:.92rem;line-height:1.5}
+.fact .n{font-family:var(--f-mono);font-size:.7rem;color:var(--turf-ink);letter-spacing:.07em}
+.reflex{background:var(--ink);color:var(--chalk);border-radius:6px;padding:26px 24px 28px;display:grid;gap:16px;position:sticky;top:96px}
+.reflex .label{color:var(--fog)}
+.reflex ol{display:grid;gap:14px;counter-reset:r}
+.reflex li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;color:var(--mist);counter-increment:r;font-size:.95rem}
+.reflex li::before{content:counter(r);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:1px solid var(--turf);color:var(--turf);font-family:var(--f-mono);font-size:.75rem}
+.reflex b{color:var(--chalk);font-weight:600}
+@media (max-width:980px){.verify{grid-template-columns:minmax(0,1fr)}.reflex{position:static}}
+@media (max-width:560px){.facts{grid-template-columns:minmax(0,1fr)}}
+
+/* Tri des données */
+.sort{display:grid;gap:10px}
+.item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 20px;align-items:center;padding:16px 18px;border:1px solid var(--line-n);border-radius:6px;background:var(--night-2);transition:border-color .25s}
+.item>p{font-weight:600;line-height:1.4}
+.choices{display:flex;flex-wrap:wrap;gap:6px}
+.fb{grid-column:1/-1;font-size:.92rem;color:var(--mist);border-left:3px solid var(--turf);padding:2px 0 2px 14px}
+.fb[hidden]{display:none}
+.fb b{color:var(--chalk)}
+.item.ok{border-color:var(--turf)}
+.item.ko{border-color:var(--red)}
+.item.ko .fb{border-color:var(--red)}
+.sort-score{font-family:var(--f-mono);font-size:.78rem;color:var(--fog);margin-top:14px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;margin-bottom:18px;font-size:.9rem;color:var(--mist)}
+.legend b{color:var(--chalk)}
+@media (max-width:760px){.item{grid-template-columns:minmax(0,1fr)}}
+
+/* Réglages de confidentialité */
+.settings{margin-top:clamp(56px,7vw,96px)}
+.set{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.set-card{border:1px solid var(--line-n);border-radius:6px;padding:24px 22px 26px;display:grid;gap:12px;align-content:start;background:var(--night-2)}
+.set-card .n{font-family:var(--f-mono);font-size:.7rem;color:var(--turf);letter-spacing:.07em;text-transform:uppercase}
+.set-card h4{font-size:1.1rem;line-height:1.25;font-weight:700}
+.set-card p{color:var(--mist);font-size:.95rem;line-height:1.5}
+.trail{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.86rem}
+.trail span{padding:5px 10px;border-radius:4px;background:rgba(237,240,234,.08);border:1px solid var(--line-n)}
+.trail i{font-style:normal;color:var(--fog)}
+.note{margin-top:16px;font-size:.88rem;color:var(--fog)}
+@media (max-width:760px){.set{grid-template-columns:minmax(0,1fr)}}
+
+/* Images */
+.img-rules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:clamp(56px,7vw,96px)}
+.rule{border:1px solid var(--line-n);border-radius:6px;padding:24px 22px 26px;display:grid;gap:10px;align-content:start}
+.rule .n{font-family:var(--f-mono);font-size:.7rem;color:var(--turf);letter-spacing:.07em;text-transform:uppercase}
+.rule h3{font-size:1.08rem;line-height:1.25;font-weight:700}
+.rule p{color:var(--mist);font-size:.95rem;line-height:1.5}
+@media (max-width:860px){.img-rules{grid-template-columns:minmax(0,1fr)}}
+
+/* Arnaques */
+.scams{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.scam{background:var(--paper);border:1px solid var(--line-c);border-radius:6px;overflow:hidden;display:grid;grid-template-rows:auto 1fr}
+.scam-top{padding:22px 22px 18px;display:grid;gap:8px;border-bottom:1px solid var(--line-c)}
+.scam-top .label{color:var(--red-ink)}
+.scam-top h3{font-family:var(--f-display);font-weight:850;font-stretch:66%;text-transform:uppercase;font-size:1.5rem;line-height:1}
+.scam-top p{color:var(--ink-2);font-size:.95rem;line-height:1.5}
+.scam-fix{padding:18px 22px 22px;display:flex;gap:12px;align-items:flex-start;background:#F3FAF6}
+.scam-fix p{font-size:.95rem;line-height:1.5}
+.scam-fix b{color:var(--turf-ink)}
+.scam-fix svg{margin-top:4px}
+.golden{margin-top:16px;background:var(--ink);color:var(--chalk);border-radius:6px;padding:24px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 24px;align-items:center}
+.golden .h3{color:var(--turf)}
+.golden p{color:var(--mist)}
+@media (max-width:760px){.scams{grid-template-columns:minmax(0,1fr)}.golden{grid-template-columns:minmax(0,1fr)}}
+
+/* Ce que dit la loi */
+.law{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:clamp(56px,7vw,96px)}
+.law article{border-top:3px solid var(--turf);padding-top:18px;display:grid;gap:10px;align-content:start}
+.law .n{font-family:var(--f-mono);font-size:.7rem;color:var(--fog);letter-spacing:.07em;text-transform:uppercase}
+.law h3{font-size:1.15rem;line-height:1.25;font-weight:700}
+.law p{color:var(--mist);font-size:.95rem;line-height:1.5}
+.law a{color:var(--turf-hi)}
+@media (max-width:860px){.law{grid-template-columns:minmax(0,1fr)}}
+
+/* Charte */
+.charter{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px clamp(28px,4vw,56px);align-items:start}
+.cfg{display:grid;gap:18px}
+.rules{display:grid;gap:8px}
+.rules label{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line-n);border-radius:6px;cursor:pointer;font-size:.94rem;line-height:1.45}
+.rules label:has(input:checked){border-color:rgba(31,181,122,.6);background:rgba(31,181,122,.07)}
+.rules .tick{border-color:var(--fog);margin:0}
+.doc{position:sticky;top:96px;background:var(--paper);color:var(--ink);border-radius:8px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
+.doc-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;background:var(--chalk-2);border-bottom:1px solid var(--line-c)}
+.doc-top .label{color:var(--ink-2)}
+.doc-top .acts{display:flex;gap:8px}
+.doc-top .print{background:transparent;border:1.5px solid var(--ink-2);color:var(--ink)}
+.doc-top .print:hover{background:var(--ink);color:var(--paper)}
+.doc-body{padding:28px 28px 32px;display:grid;gap:14px}
+.doc-body h3{font-family:var(--f-display);font-weight:900;font-stretch:62%;text-transform:uppercase;font-size:2rem;line-height:.9}
+.doc-body .intro{color:var(--ink-2);font-size:.95rem}
+.doc-body ol{display:grid;gap:10px;counter-reset:c}
+.doc-body ol li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px;counter-increment:c;font-size:.95rem;line-height:1.5}
+.doc-body ol li::before{content:counter(c)".";font-family:var(--f-mono);font-size:.8rem;color:var(--turf-ink);padding-top:2px}
+.doc-body .sign{border-top:1px solid var(--line-c);padding-top:14px;color:var(--ink-2);font-size:.88rem}
+@media (max-width:900px){.charter{grid-template-columns:minmax(0,1fr)}.doc{position:static}}
+
+/* Impression : seulement la charte */
+@media print{
+  body{background:#fff}
+  body.print-charte>*:not(main),body.print-charte main>*:not(#charte),body.print-charte #charte .cfg,body.print-charte #charte .head,body.print-charte #charte .law,body.print-charte .doc-top{display:none!important}
+  body.print-charte #charte{padding:0;background:#fff}
+  body.print-charte .charter{display:block}
+  body.print-charte .doc{box-shadow:none;position:static}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="check" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></symbol>
+</svg>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="index.html" aria-label="FAIR, retour à l'accueil"><img src="assets/logo/fair-logo-blanc.svg" alt="FAIR"></a>
+    <nav aria-label="Navigation">
+      <a class="opt" href="index.html#clubs">Clubs</a>
+      <a class="opt" href="index.html#partenaires">Fédérations</a>
+      <a href="formation.html" aria-current="page">Formation</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <section class="hero">
+    <div class="wrap hero-in">
+      <p class="label"><span class="sq"></span><a href="formation.html">Formation FAIR · Niveau 0</a> · Module 3 sur 5</p>
+      <h1><small>L'IA sans risque</small>Garder la<br><span class="turf">main</span></h1>
+      <p class="lead">L'IA fait gagner du temps, à condition de garder les bons réflexes : vérifier ce qu'elle affirme, protéger les licenciés, repérer les arnaques et fixer des règles claires pour tout le club.</p>
+      <ul class="meta">
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>30 minutes</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Modules 1 et 2 terminés</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>À partager avec tout le bureau</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>À jour en octobre 2026</li>
+      </ul>
+      <nav class="steps-nav" aria-label="Étapes du module">
+        <a href="#verifier"><b>1. Vérifier</b><span>L'IA se trompe avec aplomb</span></a>
+        <a href="#proteger"><b>2. Protéger</b><span>Données, réglages et images</span></a>
+        <a href="#arnaques"><b>3. Se méfier</b><span>Les arnaques dopées à l'IA</span></a>
+        <a href="#charte"><b>4. Encadrer</b><span>La loi et la charte du club</span></a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="verifier">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Vérifier</p>
+        <h2 class="h2">Sûre d'elle,<br>pas toujours juste</h2>
+        <p class="lead">Une IA ne « sait » pas : elle produit le texte le plus probable. Quand elle ne connaît pas la réponse, elle peut en inventer une, avec le même ton assuré. Six choses à toujours vérifier avant d'utiliser un texte.</p>
+      </div>
+      <div class="verify">
+        <div class="facts">
+          <article class="fact"><span class="n">01</span><h3>Les dates et horaires</h3><p>Calendrier des compétitions, dates limites d'inscription, jours fériés : l'IA peut mélanger les saisons.</p></article>
+          <article class="fact"><span class="n">02</span><h3>Les règlements</h3><p>Un article de règlement fédéral ou une règle de jeu cités de mémoire sont souvent faux ou périmés.</p></article>
+          <article class="fact"><span class="n">03</span><h3>Les montants et aides</h3><p>Montant du Pass'Sport, subventions, tarifs : ils changent chaque année. Seul le site officiel fait foi.</p></article>
+          <article class="fact"><span class="n">04</span><h3>Les obligations légales</h3><p>Assurance, certificat médical, droit à l'image, RGPD : demandez à votre fédération ou au CDOS, pas à l'IA.</p></article>
+          <article class="fact"><span class="n">05</span><h3>Les noms et lieux</h3><p>Un nom d'élu, une adresse de gymnase, un contact : l'IA peut les inventer pour compléter un texte.</p></article>
+          <article class="fact"><span class="n">06</span><h3>Les sources citées</h3><p>Un lien ou un article de loi donné par l'IA peut ne pas exister. Cliquez, lisez, puis seulement citez.</p></article>
+        </div>
+        <aside class="reflex">
+          <p class="label"><span class="sq"></span>Le réflexe en 3 temps</p>
+          <ol>
+            <li><span><b>Repérez le factuel.</b> Surlignez chaque date, chiffre, nom ou règle dans la réponse.</span></li>
+            <li><span><b>Recoupez à la source.</b> Site de la fédération, de la mairie, service-public.fr : une source officielle par info.</span></li>
+            <li><span><b>Relisez en entier.</b> Le texte part au nom du club : c'est vous qui signez, pas l'IA.</span></li>
+          </ol>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="proteger">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Protéger · Exercice</p>
+        <h2 class="h2">Je colle,<br><span class="turf">ou pas&nbsp;?</span></h2>
+        <p class="lead">Ce que vous collez dans une IA quitte le club : il est stocké sur des serveurs, parfois hors d'Europe. Pour chaque document, choisissez la bonne réponse.</p>
+      </div>
+      <p class="legend"><span><b>OK</b> : aucun risque</span><span><b>Anonymiser</b> : possible après avoir retiré les noms</span><span><b>Jamais</b> : à garder hors des outils IA</span></p>
+      <div class="sort" id="sort">
+        <div class="item" data-a="ok"><p>Le planning des entraînements par catégorie</p><div class="choices"></div><p class="fb" hidden>Aucune personne n'est identifiable : c'est de l'organisation du club, vous pouvez le coller.</p></div>
+        <div class="item" data-a="non"><p>Le fichier des licenciés avec dates de naissance et téléphones</p><div class="choices"></div><p class="fb" hidden>Données personnelles, souvent de mineurs. Pour un tableau type, demandez à l'IA un modèle vide et remplissez-le vous-même.</p></div>
+        <div class="item" data-a="anon"><p>L'e-mail d'un parent mécontent, pour préparer une réponse</p><div class="choices"></div><p class="fb" hidden>Retirez le nom du parent, celui de l'enfant et tout détail identifiant, puis résumez la situation en quelques lignes.</p></div>
+        <div class="item" data-a="ok"><p>Le règlement intérieur du club, pour le simplifier</p><div class="choices"></div><p class="fb" hidden>Document public du club, sans personne nommée : aucun problème.</p></div>
+        <div class="item" data-a="non"><p>Un certificat médical, pour vérifier qu'il est valable</p><div class="choices"></div><p class="fb" hidden>Les données de santé sont les plus sensibles qui soient. Elles ne sortent jamais du classeur du club.</p></div>
+        <div class="item" data-a="anon"><p>Les notes de réunion de bureau qui citent des bénévoles</p><div class="choices"></div><p class="fb" hidden>Remplacez les noms par les fonctions (« le trésorier », « un éducateur U11 ») avant de coller.</p></div>
+        <div class="item" data-a="non"><p>La photo de l'équipe des U11, pour en faire une affiche</p><div class="choices"></div><p class="fb" hidden>Visages d'enfants : on ne les confie pas à un outil d'IA, même pour un joli visuel. Faites l'affiche sans photo, ou avec un visuel neutre.</p></div>
+        <div class="item" data-a="anon"><p>Le budget prévisionnel, pour le présenter en AG</p><div class="choices"></div><p class="fb" hidden>Les chiffres du club ne posent pas de problème, mais un budget contient souvent des salaires nominatifs ou des coordonnées bancaires : retirez-les avant de coller.</p></div>
+      </div>
+      <p class="sort-score" id="sort-score" aria-live="polite">0 bonne réponse sur 8</p>
+
+      <div class="settings" id="reglages">
+        <div class="head">
+          <p class="label"><span class="sq"></span>Protéger · Réglages</p>
+          <h3 class="h3">Deux réglages à faire<br>dans chaque outil</h3>
+          <p class="lead">Par défaut, vos conversations peuvent servir à entraîner les modèles et restent dans l'historique. Cinq minutes suffisent pour reprendre la main.</p>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Choisir l'outil">
+          <button class="tab" role="tab" id="s-claude" aria-controls="sp-claude" aria-selected="true">Claude <i>Anthropic</i></button>
+          <button class="tab" role="tab" id="s-chatgpt" aria-controls="sp-chatgpt" aria-selected="false" tabindex="-1">ChatGPT <i>OpenAI</i></button>
+          <button class="tab" role="tab" id="s-gemini" aria-controls="sp-gemini" aria-selected="false" tabindex="-1">Gemini <i>Google</i></button>
+        </div>
+        <div class="panel" role="tabpanel" id="sp-claude" aria-labelledby="s-claude">
+          <div class="set">
+            <article class="set-card"><span class="n">Réglage 1 · Entraînement</span><h4>Refuser que vos échanges entraînent le modèle</h4><p class="trail"><span>Votre nom, en bas à gauche</span><i>›</i><span>Paramètres</span><i>›</i><span>Confidentialité</span></p><p>Désactivez l'option qui autorise l'utilisation de vos conversations pour améliorer Claude.</p></article>
+            <article class="set-card"><span class="n">Réglage 2 · Historique</span><h4>Utiliser une conversation incognito</h4><p>Pour un sujet sensible, ouvrez une conversation incognito (icône en forme de masque, en haut de l'écran) : elle n'apparaît pas dans l'historique.</p></article>
+          </div>
+        </div>
+        <div class="panel" role="tabpanel" id="sp-chatgpt" aria-labelledby="s-chatgpt" hidden>
+          <div class="set">
+            <article class="set-card"><span class="n">Réglage 1 · Entraînement</span><h4>Refuser que vos échanges entraînent le modèle</h4><p class="trail"><span>Votre profil</span><i>›</i><span>Paramètres</span><i>›</i><span>Contrôle des données</span></p><p>Désactivez « Améliorer le modèle pour tout le monde ».</p></article>
+            <article class="set-card"><span class="n">Réglage 2 · Historique</span><h4>Ouvrir une discussion temporaire</h4><p>En haut de l'écran, activez « Discussion temporaire » : elle n'est pas enregistrée dans l'historique et ne sert pas à l'entraînement.</p></article>
+          </div>
+        </div>
+        <div class="panel" role="tabpanel" id="sp-gemini" aria-labelledby="s-gemini" hidden>
+          <div class="set">
+            <article class="set-card"><span class="n">Réglage 1 · Activité</span><h4>Désactiver l'enregistrement de l'activité</h4><p class="trail"><span>Menu</span><i>›</i><span>Paramètres et aide</span><i>›</i><span>Activité</span></p><p>Désactivez l'enregistrement de l'activité dans les applis Gemini, et réglez la suppression automatique au plus court.</p></article>
+            <article class="set-card"><span class="n">Réglage 2 · Historique</span><h4>Ouvrir une discussion temporaire</h4><p>Le mode « discussion temporaire » permet un échange ponctuel qui n'apparaît pas dans votre activité.</p></article>
+          </div>
+        </div>
+        <p class="note">Les intitulés exacts changent régulièrement. Si vous ne trouvez pas, demandez directement à l'outil : « Comment désactiver l'utilisation de mes conversations pour l'entraînement ? »</p>
+      </div>
+
+      <div class="img-rules">
+        <article class="rule"><span class="n">Images · 01</span><h3>Pas de photos de mineurs</h3><p>Ne déposez aucune photo d'enfant du club dans un outil d'IA, même pour la « retoucher » ou l'animer.</p></article>
+        <article class="rule"><span class="n">Images · 02</span><h3>Pas de fausses personnes réelles</h3><p>Ne générez jamais d'image ou de voix d'une vraie personne (joueur, élu, arbitre), même pour plaisanter.</p></article>
+        <article class="rule"><span class="n">Images · 03</span><h3>Dire quand c'est généré</h3><p>Un visuel créé par IA sur une affiche ou un post ? Ajoutez une petite mention « Image générée par IA ».</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="arnaques">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Se méfier</p>
+        <h2 class="h2">Les arnaques<br>ont pris l'IA aussi</h2>
+        <p class="lead">Les fautes d'orthographe ne trahissent plus les escrocs. Les associations sont visées parce qu'elles manient de l'argent avec des bénévoles pressés. Quatre scénarios à connaître.</p>
+      </div>
+      <div class="scams">
+        <article class="scam">
+          <div class="scam-top"><span class="label">Scénario 01</span><h3>Le faux président</h3><p>Un appel ou un message vocal avec la voix du président, imitée par IA : « Fais un virement urgent au prestataire, je t'expliquerai. »</p></div>
+          <div class="scam-fix"><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><p><b>Le réflexe :</b> raccrochez et rappelez la personne sur son numéro habituel. Aucune urgence ne justifie un virement sans vérification.</p></div>
+        </article>
+        <article class="scam">
+          <div class="scam-top"><span class="label">Scénario 02</span><h3>Le faux RIB</h3><p>Un fournisseur habituel « change de banque » et envoie un nouveau RIB, avec un e-mail parfaitement écrit et son logo.</p></div>
+          <div class="scam-fix"><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><p><b>Le réflexe :</b> tout changement de RIB se confirme par téléphone, au numéro déjà connu, jamais à celui indiqué dans l'e-mail.</p></div>
+        </article>
+        <article class="scam">
+          <div class="scam-top"><span class="label">Scénario 03</span><h3>La fausse fédération</h3><p>Un e-mail « de la fédération » ou « de la mairie » demande de vous reconnecter ou de régler des frais d'affiliation via un lien.</p></div>
+          <div class="scam-fix"><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><p><b>Le réflexe :</b> ne cliquez pas. Allez sur le site officiel en tapant l'adresse vous-même, ou appelez votre comité.</p></div>
+        </article>
+        <article class="scam">
+          <div class="scam-top"><span class="label">Scénario 04</span><h3>La fausse info qui circule</h3><p>Une capture d'écran, une vidéo ou un « communiqué » sur le club ou un adversaire circule sur les groupes de parents.</p></div>
+          <div class="scam-fix"><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><p><b>Le réflexe :</b> ne partagez pas avant d'avoir vérifié la source. En cas de doute, le bureau communique, une seule fois, sur le canal officiel.</p></div>
+        </article>
+      </div>
+      <div class="golden">
+        <span class="h3">La parade</span>
+        <p>Deux signatures pour tout virement, un rappel systématique au numéro connu, et le droit pour chaque bénévole de dire « je vérifie d'abord ».</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="charte">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Encadrer · Ce que dit la loi</p>
+        <h2 class="h2">Trois textes<br><span class="turf">à connaître</span></h2>
+        <p class="lead">Pas besoin d'être juriste. Retenez l'essentiel, et pour toute question précise, tournez-vous vers votre fédération ou votre CDOS.</p>
+      </div>
+      <div class="law">
+        <article><span class="n">RGPD</span><h3>Le club est responsable des données</h3><p>Les données des licenciés ne doivent servir qu'à ce pour quoi elles ont été collectées. Les copier dans un outil d'IA, c'est les confier à un tiers, souvent hors d'Europe, sans l'accord des familles. La CNIL publie un guide dédié aux associations sur <a href="https://www.cnil.fr" target="_blank" rel="noopener">cnil.fr</a>.</p></article>
+        <article><span class="n">Droit à l'image</span><h3>Une autorisation, un usage</h3><p>L'autorisation signée par les parents couvre la publication de photos par le club, pas leur transformation par une IA. Pour un mineur, l'accord des deux parents reste la règle de prudence.</p></article>
+        <article><span class="n">Règlement européen sur l'IA</span><h3>Signaler ce qui est truqué</h3><p>L'AI Act impose de signaler les images, vidéos ou sons générés ou modifiés par IA qui imitent une personne ou un événement réel. Pour le club, la règle simple : mentionner toute image générée par IA.</p></article>
+      </div>
+
+      <div class="head">
+        <p class="label"><span class="sq"></span>Encadrer · Charte</p>
+        <h2 class="h2">La charte IA<br><span class="turf">du club</span></h2>
+        <p class="lead">Une page, quelques règles, adoptées en réunion de bureau. Personnalisez-la ici, puis imprimez-la ou copiez-la pour la faire voter.</p>
+      </div>
+      <div class="charter">
+        <div class="cfg">
+          <div class="field"><label for="c-club">Nom du club</label><input id="c-club" data-k="club" placeholder="AS Exemple Handball"></div>
+          <div class="field"><label for="c-ref">Fonction du référent IA</label><input id="c-ref" data-k="ref" placeholder="Le secrétaire, un membre du bureau…"></div>
+          <div class="field"><label for="c-date">Date d'adoption</label><input id="c-date" data-k="date" placeholder="Réunion de bureau du…"></div>
+          <div class="rules" id="rules">
+            <label><input class="tick" type="checkbox" data-r="0" checked><span>Aucune donnée personnelle des licenciés</span></label>
+            <label><input class="tick" type="checkbox" data-r="1" checked><span>Relire et vérifier avant de publier</span></label>
+            <label><input class="tick" type="checkbox" data-r="2" checked><span>Aucune photo de mineur dans un outil IA</span></label>
+            <label><input class="tick" type="checkbox" data-r="3" checked><span>Des comptes au nom du club</span></label>
+            <label><input class="tick" type="checkbox" data-r="4" checked><span>Signaler les images générées</span></label>
+            <label><input class="tick" type="checkbox" data-r="5" checked><span>Double validation des virements</span></label>
+            <label><input class="tick" type="checkbox" data-r="6" checked><span>Un référent IA désigné</span></label>
+            <label><input class="tick" type="checkbox" data-r="7" checked><span>Une révision chaque saison</span></label>
+          </div>
+        </div>
+        <article class="doc">
+          <div class="doc-top">
+            <span class="label">Aperçu</span>
+            <span class="acts"><button class="copy print" type="button" id="print">Imprimer</button><button class="copy" type="button" id="copy-charte">Copier</button></span>
+          </div>
+          <div class="doc-body" id="doc">
+            <h3>Charte IA<br><span id="d-club">du club</span></h3>
+            <p class="intro">Les bénévoles et salariés du club peuvent utiliser des outils d'intelligence artificielle (Claude, ChatGPT, Gemini…) pour gagner du temps sur les tâches administratives et de communication, dans le respect des règles suivantes.</p>
+            <ol id="d-rules"></ol>
+            <p class="sign" id="d-sign"></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="bilan">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Check-list de fin</p>
+        <h2 class="h2">Module 3,<br>validé&nbsp;?</h2>
+        <p class="lead">Cochez au fur et à mesure. Votre progression reste sur cet appareil, rien n'est envoyé.</p>
+      </div>
+      <div class="check" id="check" data-key="fair-module3" data-name="Module 3">
+        <label><input type="checkbox" data-k="verif"><span>Je vérifie les dates, chiffres, règlements et sources avant d'utiliser un texte</span></label>
+        <label><input type="checkbox" data-k="tri"><span>J'ai fait l'exercice « Je colle, ou pas ? »</span></label>
+        <label><input type="checkbox" data-k="images"><span>J'ai fait les deux réglages de confidentialité dans mes outils</span></label>
+        <label><input type="checkbox" data-k="arnaques"><span>Je rappelle toujours sur un numéro connu avant un virement ou un changement de RIB</span></label>
+        <label><input type="checkbox" data-k="charte"><span>J'ai préparé la charte IA du club</span></label>
+        <label><input type="checkbox" data-k="bureau"><span>Je l'ai présentée, ou prévu de la présenter, au bureau</span></label>
+      </div>
+      <p class="score" id="score" aria-live="polite">0 sur 6</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap next">
+      <div class="head" style="margin:0">
+        <p class="label"><span class="sq"></span>Et ensuite</p>
+        <h2 class="h2">Module 4 :<br><span class="turf">fichiers, photos, voix</span></h2>
+        <p class="lead">Vous savez demander et vous protéger. Prochaine étape : faire travailler l'IA sur vos documents, vos photos et votre voix, y compris depuis le téléphone.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-turf" href="formation-4.html">Passer au module 4</a>
+        <a class="btn btn-ghost" href="formation.html">Tout le niveau 0</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>FAIR · Former les Associations à l'IA Responsable</span>
+    <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/formation.js"></script>
+<script>
+(function(){
+  // Exercice : je colle, ou pas ?
+  var OPTS=[['ok','OK'],['anon','Anonymiser'],['non','Jamais']];
+  var NAMES={ok:'OK',anon:'Anonymiser',non:'Jamais'};
+  var items=[].slice.call(document.querySelectorAll('#sort .item'));
+  var sscore=document.getElementById('sort-score');
+  function tally(){
+    var good=items.filter(function(it){return it.classList.contains('ok')}).length;
+    var done=items.filter(function(it){return it.dataset.picked}).length;
+    sscore.textContent=good+(good>1?' bonnes réponses':' bonne réponse')+' sur '+items.length+(done===items.length?(good===items.length?' · Sans faute !':' · Relisez les explications en rouge'):'');
+  }
+  items.forEach(function(it){
+    var box=it.querySelector('.choices');
+    var fb=it.querySelector('.fb');
+    var txt=fb.textContent;
+    OPTS.forEach(function(o){
+      var b=document.createElement('button');
+      b.type='button';b.className='chip';b.textContent=o[1];b.setAttribute('aria-pressed','false');
+      b.addEventListener('click',function(){
+        [].forEach.call(box.children,function(x){x.setAttribute('aria-pressed',x===b)});
+        var right=o[0]===it.dataset.a;
+        it.dataset.picked=o[0];
+        it.classList.toggle('ok',right);it.classList.toggle('ko',!right);
+        fb.innerHTML='';
+        var s=document.createElement('b');
+        s.textContent=right?'Bonne réponse. ':'Réponse attendue : '+NAMES[it.dataset.a]+'. ';
+        fb.appendChild(s);fb.appendChild(document.createTextNode(txt));
+        fb.hidden=false;
+        tally();
+      });
+      box.appendChild(b);
+    });
+  });
+  tally();
+
+  // Charte IA
+  var RULES=[
+    "Aucune donnée personnelle des licenciés (noms, coordonnées, dates de naissance, santé) n'est saisie dans un outil d'IA. On parle du club, jamais des personnes.",
+    "Tout texte produit avec l'IA est relu et vérifié (dates, chiffres, règlements, noms) avant d'être publié ou envoyé au nom du club.",
+    "Aucune photo ou vidéo de mineur n'est déposée dans un outil d'IA, et aucune image ou voix d'une personne réelle n'est générée.",
+    "Les comptes des outils d'IA sont ouverts avec l'adresse e-mail du club, pour rester au club quand un bénévole s'en va.",
+    "Les images générées par IA sont signalées par la mention « Image générée par IA ».",
+    "Tout virement et tout changement de coordonnées bancaires d'un fournisseur sont validés par deux membres du bureau, après un rappel au numéro habituel.",
+    "Un référent IA est désigné pour répondre aux questions, tenir cette charte à jour et accompagner les nouveaux bénévoles.",
+    "Cette charte est relue chaque début de saison en réunion de bureau."
+  ];
+  var KEY_C='fair-module3-charte';
+  var cfg=FAIR.store(KEY_C);
+  var inputs=[].slice.call(document.querySelectorAll('.cfg input[data-k]'));
+  var rules=[].slice.call(document.querySelectorAll('#rules input'));
+  var dClub=document.getElementById('d-club'),dRules=document.getElementById('d-rules'),dSign=document.getElementById('d-sign');
+  function draw(save){
+    var v={};inputs.forEach(function(i){v[i.dataset.k]=i.value.trim()});
+    dClub.textContent=v.club||'du club';
+    dRules.innerHTML='';
+    rules.forEach(function(r){
+      if(!r.checked)return;
+      var t=RULES[r.dataset.r];
+      if(r.dataset.r==='6'&&v.ref)t=t.replace('Un référent IA est désigné','Un référent IA ('+v.ref+') est désigné');
+      var li=document.createElement('li');li.textContent=t;dRules.appendChild(li);
+    });
+    dSign.textContent='Adoptée '+(v.date?'lors de : '+v.date:'le ____ / ____ / ________')+'. Signature du président ou de la présidente :';
+    if(save){v.rules=rules.map(function(r){return r.checked});FAIR.store(KEY_C,v)}
+  }
+  inputs.forEach(function(i){i.value=cfg[i.dataset.k]||'';i.addEventListener('input',function(){draw(true)})});
+  rules.forEach(function(r,n){if(cfg.rules)r.checked=!!cfg.rules[n];r.addEventListener('change',function(){draw(true)})});
+  draw(false);
+
+  var cc=document.getElementById('copy-charte');
+  cc.addEventListener('click',function(){
+    var lines=['CHARTE IA '+(dClub.textContent==='du club'?'DU CLUB':dClub.textContent.toUpperCase()),'',document.querySelector('#doc .intro').textContent,''];
+    [].forEach.call(dRules.children,function(li,i){lines.push((i+1)+'. '+li.textContent)});
+    lines.push('',dSign.textContent);
+    FAIR.copy(cc,document.getElementById('doc'),lines.join('\n'));
+  });
+  document.getElementById('print').addEventListener('click',function(){
+    document.body.classList.add('print-charte');
+    window.print();
+    setTimeout(function(){document.body.classList.remove('print-charte')},500);
+  });
+})();
+</script>
+</body>
+</html>

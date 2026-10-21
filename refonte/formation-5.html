@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Formation · Module 5 · FAIR</title>
+<meta name="description" content="Module 5 de la formation FAIR : un vrai dossier du club traité de bout en bout avec l'IA, un quiz de dix questions et l'attestation « Niveau 0 validé ».">
+<meta name="theme-color" content="#07111F">
+<link rel="icon" href="assets/logo/fair-icone.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/css/formation.css?v=2">
+<style>
+/* Choisir le dossier */
+.picks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.pick{position:relative;display:grid;gap:10px;align-content:start;padding:22px 20px 24px;border:1.5px solid var(--line-c);border-radius:6px;background:var(--paper);cursor:pointer;transition:border-color .2s,box-shadow .2s}
+.pick:hover{border-color:var(--ink-2)}
+.pick input{position:absolute;opacity:0;pointer-events:none}
+.pick:has(input:checked){border-color:var(--turf-ink);box-shadow:inset 0 3px 0 var(--turf-ink)}
+.pick:has(input:focus-visible){outline:3px solid var(--turf);outline-offset:3px}
+.pick .n{font-family:var(--f-mono);font-size:.7rem;color:var(--turf-ink);letter-spacing:.07em;text-transform:uppercase}
+.pick h3{font-family:var(--f-display);font-weight:850;font-stretch:66%;text-transform:uppercase;font-size:1.45rem;line-height:1}
+.pick p{color:var(--ink-2);font-size:.92rem;line-height:1.5}
+.pick ul{display:grid;gap:4px;font-size:.88rem;color:var(--ink-2)}
+.pick li{display:flex;gap:8px}
+.pick li svg{margin-top:4px;width:14px;height:14px}
+@media (max-width:980px){.picks{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.picks{grid-template-columns:minmax(0,1fr)}}
+
+/* Feuille de route */
+.road{display:grid;gap:0;counter-reset:s}
+.leg{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:20px clamp(28px,4vw,56px);padding-block:clamp(24px,3vw,36px);border-top:1px solid var(--line-n)}
+.leg-txt{display:grid;gap:10px;align-content:start}
+.leg-n{font-family:var(--f-display);font-weight:900;font-stretch:62%;font-size:3.2rem;line-height:.8;color:var(--turf)}
+.leg-txt p{color:var(--mist);font-size:.96rem}
+.leg-txt .from{font-family:var(--f-mono);font-size:.7rem;color:var(--fog);letter-spacing:.05em;text-transform:uppercase}
+.leg-txt .from a{color:var(--turf-hi);text-decoration:none}
+.leg-done{display:flex;gap:12px;align-items:center;padding:12px 14px;border:1px solid var(--line-n);border-radius:6px;cursor:pointer;font-weight:600;font-size:.94rem;justify-self:start}
+.leg-done:has(input:checked){border-color:var(--turf);color:var(--turf-hi)}
+.leg-done .tick{border-color:var(--fog);margin:0}
+.leg-box{display:grid;gap:12px;align-content:start}
+.todo{display:grid;gap:8px;padding:20px;border:1px solid var(--line-n);border-radius:8px;background:var(--night-2)}
+.todo li{display:flex;gap:10px;color:var(--mist);font-size:.95rem}
+.todo li svg{margin-top:5px}
+.road-score{font-family:var(--f-mono);font-size:.78rem;color:var(--fog);border-top:1px solid var(--line-n);padding-top:18px}
+.road-score.done{color:var(--turf)}
+@media (max-width:860px){.leg{grid-template-columns:minmax(0,1fr)}}
+
+/* Quiz */
+.quiz{display:grid;gap:14px;max-width:860px}
+.q{border:1px solid var(--line-c);border-radius:6px;background:var(--paper);padding:20px 20px 22px;margin:0;display:grid;gap:12px;min-width:0}
+.q legend{font-weight:700;line-height:1.4;padding:0;float:left;width:100%}
+.q legend span{font-family:var(--f-mono);font-size:.72rem;color:var(--turf-ink);margin-right:10px}
+.q label{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line-c);border-radius:6px;cursor:pointer;font-size:.95rem;line-height:1.45}
+.q label:hover{border-color:var(--ink-2)}
+.q input{appearance:none;-webkit-appearance:none;flex:none;width:20px;height:20px;margin:1px 0 0;border:1.5px solid var(--ink-2);border-radius:50%;display:grid;place-items:center;cursor:pointer}
+.q input::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--ink);opacity:0}
+.q input:checked::after{opacity:1}
+.q label:has(input:checked){border-color:var(--ink)}
+.q.graded label.right{border-color:var(--turf-ink);background:#F3FAF6}
+.q.graded label.wrong{border-color:var(--red-ink);background:#FCF1EE}
+.q .why{font-size:.9rem;color:var(--ink-2);border-left:3px solid var(--turf-ink);padding:2px 0 2px 12px}
+.q .why[hidden]{display:none}
+.quiz-act{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:8px}
+.quiz-res{font-family:var(--f-mono);font-size:.8rem;color:var(--ink-2)}
+.quiz-res.ok{color:var(--turf-ink)}
+.quiz-res.ko{color:var(--red-ink)}
+
+/* Attestation */
+.att{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:28px clamp(28px,4vw,56px);align-items:start}
+.att-cfg{display:grid;gap:18px}
+.reqs{display:grid;gap:8px}
+.reqs li{display:flex;gap:12px;align-items:center;padding:12px 14px;border:1px solid var(--line-n);border-radius:6px;font-size:.94rem}
+.reqs li a{color:var(--mist)}
+.reqs .dot{flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--fog);display:grid;place-items:center}
+.reqs li.ok{border-color:rgba(31,181,122,.6)}
+.reqs li.ok .dot{background:var(--turf);border-color:var(--turf)}
+.reqs li.ok .dot::after{content:"";width:10px;height:5px;border-left:2.5px solid var(--on-turf);border-bottom:2.5px solid var(--on-turf);transform:translateY(-1px) rotate(-45deg)}
+.cert{background:var(--paper);color:var(--ink);border-radius:8px;padding:clamp(28px,4vw,48px);display:grid;gap:18px;justify-items:center;text-align:center;border:10px solid var(--chalk-2);box-shadow:0 30px 60px -30px rgba(0,0,0,.7);position:relative}
+.cert.locked{filter:grayscale(1);opacity:.55}
+.cert img{height:40px;width:auto}
+.cert .k{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.cert h3{font-family:var(--f-display);font-weight:900;font-stretch:62%;text-transform:uppercase;font-size:clamp(2.4rem,5vw,3.6rem);line-height:.86}
+.cert h3 span{color:var(--turf-ink)}
+.cert .who{font-size:1.3rem;font-weight:700;border-bottom:1px solid var(--line-c);padding-bottom:6px;min-width:60%}
+.cert p{color:var(--ink-2);font-size:.95rem;max-width:46ch}
+.cert ol{display:flex;flex-wrap:wrap;justify-content:center;gap:6px}
+.cert ol li{font-size:.8rem;padding:6px 10px;border-radius:999px;border:1px solid var(--line-c)}
+.cert .date{font-family:var(--f-mono);font-size:.74rem;color:var(--ink-2)}
+.att-msg{font-size:.9rem;color:var(--fog)}
+@media (max-width:900px){.att{grid-template-columns:minmax(0,1fr)}}
+
+/* La suite : un avant-goût du niveau 1 */
+.demo{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:28px clamp(28px,4vw,56px);align-items:start}
+.demo-txt{display:grid;gap:18px;align-content:start}
+.demo-txt p{color:var(--mist);font-size:.98rem}
+.demo-txt .from{font-family:var(--f-mono);font-size:.7rem;color:var(--fog);letter-spacing:.05em;text-transform:uppercase}
+.gain{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line-n);border:1px solid var(--line-n);border-radius:6px;overflow:hidden}
+.gain div{display:grid;gap:8px;padding:18px 18px 20px;background:var(--night)}
+.gain b{font-family:var(--f-display);font-weight:900;font-stretch:62%;text-transform:uppercase;font-size:clamp(2.4rem,4vw,3.2rem);line-height:.85}
+.gain .before b{color:var(--fog);text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:3px}
+.gain .after b{color:var(--turf)}
+.demo-box{display:grid;gap:12px}
+.out{border-radius:8px;background:var(--paper);color:var(--ink);overflow:hidden}
+.out .label{display:flex;padding:12px 16px;border-bottom:1px solid var(--line-c);color:var(--ink-2)}
+.out pre{margin:0;padding:18px 20px 20px;white-space:pre-wrap;font-family:var(--f-body);font-size:.96rem;line-height:1.6}
+.out pre b{color:var(--turf-ink)}
+@media (max-width:900px){.demo{grid-template-columns:minmax(0,1fr)}}
+.sub{display:grid;gap:8px;margin:clamp(56px,7vw,88px) 0 clamp(20px,3vw,28px)}
+.sub p{color:var(--mist);max-width:60ch}
+.mods1{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line-n);border:1px solid var(--line-n);border-radius:6px;overflow:hidden}
+.mods1 li{display:grid;gap:8px;align-content:start;padding:22px 20px 24px;background:var(--night)}
+.mods1 b{font-family:var(--f-display);font-weight:850;font-stretch:66%;text-transform:uppercase;font-size:1.35rem;line-height:1}
+.mods1 p{color:var(--fog);font-size:.88rem;line-height:1.45}
+@media (max-width:980px){.mods1{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.mods1{grid-template-columns:minmax(0,1fr)}}
+.suite-cta{margin-top:clamp(48px,6vw,72px);padding-top:clamp(32px,4vw,48px);border-top:1px solid var(--line-n)}
+
+@media print{
+  body{background:#fff}
+  body>*:not(main),main>*:not(#attestation),#attestation .head,#attestation .att-cfg,#attestation .att-msg{display:none!important}
+  #attestation{padding:0;background:#fff}
+  .att{display:block}
+  .cert{box-shadow:none;border-color:#E1E6DE}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="check" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></symbol>
+  <symbol id="lock" viewBox="0 0 20 20"><rect x="4.5" y="9" width="11" height="8" rx="1.5"/><path d="M7 9V6.5a3 3 0 0 1 6 0V9"/></symbol>
+</svg>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="index.html" aria-label="FAIR, retour à l'accueil"><img src="assets/logo/fair-logo-blanc.svg" alt="FAIR"></a>
+    <nav aria-label="Navigation">
+      <a class="opt" href="index.html#clubs">Clubs</a>
+      <a class="opt" href="index.html#partenaires">Fédérations</a>
+      <a href="formation.html" aria-current="page">Formation</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <section class="hero">
+    <div class="wrap hero-in">
+      <p class="label"><span class="sq"></span><a href="formation.html">Formation FAIR · Niveau 0</a> · Module 5 sur 5</p>
+      <h1><small>Mise en pratique</small>Mon premier<br><span class="turf">dossier</span></h1>
+      <p class="lead">Tout ce que vous avez appris, appliqué à un vrai projet du club. Choisissez un dossier, suivez la feuille de route, passez le quiz et repartez avec votre attestation.</p>
+      <ul class="meta">
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>45 minutes</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Modules 1 à 4 terminés</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Un vrai besoin du club</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Attestation à imprimer</li>
+      </ul>
+      <nav class="steps-nav" aria-label="Étapes du module">
+        <a href="#choisir"><b>1. Choisir</b><span>Le dossier du club</span></a>
+        <a href="#realiser"><b>2. Réaliser</b><span>La feuille de route en 6 étapes</span></a>
+        <a href="#quiz"><b>3. Le quiz</b><span>Dix questions, 8 pour réussir</span></a>
+        <a href="#attestation"><b>4. Attestation</b><span>Niveau 0 validé</span></a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="choisir">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Étape 1</p>
+        <h2 class="h2">Choisissez<br>votre dossier</h2>
+        <p class="lead">Prenez celui qui correspond à un besoin réel du club dans les prochaines semaines. La feuille de route s'adapte à votre choix.</p>
+      </div>
+      <div class="picks" role="radiogroup" aria-label="Choisir le dossier">
+        <label class="pick"><input type="radio" name="dossier" value="fete"><span class="n">Dossier A</span><h3>La fête de fin de saison</h3><p>Réunir licenciés, familles et bénévoles autour d'un moment convivial.</p><ul><li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Invitation aux familles</li><li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Rétroplanning</li><li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Post réseaux sociaux</li></ul></label>
+        <label class="pick"><input type="radio" name="dossier" value="benevoles"><span class="n">Dossier B</span><h3>Recruter des bénévoles</h3><p>Trouver des renforts pour la buvette, l'accueil ou l'encadrement.</p><ul><li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Annonce de recrutement</li><li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Fiches missions</li><li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Message d'accueil</li></ul></label>
+        <label class="pick"><input type="radio" name="dossier" value="portes"><span class="n">Dossier C</span><h3>Les portes ouvertes</h3><p>Faire découvrir le club aux familles du quartier en début de saison.</p><ul><li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Affiche et flyer</li><li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Programme de la journée</li><li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Message aux écoles</li></ul></label>
+        <label class="pick"><input type="radio" name="dossier" value="sponsor"><span class="n">Dossier D</span><h3>Trouver un sponsor</h3><p>Convaincre un commerce local de soutenir le club.</p><ul><li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Présentation du club</li><li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Offre de partenariat</li><li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>E-mail de prise de contact</li></ul></label>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="realiser">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Étape 2</p>
+        <h2 class="h2">La feuille<br><span class="turf">de route</span></h2>
+        <p class="lead" id="road-lead">Choisissez d'abord un dossier ci-dessus : les demandes de chaque étape s'adapteront.</p>
+      </div>
+      <div class="road" id="check" data-key="fair-module5" data-name="Module 5">
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">01</span>
+            <h3 class="h3">Cadrer le projet</h3>
+            <p>Laissez l'IA vous poser les bonnes questions avant de produire quoi que ce soit.</p>
+            <p class="from">Vu dans le <a href="formation-2.html#affiner">module 2</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="cadrer">Étape faite</label>
+          </div>
+          <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre data-p="0"></pre></div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">02</span>
+            <h3 class="h3">Le premier livrable</h3>
+            <p>Une demande complète avec les quatre briques C.L.U.B. Remplacez les passages en vert.</p>
+            <p class="from">Vu dans le <a href="formation-2.html#methode">module 2</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="livrable">Étape faite</label>
+          </div>
+          <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre data-p="1"></pre></div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">03</span>
+            <h3 class="h3">S'appuyer sur un document</h3>
+            <p>Joignez un document existant du club, nettoyé de toute donnée personnelle.</p>
+            <p class="from">Vu dans le <a href="formation-4.html#joindre">module 4</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="document">Étape faite</label>
+          </div>
+          <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre data-p="2"></pre></div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">04</span>
+            <h3 class="h3">Affiner</h3>
+            <p>Restez dans la même conversation et retouchez, une chose à la fois.</p>
+            <p class="from">Vu dans le <a href="formation-2.html#affiner">module 2</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="affiner">Étape faite</label>
+          </div>
+          <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre data-p="3"></pre></div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">05</span>
+            <h3 class="h3">Vérifier</h3>
+            <p>Faites lister les faits par l'IA, puis vérifiez-les vous-même à la source.</p>
+            <p class="from">Vu dans le <a href="formation-3.html#verifier">module 3</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="verifier">Étape faite</label>
+          </div>
+          <div class="leg-box">
+            <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre>Liste toutes les informations factuelles de ce texte (dates, horaires, lieux, montants, noms, règles citées), une par ligne, pour que je les vérifie une par une. N'ajoute rien.</pre></div>
+            <ul class="todo">
+              <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Aucun nom, téléphone ou photo de licencié</li>
+              <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Chaque date et chaque montant vérifiés à la source</li>
+              <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Image générée par IA signalée, s'il y en a une</li>
+            </ul>
+          </div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">06</span>
+            <h3 class="h3">Faire valider</h3>
+            <p>Montrez le résultat à un membre du bureau avant de le publier ou de l'envoyer. Profitez-en pour lui montrer comment vous avez fait.</p>
+            <p class="from">La charte du <a href="formation-3.html#charte">module 3</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="valider">Étape faite</label>
+          </div>
+          <ul class="todo">
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Le texte est relu par une deuxième personne</li>
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Il est publié ou envoyé sur le canal officiel du club</li>
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>La conversation contenant des documents du club est supprimée</li>
+          </ul>
+        </div>
+        <p class="road-score" id="score" aria-live="polite">0 sur 6</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="quiz">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Étape 3</p>
+        <h2 class="h2">Dix questions,<br>huit pour réussir</h2>
+        <p class="lead">Une question par module, et quelques-unes en plus. Vous pouvez recommencer autant de fois que vous voulez.</p>
+      </div>
+      <form class="quiz" id="quiz-form" novalidate></form>
+      <div class="quiz-act">
+        <button class="btn btn-turf" type="submit" form="quiz-form">Voir mon score</button>
+        <button class="btn btn-ghost" type="button" id="quiz-reset">Recommencer</button>
+        <p class="quiz-res" id="quiz-res" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="attestation">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Étape 4</p>
+        <h2 class="h2">Votre<br><span class="turf">attestation</span></h2>
+        <p class="lead">Elle se débloque quand les cinq modules et le quiz sont validés. Votre nom reste sur cet appareil : il ne sert qu'à l'impression.</p>
+      </div>
+      <div class="att">
+        <div class="att-cfg">
+          <div class="field"><label for="a-name">Prénom et nom</label><input id="a-name" data-k="name" autocomplete="name" placeholder="Camille Exemple"></div>
+          <div class="field"><label for="a-club">Club</label><input id="a-club" data-k="club" placeholder="AS Exemple Handball"></div>
+          <ul class="reqs" id="reqs"></ul>
+          <button class="btn btn-turf" type="button" id="print-att" disabled>Imprimer l'attestation</button>
+          <p class="att-msg" id="att-msg"></p>
+        </div>
+        <article class="cert locked" id="cert" aria-label="Aperçu de l'attestation">
+          <img src="assets/logo/fair-logo-horizontal.svg" alt="FAIR" onerror="this.remove()">
+          <span class="k">Attestation de formation</span>
+          <h3>Niveau 0<br><span>validé</span></h3>
+          <span class="who" id="c-name">Prénom Nom</span>
+          <p>a suivi les cinq modules du niveau 0 de la formation FAIR « Former les Associations à l'IA Responsable » et réussi le quiz final<span id="c-club"></span>.</p>
+          <ol><li>Créer ses comptes</li><li>Bien demander</li><li>L'IA sans risque</li><li>Fichiers, photos, voix</li><li>Mon premier dossier</li></ol>
+          <span class="date" id="c-date"></span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Votre parcours</p>
+        <h2 class="h2">Le niveau 0,<br><span class="turf">module par module</span></h2>
+      </div>
+      <nav class="path" aria-label="Modules du niveau 0" style="background:var(--line-c);border-color:var(--line-c)">
+        <a href="formation-1.html"><span class="label">Module 1</span><b>Créer ses comptes</b><span class="st" data-m="1"></span></a>
+        <a href="formation-2.html"><span class="label">Module 2</span><b>Bien demander</b><span class="st" data-m="2"></span></a>
+        <a href="formation-3.html"><span class="label">Module 3</span><b>L'IA sans risque</b><span class="st" data-m="3"></span></a>
+        <a href="formation-4.html"><span class="label">Module 4</span><b>Fichiers, photos, voix</b><span class="st" data-m="4"></span></a>
+        <a href="formation-5.html" aria-current="page"><span class="label">Module 5</span><b>Mon premier dossier</b><span class="st" data-m="5"></span></a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="sec" id="suite">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span><span id="suite-k">Après le niveau 0</span></p>
+        <h2 class="h2">Niveau 1 :<br><span class="turf">l'IA au quotidien</span></h2>
+        <p class="lead">Le niveau 0 vous a appris à bien demander. Le niveau 1 l'applique aux tâches qui reviennent chaque semaine au club : les messages, les réunions, les réseaux, les séances. Trois exemples tirés des modules :</p>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Exemples du niveau 1">
+        <button class="tab" type="button" role="tab" id="t-conv" aria-controls="p-conv" aria-selected="true">Les convocations <i>Module 1</i></button>
+        <button class="tab" type="button" role="tab" id="t-cr" aria-controls="p-cr" aria-selected="false" tabindex="-1">Le compte rendu <i>Module 3</i></button>
+        <button class="tab" type="button" role="tab" id="t-seance" aria-controls="p-seance" aria-selected="false" tabindex="-1">La séance <i>Module 4</i></button>
+      </div>
+
+      <div class="panel demo" role="tabpanel" id="p-conv" aria-labelledby="t-conv">
+        <div class="demo-txt">
+          <h3 class="h3">Les convocations du week-end</h3>
+          <p>Chaque jeudi soir, un message par équipe, écrit à la main avec les horaires, les lieux et la tenue. Avec une seule demande et le planning collé dessous, tout est prêt d'un coup.</p>
+          <div class="gain">
+            <div class="before"><span class="label">Avant</span><b>1 h 30</b></div>
+            <div class="after"><span class="label">Avec l'IA</span><b>10 min</b></div>
+          </div>
+          <p class="from">Niveau 1 · Module 1 · Écrire aux adhérents</p>
+        </div>
+        <div class="demo-box">
+          <div class="prompt"><div class="prompt-top"><span class="label">La demande</span><button class="copy" type="button" data-copy>Copier</button></div><pre>Je suis secrétaire d'un club de handball. Voici le planning du week-end. Rédige un message WhatsApp de convocation par équipe : adversaire, lieu, heure de rendez-vous (1 h avant le match), tenue rouge, et demande de confirmation avant vendredi 18 h. Ton direct et sympa, 4 lignes maximum par message.
+
+U11 · samedi 14 h · contre HBC Rive Droite · gymnase Jean-Moulin
+U13 · samedi 16 h · à l'extérieur · salle des Tilleuls, Villeneuve
+Seniors F · dimanche 15 h · contre ASL Plaine · gymnase Jean-Moulin</pre></div>
+          <div class="out"><span class="label">Exemple de résultat (extrait)</span><pre><b>U11 · Match samedi contre HBC Rive Droite</b>
+Rendez-vous à 13 h au gymnase Jean-Moulin, en tenue rouge, gourde pleine.
+Merci de confirmer la présence de votre enfant avant vendredi 18 h !
+
+<b>U13 · Déplacement samedi à Villeneuve</b>
+Rendez-vous à 15 h directement à la salle des Tilleuls, en tenue rouge.
+Pensez au covoiturage, et confirmez avant vendredi 18 h !</pre></div>
+        </div>
+      </div>
+
+      <div class="panel demo" role="tabpanel" id="p-cr" aria-labelledby="t-cr" hidden>
+        <div class="demo-txt">
+          <h3 class="h3">Le compte rendu de réunion</h3>
+          <p>La réunion de bureau est enregistrée avec l'accord de tous, puis transcrite. L'IA en tire les décisions et les actions : il ne reste qu'à relire et envoyer.</p>
+          <div class="gain">
+            <div class="before"><span class="label">Avant</span><b>2 h</b></div>
+            <div class="after"><span class="label">Avec l'IA</span><b>15 min</b></div>
+          </div>
+          <p class="from">Niveau 1 · Module 3 · Réunions et AG</p>
+        </div>
+        <div class="demo-box">
+          <div class="prompt"><div class="prompt-top"><span class="label">La demande</span><button class="copy" type="button" data-copy>Copier</button></div><pre>Voici la transcription de notre réunion de bureau d'hier, avec les noms remplacés par les fonctions. Rédige le compte rendu en trois parties : les décisions prises, les actions (qui, quoi, pour quand) et les points reportés. Une page maximum, phrases courtes, aucune information qui ne figure pas dans la transcription.</pre></div>
+          <div class="out"><span class="label">Exemple de résultat (extrait)</span><pre><b>Décisions</b>
+· Le tournoi de Pâques est maintenu le 12 avril, inscription à 5 € par équipe.
+
+<b>Actions</b>
+· Réserver le gymnase · Secrétaire · avant le 15 mars
+· Commander les médailles · Trésorier · avant le 1er avril
+
+<b>Reporté</b>
+· L'achat d'un minibus, à revoir lors de l'assemblée générale.</pre></div>
+        </div>
+      </div>
+
+      <div class="panel demo" role="tabpanel" id="p-seance" aria-labelledby="t-seance" hidden>
+        <div class="demo-txt">
+          <h3 class="h3">La séance des U9</h3>
+          <p>L'éducateur bénévole décrit son groupe, son matériel et son thème. L'IA propose une séance complète, qu'il ajuste à ses joueurs : c'est lui qui garde la main.</p>
+          <div class="gain">
+            <div class="before"><span class="label">Avant</span><b>45 min</b></div>
+            <div class="after"><span class="label">Avec l'IA</span><b>5 min</b></div>
+          </div>
+          <p class="from">Niveau 1 · Module 4 · Préparer ses séances</p>
+        </div>
+        <div class="demo-box">
+          <div class="prompt"><div class="prompt-top"><span class="label">La demande</span><button class="copy" type="button" data-copy>Copier</button></div><pre>Je suis éducateur bénévole en football. Prépare une séance d'1 h pour 14 enfants de U9 (7-8 ans) sur la conduite de balle. Matériel : 20 plots, 8 chasubles, un ballon par enfant. Un échauffement ludique, deux exercices, un petit match et un retour au calme, avec pour chaque partie la durée et une consigne simple à dire aux enfants.</pre></div>
+          <div class="out"><span class="label">Exemple de résultat (extrait)</span><pre><b>0-10 min · Les feux tricolores</b>
+Chaque enfant conduit son ballon dans un carré de plots. « Vert » : on avance. « Orange » : on ralentit. « Rouge » : pied sur le ballon !
+
+<b>10-25 min · Le slalom des plots</b>
+Deux colonnes, un slalom chacune. Consigne : « Le ballon reste collé à ton pied, comme un chien en laisse. »</pre></div>
+        </div>
+      </div>
+
+      <div class="sub">
+        <h3 class="h3">Les cinq modules du niveau 1</h3>
+        <p>Même format que le niveau 0 : des demandes prêtes à copier, une check-list à la fin de chaque module et une attestation.</p>
+      </div>
+      <ol class="mods1">
+        <li><span class="label"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Module 1</span><b>Écrire aux adhérents</b><p>Convocations, mails aux parents, réponse à un message délicat.</p></li>
+        <li><span class="label"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Module 2</span><b>Réseaux et affiches</b><p>Posts de résultats, calendrier de publication, visuels d'événements.</p></li>
+        <li><span class="label"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Module 3</span><b>Réunions et AG</b><p>Ordre du jour, transcription, compte rendu, rapport moral.</p></li>
+        <li><span class="label"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Module 4</span><b>Préparer ses séances</b><p>Plans d'entraînement par âge, variantes, inclusion.</p></li>
+        <li><span class="label"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Module 5</span><b>La rentrée du club</b><p>Le kit de rentrée de bout en bout, quiz et attestation.</p></li>
+      </ol>
+
+      <div class="sub">
+        <h3 class="h3">Toute la formation</h3>
+        <p>Six niveaux, du premier compte à la fonction de référent IA du club. La difficulté et la profondeur augmentent à chaque marche.</p>
+      </div>
+      <ol class="levels">
+        <li class="lv free" style="--i:0"><span class="n">0</span><b>Les fondamentaux</b><span class="tag" id="lv0">Gratuit</span></li>
+        <li class="lv up" style="--i:1"><span class="n">1</span><b>L'IA au quotidien du club</b><span class="tag"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Sur accès</span></li>
+        <li class="lv" style="--i:2"><span class="n">2</span><b>Ses outils sur mesure</b><span class="tag"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Sur accès</span></li>
+        <li class="lv" style="--i:3"><span class="n">3</span><b>Financer et développer</b><span class="tag"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Sur accès</span></li>
+        <li class="lv" style="--i:4"><span class="n">4</span><b>Automatiser à plusieurs</b><span class="tag"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Sur accès</span></li>
+        <li class="lv" style="--i:5"><span class="n">5</span><b>Référent IA du club</b><span class="tag"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Sur accès</span></li>
+      </ol>
+
+      <div class="next suite-cta">
+        <p class="lead">Les niveaux 1 à 5 sont ouverts sur demande, pour un bénévole ou pour tout le bureau. Écrivez-nous avec le nom de votre club : nous revenons vers vous avec les modalités d'accès.</p>
+        <div class="actions">
+          <a class="btn btn-turf" href="formation-n1.html">Ouvrir le niveau 1</a>
+          <a class="btn btn-ghost" id="ask-access" href="mailto:contact@fair-asso.fr">Demander l'accès</a>
+          <a class="btn btn-ghost" href="index.html#contact">Ou un atelier au club</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>FAIR · Former les Associations à l'IA Responsable</span>
+    <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/formation.js"></script>
+<script>
+(function(){
+  var esc=function(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')};
+  // Les passages entre crochets s'affichent en vert
+  var green=function(s){return esc(s).replace(/\[[^\]]+\]/g,function(m){return '<i>'+m+'</i>'})};
+
+  // Étape 1 et 2 : dossier choisi et demandes adaptées
+  var DOSSIERS={
+    fete:{name:'la fête de fin de saison',p:[
+      "Je suis [rôle] dans un club de [sport] de [nombre] licenciés. Je prépare la fête de fin de saison du club, le [date]. Avant de proposer quoi que ce soit, pose-moi les 5 questions dont tu as besoin pour m'aider à l'organiser.",
+      "Je suis [rôle] dans un club de [sport]. Rédige l'invitation à la fête de fin de saison du [date], de [heure] à [heure], au [lieu]. Au programme : [remise des médailles, barbecue, match parents-enfants]. Elle s'adresse aux familles des licenciés, par e-mail et sur WhatsApp. Ton chaleureux et festif, 10 lignes maximum, avec une demande de réponse avant le [date limite].",
+      "Voici en pièce jointe le budget et la liste des tâches de la fête de l'an dernier (sans aucun nom). À partir de ce document, construis un rétroplanning semaine par semaine jusqu'au [date], avec pour chaque tâche la fonction responsable (bureau, éducateurs, bénévoles buvette…).",
+      "Reprends l'invitation : rends-la plus courte, ajoute une phrase pour remercier les bénévoles de la saison, et propose-moi trois objets d'e-mail au choix."
+    ]},
+    benevoles:{name:'le recrutement de bénévoles',p:[
+      "Je suis [rôle] dans un club de [sport] de [nombre] licenciés. Nous manquons de bénévoles pour [la buvette, l'accueil, l'encadrement des matchs]. Avant de proposer quoi que ce soit, pose-moi les 5 questions dont tu as besoin pour m'aider à en recruter.",
+      "Je suis [rôle] dans un club de [sport]. Rédige une annonce pour recruter [nombre] bénévoles pour [missions]. Elle s'adresse aux parents des licenciés, qui pensent souvent ne pas avoir le temps. Insiste sur le fait qu'une heure par mois suffit et sur la convivialité. Ton chaleureux, 8 lignes maximum, avec la façon de s'inscrire : [contact].",
+      "Voici en pièce jointe notre planning des matchs à domicile de la saison. Pour chaque type de mission (buvette, accueil, table de marque…), rédige une fiche mission d'une demi-page : en quoi ça consiste, combien de temps, qui contacter. Puis propose un tableau d'inscription vide par date.",
+      "Reprends l'annonce : écris-la comme un parent bénévole qui parle à d'autres parents, pas comme une entreprise, et propose une version de 3 lignes pour un SMS."
+    ]},
+    portes:{name:'les portes ouvertes',p:[
+      "Je suis [rôle] dans un club de [sport] de [nombre] licenciés. Nous organisons une journée portes ouvertes le [date] pour faire découvrir le club aux familles du quartier. Avant de proposer quoi que ce soit, pose-moi les 5 questions dont tu as besoin pour m'aider à la préparer.",
+      "Je suis [rôle] dans un club de [sport]. Rédige le texte d'une affiche et d'un flyer pour nos portes ouvertes du [date], de [heure] à [heure], au [lieu], avec essai gratuit pour les [âges]. Ils s'adressent aux familles du quartier qui ne connaissent pas le club. Un titre accrocheur, 5 lignes maximum, les infos pratiques bien visibles.",
+      "Voici en pièce jointe la liste de nos créneaux et de nos tarifs pour la saison. Construis le programme de la journée portes ouvertes, heure par heure, avec un atelier découverte par tranche d'âge et un point d'accueil pour les inscriptions.",
+      "Reprends le texte du flyer : rends-le plus simple pour des enfants de 8 ans et leurs parents, puis rédige un court message à envoyer aux directeurs des écoles du quartier pour leur demander de le diffuser."
+    ]},
+    sponsor:{name:'la recherche de sponsor',p:[
+      "Je suis [rôle] dans un club de [sport] de [nombre] licenciés. Je veux convaincre un commerce local de devenir partenaire du club. Avant de proposer quoi que ce soit, pose-moi les 5 questions dont tu as besoin pour m'aider à préparer ma démarche.",
+      "Je suis [rôle] dans un club de [sport] de [nombre] licenciés, dont [part] de jeunes. Rédige une présentation du club d'une page pour un futur partenaire : notre histoire, nos valeurs, nos équipes, nos événements. Elle s'adresse au gérant d'un commerce du quartier. Ton professionnel mais chaleureux, avec des chiffres concrets.",
+      "Voici en pièce jointe notre calendrier d'événements et notre budget prévisionnel (sans données personnelles). Propose trois formules de partenariat (bronze, argent, or) avec pour chacune ce que le club offre en visibilité et le montant demandé, cohérent avec notre budget.",
+      "Rédige maintenant l'e-mail de prise de contact avec [nom du commerce] : 8 lignes maximum, qui propose un rendez-vous de 20 minutes. Puis liste les trois objections les plus probables du gérant et une réponse courte à chacune."
+    ]}
+  };
+  var KEY_D='fair-module5-dossier';
+  var picks=[].slice.call(document.querySelectorAll('[name="dossier"]'));
+  var pres=[].slice.call(document.querySelectorAll('pre[data-p]'));
+  var lead=document.getElementById('road-lead');
+  function fill(v){
+    var d=DOSSIERS[v];
+    pres.forEach(function(pre){
+      pre.innerHTML=d?green(d.p[+pre.dataset.p]):'<span class="empty">Choisissez un dossier à l\'étape 1 pour afficher cette demande.</span>';
+    });
+    lead.textContent=d?'Votre dossier : '+d.name+'. Suivez les six étapes dans l\'ordre, dans la même conversation, et cochez au fur et à mesure.':'Choisissez d\'abord un dossier ci-dessus : les demandes de chaque étape s\'adapteront.';
+  }
+  var chosen=FAIR.store(KEY_D).v;
+  picks.forEach(function(p){
+    p.checked=p.value===chosen;
+    p.addEventListener('change',function(){FAIR.store(KEY_D,{v:p.value});fill(p.value)});
+  });
+  fill(chosen);
+
+  // Étape 3 : quiz
+  var QUIZ=[
+    ["Avec quelle adresse e-mail créer les comptes IA du club ?",["La mienne, c'est plus simple","Celle du club","Peu importe"],1,"Avec l'adresse du club, le compte reste au club quand un bénévole s'en va. (Module 1)"],
+    ["Que contient une demande bien construite ?",["Le contexte, le livrable, les lecteurs et la forme attendue","Un maximum de formules de politesse","Un seul mot-clé, comme dans un moteur de recherche"],0,"C.L.U.B. : Contexte, Livrable, Usagers, Bornes. (Module 2)"],
+    ["La première réponse ne vous convient pas. Que faire ?",["Ouvrir une nouvelle conversation et tout réécrire","Changer d'outil","Demander une retouche dans la même conversation"],2,"L'IA garde le contexte : une retouche ciblée va plus vite que tout recommencer. (Module 2)"],
+    ["L'IA cite un article du règlement fédéral. Vous…",["Le vérifiez sur le site de la fédération","Le copiez tel quel, elle a l'air sûre d'elle","Lui demandez si elle est certaine"],0,"L'IA peut inventer avec aplomb, et se confirmer elle-même. Seule la source officielle fait foi. (Module 3)"],
+    ["Pour préparer une réponse à un parent mécontent, vous…",["Collez son e-mail tel quel","Retirez les noms et détails identifiants avant de coller","Renoncez : c'est impossible avec l'IA"],1,"On peut se faire aider, à condition d'anonymiser d'abord. (Module 3)"],
+    ["La photo de l'équipe des U11 ferait une belle affiche. Vous…",["La déposez dans l'IA pour la retoucher","La floutez puis la déposez","Ne déposez aucune photo de mineur dans un outil d'IA"],2,"Les images d'enfants restent hors des outils d'IA, floutées ou non. (Module 3)"],
+    ["« Le président » appelle : virement urgent à faire. Vous…",["Raccrochez et le rappelez sur son numéro habituel","Faites le virement, c'est sa voix","Demandez une confirmation par SMS au même numéro"],0,"Une voix peut être imitée par IA. On rappelle toujours sur un numéro déjà connu. (Module 3)"],
+    ["Pour compter les tailles de maillots à partir d'un tableur, vous envoyez…",["Le fichier complet, l'IA fera le tri","Le fichier sans les noms, dates de naissance et téléphones","Seulement la colonne des noms"],1,"On ne garde que les colonnes utiles au calcul. (Module 4)"],
+    ["Un visuel de votre affiche a été généré par IA. Vous…",["Ne dites rien, personne ne verra la différence","Ajoutez la mention « Image générée par IA »","Le signez du nom du club"],1,"La transparence est la règle, et une obligation pour les contenus qui imitent le réel. (Module 3)"],
+    ["Vous avez fini de travailler sur un document du club. Ensuite ?",["Vous laissez la conversation dans l'historique","Vous partagez le lien de la conversation au bureau","Vous gardez le résultat et supprimez la conversation"],2,"L'outil d'IA n'est pas un espace de stockage. (Module 4)"]
+  ];
+  var KEY_Q='fair-quiz0';
+  var form=document.getElementById('quiz-form');
+  var res=document.getElementById('quiz-res');
+  QUIZ.forEach(function(q,i){
+    var fs=document.createElement('fieldset');fs.className='q';
+    var lg=document.createElement('legend');
+    var num=document.createElement('span');num.textContent=(i+1<10?'0':'')+(i+1);
+    lg.appendChild(num);lg.appendChild(document.createTextNode(q[0]));fs.appendChild(lg);
+    q[1].forEach(function(a,j){
+      var l=document.createElement('label');
+      var r=document.createElement('input');r.type='radio';r.name='q'+i;r.value=j;
+      l.appendChild(r);l.appendChild(document.createTextNode(a));fs.appendChild(l);
+    });
+    var why=document.createElement('p');why.className='why';why.hidden=true;why.textContent=q[3];fs.appendChild(why);
+    form.appendChild(fs);
+  });
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var good=0,missing=0;
+    QUIZ.forEach(function(q,i){
+      var fs=form.children[i];
+      var pick=form.querySelector('[name="q'+i+'"]:checked');
+      if(!pick){missing++;return}
+      fs.classList.add('graded');
+      [].forEach.call(fs.querySelectorAll('label'),function(l,j){
+        l.classList.toggle('right',j===q[2]);
+        l.classList.toggle('wrong',j===+pick.value&&j!==q[2]);
+      });
+      fs.querySelector('.why').hidden=false;
+      if(+pick.value===q[2])good++;
+    });
+    if(missing){res.className='quiz-res ko';res.textContent='Il reste '+missing+(missing>1?' questions':' question')+' sans réponse.';return}
+    var best=Math.max(good,FAIR.store(KEY_Q).best||0);
+    FAIR.store(KEY_Q,{best:best});
+    res.className='quiz-res '+(good>=8?'ok':'ko');
+    res.textContent=good+' sur 10 · '+(good>=8?'Quiz réussi !':'Il en faut 8 : relisez les explications et recommencez.');
+    reqs();
+  });
+  document.getElementById('quiz-reset').addEventListener('click',function(){
+    form.reset();res.textContent='';
+    [].forEach.call(form.children,function(fs){
+      fs.classList.remove('graded');
+      fs.querySelector('.why').hidden=true;
+      [].forEach.call(fs.querySelectorAll('label'),function(l){l.classList.remove('right','wrong')});
+    });
+    form.scrollIntoView({block:'start'});
+  });
+
+  // Étape 4 : attestation
+  var KEY_A='fair-attestation';
+  var att=FAIR.store(KEY_A);
+  var inputs=[].slice.call(document.querySelectorAll('.att-cfg input'));
+  var btn=document.getElementById('print-att'),msg=document.getElementById('att-msg'),cert=document.getElementById('cert');
+  function reqs(){
+    var list=FAIR.MODULES.map(function(m,i){return {t:'Module '+(i+1)+' · '+m.name,ok:FAIR.done(m),url:m.url+'#bilan'}});
+    list[4].url='#realiser';
+    list.push({t:'Quiz final · 8 sur 10 minimum',ok:(FAIR.store(KEY_Q).best||0)>=8,url:'#quiz'});
+    var ul=document.getElementById('reqs');ul.innerHTML='';
+    list.forEach(function(r){
+      var li=document.createElement('li');li.className=r.ok?'ok':'';
+      var d=document.createElement('span');d.className='dot';d.setAttribute('aria-hidden','true');
+      var a=document.createElement('a');a.href=r.url;a.textContent=r.t;
+      var s=document.createElement('span');s.className='sr-only';s.textContent=r.ok?' : validé':' : à faire';
+      li.appendChild(d);li.appendChild(a);li.appendChild(s);ul.appendChild(li);
+    });
+    var left=list.filter(function(r){return !r.ok}).length;
+    btn.disabled=!!left;
+    cert.classList.toggle('locked',!!left);
+    msg.textContent=left?'Encore '+left+(left>1?' étapes':' étape')+' avant de débloquer l\'attestation.':'Tout est validé : imprimez-la, ou enregistrez-la en PDF depuis la fenêtre d\'impression.';
+    document.getElementById('suite-k').textContent=left?'Après le niveau 0':'Niveau 0 validé · La suite';
+    document.getElementById('lv0').textContent=left?'Gratuit':'Gratuit · Validé';
+  }
+
+  // La suite : e-mail de demande d'accès pré-rempli
+  document.getElementById('ask-access').href='mailto:contact@fair-asso.fr?subject='+encodeURIComponent("Accès au niveau 1 de la formation FAIR")+'&body='+encodeURIComponent("Bonjour,\n\nJ'ai suivi le niveau 0 de la formation FAIR et je souhaite accéder au niveau 1.\n\nClub : \nVille : \nNombre de bénévoles intéressés : \n\nMerci !");
+  function cardText(save){
+    var v={};inputs.forEach(function(i){v[i.dataset.k]=i.value.trim()});
+    document.getElementById('c-name').textContent=v.name||'Prénom Nom';
+    document.getElementById('c-club').textContent=v.club?', au titre du club '+v.club:'';
+    if(save)FAIR.store(KEY_A,v);
+  }
+  inputs.forEach(function(i){i.value=att[i.dataset.k]||'';i.addEventListener('input',function(){cardText(true)})});
+  document.getElementById('c-date').textContent='Délivrée le '+new Date().toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'});
+  btn.addEventListener('click',function(){window.print()});
+  cardText(false);reqs();
+  document.addEventListener('fair:progress',reqs);
+})();
+</script>
+</body>
+</html>

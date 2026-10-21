@@ -3,181 +3,53 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Formation · Module 1 · FAIR</title>
-<meta name="description" content="Module 1 de la formation FAIR : créer ses comptes Claude, ChatGPT et Gemini, pas à pas, puis faire sa première demande pour le club.">
+<title>Formation · Niveau 0 · FAIR</title>
+<meta name="description" content="Niveau 0 de la formation FAIR : cinq modules courts pour que chaque bénévole de club sportif utilise l'IA utilement et sans risque.">
 <meta name="theme-color" content="#07111F">
 <link rel="icon" href="assets/logo/fair-icone.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/css/formation.css?v=2">
 <style>
-:root{
-  --night:#07111F;--night-2:#0C1B33;--navy:#13294B;
-  --turf:#1FB57A;--turf-hi:#43D99A;--turf-ink:#0A7348;
-  --chalk:#EDF0EA;--chalk-2:#E1E6DE;--paper:#FFFFFF;--ink:#0A1525;--ink-2:#4A5668;
-  --fog:#A7B3C5;--mist:#CBD3DE;--on-turf:#03140C;
-  --line-n:rgba(237,240,234,.14);--line-c:rgba(10,21,37,.14);
-  --f-display:"Archivo","Arial Narrow","Roboto Condensed",Arial,sans-serif;
-  --f-body:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  --f-mono:"Martian Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-  --pad:clamp(16px,4vw,64px);
-  --ease:cubic-bezier(.2,.75,.1,1);
-  color-scheme:dark;
-}
-*,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:var(--night);color:var(--chalk);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
-img,svg{display:block;max-width:100%}
-a{color:inherit}
-p,h1,h2,h3,figure{margin:0}
-ul,ol{margin:0;padding:0;list-style:none}
-button{font:inherit;color:inherit}
-:focus-visible{outline:3px solid var(--turf);outline-offset:3px}
-::selection{background:var(--turf);color:var(--on-turf)}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.wrap{width:100%;max-width:1200px;margin-inline:auto;padding-inline:var(--pad)}
-.label{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:.7rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;line-height:1.35;color:var(--fog)}
-.label .sq{width:7px;height:7px;background:var(--turf);flex:none}
-.h2{font-family:var(--f-display);font-weight:850;font-stretch:62%;text-transform:uppercase;font-size:clamp(2.4rem,5vw,4.4rem);line-height:.88;text-wrap:balance}
-.h3{font-family:var(--f-display);font-weight:850;font-stretch:66%;text-transform:uppercase;font-size:clamp(1.5rem,2.2vw,2rem);line-height:.95}
-.lead{font-size:clamp(1.05rem,1.4vw,1.25rem);line-height:1.5;max-width:56ch;color:var(--mist)}
-.turf{color:var(--turf)}
-.sec{padding-block:clamp(64px,8vw,112px)}
-.chalk{background:var(--chalk);color:var(--ink);color-scheme:light}
-.chalk .label{color:var(--ink-2)}
-.chalk .lead{color:var(--ink-2)}
-.ico-ck{width:16px;height:16px;fill:none;stroke:var(--turf);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
-.chalk .ico-ck{stroke:var(--turf-ink)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:50px;padding:0 24px;border-radius:999px;font:600 .96rem/1.1 var(--f-body);text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background-color .25s,border-color .25s}
-.btn-turf{background:var(--turf);color:var(--on-turf)}
-.btn-turf:hover{background:var(--turf-hi)}
-.btn-ghost{border-color:rgba(237,240,234,.35);color:var(--chalk);background:transparent}
-.btn-ghost:hover{border-color:var(--chalk)}
-.chalk .btn-ghost{border-color:var(--line-c);color:var(--ink)}
-.chalk .btn-ghost:hover{border-color:var(--ink)}
+/* Progression globale */
+.bar{width:100%;max-width:560px;display:grid;gap:10px;margin-top:8px}
+.bar-track{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.bar-track span{height:8px;border-radius:4px;background:var(--line-n);transition:background-color .3s}
+.bar-track span.on{background:var(--turf)}
+.bar p{font-family:var(--f-mono);font-size:.76rem;color:var(--fog)}
 
-/* En-tête */
-.hdr{position:sticky;top:0;z-index:50;background:rgba(7,17,31,.82);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-bottom:1px solid var(--line-n)}
-.hdr-in{display:flex;align-items:center;gap:20px;height:68px}
-.brand{margin-right:auto;display:flex}
-.brand img{height:34px;width:auto}
-.hdr nav{display:flex;gap:24px;font-size:.92rem;font-weight:500}
-.hdr nav a{text-decoration:none;color:var(--mist)}
-.hdr nav a:hover,.hdr nav a[aria-current]{color:var(--chalk)}
-.hdr nav a[aria-current]{box-shadow:inset 0 -1.5px 0 var(--turf)}
-@media (max-width:640px){.hdr nav .opt{display:none}}
+/* Liste des modules */
+.mods{display:grid;gap:12px}
+.mod{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:20px clamp(20px,3vw,40px);align-items:center;padding:24px clamp(20px,3vw,32px);border:1px solid var(--line-c);border-radius:6px;background:var(--paper);transition:border-color .25s}
+.mod:hover{border-color:var(--ink-2)}
+.mod.is-done{border-color:var(--turf-ink);box-shadow:inset 4px 0 0 var(--turf-ink)}
+.mod-n{font-family:var(--f-display);font-weight:900;font-stretch:62%;font-size:4.4rem;line-height:.8;color:var(--turf-ink)}
+.mod-txt{display:grid;gap:6px}
+.mod-txt h3{font-family:var(--f-display);font-weight:850;font-stretch:66%;text-transform:uppercase;font-size:1.7rem;line-height:1}
+.mod-txt p{color:var(--ink-2);font-size:.96rem;line-height:1.5;max-width:62ch}
+.mod-meta{display:flex;flex-wrap:wrap;gap:6px 16px;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.04em;color:var(--ink-2);text-transform:uppercase;margin-top:4px}
+.mod-meta .st.done{color:var(--turf-ink)}
+.mod .btn{min-width:150px}
+.mod.is-done .btn{background:transparent;border-color:var(--line-c);color:var(--ink)}
+@media (max-width:760px){.mod{grid-template-columns:minmax(0,1fr)}.mod-n{font-size:3.2rem}.mod .btn{justify-self:start}}
+.head.after{margin-top:clamp(64px,8vw,104px)}
+.more{margin-top:18px;font-weight:600}
+.more a{color:var(--turf-ink)}
 
-/* Hero */
-.hero{padding-top:clamp(48px,7vw,96px);padding-bottom:clamp(48px,6vw,80px);background:radial-gradient(60% 70% at 85% 0%,rgba(31,181,122,.16),transparent 70%)}
-.hero-in{display:grid;gap:22px;justify-items:start}
-.hero h1{font-family:var(--f-display);font-weight:900;font-stretch:62%;text-transform:uppercase;font-size:clamp(3.4rem,11vw,8.6rem);line-height:.82;letter-spacing:-.01em}
-.hero h1 small{display:block;font-size:.32em;font-stretch:72%;line-height:1.1;color:var(--turf);margin-bottom:.25em}
-.meta{display:flex;flex-wrap:wrap;gap:8px}
-.meta li{display:inline-flex;align-items:center;gap:8px;font-size:.86rem;font-weight:600;padding:8px 14px;border-radius:999px;border:1px solid var(--line-n);background:rgba(12,27,51,.6)}
-.steps-nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;margin-top:clamp(20px,3vw,36px);width:100%;background:var(--line-n);border:1px solid var(--line-n);border-radius:6px;overflow:hidden}
-.steps-nav a{display:grid;gap:6px;padding:18px 18px 20px;background:var(--night);text-decoration:none;transition:background-color .25s}
-.steps-nav a:hover{background:var(--night-2)}
-.steps-nav b{font-family:var(--f-display);font-weight:850;font-stretch:66%;text-transform:uppercase;font-size:1.35rem;line-height:1}
-.steps-nav span{color:var(--fog);font-size:.88rem;line-height:1.4}
-@media (max-width:820px){.steps-nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
-
-/* Avant de commencer */
-.head{display:grid;gap:18px;margin-bottom:clamp(32px,4vw,56px);justify-items:start}
-.tips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.tip{background:var(--paper);border:1px solid var(--line-c);border-radius:6px;padding:24px 22px 26px;display:grid;gap:10px;align-content:start}
-.tip .n{font-family:var(--f-mono);font-size:.7rem;color:var(--turf-ink);letter-spacing:.07em}
-.tip h3{font-size:1.08rem;line-height:1.25;font-weight:700}
-.tip p{color:var(--ink-2);font-size:.95rem;line-height:1.5}
-.tip.key{background:var(--ink);color:var(--chalk);border-color:var(--ink)}
-.tip.key .n{color:var(--turf-hi)}
-.tip.key p{color:var(--mist)}
-@media (max-width:980px){.tips{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:560px){.tips{grid-template-columns:minmax(0,1fr)}}
-
-/* Onglets outils */
-.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:clamp(28px,3.5vw,44px)}
-.tab{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;border-radius:999px;border:1.5px solid var(--line-n);background:transparent;cursor:pointer;font-weight:600}
-.tab:hover{border-color:rgba(237,240,234,.4)}
-.tab[aria-selected="true"]{background:var(--chalk);color:var(--ink);border-color:var(--chalk)}
-.tab i{font-style:normal;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.06em;color:var(--fog)}
-.tab[aria-selected="true"] i{color:var(--ink-2)}
-.panel[hidden]{display:none}
-.p-intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:20px 56px;align-items:end;margin-bottom:clamp(28px,3.5vw,44px)}
-.p-intro .facts{display:grid;gap:8px;font-size:.94rem;color:var(--mist)}
-.p-intro .facts li{display:flex;gap:10px;align-items:flex-start}
-.p-intro .facts svg{margin-top:5px}
-.p-intro .facts a{color:var(--turf-hi)}
-@media (max-width:860px){.p-intro{grid-template-columns:minmax(0,1fr)}}
-
-.step{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:24px clamp(28px,4vw,64px);align-items:start;padding-block:clamp(28px,3.5vw,44px);border-top:1px solid var(--line-n)}
-.step-txt{display:grid;gap:12px;align-content:start;position:sticky;top:96px}
-.step-n{font-family:var(--f-display);font-weight:900;font-stretch:62%;font-size:3.6rem;line-height:.8;color:var(--turf)}
-.step-txt p{color:var(--mist)}
-.step-txt ul{display:grid;gap:6px;color:var(--mist);font-size:.95rem}
-.step-txt ul li{display:flex;gap:10px}
-.step-txt ul svg{margin-top:5px}
-.warn{font-size:.9rem;color:var(--chalk);border-left:3px solid var(--turf);padding:2px 0 2px 14px}
-@media (max-width:860px){.step{grid-template-columns:minmax(0,1fr)}.step-txt{position:static}}
-
-/* Capture dans un cadre de navigateur */
-.shot{border-radius:10px;overflow:hidden;border:1px solid var(--line-n);background:#111a29;box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
-.shot-bar{display:flex;align-items:center;gap:12px;padding:10px 14px;background:#16223a;border-bottom:1px solid var(--line-n)}
-.shot-bar .dots{display:flex;gap:6px;flex:none}
-.shot-bar .dots i{width:9px;height:9px;border-radius:50%;background:rgba(237,240,234,.22)}
-.shot-bar .url{flex:1;min-width:0;font-family:var(--f-mono);font-size:.7rem;color:var(--mist);background:rgba(7,17,31,.6);padding:6px 12px;border-radius:999px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.shot img{width:100%;height:auto}
-.shot .ph{display:none;aspect-ratio:16/10;place-content:center;justify-items:center;gap:8px;text-align:center;padding:24px;color:var(--fog);background:repeating-linear-gradient(135deg,rgba(237,240,234,.03) 0 12px,transparent 12px 24px)}
-.shot .ph b{font-family:var(--f-mono);font-size:.72rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--chalk)}
-.shot .ph code{font-family:var(--f-mono);font-size:.72rem;color:var(--turf-hi)}
-.shot.vide img{display:none}
-.shot.vide .ph{display:grid}
-.shot figcaption{padding:12px 16px;font-size:.85rem;color:var(--fog);border-top:1px solid var(--line-n)}
-
-/* Comparatif */
-.cmp-wrap{overflow-x:auto;border:1px solid var(--line-c);border-radius:6px;background:var(--paper)}
-.cmp{width:100%;min-width:620px;border-collapse:collapse;font-size:.95rem}
-.cmp th,.cmp td{padding:16px 18px;text-align:left;border-bottom:1px solid var(--line-c);vertical-align:top}
-.cmp thead th{font-family:var(--f-display);font-weight:850;font-stretch:66%;text-transform:uppercase;font-size:1.3rem;line-height:1}
-.cmp tbody th{font-weight:600;color:var(--ink-2);width:26%}
-.cmp tr:last-child>*{border-bottom:0}
-
-/* Premier essai */
-.try{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px clamp(28px,4vw,64px);align-items:start}
-.prompt{border:1px solid var(--line-n);border-radius:8px;background:var(--night-2);overflow:hidden}
-.prompt-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line-n)}
-.copy{display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:0 16px;border-radius:999px;border:0;background:var(--turf);color:var(--on-turf);font-weight:600;font-size:.88rem;cursor:pointer}
-.copy:hover{background:var(--turf-hi)}
-.prompt pre{margin:0;padding:20px 20px 22px;white-space:pre-wrap;font-family:var(--f-body);font-size:1rem;line-height:1.6;color:var(--chalk)}
-.prompt pre i{color:var(--turf-hi);font-style:normal}
-.try ol{display:grid;gap:14px;counter-reset:t}
-.try ol li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;color:var(--mist);counter-increment:t}
-.try ol li::before{content:counter(t);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:1px solid var(--turf);color:var(--turf);font-family:var(--f-mono);font-size:.75rem}
-.try ol b{color:var(--chalk);font-weight:600}
-@media (max-width:860px){.try{grid-template-columns:minmax(0,1fr)}}
-
-/* Check-list */
-.check{display:grid;gap:10px;max-width:760px}
-.check label{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border:1px solid var(--line-c);border-radius:6px;background:var(--paper);cursor:pointer;transition:border-color .2s,background-color .2s}
-.check input{appearance:none;-webkit-appearance:none;flex:none;width:22px;height:22px;margin:1px 0 0;border:1.5px solid var(--ink-2);border-radius:5px;display:grid;place-items:center;cursor:pointer}
-.check input::after{content:"";width:11px;height:6px;border-left:2.5px solid var(--paper);border-bottom:2.5px solid var(--paper);transform:translateY(-2px) rotate(-45deg);opacity:0}
-.check input:checked{background:var(--turf-ink);border-color:var(--turf-ink)}
-.check input:checked::after{opacity:1}
-.check label:has(input:checked){border-color:var(--turf-ink);background:#F3FAF6}
-.score{font-family:var(--f-mono);font-size:.78rem;color:var(--ink-2);margin-top:14px}
-.score.done{color:var(--turf-ink)}
-
-/* Suite */
-.next{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 56px;align-items:end}
-.next .actions{display:flex;flex-wrap:wrap;gap:12px}
-@media (max-width:860px){.next{grid-template-columns:minmax(0,1fr)}}
-.foot{border-top:1px solid var(--line-n);padding-block:26px;font-size:.85rem;color:var(--fog)}
-.foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px}
-.foot a{text-decoration:none}
-.foot a:hover{color:var(--chalk)}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* Ressources */
+.res{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.res a{display:grid;gap:10px;align-content:start;padding:26px 24px 28px;border:1px solid var(--line-n);border-radius:6px;background:var(--night-2);text-decoration:none;transition:border-color .25s}
+.res a:hover{border-color:var(--turf)}
+.res .n{font-family:var(--f-mono);font-size:.7rem;color:var(--turf);letter-spacing:.07em;text-transform:uppercase}
+.res h3{font-size:1.15rem;line-height:1.25;font-weight:700}
+.res p{color:var(--mist);font-size:.95rem;line-height:1.5}
+.res .go{color:var(--turf-hi);font-weight:600;font-size:.92rem}
+@media (max-width:860px){.res{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="check" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></symbol>
+  <symbol id="lock" viewBox="0 0 20 20"><rect x="4.5" y="9" width="11" height="8" rx="1.5"/><path d="M7 9V6.5a3 3 0 0 1 6 0V9"/></symbol>
 </svg>
 
 <header class="hdr">
@@ -195,343 +67,129 @@ button{font:inherit;color:inherit}
 <main id="contenu">
   <section class="hero">
     <div class="wrap hero-in">
-      <p class="label"><span class="sq"></span>Formation FAIR · Module 1</p>
-      <h1><small>Premier pas</small>Créer ses<br>comptes <span class="turf">IA</span></h1>
-      <p class="lead">Claude, ChatGPT et Gemini, pas à pas. En un quart d'heure, vous avez vos trois comptes et vous avez fait votre première vraie demande pour le club.</p>
+      <p class="label"><span class="sq"></span>Formation FAIR · En ligne et gratuite</p>
+      <h1><small>Les fondamentaux</small>Niveau <span class="turf">0</span></h1>
+      <p class="lead">Cinq modules courts pour que chaque bénévole du club utilise l'IA utilement et sans risque. Aucune connaissance technique n'est nécessaire : un ordinateur ou un téléphone suffit.</p>
       <ul class="meta">
-        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>15 minutes</li>
-        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Gratuit, sans carte bancaire</li>
-        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Ordinateur ou téléphone</li>
-        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>À jour en octobre 2026</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>5 modules</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>2 h 10 au total</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>À son rythme</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Attestation à la fin</li>
       </ul>
-      <nav class="steps-nav" aria-label="Étapes du module">
-        <a href="#avant"><b>1. Préparer</b><span>4 réflexes avant de s'inscrire</span></a>
-        <a href="#comptes"><b>2. S'inscrire</b><span>Claude, ChatGPT, Gemini</span></a>
-        <a href="#essai"><b>3. Essayer</b><span>Votre première demande</span></a>
-        <a href="#bilan"><b>4. Valider</b><span>La check-list de fin</span></a>
-      </nav>
-    </div>
-  </section>
-
-  <section class="sec chalk" id="avant">
-    <div class="wrap">
-      <div class="head">
-        <p class="label"><span class="sq"></span>Avant de commencer</p>
-        <h2 class="h2">4 réflexes,<br>2 minutes</h2>
-      </div>
-      <div class="tips">
-        <article class="tip">
-          <span class="n">01</span>
-          <h3>L'adresse e-mail du club</h3>
-          <p>Inscrivez-vous avec l'adresse du club (contact@, secretariat@…) plutôt que la vôtre. Quand un bénévole s'en va, le compte reste au club.</p>
-        </article>
-        <article class="tip">
-          <span class="n">02</span>
-          <h3>Gratuit d'abord</h3>
-          <p>Les trois outils ont une offre gratuite qui suffit largement pour démarrer. Refusez les essais payants proposés à l'inscription : vous aurez le temps de décider plus tard.</p>
-        </article>
-        <article class="tip">
-          <span class="n">03</span>
-          <h3>Un mot de passe solide</h3>
-          <p>Un mot de passe propre au club, rangé dans un gestionnaire de mots de passe, et la double authentification activée dès que l'outil la propose.</p>
-        </article>
-        <article class="tip key">
-          <span class="n">La règle d'or</span>
-          <h3>Aucune donnée de licencié</h3>
-          <p>Ne collez jamais de noms, d'adresses, de numéros ou d'informations de santé de vos licenciés, surtout des mineurs. On parle du club, jamais des personnes.</p>
-        </article>
+      <div class="bar" aria-live="polite">
+        <div class="bar-track" id="bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+        <p id="bar-txt">0 module validé sur 5</p>
       </div>
     </div>
   </section>
 
-  <section class="sec" id="comptes">
+  <section class="sec chalk" id="modules">
     <div class="wrap">
       <div class="head">
-        <p class="label"><span class="sq"></span>Pas à pas</p>
-        <h2 class="h2">Un compte,<br>trois outils</h2>
-        <p class="lead">Commencez par celui de votre choix. Les trois se ressemblent : une fois le premier créé, les deux autres prennent cinq minutes.</p>
+        <p class="label"><span class="sq"></span>Le parcours</p>
+        <h2 class="h2">Cinq modules,<br>dans l'ordre</h2>
+        <p class="lead">Chaque module se termine par une check-list. Votre progression est enregistrée sur cet appareil uniquement : rien n'est envoyé, aucun compte n'est nécessaire.</p>
       </div>
+      <ol class="mods">
+        <li class="mod" data-m="1">
+          <span class="mod-n" aria-hidden="true">01</span>
+          <div class="mod-txt">
+            <h3>Créer ses comptes</h3>
+            <p>Claude, ChatGPT et Gemini, pas à pas, avec l'adresse du club. Puis une première vraie demande dans les trois outils.</p>
+            <p class="mod-meta"><span>15 min</span><span class="st" data-m="1"></span></p>
+          </div>
+          <a class="btn btn-turf" href="formation-1.html">Commencer</a>
+        </li>
+        <li class="mod" data-m="2">
+          <span class="mod-n" aria-hidden="true">02</span>
+          <div class="mod-txt">
+            <h3>Bien demander</h3>
+            <p>La méthode C.L.U.B. pour obtenir du premier coup un texte utilisable, les retouches qui marchent et six demandes prêtes à l'emploi.</p>
+            <p class="mod-meta"><span>20 min</span><span class="st" data-m="2"></span></p>
+          </div>
+          <a class="btn btn-turf" href="formation-2.html">Commencer</a>
+        </li>
+        <li class="mod" data-m="3">
+          <span class="mod-n" aria-hidden="true">03</span>
+          <div class="mod-txt">
+            <h3>L'IA sans risque</h3>
+            <p>Vérifier ce que dit l'IA, protéger les données et les images des licenciés, déjouer les arnaques et rédiger la charte IA du club.</p>
+            <p class="mod-meta"><span>30 min</span><span class="st" data-m="3"></span></p>
+          </div>
+          <a class="btn btn-turf" href="formation-3.html">Commencer</a>
+        </li>
+        <li class="mod" data-m="4">
+          <span class="mod-n" aria-hidden="true">04</span>
+          <div class="mod-txt">
+            <h3>Fichiers, photos, voix</h3>
+            <p>Faire travailler l'IA sur un PDF, un tableur ou une photo de feuille de match, et dicter ses demandes depuis le bord du terrain.</p>
+            <p class="mod-meta"><span>20 min</span><span class="st" data-m="4"></span></p>
+          </div>
+          <a class="btn btn-turf" href="formation-4.html">Commencer</a>
+        </li>
+        <li class="mod" data-m="5">
+          <span class="mod-n" aria-hidden="true">05</span>
+          <div class="mod-txt">
+            <h3>Mon premier dossier</h3>
+            <p>Un vrai projet du club traité de bout en bout avec l'IA, un quiz de dix questions et l'attestation « Niveau 0 validé ».</p>
+            <p class="mod-meta"><span>45 min</span><span class="st" data-m="5"></span></p>
+          </div>
+          <a class="btn btn-turf" href="formation-5.html">Commencer</a>
+        </li>
+      </ol>
 
-      <div class="tabs" role="tablist" aria-label="Choisir l'outil">
-        <button class="tab" role="tab" id="t-claude" aria-controls="p-claude" aria-selected="true">Claude <i>Anthropic</i></button>
-        <button class="tab" role="tab" id="t-chatgpt" aria-controls="p-chatgpt" aria-selected="false" tabindex="-1">ChatGPT <i>OpenAI</i></button>
-        <button class="tab" role="tab" id="t-gemini" aria-controls="p-gemini" aria-selected="false" tabindex="-1">Gemini <i>Google</i></button>
+      <div class="head after">
+        <p class="label"><span class="sq"></span>Et ensuite</p>
+        <h3 class="h3">Cinq niveaux pour aller plus loin</h3>
+        <p class="lead">Le niveau 0 est ouvert à tous. Les niveaux suivants, sur accès, appliquent l'IA aux vrais dossiers du club, avec une difficulté et une profondeur qui augmentent à chaque marche.</p>
       </div>
+      <ol class="levels">
+        <li class="lv free" style="--i:0"><span class="n">0</span><b>Les fondamentaux</b><span class="tag">Gratuit · Vous êtes ici</span></li>
+        <li class="lv up" style="--i:1"><span class="n">1</span><b>L'IA au quotidien du club</b><a class="tag" href="formation-n1.html">Découvrir le niveau 1</a></li>
+        <li class="lv" style="--i:2"><span class="n">2</span><b>Ses outils sur mesure</b><span class="tag"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Sur accès</span></li>
+        <li class="lv" style="--i:3"><span class="n">3</span><b>Financer et développer</b><span class="tag"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Sur accès</span></li>
+        <li class="lv" style="--i:4"><span class="n">4</span><b>Automatiser à plusieurs</b><span class="tag"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Sur accès</span></li>
+        <li class="lv" style="--i:5"><span class="n">5</span><b>Référent IA du club</b><span class="tag"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Sur accès</span></li>
+      </ol>
+      <p class="more"><a href="formation-n1.html">Ouvrir le niveau 1</a></p>
+    </div>
+  </section>
 
-      <!-- CLAUDE -->
-      <div class="panel" role="tabpanel" id="p-claude" aria-labelledby="t-claude">
-        <div class="p-intro">
-          <h3 class="h3">Claude</h3>
-          <ul class="facts">
-            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Adresse : <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a></span></li>
-            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Appli gratuite sur iPhone et Android</span></li>
-            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Réservé aux plus de 18 ans</span></li>
-          </ul>
-        </div>
-
-        <div class="step">
-          <div class="step-txt">
-            <span class="step-n">01</span>
-            <h4 class="h3">Ouvrir claude.ai</h4>
-            <p>Tapez <strong>claude.ai</strong> dans la barre d'adresse. Vous arrivez sur la page de connexion.</p>
-            <ul>
-              <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Saisissez l'e-mail du club, puis « Continuer avec l'e-mail »</span></li>
-              <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Ou « Continuer avec Google » si le club a déjà un compte Google</span></li>
-            </ul>
-          </div>
-          <figure class="shot">
-            <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">claude.ai/login</span></div>
-            <img src="assets/formation/claude-1.png" alt="Page de connexion de Claude" loading="lazy" onerror="this.parentNode.classList.add('vide')">
-            <div class="ph"><b>Capture à ajouter</b><code>assets/formation/claude-1.png</code></div>
-            <figcaption>La page de connexion : la même sert à créer le compte.</figcaption>
-          </figure>
-        </div>
-
-        <div class="step">
-          <div class="step-txt">
-            <span class="step-n">02</span>
-            <h4 class="h3">Confirmer l'e-mail</h4>
-            <p>Claude envoie un lien ou un code dans la boîte du club. Ouvrez l'e-mail et cliquez sur le lien, ou recopiez le code.</p>
-            <p class="warn">Rien reçu ? Regardez dans les indésirables. Le lien n'est valable que quelques minutes.</p>
-          </div>
-          <figure class="shot">
-            <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">claude.ai</span></div>
-            <img src="assets/formation/claude-2.png" alt="Écran de vérification de l'adresse e-mail" loading="lazy" onerror="this.parentNode.classList.add('vide')">
-            <div class="ph"><b>Capture à ajouter</b><code>assets/formation/claude-2.png</code></div>
-            <figcaption>Vérification de l'adresse e-mail.</figcaption>
-          </figure>
-        </div>
-
-        <div class="step">
-          <div class="step-txt">
-            <span class="step-n">03</span>
-            <h4 class="h3">Compléter le profil</h4>
-            <p>Indiquez un nom (le nom du club convient), confirmez votre âge et acceptez les conditions. Un numéro de téléphone peut être demandé pour vérifier le compte.</p>
-          </div>
-          <figure class="shot">
-            <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">claude.ai</span></div>
-            <img src="assets/formation/claude-3.png" alt="Écran de création du profil" loading="lazy" onerror="this.parentNode.classList.add('vide')">
-            <div class="ph"><b>Capture à ajouter</b><code>assets/formation/claude-3.png</code></div>
-            <figcaption>Le profil : nom, âge, conditions d'utilisation.</figcaption>
-          </figure>
-        </div>
-
-        <div class="step">
-          <div class="step-txt">
-            <span class="step-n">04</span>
-            <h4 class="h3">Vous y êtes</h4>
-            <p>La zone de saisie au centre de l'écran, c'est là que tout se passe. À gauche, l'historique de vos conversations.</p>
-            <p class="warn">Une offre payante peut vous être proposée : ignorez-la pour l'instant.</p>
-          </div>
-          <figure class="shot">
-            <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">claude.ai/new</span></div>
-            <img src="assets/formation/claude-4.png" alt="Écran d'accueil de Claude une fois connecté" loading="lazy" onerror="this.parentNode.classList.add('vide')">
-            <div class="ph"><b>Capture à ajouter</b><code>assets/formation/claude-4.png</code></div>
-            <figcaption>L'écran d'accueil, prêt pour la première demande.</figcaption>
-          </figure>
-        </div>
+  <section class="sec" id="ressources">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Ressources</p>
+        <h2 class="h2">À garder<br><span class="turf">sous la main</span></h2>
       </div>
-
-      <!-- CHATGPT -->
-      <div class="panel" role="tabpanel" id="p-chatgpt" aria-labelledby="t-chatgpt" hidden>
-        <div class="p-intro">
-          <h3 class="h3">ChatGPT</h3>
-          <ul class="facts">
-            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Adresse : <a href="https://chatgpt.com" target="_blank" rel="noopener">chatgpt.com</a></span></li>
-            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Appli gratuite sur iPhone et Android</span></li>
-            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Connexion possible avec Google, Microsoft ou Apple</span></li>
-          </ul>
-        </div>
-
-        <div class="step">
-          <div class="step-txt">
-            <span class="step-n">01</span>
-            <h4 class="h3">Ouvrir chatgpt.com</h4>
-            <p>Sur la page d'accueil, cliquez sur <strong>« S'inscrire gratuitement »</strong> (et non « Se connecter »).</p>
-          </div>
-          <figure class="shot">
-            <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">chatgpt.com</span></div>
-            <img src="assets/formation/chatgpt-1.png" alt="Page d'accueil de ChatGPT avec le bouton d'inscription" loading="lazy" onerror="this.parentNode.classList.add('vide')">
-            <div class="ph"><b>Capture à ajouter</b><code>assets/formation/chatgpt-1.png</code></div>
-            <figcaption>Le bouton d'inscription, en haut à droite.</figcaption>
-          </figure>
-        </div>
-
-        <div class="step">
-          <div class="step-txt">
-            <span class="step-n">02</span>
-            <h4 class="h3">E-mail et mot de passe</h4>
-            <p>Saisissez l'e-mail du club, puis choisissez un mot de passe. Ou passez par le compte Google du club si vous en avez un.</p>
-          </div>
-          <figure class="shot">
-            <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">auth.openai.com</span></div>
-            <img src="assets/formation/chatgpt-2.png" alt="Formulaire de création de compte ChatGPT" loading="lazy" onerror="this.parentNode.classList.add('vide')">
-            <div class="ph"><b>Capture à ajouter</b><code>assets/formation/chatgpt-2.png</code></div>
-            <figcaption>La création du compte.</figcaption>
-          </figure>
-        </div>
-
-        <div class="step">
-          <div class="step-txt">
-            <span class="step-n">03</span>
-            <h4 class="h3">Le code de vérification</h4>
-            <p>Un code arrive dans la boîte du club. Recopiez-le, puis indiquez un nom et une date de naissance.</p>
-            <p class="warn">Rien reçu ? Regardez dans les indésirables.</p>
-          </div>
-          <figure class="shot">
-            <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">auth.openai.com</span></div>
-            <img src="assets/formation/chatgpt-3.png" alt="Écran de saisie du code de vérification" loading="lazy" onerror="this.parentNode.classList.add('vide')">
-            <div class="ph"><b>Capture à ajouter</b><code>assets/formation/chatgpt-3.png</code></div>
-            <figcaption>Le code reçu par e-mail.</figcaption>
-          </figure>
-        </div>
-
-        <div class="step">
-          <div class="step-txt">
-            <span class="step-n">04</span>
-            <h4 class="h3">Vous y êtes</h4>
-            <p>La zone de saisie en bas de l'écran attend votre première demande. L'historique est dans le menu à gauche.</p>
-            <p class="warn">Dans les paramètres, rubrique « Contrôle des données », vous pouvez refuser que vos conversations servent à entraîner les modèles.</p>
-          </div>
-          <figure class="shot">
-            <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">chatgpt.com</span></div>
-            <img src="assets/formation/chatgpt-4.png" alt="Écran d'accueil de ChatGPT une fois connecté" loading="lazy" onerror="this.parentNode.classList.add('vide')">
-            <div class="ph"><b>Capture à ajouter</b><code>assets/formation/chatgpt-4.png</code></div>
-            <figcaption>L'écran d'accueil, prêt pour la première demande.</figcaption>
-          </figure>
-        </div>
-      </div>
-
-      <!-- GEMINI -->
-      <div class="panel" role="tabpanel" id="p-gemini" aria-labelledby="t-gemini" hidden>
-        <div class="p-intro">
-          <h3 class="h3">Gemini</h3>
-          <ul class="facts">
-            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Adresse : <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a></span></li>
-            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Fonctionne avec un compte Google (Gmail)</span></li>
-            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Déjà un compte Google pour le club ? Passez à l'étape 2</span></li>
-          </ul>
-        </div>
-
-        <div class="step">
-          <div class="step-txt">
-            <span class="step-n">01</span>
-            <h4 class="h3">Créer le compte Google</h4>
-            <p>Si le club n'a pas encore de compte Google, créez-le : prénom et nom (le nom du club convient), date de naissance, adresse Gmail, mot de passe.</p>
-            <p class="warn">Google demande souvent un numéro de téléphone : utilisez celui d'un membre du bureau qui restera joignable.</p>
-          </div>
-          <figure class="shot">
-            <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">accounts.google.com/signup</span></div>
-            <img src="assets/formation/gemini-1.png" alt="Page « Créer un compte Google » avec les champs Prénom et Nom" loading="lazy" onerror="this.parentNode.classList.add('vide')">
-            <div class="ph"><b>Capture à ajouter</b><code>assets/formation/gemini-1.png</code></div>
-            <figcaption>Première étape de la création d'un compte Google.</figcaption>
-          </figure>
-        </div>
-
-        <div class="step">
-          <div class="step-txt">
-            <span class="step-n">02</span>
-            <h4 class="h3">Ouvrir Gemini</h4>
-            <p>Allez sur <strong>gemini.google.com</strong> et cliquez sur <strong>« Se connecter »</strong>, en haut à droite, avec le compte Google du club.</p>
-            <p class="warn">Le bandeau cookies de Google s'affiche : choisissez « Tout refuser », Gemini fonctionne quand même.</p>
-          </div>
-          <figure class="shot">
-            <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">gemini.google.com</span></div>
-            <img src="assets/formation/gemini-2.png" alt="Page d'accueil de Gemini avec le bouton Se connecter" loading="lazy" onerror="this.parentNode.classList.add('vide')">
-            <div class="ph"><b>Capture à ajouter</b><code>assets/formation/gemini-2.png</code></div>
-            <figcaption>Le bouton « Se connecter », en haut à droite.</figcaption>
-          </figure>
-        </div>
-
-        <div class="step">
-          <div class="step-txt">
-            <span class="step-n">03</span>
-            <h4 class="h3">Vous y êtes</h4>
-            <p>Acceptez les conditions de Gemini à la première connexion. La zone de saisie au centre attend votre première demande.</p>
-            <p class="warn">Dans « Activité dans les applis Gemini », vous pouvez désactiver l'enregistrement de vos conversations.</p>
-          </div>
-          <figure class="shot">
-            <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">gemini.google.com/app</span></div>
-            <img src="assets/formation/gemini-3.png" alt="Écran d'accueil de Gemini une fois connecté" loading="lazy" onerror="this.parentNode.classList.add('vide')">
-            <div class="ph"><b>Capture à ajouter</b><code>assets/formation/gemini-3.png</code></div>
-            <figcaption>L'écran d'accueil, prêt pour la première demande.</figcaption>
-          </figure>
-        </div>
+      <div class="res">
+        <a href="formation-fiches.html">
+          <span class="n">À imprimer</span>
+          <h3>Les fiches mémo</h3>
+          <p>L'essentiel de chaque module sur une page A4, à afficher au club-house ou à glisser dans le classeur du bureau.</p>
+          <span class="go">Voir les fiches</span>
+        </a>
+        <a href="formation-animateur.html">
+          <span class="n">Pour les ateliers</span>
+          <h3>Le guide de l'animateur</h3>
+          <p>Le déroulé du niveau 0 en deux séances de deux heures, avec les exercices de groupe, le matériel et les questions fréquentes.</p>
+          <span class="go">Ouvrir le guide</span>
+        </a>
+        <a href="formation-5.html#attestation">
+          <span class="n">En fin de parcours</span>
+          <h3>L'attestation</h3>
+          <p>Une fois les cinq modules et le quiz validés, imprimez votre attestation « Niveau 0 validé » au nom de votre club.</p>
+          <span class="go">Voir l'attestation</span>
+        </a>
       </div>
     </div>
   </section>
 
   <section class="sec chalk">
-    <div class="wrap">
-      <div class="head">
-        <p class="label"><span class="sq"></span>En un coup d'œil</p>
-        <h2 class="h2">Les trois,<br>côte à côte</h2>
-      </div>
-      <div class="cmp-wrap">
-        <table class="cmp">
-          <thead><tr><th scope="col"><span class="sr-only">Critère</span></th><th scope="col">Claude</th><th scope="col">ChatGPT</th><th scope="col">Gemini</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">Pour s'inscrire</th><td>E-mail ou compte Google</td><td>E-mail, Google, Microsoft ou Apple</td><td>Compte Google obligatoire</td></tr>
-            <tr><th scope="row">Offre gratuite</th><td>Oui, avec une limite de messages</td><td>Oui, avec une limite de messages</td><td>Oui, avec une limite de messages</td></tr>
-            <tr><th scope="row">Appli mobile</th><td>iPhone et Android</td><td>iPhone et Android</td><td>iPhone et Android</td></tr>
-            <tr><th scope="row">Point fort au club</th><td>Rédaction soignée, longs documents</td><td>Le plus connu, très polyvalent</td><td>Relié à Gmail, Docs et Drive</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="essai">
-    <div class="wrap">
-      <div class="head">
-        <p class="label"><span class="sq"></span>Votre premier essai</p>
-        <h2 class="h2">Une vraie demande,<br><span class="turf">trois réponses</span></h2>
-        <p class="lead">Copiez cette demande, collez-la dans les trois outils et comparez. C'est la meilleure façon de voir lequel vous parle.</p>
-      </div>
-      <div class="try">
-        <ol>
-          <li><span><b>Copiez la demande</b> avec le bouton vert.</span></li>
-          <li><span><b>Remplacez les passages en vert</b> par les infos de votre club : le sport, la date, le lieu.</span></li>
-          <li><span><b>Collez-la dans Claude, ChatGPT et Gemini</b>, puis lisez les trois réponses.</span></li>
-          <li><span><b>Demandez une retouche</b> : « plus court », « plus chaleureux », « ajoute l'heure du rendez-vous ». L'IA corrige sans tout recommencer.</span></li>
-        </ol>
-        <div class="prompt">
-          <div class="prompt-top">
-            <span class="label">Demande à copier</span>
-            <button class="copy" type="button" id="copy">Copier</button>
-          </div>
-<pre id="prompt-txt">Je suis bénévole dans un club de <i>[votre sport]</i>. Rédige un message court et chaleureux aux parents des joueurs de moins de 13 ans pour annoncer le tournoi du <i>[date]</i> à <i>[lieu]</i>. Le rendez-vous est à <i>[heure]</i> au club. Rappelle d'apporter une gourde et un goûter, et demande aux parents de confirmer la présence de leur enfant avant mercredi.</pre>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec chalk" id="bilan">
-    <div class="wrap">
-      <div class="head">
-        <p class="label"><span class="sq"></span>Check-list de fin</p>
-        <h2 class="h2">Module 1,<br>validé&nbsp;?</h2>
-        <p class="lead">Cochez au fur et à mesure. Votre progression reste sur cet appareil, rien n'est envoyé.</p>
-      </div>
-      <div class="check" id="check">
-        <label><input type="checkbox" data-k="mail"><span>J'utilise l'adresse e-mail du club, pas la mienne</span></label>
-        <label><input type="checkbox" data-k="claude"><span>Mon compte Claude est créé</span></label>
-        <label><input type="checkbox" data-k="chatgpt"><span>Mon compte ChatGPT est créé</span></label>
-        <label><input type="checkbox" data-k="gemini"><span>Mon compte Gemini est créé</span></label>
-        <label><input type="checkbox" data-k="mobile"><span>J'ai installé au moins une appli sur mon téléphone</span></label>
-        <label><input type="checkbox" data-k="essai"><span>J'ai fait le premier essai dans les trois outils</span></label>
-        <label><input type="checkbox" data-k="regle"><span>J'ai retenu la règle d'or : aucune donnée de licencié</span></label>
-      </div>
-      <p class="score" id="score" aria-live="polite">0 sur 7</p>
-    </div>
-  </section>
-
-  <section class="sec">
     <div class="wrap next">
       <div class="head" style="margin:0">
-        <p class="label"><span class="sq"></span>Et ensuite</p>
-        <h2 class="h2">Module 2 :<br><span class="turf">bien demander</span></h2>
-        <p class="lead">Vos comptes sont prêts. Prochaine étape : écrire des demandes qui donnent du premier coup ce que vous attendez.</p>
+        <p class="label"><span class="sq"></span>En groupe, c'est mieux</p>
+        <h2 class="h2">Un atelier<br><span class="turf">dans votre club</span></h2>
+        <p class="lead">FAIR anime gratuitement le niveau 0 dans les clubs, avec vos bénévoles et sur vos propres dossiers.</p>
       </div>
       <div class="actions">
         <a class="btn btn-turf" href="index.html#contact">Demander un atelier</a>
@@ -548,59 +206,24 @@ button{font:inherit;color:inherit}
   </div>
 </footer>
 
+<script src="assets/js/formation.js"></script>
 <script>
 (function(){
-  // Onglets
-  var tabs=[].slice.call(document.querySelectorAll('.tab'));
-  function pick(t,focus){
-    tabs.forEach(function(x){
-      var on=x===t;
-      x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;
-      document.getElementById(x.getAttribute('aria-controls')).hidden=!on;
+  // Barre de progression et boutons de chaque module
+  function paint(){
+    var n=0;
+    FAIR.MODULES.forEach(function(m,i){
+      var row=document.querySelector('.mod[data-m="'+(i+1)+'"]');
+      var c=FAIR.count(m.key),ok=c>=m.n;
+      if(ok)n++;
+      row.classList.toggle('is-done',ok);
+      row.querySelector('.btn').textContent=ok?'Revoir':c?'Reprendre':'Commencer';
     });
-    if(focus)t.focus();
+    [].forEach.call(document.querySelectorAll('#bar span'),function(s,i){s.classList.toggle('on',i<n)});
+    document.getElementById('bar-txt').textContent=n===5?'5 modules validés sur 5 · Niveau 0 terminé':n+(n>1?' modules validés':' module validé')+' sur 5';
   }
-  tabs.forEach(function(t,i){
-    t.addEventListener('click',function(){pick(t)});
-    t.addEventListener('keydown',function(e){
-      var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;
-      if(d){e.preventDefault();pick(tabs[(i+d+tabs.length)%tabs.length],true)}
-    });
-  });
-
-  // Copier la demande
-  var btn=document.getElementById('copy');
-  btn.addEventListener('click',function(){
-    var txt=document.getElementById('prompt-txt').textContent;
-    function ok(){btn.textContent='Copié';setTimeout(function(){btn.textContent='Copier'},1800)}
-    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok,fallback)}else{fallback()}
-    function fallback(){
-      var r=document.createRange();r.selectNodeContents(document.getElementById('prompt-txt'));
-      var s=getSelection();s.removeAllRanges();s.addRange(r);
-      try{document.execCommand('copy');ok()}catch(e){btn.textContent='Sélectionné, faites Ctrl+C'}
-    }
-  });
-
-  // Check-list mémorisée sur l'appareil
-  var KEY='fair-module1';
-  var boxes=[].slice.call(document.querySelectorAll('#check input'));
-  var score=document.getElementById('score');
-  var saved={};
-  try{saved=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){}
-  function update(){
-    var n=boxes.filter(function(b){return b.checked}).length;
-    score.textContent=n===boxes.length?'7 sur 7 · Module 1 validé, bravo !':n+' sur '+boxes.length;
-    score.classList.toggle('done',n===boxes.length);
-  }
-  boxes.forEach(function(b){
-    b.checked=!!saved[b.dataset.k];
-    b.addEventListener('change',function(){
-      saved[b.dataset.k]=b.checked;
-      try{localStorage.setItem(KEY,JSON.stringify(saved))}catch(e){}
-      update();
-    });
-  });
-  update();
+  paint();
+  document.addEventListener('fair:progress',paint);
 })();
 </script>
 </body>

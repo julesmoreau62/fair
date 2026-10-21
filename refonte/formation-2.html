@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Formation · Module 2 · FAIR</title>
+<meta name="description" content="Module 2 de la formation FAIR : écrire des demandes claires à Claude, ChatGPT et Gemini avec la méthode C.L.U.B., puis les affiner jusqu'au bon résultat.">
+<meta name="theme-color" content="#07111F">
+<link rel="icon" href="assets/logo/fair-icone.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/css/formation.css?v=2">
+<style>
+/* Avant / après */
+.vs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.vs-card{background:var(--paper);border:1px solid var(--line-c);border-radius:6px;padding:26px 24px 28px;display:grid;gap:14px;align-content:start}
+.vs-card .tag{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;color:var(--red-ink)}
+.vs-card.good{border-color:var(--turf-ink);box-shadow:inset 0 3px 0 var(--turf-ink)}
+.vs-card.good .tag{color:var(--turf-ink)}
+.vs-card blockquote{margin:0;font-size:1.08rem;line-height:1.5;font-weight:600}
+.vs-card .res{color:var(--ink-2);font-size:.95rem;border-top:1px solid var(--line-c);padding-top:14px}
+.vs-card .res b{color:var(--ink)}
+@media (max-width:760px){.vs{grid-template-columns:minmax(0,1fr)}}
+
+/* Méthode C.L.U.B. */
+.club{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line-n);border:1px solid var(--line-n);border-radius:6px;overflow:hidden}
+.brick{background:var(--night);padding:28px 22px 30px;display:grid;gap:12px;align-content:start}
+.brick .l{font-family:var(--f-display);font-weight:900;font-stretch:62%;font-size:5rem;line-height:.75;color:var(--turf)}
+.brick h3{font-size:1.15rem;line-height:1.2;font-weight:700}
+.brick p{color:var(--mist);font-size:.95rem;line-height:1.5}
+.brick .ex{font-size:.9rem;color:var(--chalk);border-left:3px solid var(--turf);padding:2px 0 2px 12px;font-style:italic}
+@media (max-width:980px){.club{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.club{grid-template-columns:minmax(0,1fr)}}
+
+/* Atelier : composer sa demande */
+.build{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px clamp(28px,4vw,56px);align-items:start;margin-top:clamp(40px,5vw,64px)}
+.fields{display:grid;gap:16px}
+.field label{display:flex;align-items:baseline;gap:10px}
+.field label i{font-style:normal;font-family:var(--f-display);font-weight:900;font-stretch:62%;font-size:1.6rem;line-height:1;color:var(--turf);width:18px}
+.presets{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px}
+.presets .label{margin-right:4px}
+.chip.reset{color:var(--fog)}
+.out{position:sticky;top:96px;display:grid;gap:14px}
+.out .prompt pre{min-height:160px}
+.gauge{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.gauge span{height:6px;border-radius:3px;background:var(--line-n);transition:background-color .25s}
+.gauge span.on{background:var(--turf)}
+.gauge-txt{font-family:var(--f-mono);font-size:.74rem;color:var(--fog)}
+@media (max-width:860px){.build{grid-template-columns:minmax(0,1fr)}.out{position:static}}
+
+/* Affiner */
+.tune{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:28px clamp(28px,4vw,64px);align-items:start}
+.tune-list{display:grid;gap:10px}
+.tune-list li{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 16px 14px 20px;border:1px solid var(--line-c);border-radius:6px;background:var(--paper)}
+.tune-list q{font-weight:600;quotes:"« " " »"}
+.tune-list p{color:var(--ink-2);font-size:.88rem;line-height:1.4;margin-top:2px}
+@media (max-width:860px){.tune{grid-template-columns:minmax(0,1fr)}}
+
+/* Pièges */
+.tips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.tip{border:1px solid var(--line-n);border-radius:6px;padding:24px 22px 26px;display:grid;gap:10px;align-content:start;background:var(--night-2)}
+.tip .n{font-family:var(--f-mono);font-size:.7rem;color:var(--red);letter-spacing:.07em}
+.tip h3{font-size:1.08rem;line-height:1.25;font-weight:700}
+.tip p{color:var(--mist);font-size:.95rem;line-height:1.5}
+.tip.key{background:var(--chalk);color:var(--ink);border-color:var(--chalk)}
+.tip.key .n{color:var(--turf-ink)}
+.tip.key p{color:var(--ink-2)}
+@media (max-width:980px){.tips{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.tips{grid-template-columns:minmax(0,1fr)}}
+
+/* Bibliothèque */
+.lib{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{background:var(--paper);border:1px solid var(--line-c);border-radius:6px;display:grid;grid-template-rows:auto 1fr auto;overflow:hidden}
+.card-top{padding:20px 20px 0;display:grid;gap:6px}
+.card-top .label{color:var(--turf-ink)}
+.card h3{font-size:1.1rem;line-height:1.25;font-weight:700}
+.card pre{margin:0;padding:14px 20px 18px;white-space:pre-wrap;font-family:var(--f-body);font-size:.92rem;line-height:1.55;color:var(--ink-2)}
+.card pre i{font-style:normal;color:var(--turf-ink);font-weight:600}
+.card-foot{padding:0 20px 20px}
+@media (max-width:980px){.lib{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.lib{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="check" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></symbol>
+</svg>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="index.html" aria-label="FAIR, retour à l'accueil"><img src="assets/logo/fair-logo-blanc.svg" alt="FAIR"></a>
+    <nav aria-label="Navigation">
+      <a class="opt" href="index.html#clubs">Clubs</a>
+      <a class="opt" href="index.html#partenaires">Fédérations</a>
+      <a href="formation.html" aria-current="page">Formation</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <section class="hero">
+    <div class="wrap hero-in">
+      <p class="label"><span class="sq"></span><a href="formation.html">Formation FAIR · Niveau 0</a> · Module 2 sur 5</p>
+      <h1><small>Bien demander</small>Parler<br>à l'<span class="turf">IA</span></h1>
+      <p class="lead">Une IA ne lit pas dans les pensées : elle répond à ce que vous écrivez. Avec quatre briques simples, vos demandes donnent du premier coup un texte utilisable pour le club.</p>
+      <ul class="meta">
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>20 minutes</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Module 1 terminé</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Marche dans Claude, ChatGPT et Gemini</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>À jour en octobre 2026</li>
+      </ul>
+      <nav class="steps-nav" aria-label="Étapes du module">
+        <a href="#comprendre"><b>1. Comprendre</b><span>Pourquoi « fais-moi une affiche » ne suffit pas</span></a>
+        <a href="#methode"><b>2. La méthode</b><span>Les 4 briques C.L.U.B.</span></a>
+        <a href="#affiner"><b>3. Affiner</b><span>Retoucher au lieu de recommencer</span></a>
+        <a href="#bilan"><b>4. Valider</b><span>La check-list de fin</span></a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="comprendre">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Même besoin, deux demandes</p>
+        <h2 class="h2">Flou dedans,<br>flou dehors</h2>
+        <p class="lead">L'IA comble chaque trou par une supposition. Plus votre demande est précise, moins elle devine, et moins vous passez de temps à corriger.</p>
+      </div>
+      <div class="vs">
+        <article class="vs-card">
+          <span class="tag">Demande floue</span>
+          <blockquote>« Écris un message pour le vide-grenier. »</blockquote>
+          <p class="res"><b>Ce que vous obtenez :</b> un texte générique, sans date ni lieu, au ton d'une publicité, trop long pour WhatsApp. Il faut tout réécrire.</p>
+        </article>
+        <article class="vs-card good">
+          <span class="tag">Demande précise</span>
+          <blockquote>« Je suis secrétaire d'un club de handball amateur. Écris un message WhatsApp pour les familles du club annonçant notre vide-grenier du dimanche 15 novembre, de 8 h à 17 h, au gymnase. On cherche aussi 6 bénévoles pour tenir la buvette. Ton convivial, 5 lignes maximum, avec 2 ou 3 émojis. »</blockquote>
+          <p class="res"><b>Ce que vous obtenez :</b> un message prêt à envoyer, à la bonne longueur, avec toutes les infos utiles. Une relecture et c'est parti.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="methode">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>La méthode</p>
+        <h2 class="h2">Quatre briques :<br><span class="turf">C.L.U.B.</span></h2>
+        <p class="lead">Pas besoin de formule magique. Une bonne demande répond à quatre questions. Si l'une manque, l'IA la devine à votre place.</p>
+      </div>
+      <div class="club">
+        <article class="brick">
+          <span class="l" aria-hidden="true">C</span>
+          <h3>Contexte : qui vous êtes</h3>
+          <p>Votre rôle, le club, le sport, la situation. C'est ce qui permet à l'IA d'utiliser le bon vocabulaire.</p>
+          <p class="ex">« Je suis trésorier d'un club de tennis de 180 licenciés en zone rurale. »</p>
+        </article>
+        <article class="brick">
+          <span class="l" aria-hidden="true">L</span>
+          <h3>Livrable : ce que vous voulez</h3>
+          <p>Le type de document et les informations qu'il doit contenir : un e-mail, une affiche, un tableau, une liste d'idées.</p>
+          <p class="ex">« Rédige un e-mail de relance pour les cotisations, à régler avant le 30 novembre. »</p>
+        </article>
+        <article class="brick">
+          <span class="l" aria-hidden="true">U</span>
+          <h3>Usagers : à qui c'est destiné</h3>
+          <p>Les lecteurs changent tout : des parents, des ados, la mairie, un sponsor. On n'écrit pas pareil à chacun.</p>
+          <p class="ex">« Il s'adresse aux parents des jeunes de l'école de tennis. »</p>
+        </article>
+        <article class="brick">
+          <span class="l" aria-hidden="true">B</span>
+          <h3>Bornes : la forme attendue</h3>
+          <p>Longueur, ton, format, ce qu'il faut éviter. C'est la brique qu'on oublie le plus, et celle qui fait gagner le plus de temps.</p>
+          <p class="ex">« Ton cordial mais clair, 8 lignes maximum, sans culpabiliser. »</p>
+        </article>
+      </div>
+
+      <div class="build" id="atelier">
+        <div>
+          <div class="head" style="margin-bottom:24px">
+            <p class="label"><span class="sq"></span>À vous de jouer</p>
+            <h3 class="h3">Composez votre demande</h3>
+            <p style="color:var(--mist)">Remplissez les quatre briques avec un vrai besoin du club, ou partez d'un exemple. La demande s'assemble au fur et à mesure, prête à copier.</p>
+          </div>
+          <div class="presets">
+            <span class="label">Exemples</span>
+            <button class="chip" type="button" data-preset="benevoles">Bénévoles</button>
+            <button class="chip" type="button" data-preset="mairie">Mairie</button>
+            <button class="chip" type="button" data-preset="reseaux">Réseaux sociaux</button>
+            <button class="chip reset" type="button" data-preset="vide">Tout effacer</button>
+          </div>
+          <div class="fields">
+            <div class="field">
+              <label for="f-c"><i aria-hidden="true">C</i>Contexte</label>
+              <small id="h-c">Votre rôle, le club, la situation</small>
+              <textarea id="f-c" data-k="c" aria-describedby="h-c" placeholder="Je suis bénévole dans un club de…"></textarea>
+            </div>
+            <div class="field">
+              <label for="f-l"><i aria-hidden="true">L</i>Livrable</label>
+              <small id="h-l">Le document voulu et ce qu'il doit dire</small>
+              <textarea id="f-l" data-k="l" aria-describedby="h-l" placeholder="Rédige un e-mail qui…"></textarea>
+            </div>
+            <div class="field">
+              <label for="f-u"><i aria-hidden="true">U</i>Usagers</label>
+              <small id="h-u">Qui va le lire</small>
+              <textarea id="f-u" data-k="u" aria-describedby="h-u" placeholder="Il s'adresse aux…"></textarea>
+            </div>
+            <div class="field">
+              <label for="f-b"><i aria-hidden="true">B</i>Bornes</label>
+              <small id="h-b">Longueur, ton, format, ce qu'il faut éviter</small>
+              <textarea id="f-b" data-k="b" aria-describedby="h-b" placeholder="Ton chaleureux, 10 lignes maximum…"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="out">
+          <div class="prompt">
+            <div class="prompt-top">
+              <span class="label">Votre demande</span>
+              <button class="copy" type="button" id="copy-build">Copier</button>
+            </div>
+            <pre id="build-txt" aria-live="polite"></pre>
+          </div>
+          <div class="gauge" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+          <p class="gauge-txt" id="gauge-txt">0 brique sur 4</p>
+          <p style="color:var(--fog);font-size:.88rem">Votre brouillon reste sur cet appareil, rien n'est envoyé.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="affiner">
+    <div class="wrap tune">
+      <div class="head" style="margin:0">
+        <p class="label"><span class="sq"></span>Affiner</p>
+        <h2 class="h2">Retoucher,<br>pas recommencer</h2>
+        <p class="lead">La première réponse est un brouillon. Restez dans la même conversation et demandez une retouche : l'IA garde tout le contexte en mémoire.</p>
+      </div>
+      <ul class="tune-list">
+        <li><div><q>Plus court, 5 lignes maximum.</q><p>Le réflexe numéro un : l'IA écrit souvent trop long.</p></div><button class="copy line" type="button" data-copy>Copier</button></li>
+        <li><div><q>Propose-moi trois versions différentes.</q><p>Pour choisir au lieu de corriger.</p></div><button class="copy line" type="button" data-copy>Copier</button></li>
+        <li><div><q>Avant de répondre, pose-moi les questions qui te manquent.</q><p>Idéal quand vous ne savez pas quoi préciser.</p></div><button class="copy line" type="button" data-copy>Copier</button></li>
+        <li><div><q>Garde le fond, mais rends le ton plus chaleureux.</q><p>Changer une seule chose à la fois.</p></div><button class="copy line" type="button" data-copy>Copier</button></li>
+        <li><div><q>Écris-le comme un bénévole, pas comme une entreprise.</q><p>Pour éviter le style publicitaire.</p></div><button class="copy line" type="button" data-copy>Copier</button></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Les pièges</p>
+        <h2 class="h2">Quatre erreurs<br>à éviter</h2>
+      </div>
+      <div class="tips">
+        <article class="tip">
+          <span class="n">Piège 01</span>
+          <h3>Tout demander d'un coup</h3>
+          <p>Le planning, l'affiche et le mail aux parents dans la même demande : tout est survolé. Une demande, un livrable.</p>
+        </article>
+        <article class="tip">
+          <span class="n">Piège 02</span>
+          <h3>Croire sur parole</h3>
+          <p>L'IA peut inventer une date, un article de règlement ou un chiffre avec beaucoup d'assurance. Vérifiez tout ce qui est factuel avant d'envoyer.</p>
+        </article>
+        <article class="tip">
+          <span class="n">Piège 03</span>
+          <h3>Envoyer sans relire</h3>
+          <p>Le texte part au nom du club. Relisez-le à voix haute : si vous ne l'auriez pas écrit comme ça, demandez une retouche.</p>
+        </article>
+        <article class="tip key">
+          <span class="n">La règle d'or</span>
+          <h3>Toujours aucune donnée de licencié</h3>
+          <p>Pour personnaliser, écrivez « [prénom] » ou « un joueur de U13 » et complétez vous-même après. Jamais de vrais noms, de numéros ou d'infos de santé.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="bibliotheque">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Bibliothèque</p>
+        <h2 class="h2">Six demandes<br>prêtes à l'emploi</h2>
+        <p class="lead">Construites avec la méthode C.L.U.B. Copiez, remplacez les passages en vert par les infos de votre club, collez.</p>
+      </div>
+      <div class="lib">
+        <article class="card">
+          <div class="card-top"><span class="label">Bénévoles</span><h3>Recruter pour un événement</h3></div>
+<pre>Je suis membre du bureau d'un club de <i>[sport]</i>. Rédige une annonce pour trouver <i>[nombre]</i> bénévoles pour <i>[événement]</i> le <i>[date]</i>. Elle s'adresse aux parents et aux licenciés adultes. Précise les missions possibles (buvette, accueil, installation), qu'une heure suffit pour aider, et comment s'inscrire. Ton chaleureux, 8 lignes maximum.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="label">Adhérents</span><h3>Relancer les cotisations</h3></div>
+<pre>Je suis trésorier d'un club de <i>[sport]</i>. Rédige un e-mail de relance pour les cotisations de la saison, à régler avant le <i>[date]</i>. Il s'adresse aux familles qui n'ont pas encore payé. Rappelle les moyens de paiement (<i>[chèque, virement, Pass'Sport…]</i>) et qu'on peut payer en plusieurs fois. Ton cordial, sans culpabiliser, 10 lignes maximum.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="label">Communication</span><h3>Publier un résultat</h3></div>
+<pre>Je gère la page Instagram d'un club de <i>[sport]</i>. Écris une publication sur le match de l'équipe <i>[catégorie]</i> contre <i>[adversaire]</i>, score <i>[score]</i>. Elle s'adresse aux supporters et aux familles. Mets en avant l'esprit d'équipe plutôt qu'un joueur en particulier. 4 lignes maximum, 3 émojis, 5 hashtags.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="label">Collectivités</span><h3>Demander un créneau</h3></div>
+<pre>Je suis président d'un club de <i>[sport]</i> de <i>[nombre]</i> licenciés. Rédige un courrier au service des sports de la mairie pour demander un créneau supplémentaire au <i>[équipement]</i> le <i>[jour et horaire]</i>, parce que <i>[raison : nouvelle équipe, liste d'attente…]</i>. Ton formel et respectueux, une page maximum, avec une formule de politesse.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="label">Vie du club</span><h3>Mettre au propre des notes</h3></div>
+<pre>Je suis secrétaire d'un club de <i>[sport]</i>. Voici mes notes brutes de la réunion de bureau : <i>[collez vos notes, sans noms de licenciés]</i>. Transforme-les en compte rendu clair pour les membres du bureau : décisions prises, actions à mener avec qui et pour quand, points reportés. Format liste, une page maximum.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="label">Partenaires</span><h3>Remercier un sponsor</h3></div>
+<pre>Je suis responsable des partenariats d'un club de <i>[sport]</i>. Rédige un e-mail de remerciement à <i>[nom du commerce]</i>, qui a financé <i>[maillots, tournoi…]</i> cette saison. Il s'adresse au gérant. Cite un ou deux moments concrets de la saison et propose de renouveler le partenariat. Ton sincère, 10 lignes maximum.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="bilan">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Check-list de fin</p>
+        <h2 class="h2">Module 2,<br>validé&nbsp;?</h2>
+        <p class="lead">Cochez au fur et à mesure. Votre progression reste sur cet appareil, rien n'est envoyé.</p>
+      </div>
+      <div class="check" id="check" data-key="fair-module2" data-name="Module 2">
+        <label><input type="checkbox" data-k="club"><span>Je connais les 4 briques : Contexte, Livrable, Usagers, Bornes</span></label>
+        <label><input type="checkbox" data-k="compose"><span>J'ai composé une demande pour un vrai besoin du club</span></label>
+        <label><input type="checkbox" data-k="retouche"><span>J'ai demandé au moins une retouche dans la même conversation</span></label>
+        <label><input type="checkbox" data-k="biblio"><span>J'ai testé une demande de la bibliothèque</span></label>
+        <label><input type="checkbox" data-k="verif"><span>J'ai vérifié les dates, chiffres et noms avant d'utiliser un texte</span></label>
+        <label><input type="checkbox" data-k="regle"><span>J'ai remplacé toute donnée personnelle par « [prénom] » ou une catégorie</span></label>
+      </div>
+      <p class="score" id="score" aria-live="polite">0 sur 6</p>
+    </div>
+  </section>
+
+  <section class="sec chalk">
+    <div class="wrap next">
+      <div class="head" style="margin:0">
+        <p class="label"><span class="sq"></span>Et ensuite</p>
+        <h2 class="h2">Module 3 :<br><span class="turf">l'IA sans risque</span></h2>
+        <p class="lead">Vous savez demander. Prochaine étape : repérer les erreurs de l'IA, protéger les données du club et poser les règles d'usage avec le bureau.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-turf" href="formation-3.html">Passer au module 3</a>
+        <a class="btn btn-ghost" href="formation.html">Tout le niveau 0</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>FAIR · Former les Associations à l'IA Responsable</span>
+    <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/formation.js"></script>
+<script>
+(function(){
+  // Atelier C.L.U.B.
+  var PRESETS={
+    benevoles:{c:"Je suis bénévole dans un club de football amateur de 250 licenciés.",l:"Rédige un message pour recruter 8 bénévoles pour notre tournoi de Pâques, le samedi 3 avril. Missions : buvette, arbitrage des petits, accueil des équipes.",u:"Il s'adresse aux parents des joueurs, sur le groupe WhatsApp du club.",b:"Ton convivial, 6 lignes maximum, 2 émojis, avec un lien d'inscription à la fin : [lien]."},
+    mairie:{c:"Je suis présidente d'un club de gymnastique de 120 licenciés, dont 80 enfants.",l:"Rédige un courrier pour demander le prêt de la salle polyvalente le dimanche 13 juin pour notre gala de fin d'année.",u:"Il s'adresse à l'adjoint aux sports de la mairie.",b:"Ton formel et respectueux, une page maximum, avec une formule de politesse."},
+    reseaux:{c:"Je gère la page Facebook d'un club de basket de quartier.",l:"Écris une publication pour annoncer les portes ouvertes du mercredi 8 septembre, de 14 h à 18 h, avec essai gratuit pour les 6-12 ans.",u:"Elle s'adresse aux familles du quartier qui ne connaissent pas encore le club.",b:"Ton dynamique, 4 lignes maximum, 3 émojis et 4 hashtags."},
+    vide:{c:"",l:"",u:"",b:""}
+  };
+  var KEY_B='fair-module2-atelier';
+  var fields=[].slice.call(document.querySelectorAll('.field textarea'));
+  var out=document.getElementById('build-txt');
+  var bars=[].slice.call(document.querySelectorAll('.gauge span'));
+  var gtxt=document.getElementById('gauge-txt');
+  var draft=FAIR.store(KEY_B);
+  function render(save){
+    var parts=fields.map(function(f){return f.value.trim()});
+    var filled=parts.filter(Boolean).length;
+    out.textContent=parts.filter(Boolean).join(' ');
+    if(!filled){out.innerHTML='<span class="empty">Votre demande apparaîtra ici au fur et à mesure.</span>'}
+    bars.forEach(function(b,i){b.classList.toggle('on',!!parts[i])});
+    gtxt.textContent=filled===4?'4 briques sur 4 · Demande complète':filled+(filled>1?' briques':' brique')+' sur 4';
+    if(save){var d={};fields.forEach(function(f){d[f.dataset.k]=f.value});FAIR.store(KEY_B,d)}
+  }
+  fields.forEach(function(f){
+    f.value=draft[f.dataset.k]||'';
+    f.addEventListener('input',function(){render(true)});
+  });
+  [].forEach.call(document.querySelectorAll('[data-preset]'),function(b){
+    b.addEventListener('click',function(){
+      var p=PRESETS[b.dataset.preset];
+      fields.forEach(function(f){f.value=p[f.dataset.k]});
+      render(true);
+    });
+  });
+  var cb=document.getElementById('copy-build');
+  cb.addEventListener('click',function(){
+    var txt=fields.map(function(f){return f.value.trim()}).filter(Boolean).join(' ');
+    if(!txt){fields[0].focus();return}
+    FAIR.copy(cb,out,txt);
+  });
+  render(false);
+})();
+</script>
+</body>
+</html>

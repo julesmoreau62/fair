@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Formation · Niveau 1 · FAIR</title>
+<meta name="description" content="Niveau 1 de la formation FAIR : l'IA au quotidien du club. Messages aux adhérents, réseaux sociaux, réunions et AG, séances d'entraînement et rentrée du club, avec exercices corrigés.">
+<meta name="theme-color" content="#07111F">
+<link rel="icon" href="assets/logo/fair-icone.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/css/formation.css?v=2">
+<link rel="stylesheet" href="assets/css/niveau.css?v=1">
+<style>
+/* Progression globale */
+.bar{width:100%;max-width:560px;display:grid;gap:10px;margin-top:8px}
+.bar-track{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.bar-track span{height:8px;border-radius:4px;background:var(--line-n);transition:background-color .3s}
+.bar-track span.on{background:var(--turf)}
+.bar p{font-family:var(--f-mono);font-size:.76rem;color:var(--fog)}
+.pre0{max-width:760px;display:flex;gap:14px;align-items:flex-start;padding:14px 18px;border:1px solid var(--line-n);border-radius:6px;font-size:.92rem;color:var(--mist)}
+.pre0[hidden]{display:none}
+.pre0 a{color:var(--turf-hi)}
+
+/* Liste des modules */
+.mods{display:grid;gap:12px}
+.mod{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:20px clamp(20px,3vw,40px);align-items:center;padding:26px clamp(20px,3vw,32px);border:1px solid var(--line-c);border-radius:6px;background:var(--paper);transition:border-color .25s}
+.mod:hover{border-color:var(--ink-2)}
+.mod.is-done{border-color:var(--turf-ink);box-shadow:inset 4px 0 0 var(--turf-ink)}
+.mod-n{font-family:var(--f-display);font-weight:900;font-stretch:62%;font-size:4.4rem;line-height:.8;color:var(--turf-ink);align-self:start}
+.mod-txt{display:grid;gap:8px}
+.mod-txt h3{font-family:var(--f-display);font-weight:850;font-stretch:66%;text-transform:uppercase;font-size:1.7rem;line-height:1}
+.mod-txt p{color:var(--ink-2);font-size:.96rem;line-height:1.5;max-width:66ch}
+.mod-txt ul{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.mod-txt ul li{font-size:.8rem;padding:4px 10px;border-radius:999px;border:1px solid var(--line-c);color:var(--ink-2)}
+.mod-txt .mod-meta{display:flex;flex-wrap:wrap;gap:6px 16px;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.04em;color:var(--ink-2);text-transform:uppercase;margin-top:4px}
+.mod-meta .st.done{color:var(--turf-ink)}
+.mod .btn{min-width:150px}
+.mod.is-done .btn{background:transparent;border-color:var(--line-c);color:var(--ink)}
+@media (max-width:760px){.mod{grid-template-columns:minmax(0,1fr)}.mod-n{font-size:3.2rem}.mod .btn{justify-self:start}}
+.head.after{margin-top:clamp(64px,8vw,104px)}
+
+/* Ressources */
+.res{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.res a{display:grid;gap:10px;align-content:start;padding:26px 24px 28px;border:1px solid var(--line-n);border-radius:6px;background:var(--night-2);text-decoration:none;transition:border-color .25s}
+.res a:hover{border-color:var(--turf)}
+.res .n{font-family:var(--f-mono);font-size:.7rem;color:var(--turf);letter-spacing:.07em;text-transform:uppercase}
+.res h3{font-size:1.15rem;line-height:1.25;font-weight:700}
+.res p{color:var(--mist);font-size:.95rem;line-height:1.5}
+.res .go{color:var(--turf-hi);font-weight:600;font-size:.92rem}
+@media (max-width:860px){.res{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="check" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></symbol>
+  <symbol id="lock" viewBox="0 0 20 20"><rect x="4.5" y="9" width="11" height="8" rx="1.5"/><path d="M7 9V6.5a3 3 0 0 1 6 0V9"/></symbol>
+</svg>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="index.html" aria-label="FAIR, retour à l'accueil"><img src="assets/logo/fair-logo-blanc.svg" alt="FAIR"></a>
+    <nav aria-label="Navigation">
+      <a class="opt" href="index.html#clubs">Clubs</a>
+      <a class="opt" href="index.html#partenaires">Fédérations</a>
+      <a href="formation.html" aria-current="page">Formation</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <section class="hero">
+    <div class="wrap hero-in">
+      <p class="label"><span class="sq"></span><a href="formation.html">Formation FAIR</a> · Niveau 1 sur 5</p>
+      <h1><small>L'IA au quotidien du club</small>Niveau <span class="turf">1</span></h1>
+      <p class="lead">Le niveau 0 vous a appris à bien demander. Le niveau 1 l'applique aux tâches qui reviennent chaque semaine au club : les messages aux familles, les réseaux, les réunions, les séances et la rentrée. Avec de vrais dossiers, des exercices corrigés et un club fil rouge du premier au dernier module.</p>
+      <ul class="meta">
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>5 modules</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>5 h 45 au total</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>14 exercices corrigés</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>60 demandes prêtes à l'emploi</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Attestation à la fin</li>
+      </ul>
+      <div class="bar" aria-live="polite">
+        <div class="bar-track" id="bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+        <p id="bar-txt">0 module validé sur 5</p>
+      </div>
+      <p class="pre0" id="pre0" hidden><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Le niveau 1 suppose les réflexes du niveau 0 : la méthode C.L.U.B., la vérification et la règle d'or sur les données. <a href="formation.html">Il vous reste <b id="pre0-n">5</b> à valider au niveau 0</a>, faites-les d'abord si vous débutez.</span></p>
+    </div>
+  </section>
+
+  <section class="sec chalk">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Ce qui change</p>
+        <h2 class="h2">Plus loin<br>que le <span class="turf">niveau 0</span></h2>
+        <p class="lead">Le niveau 0 donnait les bases, une demande à la fois. Le niveau 1 traite des dossiers complets, avec des méthodes propres à chaque tâche et des exercices où l'on se trompe pour apprendre.</p>
+      </div>
+      <div class="tips">
+        <article class="tip">
+          <span class="n">01 · Le fil rouge</span>
+          <h3>Un club suivi de bout en bout</h3>
+          <p>L'AS Exemple Handball et sa secrétaire, Camille, reviennent dans chaque module. Leurs vraies difficultés servent d'exemples et d'exercices.</p>
+        </article>
+        <article class="tip">
+          <span class="n">02 · Les méthodes</span>
+          <h3>Une méthode par tâche</h3>
+          <p>Répondre à un message tendu, construire un calendrier de publications, rédiger un compte rendu fidèle, adapter une séance : chaque tâche a sa grille.</p>
+        </article>
+        <article class="tip">
+          <span class="n">03 · La pratique</span>
+          <h3>Des exercices corrigés</h3>
+          <p>Des cas concrets à traiter vous-même, des textes produits par l'IA où il faut repérer les erreurs, et un corrigé commenté pour chacun.</p>
+        </article>
+        <article class="tip key">
+          <span class="n">04 · Votre club</span>
+          <h3>La fiche du club, une fois pour toutes</h3>
+          <p>Au module 1, vous décrivez votre club et sa façon d'écrire. Cette fiche se place ensuite en tête de toutes les demandes des modules suivants.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="modules" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Le parcours</p>
+        <h2 class="h2">Cinq modules,<br>dans l'ordre</h2>
+        <p class="lead">Chaque module se termine par un quiz et une check-list. Votre progression est enregistrée sur cet appareil uniquement : rien n'est envoyé.</p>
+      </div>
+      <ol class="mods">
+        <li class="mod" data-m="1">
+          <span class="mod-n" aria-hidden="true">01</span>
+          <div class="mod-txt">
+            <h3>Écrire aux adhérents</h3>
+            <p>La fiche du club, les convocations du week-end en une seule demande, les mails aux parents, les messages délicats avec la méthode C.A.L.M.E. et les textes faciles à lire pour toutes les familles.</p>
+            <ul><li>Fiche du club</li><li>Convocations en série</li><li>Réponses délicates</li><li>FALC et traduction</li></ul>
+            <p class="mod-meta"><span>1 h</span><span>3 exercices</span><span class="st" data-lv="1" data-m="1"></span></p>
+          </div>
+          <a class="btn btn-turf" href="formation-n1-1.html">Commencer</a>
+        </li>
+        <li class="mod" data-m="2">
+          <span class="mod-n" aria-hidden="true">02</span>
+          <div class="mod-txt">
+            <h3>Réseaux et affiches</h3>
+            <p>La ligne éditoriale du club, un mois de publications planifié en une demande, les posts de résultats (même après une défaite), les visuels et affiches, et le droit à l'image des mineurs.</p>
+            <ul><li>Ligne éditoriale</li><li>Calendrier du mois</li><li>Posts de résultats</li><li>Visuels et droit à l'image</li></ul>
+            <p class="mod-meta"><span>1 h</span><span>3 exercices</span><span class="st" data-lv="1" data-m="2"></span></p>
+          </div>
+          <a class="btn btn-turf" href="formation-n1-2.html">Commencer</a>
+        </li>
+        <li class="mod" data-m="3">
+          <span class="mod-n" aria-hidden="true">03</span>
+          <div class="mod-txt">
+            <h3>Réunions et AG</h3>
+            <p>L'ordre du jour, l'enregistrement et la transcription dans les règles, le compte rendu fidèle, le suivi des actions, puis l'assemblée générale : convocation, rapport moral, rapport d'activité et procès-verbal.</p>
+            <ul><li>Ordre du jour</li><li>Transcription</li><li>Compte rendu fidèle</li><li>Assemblée générale</li></ul>
+            <p class="mod-meta"><span>1 h 15</span><span>3 exercices</span><span class="st" data-lv="1" data-m="3"></span></p>
+          </div>
+          <a class="btn btn-turf" href="formation-n1-3.html">Commencer</a>
+        </li>
+        <li class="mod" data-m="4">
+          <span class="mod-n" aria-hidden="true">04</span>
+          <div class="mod-txt">
+            <h3>Préparer ses séances</h3>
+            <p>La fiche du groupe, la séance complète, les variantes quand rien ne se passe comme prévu, l'inclusion de tous les enfants, le cycle de six séances et les limites à ne pas franchir.</p>
+            <ul><li>Fiche du groupe</li><li>Séance complète</li><li>Variantes et imprévus</li><li>Cycle de séances</li></ul>
+            <p class="mod-meta"><span>1 h</span><span>3 exercices</span><span class="st" data-lv="1" data-m="4"></span></p>
+          </div>
+          <a class="btn btn-turf" href="formation-n1-4.html">Commencer</a>
+        </li>
+        <li class="mod" data-m="5">
+          <span class="mod-n" aria-hidden="true">05</span>
+          <div class="mod-txt">
+            <h3>La rentrée du club</h3>
+            <p>Le kit de rentrée de bout en bout : rétroplanning, campagne d'inscriptions, fiche d'inscription conforme, livret d'accueil, foire aux questions des familles, appel aux bénévoles. Puis le quiz final et l'attestation « Niveau 1 validé ».</p>
+            <ul><li>Rétroplanning</li><li>Kit de rentrée</li><li>Quiz final</li><li>Attestation</li></ul>
+            <p class="mod-meta"><span>1 h 30</span><span>2 exercices</span><span class="st" data-lv="1" data-m="5"></span></p>
+          </div>
+          <a class="btn btn-turf" href="formation-n1-5.html">Commencer</a>
+        </li>
+      </ol>
+
+      <div class="head after">
+        <p class="label"><span class="sq"></span>Toute la formation</p>
+        <h3 class="h3">Six niveaux, une marche à la fois</h3>
+        <p class="lead">Chaque niveau s'appuie sur le précédent. La difficulté et la profondeur augmentent à chaque marche.</p>
+      </div>
+      <ol class="levels">
+        <li class="lv free" style="--i:0"><span class="n">0</span><b>Les fondamentaux</b><span class="tag" id="lv0">Gratuit</span></li>
+        <li class="lv up" style="--i:1"><span class="n">1</span><b>L'IA au quotidien du club</b><span class="tag">Vous êtes ici</span></li>
+        <li class="lv" style="--i:2"><span class="n">2</span><b>Ses outils sur mesure</b><span class="tag"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Sur accès</span></li>
+        <li class="lv" style="--i:3"><span class="n">3</span><b>Financer et développer</b><span class="tag"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Sur accès</span></li>
+        <li class="lv" style="--i:4"><span class="n">4</span><b>Automatiser à plusieurs</b><span class="tag"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Sur accès</span></li>
+        <li class="lv" style="--i:5"><span class="n">5</span><b>Référent IA du club</b><span class="tag"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Sur accès</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec" id="fil-rouge">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Le fil rouge</p>
+        <h2 class="h2">L'AS Exemple<br><span class="turf">Handball</span></h2>
+        <p class="lead">Un club imaginaire, mais des situations bien réelles. Vous le retrouverez dans chaque module, avec ses contraintes et ses bonnes volontés.</p>
+      </div>
+      <div class="case" style="margin-top:0">
+        <article class="who-card">
+          <span class="label">Fiche d'identité</span>
+          <h3>AS Exemple Handball</h3>
+          <dl>
+            <dt>Licenciés</dt><dd>240, dont 150 jeunes de moins de 18 ans</dd>
+            <dt>Équipes</dt><dd>11, de l'école de hand (U9) aux seniors</dd>
+            <dt>Salle</dt><dd>Gymnase Jean-Moulin, partagé avec deux autres clubs</dd>
+            <dt>Bénévoles</dt><dd>12 réguliers, une trentaine les jours de match</dd>
+            <dt>Couleurs</dt><dd>Rouge et blanc</dd>
+            <dt>Canaux</dt><dd>WhatsApp par équipe, e-mail, Instagram, Facebook</dd>
+          </dl>
+        </article>
+        <div>
+          <ul class="week">
+            <li><b>Camille</b><span>Secrétaire bénévole depuis deux saisons, en poste à plein temps la semaine. A suivi le niveau 0 et utilise l'IA pour quelques messages. Veut gagner ses soirées.</span></li>
+            <li><b>Le bureau</b><span>Un président, une trésorière, Camille au secrétariat et trois membres. Une réunion par mois, une assemblée générale en juin.</span></li>
+            <li><b>Les éducateurs</b><span>Huit bénévoles, deux diplômés fédéraux. Les autres apprennent sur le tas et préparent leurs séances le soir.</span></li>
+            <li><b>Les familles</b><span>Très diverses : parents investis, parents qui découvrent le handball, familles qui lisent peu le français.</span></li>
+            <li><b>Le défi</b><span>Faire autant avec moins de soirées sacrifiées, sans perdre le ton chaleureux qui fait la réputation du club.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="ressources">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Ressources</p>
+        <h2 class="h2">À garder<br><span class="turf">sous la main</span></h2>
+      </div>
+      <div class="lib">
+        <article class="card">
+          <div class="card-top"><span class="label">Module 1</span><h3>La fiche du club</h3></div>
+          <pre>Le texte qui décrit votre club et sa façon d'écrire, à coller en tête de chaque demande ou à enregistrer dans les réglages de l'outil.</pre>
+          <div class="card-foot"><a class="btn btn-turf" href="formation-n1-1.html#fiche">Créer ma fiche</a></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="label">Rappel du niveau 0</span><h3>Les fiches mémo</h3></div>
+          <pre>C.L.U.B., les réflexes de vérification et la règle d'or des données : les fiches A4 du niveau 0 restent la base.</pre>
+          <div class="card-foot"><a class="btn btn-ghost" href="formation-fiches.html">Voir les fiches</a></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="label">Module 5</span><h3>L'attestation</h3></div>
+          <pre>Une fois les cinq modules et le quiz final validés, imprimez votre attestation « Niveau 1 validé » au nom de votre club.</pre>
+          <div class="card-foot"><a class="btn btn-ghost" href="formation-n1-5.html#attestation">Voir l'attestation</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap next">
+      <div class="head" style="margin:0">
+        <p class="label"><span class="sq"></span>En groupe, c'est mieux</p>
+        <h2 class="h2">Un atelier<br><span class="turf">dans votre club</span></h2>
+        <p class="lead">FAIR anime le niveau 1 dans les clubs, avec vos bénévoles et sur vos propres dossiers : vos convocations, votre AG, votre rentrée.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-turf" href="formation-n1-1.html">Commencer le module 1</a>
+        <a class="btn btn-ghost" href="index.html#contact">Demander un atelier</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>FAIR · Former les Associations à l'IA Responsable</span>
+    <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/formation.js"></script>
+<script>
+(function(){
+  // Barre de progression et boutons de chaque module
+  function paint(){
+    var n=0;
+    FAIR.N1.forEach(function(m,i){
+      var row=document.querySelector('.mod[data-m="'+(i+1)+'"]');
+      var c=FAIR.count(m.key),ok=c>=m.n;
+      if(ok)n++;
+      row.classList.toggle('is-done',ok);
+      row.querySelector('.btn').textContent=ok?'Revoir':c?'Reprendre':'Commencer';
+    });
+    [].forEach.call(document.querySelectorAll('#bar span'),function(s,i){s.classList.toggle('on',i<n)});
+    document.getElementById('bar-txt').textContent=n===5?'5 modules validés sur 5 · Niveau 1 terminé':n+(n>1?' modules validés':' module validé')+' sur 5';
+  }
+  paint();
+  document.addEventListener('fair:progress',paint);
+
+  // Rappel du niveau 0 s'il n'est pas terminé
+  var left=FAIR.MODULES.filter(function(m){return !FAIR.done(m)}).length;
+  document.getElementById('pre0').hidden=!left;
+  document.getElementById('pre0-n').textContent=left+(left>1?' modules':' module');
+  document.getElementById('lv0').textContent=left?'Gratuit':'Gratuit · Validé';
+})();
+</script>
+</body>
+</html>

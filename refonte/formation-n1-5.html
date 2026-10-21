@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Formation · Niveau 1 · Module 5 · FAIR</title>
+<meta name="description" content="Niveau 1, module 5 de la formation FAIR : la rentrée du club de bout en bout avec l'IA. Rétroplanning, inscriptions, fiche d'inscription conforme, livret d'accueil, bénévoles, quiz final et attestation.">
+<meta name="theme-color" content="#07111F">
+<link rel="icon" href="assets/logo/fair-icone.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/css/formation.css?v=2">
+<link rel="stylesheet" href="assets/css/niveau.css?v=1">
+<style>
+/* Feuille de route */
+.road{display:grid;gap:0}
+.leg{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:20px clamp(28px,4vw,56px);padding-block:clamp(24px,3vw,36px);border-top:1px solid var(--line-n)}
+.leg-txt{display:grid;gap:10px;align-content:start}
+.leg-n{font-family:var(--f-display);font-weight:900;font-stretch:62%;font-size:3.2rem;line-height:.8;color:var(--turf)}
+.leg-txt p{color:var(--mist);font-size:.96rem}
+.leg-txt .from{font-family:var(--f-mono);font-size:.7rem;color:var(--fog);letter-spacing:.05em;text-transform:uppercase}
+.leg-txt .from a{color:var(--turf-hi);text-decoration:none}
+.leg-done{display:flex;gap:12px;align-items:center;padding:12px 14px;border:1px solid var(--line-n);border-radius:6px;cursor:pointer;font-weight:600;font-size:.94rem;justify-self:start}
+.leg-done:has(input:checked){border-color:var(--turf);color:var(--turf-hi)}
+.leg-done .tick{border-color:var(--fog);margin:0}
+.leg-box{display:grid;gap:12px;align-content:start}
+.road-score{font-family:var(--f-mono);font-size:.78rem;color:var(--fog);border-top:1px solid var(--line-n);padding-top:18px}
+.road-score.done{color:var(--turf)}
+@media (max-width:860px){.leg{grid-template-columns:minmax(0,1fr)}}
+
+/* Attestation */
+.att{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:28px clamp(28px,4vw,56px);align-items:start}
+.att-cfg{display:grid;gap:18px}
+.reqs{display:grid;gap:8px}
+.reqs li{display:flex;gap:12px;align-items:center;padding:12px 14px;border:1px solid var(--line-n);border-radius:6px;font-size:.94rem}
+.reqs li a{color:var(--mist)}
+.reqs .dot{flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--fog);display:grid;place-items:center}
+.reqs li.ok{border-color:rgba(31,181,122,.6)}
+.reqs li.ok .dot{background:var(--turf);border-color:var(--turf)}
+.reqs li.ok .dot::after{content:"";width:10px;height:5px;border-left:2.5px solid var(--on-turf);border-bottom:2.5px solid var(--on-turf);transform:translateY(-1px) rotate(-45deg)}
+.cert{background:var(--paper);color:var(--ink);border-radius:8px;padding:clamp(28px,4vw,48px);display:grid;gap:18px;justify-items:center;text-align:center;border:10px solid var(--chalk-2);box-shadow:0 30px 60px -30px rgba(0,0,0,.7);position:relative}
+.cert.locked{filter:grayscale(1);opacity:.55}
+.cert img{height:40px;width:auto}
+.cert .k{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.cert h3{font-family:var(--f-display);font-weight:900;font-stretch:62%;text-transform:uppercase;font-size:clamp(2.4rem,5vw,3.6rem);line-height:.86}
+.cert h3 span{color:var(--turf-ink)}
+.cert .who{font-size:1.3rem;font-weight:700;border-bottom:1px solid var(--line-c);padding-bottom:6px;min-width:60%}
+.cert p{color:var(--ink-2);font-size:.95rem;max-width:46ch}
+.cert ol{display:flex;flex-wrap:wrap;justify-content:center;gap:6px}
+.cert ol li{font-size:.8rem;padding:6px 10px;border-radius:999px;border:1px solid var(--line-c)}
+.cert .date{font-family:var(--f-mono);font-size:.74rem;color:var(--ink-2)}
+.att-msg{font-size:.9rem;color:var(--fog)}
+@media (max-width:900px){.att{grid-template-columns:minmax(0,1fr)}}
+
+/* La suite */
+.suite-cta{margin-top:clamp(48px,6vw,72px);padding-top:clamp(32px,4vw,48px);border-top:1px solid var(--line-n)}
+
+@media print{
+  body{background:#fff}
+  body>*:not(main),main>*:not(#attestation),#attestation .head,#attestation .att-cfg,#attestation .att-msg{display:none!important}
+  #attestation{padding:0;background:#fff}
+  .att{display:block}
+  .cert{box-shadow:none;border-color:#E1E6DE}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="check" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></symbol>
+  <symbol id="lock" viewBox="0 0 20 20"><rect x="4.5" y="9" width="11" height="8" rx="1.5"/><path d="M7 9V6.5a3 3 0 0 1 6 0V9"/></symbol>
+</svg>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="index.html" aria-label="FAIR, retour à l'accueil"><img src="assets/logo/fair-logo-blanc.svg" alt="FAIR"></a>
+    <nav aria-label="Navigation">
+      <a class="opt" href="index.html#clubs">Clubs</a>
+      <a class="opt" href="index.html#partenaires">Fédérations</a>
+      <a href="formation.html" aria-current="page">Formation</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <section class="hero">
+    <div class="wrap hero-in">
+      <p class="label"><span class="sq"></span><a href="formation-n1.html">Formation FAIR · Niveau 1</a> · Module 5 sur 5</p>
+      <h1><small>La rentrée du club</small>Le grand<br><span class="turf">dossier</span></h1>
+      <p class="lead">La rentrée, c'est le plus gros dossier de l'année : inscriptions, documents, accueil des nouveaux, bénévoles, forum des associations, tout en même temps. Ce module réunit tout ce que vous avez appris dans une feuille de route en huit étapes, avant le quiz final et l'attestation « Niveau 1 validé ».</p>
+      <ul class="meta">
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>1 h 30</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Modules 1 à 4 conseillés</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>2 exercices corrigés</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>12 demandes prêtes à l'emploi</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Attestation à la fin</li>
+      </ul>
+      <nav class="steps-nav" aria-label="Étapes du module">
+        <a href="#plan"><b>1. Planifier</b><span>Le rétroplanning de mai à octobre</span></a>
+        <a href="#route"><b>2. Réaliser</b><span>La feuille de route en 8 étapes</span></a>
+        <a href="#quiz"><b>3. Le quiz final</b><span>Douze questions, dix pour réussir</span></a>
+        <a href="#attestation"><b>4. Attestation</b><span>Niveau 1 validé</span></a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="objectifs">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Objectifs</p>
+        <h2 class="h2">À la fin<br>de ce module</h2>
+      </div>
+      <ol class="goals">
+        <li><b>La rentrée a un rétroplanning</b>De mai à octobre, chaque tâche a sa date et sa fonction responsable.</li>
+        <li><b>Le kit de rentrée est complet</b>Annonce, fiche d'inscription, livret d'accueil, foire aux questions, appel aux bénévoles, forum.</li>
+        <li><b>La fiche d'inscription est conforme</b>Elle ne demande que le nécessaire et sépare l'autorisation photo.</li>
+        <li><b>Le kit est cohérent</b>Mêmes tarifs, mêmes dates, mêmes horaires dans tous les documents.</li>
+        <li><b>Vous avez réussi le quiz final</b>Douze questions sur tout le niveau 1, dix bonnes réponses au moins.</li>
+        <li><b>Votre attestation est imprimée</b>« Niveau 1 validé », au nom de votre club.</li>
+      </ol>
+
+      <div class="case">
+        <article class="who-card">
+          <span class="label">Le cas du module</span>
+          <h3>La rentrée de l'AS Exemple</h3>
+          <p>L'an dernier, la rentrée a été un sprint : les fiches d'inscription imprimées la veille du forum, des tarifs différents sur l'affiche et sur le site, trente familles qui ont posé les mêmes questions sur WhatsApp. Cette année, Camille veut s'y prendre en mai, avec l'IA, et ne plus jamais revivre ça.</p>
+        </article>
+        <ul class="week">
+          <li><b>Mai</b><span>Le bureau fixe les tarifs et les créneaux. Camille lance le rétroplanning.</span></li>
+          <li><b>Juin</b><span>L'AG vote les tarifs. Les documents sont rédigés avant l'été.</span></li>
+          <li><b>Fin août</b><span>La campagne d'inscriptions démarre sur les réseaux.</span></li>
+          <li><b>Septembre</b><span>Forum des associations, reprise, accueil des nouveaux.</span></li>
+          <li><b>Octobre</b><span>Les licences sont à jour, le point d'étape au bureau.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="plan">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Étape 1 · Planifier</p>
+        <h2 class="h2">De mai<br><span class="turf">à octobre</span></h2>
+        <p class="lead">Une rentrée réussie se prépare avant l'été. Le rétroplanning ci-dessous est un point de départ : faites-le adapter à votre club, à vos dates et à votre calendrier fédéral.</p>
+      </div>
+      <div class="split">
+        <ol class="tl">
+          <li><span class="when">Mai</span><div><h4>Les décisions du bureau</h4><p>Tarifs, créneaux demandés à la mairie, équipes engagées, besoins en éducateurs.</p></div></li>
+          <li><span class="when">Juin</span><div><h4>Les documents</h4><p>Fiche d'inscription, livret d'accueil, foire aux questions, rédigés et relus avant l'été. Les tarifs votés en AG.</p></div></li>
+          <li><span class="when">Début juillet</span><div><h4>Les réinscriptions</h4><p>Le message aux licenciés actuels, pour réserver leur place avant la campagne publique.</p></div></li>
+          <li><span class="when">Fin août</span><div><h4>La campagne</h4><p>Publications, affiche, message aux écoles et à la mairie, mise à jour du site.</p></div></li>
+          <li><span class="when">Septembre</span><div><h4>Le forum et la reprise</h4><p>Le stand au forum des associations, les séances découverte, l'accueil des nouvelles familles.</p></div></li>
+          <li><span class="when">Octobre</span><div><h4>Le point d'étape</h4><p>Licences à jour, dossiers complets, bénévoles en place, bilan de la campagne au bureau.</p></div></li>
+        </ol>
+        <div>
+          <div class="prompt">
+            <div class="prompt-top"><span class="label">Le rétroplanning de votre club</span><button class="copy" type="button" data-copy>Copier</button></div>
+<pre data-club>[Fiche du club]
+Je prépare la rentrée de septembre du club. Repères : forum des associations le <i>[date]</i>, reprise des entraînements le <i>[date]</i>, AG le <i>[date]</i>. Construis un rétroplanning de mai à octobre, semaine par semaine : la tâche, la fonction responsable (bureau, secrétariat, trésorerie, éducateurs, communication), le document à produire. Signale les tâches qui dépendent d'une décision du bureau ou d'une réponse de la mairie. Présente-le en tableau.</pre>
+          </div>
+          <p class="warn">Copiez le résultat dans le tableur partagé du club, et ajoutez-y une colonne « fait ». C'est votre tableau de suivi du module 3, appliqué à la rentrée.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="route" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Étape 2 · Réaliser</p>
+        <h2 class="h2">La feuille de route<br><span class="turf">en huit étapes</span></h2>
+        <p class="lead">Chaque étape s'appuie sur un module du niveau 1. Les demandes reprennent votre fiche du club si vous l'avez remplie. Faites les étapes dans l'ordre, sur un vrai dossier, et cochez au fur et à mesure.</p>
+      </div>
+      <div class="road" id="check" data-key="fair-n1-module5" data-name="Module 5">
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">01</span>
+            <h3 class="h3">Cadrer avec le bureau</h3>
+            <p>Avant de produire quoi que ce soit, l'IA vous aide à lister les décisions à prendre. Vous les faites trancher en réunion de bureau.</p>
+            <p class="from">Vu dans le <a href="formation-n1-3.html#avant">module 3</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="cadrer">Étape faite</label>
+          </div>
+          <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre data-club>[Fiche du club]
+Je prépare la rentrée du club. Avant de rédiger quoi que ce soit, liste toutes les décisions que le bureau doit prendre (tarifs, réductions, créneaux, catégories ouvertes, modalités de paiement, documents demandés…) sous forme d'ordre du jour d'une réunion de bureau de 2 h, avec pour chaque point les éléments à préparer. Puis pose-moi les questions qui te manquent.</pre></div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">02</span>
+            <h3 class="h3">La campagne d'inscriptions</h3>
+            <p>Le message de réinscription aux licenciés actuels, puis la campagne publique : un calendrier de publications sur trois semaines.</p>
+            <p class="from">Vu dans les <a href="formation-n1-1.html#familles">modules 1</a> et <a href="formation-n1-2.html#calendrier">2</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="campagne">Étape faite</label>
+          </div>
+          <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre data-club>[Fiche du club]
+Voici les décisions du bureau pour la rentrée : <i>[tarifs, créneaux, catégories, dates d'inscription]</i>. Rédige :
+1. le message de réinscription aux familles actuelles, l'essentiel en trois lignes, date limite <i>[date]</i> ;
+2. un calendrier de publications Instagram et Facebook du <i>[date]</i> au <i>[date]</i>, deux posts par semaine, avec les textes.
+Utilise uniquement ces informations. Si une manque, écris [À COMPLÉTER].</pre></div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">03</span>
+            <h3 class="h3">La fiche d'inscription</h3>
+            <p>On ne demande que ce qui est nécessaire, on explique à quoi servent les données, et l'autorisation photo est à part. Faites relire votre fiche actuelle, vide.</p>
+            <p class="from">Vu dans le <a href="formation-n1-2.html#image">module 2</a> et le <a href="formation-3.html">module 3 du niveau 0</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="fiche">Étape faite</label>
+          </div>
+          <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre>Voici notre fiche d'inscription vierge (pièce jointe, sans aucune donnée remplie). Pour chaque information demandée, dis si elle est nécessaire à l'inscription, à la licence ou à la sécurité de l'enfant, ou si elle peut être supprimée. Vérifie que l'autorisation de photographier est séparée, non cochée par défaut, et que l'inscription n'en dépend pas. Propose un court paragraphe d'information sur l'usage des données (qui les voit, combien de temps on les garde, à qui écrire pour les modifier), en signalant ce que je dois compléter moi-même.</pre></div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">04</span>
+            <h3 class="h3">Le livret d'accueil</h3>
+            <p>Deux pages pour les nouvelles familles : le club, qui contacter, comment ça marche. Et sa version facile à lire.</p>
+            <p class="from">Vu dans le <a href="formation-n1-1.html#tous">module 1</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="livret">Étape faite</label>
+          </div>
+          <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre data-club>[Fiche du club]
+Rédige le livret d'accueil des nouvelles familles, deux pages maximum : le club en quelques lignes, nos valeurs, qui contacter pour quoi (par fonction, avec <i>[adresse du club]</i>), comment on communique, ce qu'on attend des familles (ponctualité, covoiturage, bénévolat, comportement en tribune), le calendrier des grands moments de la saison : <i>[dates]</i>. Puis une version « facile à lire » d'une page.</pre></div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">05</span>
+            <h3 class="h3">La foire aux questions</h3>
+            <p>Les questions que les familles posent chaque année, avec les réponses du club. Une page qui évite trente messages.</p>
+            <p class="from">Vu dans le <a href="formation-n1-1.html#serie">module 1</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="faq">Étape faite</label>
+          </div>
+          <div class="leg-box">
+            <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre data-club>[Fiche du club]
+Voici les questions que les familles nous ont posées l'an dernier à la rentrée : <i>[questions, sans aucun nom]</i>, et nos réponses : <i>[tarifs, réductions, aides acceptées, séance d'essai, équipement, certificat ou questionnaire de santé selon notre fédération]</i>. Rédige une foire aux questions de 12 questions maximum, une réponse de 3 lignes chacune. Pour les aides publiques, ne donne aucun montant ni condition : renvoie vers le site officiel.</pre></div>
+            <p class="warn">Les aides (Pass'Sport, aides de la commune ou de la CAF) changent chaque année : montants et conditions se vérifient sur les sites officiels, jamais auprès de l'IA.</p>
+          </div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">06</span>
+            <h3 class="h3">L'appel aux bénévoles</h3>
+            <p>Des missions précises et courtes plutôt qu'un appel général : c'est ce qui fait dire oui aux parents.</p>
+            <p class="from">Vu dans les <a href="formation-n1-1.html#kit">modules 1</a> et <a href="formation-n1-2.html#ligne">2</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="benevoles">Étape faite</label>
+          </div>
+          <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre data-club>[Fiche du club]
+Pour la saison, nous cherchons des bénévoles pour : <i>[missions : table de marque, buvette, transport, accueil, réseaux…]</i>. Rédige une fiche par mission (en quoi elle consiste, combien de temps par mois, qui contacter) en 5 lignes chacune, puis un message aux familles qui présente les missions comme un menu où chacun choisit, en insistant sur le fait qu'une heure par mois suffit.</pre></div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">07</span>
+            <h3 class="h3">Le forum et la séance découverte</h3>
+            <p>Le stand du forum, la phrase pour accrocher les familles en trente secondes, et une séance d'essai qui donne envie de revenir.</p>
+            <p class="from">Vu dans les <a href="formation-n1-2.html#visuels">modules 2</a> et <a href="formation-n1-4.html#groupe">4</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="forum">Étape faite</label>
+          </div>
+          <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre data-club>[Fiche du club]
+Nous tenons un stand au forum des associations le <i>[date]</i>. Prépare : le texte d'une affiche de stand (règle 1 titre, 3 infos, 1 action), une présentation orale du club en 30 secondes pour les bénévoles du stand, les 5 questions les plus probables des familles avec une réponse courte, et le programme d'une séance découverte de 45 min pour des enfants de <i>[âges]</i> qui n'ont jamais pratiqué, avec <i>[matériel]</i>.</pre></div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">08</span>
+            <h3 class="h3">Vérifier tout le kit</h3>
+            <p>Le piège de la rentrée : un tarif ou une date différents d'un document à l'autre. L'IA compare, vous vérifiez chaque fait à la source.</p>
+            <p class="from">Vu dans le <a href="formation-n1-1.html#verifier">module 1</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="verifier">Étape faite</label>
+          </div>
+          <div class="leg-box">
+            <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre>Voici tous les documents de notre kit de rentrée. Compare-les et liste chaque incohérence : tarifs, réductions, dates, horaires, lieux, contacts, documents demandés. Pour chacune, cite les deux passages qui se contredisent. Ne corrige rien : je vérifierai la bonne information auprès du bureau.
+<i>[Documents]</i></pre></div>
+            <ul class="todo">
+              <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Les tarifs sont ceux votés en AG</span></li>
+              <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Les créneaux sont ceux confirmés par la mairie</span></li>
+              <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Les règles de licence et de santé sont celles de votre fédération cette saison</span></li>
+              <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Plus aucun [À COMPLÉTER] ni crochet oublié</span></li>
+              <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Un membre du bureau a tout relu avant publication</span></li>
+            </ul>
+          </div>
+        </div>
+        <p class="road-score" id="score" aria-live="polite">0 sur 8</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="exercices">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>S'entraîner</p>
+        <h2 class="h2">Deux exercices<br><span class="turf">avant la rentrée</span></h2>
+        <p class="lead">Les deux erreurs qui coûtent le plus cher à la rentrée : une fiche d'inscription qui demande trop, et un kit qui se contredit.</p>
+      </div>
+
+      <div class="sub" style="margin-top:0">
+        <h3 class="h3">Exercice 1 · La fiche d'inscription trop curieuse</h3>
+        <p>Une IA a proposé cette fiche d'inscription pour les jeunes. Cinq lignes posent problème : elles demandent trop, ou mélangent ce qui doit être séparé. Trouvez-les.</p>
+      </div>
+      <div class="spot">
+        <div class="spot-doc lines">
+          <h4>Fiche d'inscription · Saison à venir</h4>
+          <button class="s">Nom, prénom et date de naissance de l'enfant</button>
+          <button class="s">Nom, téléphone et e-mail du ou des responsables légaux</button>
+          <button class="s" data-err="Le numéro de sécurité sociale n'est pas nécessaire pour s'inscrire dans un club. C'est une donnée très sensible : on ne la collecte pas.">Numéro de sécurité sociale de l'enfant</button>
+          <button class="s" data-err="La profession des parents n'a aucun rapport avec la pratique sportive de l'enfant : donnée inutile, à supprimer.">Profession des parents</button>
+          <button class="s">Personne à prévenir en cas d'urgence et son téléphone</button>
+          <button class="s" data-err="Un groupe sanguin n'a rien à faire dans un dossier de club : en urgence, ce sont les secours qui gèrent. Donnée de santé inutile.">Groupe sanguin et antécédents médicaux de l'enfant</button>
+          <button class="s" data-err="Case pré-cochée : un consentement doit être un acte volontaire. La case doit être vide, et l'enfant inscrit même si elle reste vide.">☑ J'autorise le club à photographier mon enfant et à publier ces photos</button>
+          <button class="s" data-err="Lier le règlement intérieur et la publication des photos dans une seule signature empêche de refuser l'un sans l'autre. Deux accords séparés.">En signant cette fiche, j'accepte le règlement intérieur et la diffusion de l'image de mon enfant sur les réseaux du club.</button>
+          <button class="s">Mode de paiement choisi et paiement en plusieurs fois éventuel</button>
+        </div>
+        <div class="spot-act">
+          <button class="btn btn-turf spot-go" type="button">Vérifier</button>
+          <p class="spot-res" aria-live="polite">5 erreurs à trouver.</p>
+        </div>
+      </div>
+      <p class="note" style="color:var(--ink-2)">Certaines informations de santé peuvent être demandées par votre fédération pour la licence (questionnaire ou certificat selon les cas). Elles suivent alors la procédure fédérale, et ne se recopient pas dans les fichiers du club.</p>
+
+      <div class="sub">
+        <h3 class="h3">Exercice 2 · Le kit qui se contredit</h3>
+        <p>Trois extraits du kit de rentrée de l'AS Exemple, rédigés à des moments différents. Trouvez les incohérences, puis comparez avec le corrigé.</p>
+      </div>
+      <div class="exo" style="background:var(--ink);border-color:var(--ink)">
+        <div class="ex-txt">
+          <span class="label">Les extraits</span>
+          <div class="msg"><span class="from">L'affiche du forum</span><p>Inscriptions ouvertes ! École de hand (U9) : 120 €. Reprise le mercredi 8 septembre. Séance d'essai gratuite.</p></div>
+          <div class="msg"><span class="from">La foire aux questions</span><p>Combien coûte l'inscription en U9 ? 130 €, maillot compris. Quand reprennent les entraînements ? Le mercredi 1<sup>er</sup> septembre, à 14 h.</p></div>
+          <div class="msg"><span class="from">Le livret d'accueil</span><p>Les U9 s'entraînent le mercredi de 14 h à 15 h 30 et le samedi matin. Deux séances d'essai gratuites avant de s'inscrire.</p></div>
+        </div>
+        <div class="ex-box">
+          <details class="sol">
+            <summary>Voir le corrigé</summary>
+            <div class="sol-in">
+              <p><b>Les trois incohérences</b></p>
+              <ul>
+                <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>Le tarif</b> : 120 € sur l'affiche, 130 € maillot compris dans la FAQ. Le maillot est-il inclus ? Quel montant a été voté ?</span></li>
+                <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>La reprise</b> : mercredi 8 ou mercredi 1<sup>er</sup> septembre ? Une famille qui se présente le 1<sup>er</sup> devant un gymnase fermé ne revient pas.</span></li>
+                <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>Les séances d'essai</b> : une sur l'affiche, deux dans le livret.</span></li>
+              </ul>
+              <p><b>La méthode</b> : collez les trois documents avec la demande de l'étape 8. L'IA liste les contradictions en citant les passages. Elle ne sait pas laquelle est la bonne : c'est le bureau qui tranche, puis on corrige partout.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="kit">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Bibliothèque</p>
+        <h2 class="h2">Douze demandes<br><span class="turf">pour la rentrée</span></h2>
+        <p class="lead">En plus des huit étapes, les demandes qui servent à chaque rentrée. Remplacez « [Fiche du club] » et les passages en vert.</p>
+      </div>
+      <div class="filters" data-for="lib5" role="group" aria-label="Filtrer les demandes">
+        <button class="chip" type="button" data-filter="all">Toutes</button>
+        <button class="chip" type="button" data-filter="familles">Familles</button>
+        <button class="chip" type="button" data-filter="partenaires">Partenaires et mairie</button>
+        <button class="chip" type="button" data-filter="interne">Interne</button>
+      </div>
+      <div class="lib" id="lib5">
+        <article class="card" data-cat="familles">
+          <div class="card-top"><span class="label">Familles</span><h3>Le message de bienvenue</h3></div>
+          <pre><i>[Fiche du club]</i>
+Rédige le message de bienvenue envoyé aux nouvelles familles des <i>[catégorie]</i> juste après l'inscription : qui est l'éducateur (fonction), le premier entraînement <i>[date, heure, lieu]</i>, ce qu'il faut apporter, comment on communique. Chaleureux, 6 lignes.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card" data-cat="familles">
+          <div class="card-top"><span class="label">Familles</span><h3>La relance des dossiers incomplets</h3></div>
+          <pre><i>[Fiche du club]</i>
+Rédige un message aux familles dont le dossier d'inscription est incomplet. Rappelle les pièces possibles : <i>[liste]</i>, la date limite <i>[date]</i> et ce qui se passe après (l'enfant ne peut pas jouer en match sans licence). Ton aidant, 6 lignes, avec la proposition d'aider à remplir.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card" data-cat="familles">
+          <div class="card-top"><span class="label">Familles</span><h3>La liste d'attente</h3></div>
+          <pre><i>[Fiche du club]</i>
+La catégorie <i>[catégorie]</i> est complète. Rédige la réponse aux familles qui demandent une inscription : l'enfant est sur liste d'attente, comment on les prévient si une place se libère, et une alternative : <i>[autre créneau, club voisin, stage]</i>. Ton bienveillant, 6 lignes.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card" data-cat="familles">
+          <div class="card-top"><span class="label">Familles</span><h3>La réunion de rentrée des parents</h3></div>
+          <pre><i>[Fiche du club]</i>
+Prépare le déroulé d'une réunion de rentrée de 30 minutes avec les parents des <i>[catégorie]</i> : présentation, fonctionnement de la saison, attentes du club, appel aux bénévoles, questions. Avec les trois messages clés à faire passer et une invitation de 5 lignes.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card" data-cat="familles">
+          <div class="card-top"><span class="label">Familles</span><h3>La charte du supporter</h3></div>
+          <pre><i>[Fiche du club]</i>
+Rédige une charte du supporter d'une page pour les parents : 6 engagements courts et positifs (encourager, respecter l'arbitre, laisser l'éducateur coacher…), à signer avec la fiche d'inscription. Formulés « Je… », sans ton moralisateur.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card" data-cat="partenaires">
+          <div class="card-top"><span class="label">Partenaires et mairie</span><h3>Les créneaux à la mairie</h3></div>
+          <pre><i>[Fiche du club]</i>
+Rédige un courrier au service des sports de la mairie pour confirmer nos créneaux de la saison <i>[liste]</i> et demander <i>[créneau supplémentaire]</i>, en expliquant <i>[raison : effectifs, liste d'attente]</i> avec ces chiffres : <i>[chiffres]</i>. Formel, une page.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card" data-cat="partenaires">
+          <div class="card-top"><span class="label">Partenaires et mairie</span><h3>La diffusion dans les écoles</h3></div>
+          <pre><i>[Fiche du club]</i>
+Rédige un court message aux directions des écoles du quartier pour leur demander de diffuser notre flyer de rentrée (en pièce jointe) aux familles : qui nous sommes, pourquoi c'est utile pour les enfants, la séance d'essai gratuite. 6 lignes, formel et sympathique.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card" data-cat="partenaires">
+          <div class="card-top"><span class="label">Partenaires et mairie</span><h3>Relancer les partenaires</h3></div>
+          <pre><i>[Fiche du club]</i>
+Rédige un e-mail aux partenaires de la saison passée pour les remercier et proposer de renouveler : ce que leur soutien a permis (<i>[faits]</i>), ce que le club prépare cette saison, et une proposition de rendez-vous. 10 lignes, sincère.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card" data-cat="interne">
+          <div class="card-top"><span class="label">Interne</span><h3>La réunion des éducateurs</h3></div>
+          <pre><i>[Fiche du club]</i>
+Prépare l'ordre du jour de la réunion de rentrée des éducateurs, 1 h 30 : planning des créneaux, effectifs par catégorie, matériel, règles du club (sécurité, communication avec les parents, photos), formations proposées, questions. Objectif, durée et porteur pour chaque point.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card" data-cat="interne">
+          <div class="card-top"><span class="label">Interne</span><h3>L'inventaire du matériel</h3></div>
+          <pre>Voici l'inventaire du matériel du club : <i>[liste avec quantités et état]</i> et les besoins des équipes pour la saison : <i>[besoins]</i>. Fais un tableau de ce qui manque, par priorité (sécurité, indispensable, confort), avec une estimation à vérifier auprès des fournisseurs.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card" data-cat="interne">
+          <div class="card-top"><span class="label">Interne</span><h3>Le guide du nouveau bénévole</h3></div>
+          <pre><i>[Fiche du club]</i>
+Rédige un guide d'une page pour un nouveau bénévole : qui fait quoi au club (par fonction), les règles à connaître (photos, données des licenciés, comportement avec les mineurs), où trouver les documents, à qui poser ses questions. Ton accueillant.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card" data-cat="interne">
+          <div class="card-top"><span class="label">Interne</span><h3>Le bilan de la rentrée</h3></div>
+          <pre>Voici les chiffres de notre rentrée : <i>[inscrits par catégorie, nouveaux, comparaison avec l'an dernier]</i> et ce qui s'est bien ou mal passé : <i>[notes]</i>. Rédige un bilan d'une page pour le bureau : 3 réussites, 3 difficultés, 5 actions pour la rentrée prochaine. Uniquement ces chiffres.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="quiz">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Étape 3 · Le quiz final</p>
+        <h2 class="h2">Douze questions,<br>dix pour réussir</h2>
+        <p class="lead">Des questions sur les cinq modules du niveau 1. Vous pouvez recommencer autant de fois que vous voulez : seul votre meilleur score compte.</p>
+      </div>
+      <form class="quiz" id="quizf" novalidate></form>
+      <div class="quiz-act">
+        <button class="btn btn-turf" type="submit" form="quizf">Voir mon score</button>
+        <button class="btn btn-ghost" type="button" id="quizf-reset">Recommencer</button>
+        <p class="quiz-res" id="quizf-res" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="attestation">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Étape 4</p>
+        <h2 class="h2">Votre<br><span class="turf">attestation</span></h2>
+        <p class="lead">Elle se débloque quand les cinq modules et le quiz final sont validés. Votre nom reste sur cet appareil : il ne sert qu'à l'impression.</p>
+      </div>
+      <div class="att">
+        <div class="att-cfg">
+          <div class="field"><label for="a-name">Prénom et nom</label><input id="a-name" data-k="name" autocomplete="name" placeholder="Camille Exemple"></div>
+          <div class="field"><label for="a-club">Club</label><input id="a-club" data-k="club" placeholder="AS Exemple Handball"></div>
+          <ul class="reqs" id="reqs"></ul>
+          <button class="btn btn-turf" type="button" id="print-att" disabled>Imprimer l'attestation</button>
+          <p class="att-msg" id="att-msg"></p>
+        </div>
+        <article class="cert locked" id="cert" aria-label="Aperçu de l'attestation">
+          <img src="assets/logo/fair-logo-horizontal.svg" alt="FAIR" onerror="this.remove()">
+          <span class="k">Attestation de formation</span>
+          <h3>Niveau 1<br><span>validé</span></h3>
+          <span class="who" id="c-name">Prénom Nom</span>
+          <p>a suivi les cinq modules du niveau 1 « L'IA au quotidien du club » de la formation FAIR « Former les Associations à l'IA Responsable » et réussi le quiz final<span id="c-club"></span>.</p>
+          <ol><li>Écrire aux adhérents</li><li>Réseaux et affiches</li><li>Réunions et AG</li><li>Préparer ses séances</li><li>La rentrée du club</li></ol>
+          <span class="date" id="c-date"></span>
+        </article>
+      </div>
+
+      <div class="next suite-cta">
+        <div class="head" style="margin:0">
+          <p class="label"><span class="sq"></span><span id="suite-k">Après le niveau 1</span></p>
+          <h2 class="h2">Niveau 2 :<br><span class="turf">ses outils sur mesure</span></h2>
+          <p class="lead">Le niveau 1 vous a appris à faire travailler l'IA sur les tâches du club. Le niveau 2 vous apprend à construire les outils du club : des assistants configurés pour le secrétariat, la communication ou les éducateurs, et des modèles que tout le bureau peut réutiliser. Il est ouvert sur demande.</p>
+        </div>
+        <div class="actions">
+          <a class="btn btn-turf" id="ask-access" href="mailto:contact@fair-asso.fr">Demander l'accès</a>
+          <a class="btn btn-ghost" href="formation-n1.html">Tout le niveau 1</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>FAIR · Former les Associations à l'IA Responsable</span>
+    <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/formation.js"></script>
+<script>
+(function(){
+  // Étape 3 : quiz final
+  var KEY_Q='fair-n1-quiz';
+  FAIR.quiz(document.getElementById('quizf'),KEY_Q,[
+    ["À quoi sert la fiche du club du module 1 ?",["À donner le contexte et le ton du club à chaque demande, sans les réécrire","À stocker la liste des licenciés dans l'outil d'IA","À remplacer la relecture"],0,"La brique « Contexte » écrite une fois. Sans aucune donnée personnelle. (Module 1)"],
+    ["Pour les convocations en série, quelle consigne évite les heures inventées ?",["« Sois précis »","« Si une information manque, écris [À COMPLÉTER] »","« Vérifie tes réponses »"],1,"Le manque devient visible au lieu d'être comblé par une information plausible. (Module 1)"],
+    ["Un parent furieux écrit à 23 h. La bonne démarche :",["Répondre tout de suite, point par point","Anonymiser, suivre C.A.L.M.E., relire et envoyer le lendemain","Transférer le message au groupe de l'équipe"],1,"Considérer, Admettre, Les faits, une Mesure, En rester là. Et jamais à chaud. (Module 1)"],
+    ["Le calendrier de publications prévoit « il reste 4 places au stage ». Vous n'aviez rien dit. Vous…",["Remplacez par le vrai chiffre ou retirez","Gardez, c'est sûrement proche","Demandez à l'IA d'où vient le chiffre et gardez sa réponse"],0,"Un chiffre inventé. Seul le club connaît le vrai. (Module 2)"],
+    ["Pour une affiche avec une image générée, vous demandez…",["Une image avec le titre et la date dedans","Une image sans texte ni personne, puis le texte et le vrai logo dans Canva","Une photo retouchée des joueurs du club"],1,"Le texte généré est souvent déformé, les visages d'enfants interdits, les logos se posent en vrai fichier. (Module 2)"],
+    ["Une famille demande le retrait d'une photo de son enfant, autorisation signée. Vous…",["Retirez tout de suite, sans discuter","Refusez, l'autorisation est signée","Attendez la réunion de bureau"],0,"Le retrait est immédiat. (Module 2)"],
+    ["Dans un compte rendu généré par l'IA, le minibus est « approuvé sur le principe ». En réunion, on l'a renvoyé à l'AG. Le problème :",["Aucun, c'est un résumé","L'IA a transformé une discussion en décision","Le compte rendu est trop court"],1,"L'erreur classique des résumés. La consigne « uniquement ce qui a été décidé » l'évite. (Module 3)"],
+    ["Où trouver le quorum de votre assemblée générale ?",["Dans la loi de 1901","Dans vos statuts, en faisant citer l'article","Dans la réponse de l'IA"],1,"Ce sont les statuts qui fixent ces règles. (Module 3)"],
+    ["Avant de coller une transcription de réunion dans l'IA :",["On remplace les noms par les fonctions","On la colle telle quelle","On la traduit en anglais"],0,"Des fonctions, pas des noms. Et tout est supprimé après validation. (Module 3)"],
+    ["La séance proposée totalise 70 minutes pour un créneau d'une heure, avec des cerceaux que vous n'avez pas. Vous…",["Faites la séance telle quelle","Demandez une retouche : total exact et uniquement votre matériel","Changez d'outil"],1,"On vérifie le total et le matériel, et on impose « n'utilise rien d'autre ». (Module 4)"],
+    ["Pour adapter une séance à un enfant qui a un trouble de l'attention :",["On donne son prénom et son diagnostic","On décrit le besoin observé, sans nom ni diagnostic","On ne l'adapte pas"],1,"Le besoin observé suffit, et aucune donnée de santé d'un mineur ne sort du club. (Module 4)"],
+    ["La fiche d'inscription proposée par l'IA pré-coche l'autorisation photo. Vous…",["Gardez, c'est plus simple pour tout le monde","Décochez et séparez-la : un consentement est un acte volontaire","Supprimez toute mention des photos"],1,"Case vide par défaut, accord séparé, inscription qui n'en dépend pas. (Module 5)"]
+  ],10,function(){reqs()});
+
+  // Étape 4 : attestation
+  var KEY_A='fair-attestation';
+  var att=FAIR.store(KEY_A);
+  var inputs=[].slice.call(document.querySelectorAll('.att-cfg input'));
+  var btn=document.getElementById('print-att'),msg=document.getElementById('att-msg'),cert=document.getElementById('cert');
+  function reqs(){
+    var list=FAIR.N1.map(function(m,i){return {t:'Module '+(i+1)+' · '+m.name,ok:FAIR.done(m),url:m.url+'#bilan'}});
+    list[4].url='#route';
+    list.push({t:'Quiz final · 10 sur 12 minimum',ok:(FAIR.store(KEY_Q).best||0)>=10,url:'#quiz'});
+    var ul=document.getElementById('reqs');ul.innerHTML='';
+    list.forEach(function(r){
+      var li=document.createElement('li');li.className=r.ok?'ok':'';
+      var d=document.createElement('span');d.className='dot';d.setAttribute('aria-hidden','true');
+      var a=document.createElement('a');a.href=r.url;a.textContent=r.t;
+      var s=document.createElement('span');s.className='sr-only';s.textContent=r.ok?' : validé':' : à faire';
+      li.appendChild(d);li.appendChild(a);li.appendChild(s);ul.appendChild(li);
+    });
+    var left=list.filter(function(r){return !r.ok}).length;
+    btn.disabled=!!left;
+    cert.classList.toggle('locked',!!left);
+    msg.textContent=left?'Encore '+left+(left>1?' étapes':' étape')+' avant de débloquer l\'attestation.':'Tout est validé : imprimez-la, ou enregistrez-la en PDF depuis la fenêtre d\'impression.';
+    document.getElementById('suite-k').textContent=left?'Après le niveau 1':'Niveau 1 validé · La suite';
+  }
+
+  // La suite : e-mail de demande d'accès pré-rempli
+  document.getElementById('ask-access').href='mailto:contact@fair-asso.fr?subject='+encodeURIComponent("Accès au niveau 2 de la formation FAIR")+'&body='+encodeURIComponent("Bonjour,\n\nJ'ai suivi le niveau 1 de la formation FAIR et je souhaite accéder au niveau 2.\n\nClub : \nVille : \nNombre de bénévoles intéressés : \n\nMerci !");
+  function cardText(save){
+    var v={};inputs.forEach(function(i){v[i.dataset.k]=i.value.trim()});
+    document.getElementById('c-name').textContent=v.name||'Prénom Nom';
+    document.getElementById('c-club').textContent=v.club?', au titre du club '+v.club:'';
+    if(save)FAIR.store(KEY_A,v);
+  }
+  inputs.forEach(function(i){i.value=att[i.dataset.k]||'';i.addEventListener('input',function(){cardText(true)})});
+  document.getElementById('c-date').textContent='Délivrée le '+new Date().toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'});
+  btn.addEventListener('click',function(){window.print()});
+  cardText(false);reqs();
+  document.addEventListener('fair:progress',reqs);
+})();
+</script>
+</body>
+</html>

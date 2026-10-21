@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fiches mémo · Niveau 0 · FAIR</title>
+<meta name="description" content="Les fiches mémo du niveau 0 de la formation FAIR : l'essentiel de chaque module sur une page A4 à imprimer.">
+<meta name="theme-color" content="#07111F">
+<link rel="icon" href="assets/logo/fair-icone.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/css/formation.css?v=2">
+<style>
+.toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.sheets{display:grid;gap:clamp(28px,4vw,48px)}
+.sheet{background:var(--paper);color:var(--ink);border-radius:8px;box-shadow:0 30px 60px -30px rgba(0,0,0,.7);overflow:hidden;max-width:880px;margin-inline:auto;width:100%}
+.sheet-bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;padding:12px 18px;background:var(--chalk-2);border-bottom:1px solid var(--line-c)}
+.sheet-bar .label{color:var(--ink-2)}
+.sheet-bar .copy{background:transparent;border:1.5px solid var(--ink-2);color:var(--ink)}
+.sheet-bar .copy:hover{background:var(--ink);color:var(--paper)}
+.page{padding:clamp(24px,4vw,44px);display:grid;gap:20px}
+.page-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;border-bottom:3px solid var(--turf-ink);padding-bottom:14px}
+.page-top .k{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.page-top h2{font-family:var(--f-display);font-weight:900;font-stretch:62%;text-transform:uppercase;font-size:clamp(2.2rem,4.5vw,3.2rem);line-height:.86;margin-top:6px}
+.page-top h2 span{color:var(--turf-ink)}
+.page-top img{height:28px;width:auto;flex:none}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 28px}
+.blk{display:grid;gap:8px;align-content:start}
+.blk h3{font-family:var(--f-mono);font-size:.72rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--turf-ink)}
+.blk ul,.blk ol{display:grid;gap:6px;font-size:.93rem;line-height:1.45}
+.blk li{display:flex;gap:8px}
+.blk li::before{content:"";flex:none;width:6px;height:6px;margin-top:8px;background:var(--turf-ink)}
+.blk ol{counter-reset:o}
+.blk ol li{counter-increment:o}
+.blk ol li::before{content:counter(o);width:auto;height:auto;margin:0;background:none;font-family:var(--f-mono);font-size:.75rem;color:var(--turf-ink);padding-top:2px;min-width:14px}
+.blk b{font-weight:700}
+.big{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.big div{border:1px solid var(--line-c);border-radius:6px;padding:12px;display:grid;gap:4px}
+.big strong{font-family:var(--f-display);font-weight:900;font-stretch:62%;font-size:2.6rem;line-height:.8;color:var(--turf-ink)}
+.big span{font-size:.86rem;line-height:1.35}
+.gold{background:var(--ink);color:var(--chalk);border-radius:6px;padding:14px 16px;font-size:.93rem;line-height:1.45}
+.gold b{color:var(--turf-hi)}
+.page-foot{display:flex;justify-content:space-between;gap:12px;font-family:var(--f-mono);font-size:.66rem;color:var(--ink-2);border-top:1px solid var(--line-c);padding-top:10px}
+@media (max-width:700px){.cols{grid-template-columns:minmax(0,1fr)}.big{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+@media print{
+  @page{size:A4;margin:12mm}
+  body{background:#fff;font-size:15px}
+  body>*:not(main),main>section:not(#fiches),#fiches .head,.sheet-bar{display:none!important}
+  #fiches{padding:0}
+  #fiches .wrap{padding:0;max-width:none}
+  .sheets{gap:0}
+  .sheet{box-shadow:none;border-radius:0;max-width:none;break-after:page}
+  .sheet:last-child{break-after:auto}
+  .page{padding:0}
+  body.print-one .sheet:not(.only){display:none}
+}
+</style>
+</head>
+<body>
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="index.html" aria-label="FAIR, retour à l'accueil"><img src="assets/logo/fair-logo-blanc.svg" alt="FAIR"></a>
+    <nav aria-label="Navigation">
+      <a class="opt" href="index.html#clubs">Clubs</a>
+      <a class="opt" href="index.html#partenaires">Fédérations</a>
+      <a href="formation.html" aria-current="page">Formation</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <section class="hero">
+    <div class="wrap hero-in">
+      <p class="label"><span class="sq"></span><a href="formation.html">Formation FAIR · Niveau 0</a> · Ressources</p>
+      <h1><small>À imprimer</small>Fiches <span class="turf">mémo</span></h1>
+      <p class="lead">L'essentiel de chaque module sur une page A4. À afficher au club-house, à glisser dans le classeur du bureau ou à distribuer en fin d'atelier.</p>
+      <div class="toolbar">
+        <button class="btn btn-turf" type="button" id="print-all">Imprimer les 5 fiches</button>
+        <a class="btn btn-ghost" href="formation.html">Retour au niveau 0</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="fiches" style="padding-top:0">
+    <div class="wrap">
+      <div class="sheets">
+
+        <article class="sheet">
+          <div class="sheet-bar"><span class="label">Fiche 1 · Module 1</span><button class="copy" type="button" data-print>Imprimer cette fiche</button></div>
+          <div class="page">
+            <div class="page-top"><div><span class="k">Fiche mémo FAIR · Niveau 0 · 1 sur 5</span><h2>Créer ses<br><span>comptes IA</span></h2></div><img src="assets/logo/fair-icone.svg" alt=""></div>
+            <div class="cols">
+              <div class="blk"><h3>Les trois outils</h3><ul><li><span><b>Claude</b> · claude.ai · rédaction soignée, longs documents</span></li><li><span><b>ChatGPT</b> · chatgpt.com · le plus connu, très polyvalent</span></li><li><span><b>Gemini</b> · gemini.google.com · relié à Gmail, Docs et Drive</span></li></ul></div>
+              <div class="blk"><h3>Avant de s'inscrire</h3><ul><li><span>L'<b>adresse e-mail du club</b>, pas la vôtre</span></li><li><span>L'<b>offre gratuite</b> d'abord, refusez les essais payants</span></li><li><span>Un <b>mot de passe propre au club</b>, dans un gestionnaire</span></li><li><span>La <b>double authentification</b> dès que possible</span></li></ul></div>
+              <div class="blk"><h3>S'inscrire en 4 étapes</h3><ol><li><span>Ouvrir le site ou l'appli</span></li><li><span>Saisir l'e-mail du club</span></li><li><span>Recopier le code reçu (regarder les indésirables)</span></li><li><span>Compléter le profil et accepter les conditions</span></li></ol></div>
+              <div class="blk"><h3>Premier essai</h3><ul><li><span>Une même demande dans les trois outils</span></li><li><span>Comparer les réponses</span></li><li><span>Demander une retouche : « plus court », « plus chaleureux »</span></li></ul></div>
+            </div>
+            <p class="gold"><b>La règle d'or :</b> aucune donnée de licencié. On parle du club, jamais des personnes.</p>
+            <div class="page-foot"><span>FAIR · Former les Associations à l'IA Responsable</span><span>Octobre 2026</span></div>
+          </div>
+        </article>
+
+        <article class="sheet">
+          <div class="sheet-bar"><span class="label">Fiche 2 · Module 2</span><button class="copy" type="button" data-print>Imprimer cette fiche</button></div>
+          <div class="page">
+            <div class="page-top"><div><span class="k">Fiche mémo FAIR · Niveau 0 · 2 sur 5</span><h2>Bien demander :<br><span>la méthode C.L.U.B.</span></h2></div><img src="assets/logo/fair-icone.svg" alt=""></div>
+            <div class="big">
+              <div><strong>C</strong><span><b>Contexte</b> · qui vous êtes, le club, la situation</span></div>
+              <div><strong>L</strong><span><b>Livrable</b> · le document voulu et ce qu'il doit dire</span></div>
+              <div><strong>U</strong><span><b>Usagers</b> · à qui c'est destiné</span></div>
+              <div><strong>B</strong><span><b>Bornes</b> · longueur, ton, format</span></div>
+            </div>
+            <div class="cols">
+              <div class="blk"><h3>Exemple complet</h3><ul><li><span>« Je suis trésorier d'un club de tennis de 180 licenciés. Rédige un e-mail de relance pour les cotisations, à régler avant le 30 novembre. Il s'adresse aux parents de l'école de tennis. Ton cordial, sans culpabiliser, 8 lignes maximum. »</span></li></ul></div>
+              <div class="blk"><h3>Les retouches qui marchent</h3><ul><li><span>« Plus court, 5 lignes maximum. »</span></li><li><span>« Propose-moi trois versions. »</span></li><li><span>« Pose-moi les questions qui te manquent. »</span></li><li><span>« Garde le fond, change le ton. »</span></li><li><span>« Écris-le comme un bénévole. »</span></li></ul></div>
+              <div class="blk"><h3>Les pièges</h3><ul><li><span>Tout demander d'un coup : une demande, un livrable</span></li><li><span>Croire sur parole : vérifier dates et chiffres</span></li><li><span>Envoyer sans relire</span></li></ul></div>
+              <div class="blk"><h3>Personnaliser sans risque</h3><ul><li><span>Écrire « [prénom] » ou « un joueur U13 »</span></li><li><span>Compléter les noms soi-même, après</span></li></ul></div>
+            </div>
+            <div class="page-foot"><span>FAIR · Former les Associations à l'IA Responsable</span><span>Octobre 2026</span></div>
+          </div>
+        </article>
+
+        <article class="sheet">
+          <div class="sheet-bar"><span class="label">Fiche 3 · Module 3</span><button class="copy" type="button" data-print>Imprimer cette fiche</button></div>
+          <div class="page">
+            <div class="page-top"><div><span class="k">Fiche mémo FAIR · Niveau 0 · 3 sur 5</span><h2>L'IA<br><span>sans risque</span></h2></div><img src="assets/logo/fair-icone.svg" alt=""></div>
+            <div class="cols">
+              <div class="blk"><h3>Toujours vérifier</h3><ul><li><span>Dates, horaires, montants, aides</span></li><li><span>Règlements et obligations légales</span></li><li><span>Noms, lieux, sources et liens cités</span></li><li><span>À la source officielle, jamais en redemandant à l'IA</span></li></ul></div>
+              <div class="blk"><h3>Je colle, ou pas ?</h3><ul><li><span><b>OK</b> · planning, règlement intérieur, affiche</span></li><li><span><b>Anonymiser</b> · e-mail d'un parent, notes de réunion, budget</span></li><li><span><b>Jamais</b> · fichier des licenciés, certificat médical, photos d'enfants</span></li></ul></div>
+              <div class="blk"><h3>Deux réglages par outil</h3><ul><li><span>Refuser l'entraînement sur vos conversations</span></li><li><span>Conversation temporaire ou incognito pour les sujets sensibles</span></li></ul></div>
+              <div class="blk"><h3>Les arnaques</h3><ul><li><span><b>Faux président</b> à la voix imitée : raccrocher, rappeler</span></li><li><span><b>Faux RIB</b> : confirmer au numéro connu</span></li><li><span><b>Fausse fédération</b> : ne pas cliquer, taper l'adresse</span></li><li><span><b>Fausse info</b> : vérifier avant de partager</span></li></ul></div>
+            </div>
+            <p class="gold"><b>La parade :</b> deux signatures pour tout virement, un rappel au numéro connu, et le droit de dire « je vérifie d'abord ».</p>
+            <div class="page-foot"><span>FAIR · Former les Associations à l'IA Responsable</span><span>Octobre 2026</span></div>
+          </div>
+        </article>
+
+        <article class="sheet">
+          <div class="sheet-bar"><span class="label">Fiche 4 · Module 4</span><button class="copy" type="button" data-print>Imprimer cette fiche</button></div>
+          <div class="page">
+            <div class="page-top"><div><span class="k">Fiche mémo FAIR · Niveau 0 · 4 sur 5</span><h2>Fichiers,<br><span>photos, voix</span></h2></div><img src="assets/logo/fair-icone.svg" alt=""></div>
+            <div class="cols">
+              <div class="blk"><h3>Joindre un document</h3><ul><li><span>Bouton « + » ou trombone, ou glisser-déposer</span></li><li><span>PDF, Word, Excel, CSV, images</span></li><li><span>Demander de <b>citer la page</b> pour vérifier</span></li><li><span>« Signale-moi les cases vides plutôt que d'inventer »</span></li></ul></div>
+              <div class="blk"><h3>Photographier</h3><ul><li><span>Tableau blanc → compte rendu</span></li><li><span>Schéma d'exercice → fiche propre</span></li><li><span>Facture → ligne de trésorerie</span></li><li><span>À plat, de face, une page par photo</span></li></ul></div>
+              <div class="blk"><h3>Dicter</h3><ul><li><span>Micro : dictée, puis relecture</span></li><li><span>Onde sonore : conversation vocale</span></li><li><span>« Je te dicte en vrac, remets en forme »</span></li><li><span>Relire noms propres et chiffres</span></li></ul></div>
+              <div class="blk"><h3>Avant et après</h3><ol><li><span>Supprimer les colonnes personnelles du tableur</span></li><li><span>Aucune personne sur la photo</span></li><li><span>Garder le résultat dans les documents du club</span></li><li><span>Supprimer la conversation</span></li></ol></div>
+            </div>
+            <div class="page-foot"><span>FAIR · Former les Associations à l'IA Responsable</span><span>Octobre 2026</span></div>
+          </div>
+        </article>
+
+        <article class="sheet">
+          <div class="sheet-bar"><span class="label">Fiche 5 · Module 5</span><button class="copy" type="button" data-print>Imprimer cette fiche</button></div>
+          <div class="page">
+            <div class="page-top"><div><span class="k">Fiche mémo FAIR · Niveau 0 · 5 sur 5</span><h2>Un dossier<br><span>en 6 étapes</span></h2></div><img src="assets/logo/fair-icone.svg" alt=""></div>
+            <div class="cols">
+              <div class="blk"><h3>La feuille de route</h3><ol><li><span><b>Cadrer</b> · « Pose-moi les 5 questions dont tu as besoin »</span></li><li><span><b>Rédiger</b> · le premier livrable avec C.L.U.B.</span></li><li><span><b>S'appuyer</b> · sur un document nettoyé</span></li><li><span><b>Affiner</b> · une retouche à la fois</span></li><li><span><b>Vérifier</b> · faire lister les faits, contrôler à la source</span></li><li><span><b>Faire valider</b> · par un membre du bureau</span></li></ol></div>
+              <div class="blk"><h3>Idées de dossiers</h3><ul><li><span>La fête de fin de saison</span></li><li><span>Le recrutement de bénévoles</span></li><li><span>Les portes ouvertes</span></li><li><span>La recherche d'un sponsor</span></li><li><span>L'assemblée générale</span></li></ul></div>
+              <div class="blk"><h3>Avant de publier</h3><ul><li><span>Aucun nom, téléphone ou photo de licencié</span></li><li><span>Dates et montants vérifiés</span></li><li><span>Image générée par IA signalée</span></li><li><span>Relu par une deuxième personne</span></li></ul></div>
+              <div class="blk"><h3>Et maintenant</h3><ul><li><span>Partager la charte IA avec le bureau</span></li><li><span>Désigner un référent IA</span></li><li><span>Former un autre bénévole avec ces fiches</span></li></ul></div>
+            </div>
+            <div class="page-foot"><span>FAIR · Former les Associations à l'IA Responsable</span><span>Octobre 2026</span></div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>FAIR · Former les Associations à l'IA Responsable</span>
+    <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.getElementById('print-all').addEventListener('click',function(){window.print()});
+  [].forEach.call(document.querySelectorAll('[data-print]'),function(b){
+    b.addEventListener('click',function(){
+      var sheet=b.closest('.sheet');
+      sheet.classList.add('only');document.body.classList.add('print-one');
+      window.print();
+      setTimeout(function(){sheet.classList.remove('only');document.body.classList.remove('print-one')},500);
+    });
+  });
+})();
+</script>
+</body>
+</html>
