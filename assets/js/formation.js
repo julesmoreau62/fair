@@ -16,6 +16,14 @@ var FAIR=(function(){
     {key:'fair-n1-module4',n:9,url:'formation-n1-4.html',name:'Préparer ses séances'},
     {key:'fair-n1-module5',n:8,url:'formation-n1-5.html',name:'La rentrée du club'}
   ];
+  // Les modules du niveau 2, même principe (blocs .st[data-lv="2"])
+  var N2=[
+    {key:'fair-n2-module1',n:9,url:'formation-n2-1.html',name:"L'assistant du secrétariat"},
+    {key:'fair-n2-module2',n:9,url:'formation-n2-2.html',name:"L'assistant de la communication"},
+    {key:'fair-n2-module3',n:9,url:'formation-n2-3.html',name:"L'assistant des éducateurs"},
+    {key:'fair-n2-module4',n:9,url:'formation-n2-4.html',name:'Les modèles du bureau'},
+    {key:'fair-n2-module5',n:8,url:'formation-n2-5.html',name:'La boîte à outils du club'}
+  ];
 
   // Mémoire sur l'appareil, sans planter si le stockage est bloqué
   function store(k,v){
@@ -47,7 +55,7 @@ var FAIR=(function(){
   // Affiche l'état de chaque module dans les blocs .st[data-m]
   function progress(){
     [].forEach.call(document.querySelectorAll('.st[data-m]'),function(st){
-      var m=(st.dataset.lv==='1'?N1:MODULES)[+st.dataset.m-1],n=count(m.key);
+      var m=({1:N1,2:N2}[st.dataset.lv]||MODULES)[+st.dataset.m-1],n=count(m.key);
       st.textContent=n>=m.n?'Validé':n?n+' sur '+m.n+' cochés':'Pas commencé';
       st.classList.toggle('done',n>=m.n);
     });
@@ -264,5 +272,5 @@ var FAIR=(function(){
     });
   }
 
-  return {store:store,copy:copy,count:count,done:done,progress:progress,esc:esc,green:green,club:club,builder:builder,quiz:quiz,MODULES:MODULES,N1:N1};
+  return {store:store,copy:copy,count:count,done:done,progress:progress,esc:esc,green:green,club:club,builder:builder,quiz:quiz,MODULES:MODULES,N1:N1,N2:N2};
 })();

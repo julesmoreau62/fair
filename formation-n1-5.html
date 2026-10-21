@@ -473,10 +473,10 @@ Rédige un guide d'une page pour un nouveau bénévole : qui fait quoi au club (
         <div class="head" style="margin:0">
           <p class="label"><span class="sq"></span><span id="suite-k">Après le niveau 1</span></p>
           <h2 class="h2">Niveau 2 :<br><span class="turf">ses outils sur mesure</span></h2>
-          <p class="lead">Le niveau 1 vous a appris à faire travailler l'IA sur les tâches du club. Le niveau 2 vous apprend à construire les outils du club : des assistants configurés pour le secrétariat, la communication ou les éducateurs, et des modèles que tout le bureau peut réutiliser. Il est ouvert sur demande.</p>
+          <p class="lead">Le niveau 1 vous a appris à faire travailler l'IA sur les tâches du club. Le niveau 2 vous apprend à construire les outils du club : des assistants configurés pour le secrétariat, la communication ou les éducateurs, et des modèles que tout le bureau peut réutiliser.</p>
         </div>
         <div class="actions">
-          <a class="btn btn-turf" id="ask-access" href="mailto:contact@fair-asso.fr">Demander l'accès</a>
+          <a class="btn btn-turf" href="formation-n2.html">Découvrir le niveau 2</a>
           <a class="btn btn-ghost" href="formation-n1.html">Tout le niveau 1</a>
         </div>
       </div>
@@ -535,8 +535,6 @@ Rédige un guide d'une page pour un nouveau bénévole : qui fait quoi au club (
     document.getElementById('suite-k').textContent=left?'Après le niveau 1':'Niveau 1 validé · La suite';
   }
 
-  // La suite : e-mail de demande d'accès pré-rempli
-  document.getElementById('ask-access').href='mailto:contact@fair-asso.fr?subject='+encodeURIComponent("Accès au niveau 2 de la formation FAIR")+'&body='+encodeURIComponent("Bonjour,\n\nJ'ai suivi le niveau 1 de la formation FAIR et je souhaite accéder au niveau 2.\n\nClub : \nVille : \nNombre de bénévoles intéressés : \n\nMerci !");
   function cardText(save){
     var v={};inputs.forEach(function(i){v[i.dataset.k]=i.value.trim()});
     document.getElementById('c-name').textContent=v.name||'Prénom Nom';

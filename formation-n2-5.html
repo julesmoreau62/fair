@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Formation · Niveau 2 · Module 5 · FAIR</title>
+<meta name="description" content="Niveau 2, module 5 de la formation FAIR : la boîte à outils du club. Le registre des outils, l'entretien et la passation, la feuille de route en huit étapes, le quiz final et l'attestation « Niveau 2 validé ».">
+<meta name="theme-color" content="#07111F">
+<link rel="icon" href="assets/logo/fair-icone.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/css/formation.css?v=2">
+<link rel="stylesheet" href="assets/css/niveau.css?v=1">
+<style>
+/* Feuille de route */
+.road{display:grid;gap:0}
+.leg{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:20px clamp(28px,4vw,56px);padding-block:clamp(24px,3vw,36px);border-top:1px solid var(--line-n)}
+.leg-txt{display:grid;gap:10px;align-content:start}
+.leg-n{font-family:var(--f-display);font-weight:900;font-stretch:62%;font-size:3.2rem;line-height:.8;color:var(--turf)}
+.leg-txt p{color:var(--mist);font-size:.96rem}
+.leg-txt .from{font-family:var(--f-mono);font-size:.7rem;color:var(--fog);letter-spacing:.05em;text-transform:uppercase}
+.leg-txt .from a{color:var(--turf-hi);text-decoration:none}
+.leg-done{display:flex;gap:12px;align-items:center;padding:12px 14px;border:1px solid var(--line-n);border-radius:6px;cursor:pointer;font-weight:600;font-size:.94rem;justify-self:start}
+.leg-done:has(input:checked){border-color:var(--turf);color:var(--turf-hi)}
+.leg-done .tick{border-color:var(--fog);margin:0}
+.leg-box{display:grid;gap:12px;align-content:start}
+.road-score{font-family:var(--f-mono);font-size:.78rem;color:var(--fog);border-top:1px solid var(--line-n);padding-top:18px}
+.road-score.done{color:var(--turf)}
+@media (max-width:860px){.leg{grid-template-columns:minmax(0,1fr)}}
+
+/* Attestation */
+.att{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:28px clamp(28px,4vw,56px);align-items:start}
+.att-cfg{display:grid;gap:18px}
+.reqs{display:grid;gap:8px}
+.reqs li{display:flex;gap:12px;align-items:center;padding:12px 14px;border:1px solid var(--line-n);border-radius:6px;font-size:.94rem}
+.reqs li a{color:var(--mist)}
+.reqs .dot{flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--fog);display:grid;place-items:center}
+.reqs li.ok{border-color:rgba(31,181,122,.6)}
+.reqs li.ok .dot{background:var(--turf);border-color:var(--turf)}
+.reqs li.ok .dot::after{content:"";width:10px;height:5px;border-left:2.5px solid var(--on-turf);border-bottom:2.5px solid var(--on-turf);transform:translateY(-1px) rotate(-45deg)}
+.cert{background:var(--paper);color:var(--ink);border-radius:8px;padding:clamp(28px,4vw,48px);display:grid;gap:18px;justify-items:center;text-align:center;border:10px solid var(--chalk-2);box-shadow:0 30px 60px -30px rgba(0,0,0,.7);position:relative}
+.cert.locked{filter:grayscale(1);opacity:.55}
+.cert img{height:40px;width:auto}
+.cert .k{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.cert h3{font-family:var(--f-display);font-weight:900;font-stretch:62%;text-transform:uppercase;font-size:clamp(2.4rem,5vw,3.6rem);line-height:.86}
+.cert h3 span{color:var(--turf-ink)}
+.cert .who{font-size:1.3rem;font-weight:700;border-bottom:1px solid var(--line-c);padding-bottom:6px;min-width:60%}
+.cert p{color:var(--ink-2);font-size:.95rem;max-width:46ch}
+.cert ol{display:flex;flex-wrap:wrap;justify-content:center;gap:6px}
+.cert ol li{font-size:.8rem;padding:6px 10px;border-radius:999px;border:1px solid var(--line-c)}
+.cert .date{font-family:var(--f-mono);font-size:.74rem;color:var(--ink-2)}
+.att-msg{font-size:.9rem;color:var(--fog)}
+@media (max-width:900px){.att{grid-template-columns:minmax(0,1fr)}}
+
+/* La suite */
+.suite-cta{margin-top:clamp(48px,6vw,72px);padding-top:clamp(32px,4vw,48px);border-top:1px solid var(--line-n)}
+
+@media print{
+  body{background:#fff}
+  body>*:not(main),main>*:not(#attestation),#attestation .head,#attestation .att-cfg,#attestation .att-msg,#attestation .suite-cta{display:none!important}
+  #attestation{padding:0;background:#fff}
+  .att{display:block}
+  .cert{box-shadow:none;border-color:#E1E6DE}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="check" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></symbol>
+</svg>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="index.html" aria-label="FAIR, retour à l'accueil"><img src="assets/logo/fair-logo-blanc.svg" alt="FAIR"></a>
+    <nav aria-label="Navigation">
+      <a class="opt" href="index.html#clubs">Clubs</a>
+      <a class="opt" href="index.html#partenaires">Fédérations</a>
+      <a href="formation.html" aria-current="page">Formation</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <section class="hero">
+    <div class="wrap hero-in">
+      <p class="label"><span class="sq"></span><a href="formation-n2.html">Formation FAIR · Niveau 2</a> · Module 5 sur 5</p>
+      <h1><small>La boîte à outils du club</small>Des outils<br><span class="turf">qui durent</span></h1>
+      <p class="lead">Vous avez construit des assistants, des modèles et des documents. Ils n'ont de valeur que s'ils sont recensés, entretenus et transmis. Ce module rassemble tout dans une feuille de route en huit étapes pour équiper votre club, avant le quiz final et l'attestation « Niveau 2 validé ».</p>
+      <ul class="meta">
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>1 h 15</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Modules 1 à 4 conseillés</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>2 exercices corrigés</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>8 étapes avec leur demande</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Attestation à la fin</li>
+      </ul>
+      <nav class="steps-nav six" aria-label="Étapes du module">
+        <a href="#registre"><b>1. Recenser</b><span>La fiche de chaque outil</span></a>
+        <a href="#entretien"><b>2. Entretenir</b><span>Le calendrier et la passation</span></a>
+        <a href="#route"><b>3. Réaliser</b><span>La feuille de route en 8 étapes</span></a>
+        <a href="#exercices"><b>4. S'entraîner</b><span>Deux exercices</span></a>
+        <a href="#quiz"><b>5. Le quiz final</b><span>Douze questions, dix pour réussir</span></a>
+        <a href="#attestation"><b>6. Attestation</b><span>Niveau 2 validé</span></a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="objectifs">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Objectifs</p>
+        <h2 class="h2">À la fin<br>de ce module</h2>
+      </div>
+      <ol class="goals">
+        <li><b>Chaque outil a sa fiche</b>Ce qu'il fait, sur quel compte, avec quels documents, qui en répond, quand il a été testé.</li>
+        <li><b>Tout est sur le compte du club</b>Aucun outil important ne dépend du compte personnel d'un bénévole.</li>
+        <li><b>L'entretien est planifié</b>Une revue par trimestre, une mise à jour à la rentrée, des tests à chaque modification.</li>
+        <li><b>La passation est prête</b>Un changement de bureau ne fait rien perdre au club.</li>
+        <li><b>Votre club est équipé</b>Les huit étapes de la feuille de route sont faites, sur vos vrais dossiers.</li>
+        <li><b>Votre attestation est imprimée</b>Quiz final réussi, « Niveau 2 validé » au nom de votre club.</li>
+      </ol>
+
+      <div class="case">
+        <article class="who-card">
+          <span class="label">Le cas du module</span>
+          <h3>La question du président</h3>
+          <p>À la réunion de décembre, le président pose une question simple : « Si Camille, Théo et Nadia partent demain, qu'est-ce qu'il reste au club ? » Silence. L'assistant de la communication est sur le compte personnel de Théo, la bibliothèque dans le Drive de Camille, et personne ne sait quand l'assistant des éducateurs a été testé pour la dernière fois.</p>
+        </article>
+        <ul class="week">
+          <li><b>Décembre</b><span>Le bureau décide de recenser tous les outils dans un registre.</span></li>
+          <li><b>Janvier</b><span>Les outils passent sur le compte du club. Première revue trimestrielle.</span></li>
+          <li><b>Avril</b><span>Deuxième revue : on retire deux modèles inutilisés, on en ajoute trois.</span></li>
+          <li><b>Juin</b><span>AG : Camille quitte le secrétariat. La passation prend une heure.</span></li>
+          <li><b>Septembre</b><span>La nouvelle secrétaire utilise l'assistant dès la rentrée.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="registre">
+    <div class="wrap">
+      <div class="build">
+        <div>
+          <div class="head" style="margin-bottom:24px">
+            <p class="label"><span class="sq"></span>Étape 1 · Recenser</p>
+            <h3 class="h3">La fiche de chaque outil</h3>
+            <p style="color:var(--mist)">Le registre des outils, c'est une fiche par assistant ou par domaine de modèles, rangée dans le dossier « IA du club ». Remplissez-la pour votre premier outil : elle vous dit aussi ce qu'il reste à régler.</p>
+          </div>
+          <div class="fields">
+            <div class="field"><label for="r-nom">Nom de l'outil</label><input id="r-nom" data-f="nom" placeholder="Assistant Secrétariat AS Exemple"></div>
+            <div class="field">
+              <span style="font-weight:600">Type</span>
+              <div class="opts">
+                <label><input type="radio" name="rtype" data-f="type" value="Assistant" checked>Assistant</label>
+                <label><input type="radio" name="rtype" data-f="type" value="Modèles">Modèles</label>
+                <label><input type="radio" name="rtype" data-f="type" value="Document de référence">Document de référence</label>
+              </div>
+            </div>
+            <div class="two">
+              <div class="field"><label for="r-outil">Outil</label>
+                <select id="r-outil" data-f="outil"><option>ChatGPT (GPT)</option><option>ChatGPT (projet)</option><option>Claude (projet)</option><option>Gemini (Gem)</option><option>Dossier partagé du club</option><option>Autre</option></select>
+              </div>
+              <div class="field">
+                <span style="font-weight:600">Sur quel compte ?</span>
+                <div class="opts">
+                  <label><input type="radio" name="rcpt" data-f="compte" value="club" checked>Le club</label>
+                  <label><input type="radio" name="rcpt" data-f="compte" value="perso">Personnel</label>
+                </div>
+              </div>
+            </div>
+            <div class="two">
+              <div class="field"><label for="r-resp">Responsable</label><input id="r-resp" data-f="resp" placeholder="secrétariat"></div>
+              <div class="field"><label for="r-users">Utilisateurs</label><input id="r-users" data-f="users" placeholder="secrétariat, vice-président"></div>
+            </div>
+            <div class="field"><label for="r-docs">Documents joints</label><input id="r-docs" data-f="docs" placeholder="Saison 2026-2027, Règlement intérieur"></div>
+            <div class="two">
+              <div class="field"><label for="r-ver">Version en service</label><input id="r-ver" data-f="version" placeholder="2 · octobre 2026"></div>
+              <div class="field"><label for="r-test">Derniers tests</label><input id="r-test" data-f="test" placeholder="octobre 2026, 6 sur 6"></div>
+            </div>
+            <div class="field"><label for="r-revue">Prochaine revue</label>
+              <select id="r-revue" data-f="revue"><option>janvier</option><option>avril</option><option>juillet, avant la rentrée</option><option>octobre</option></select>
+            </div>
+          </div>
+        </div>
+        <div class="build-out">
+          <div class="prompt">
+            <div class="prompt-top"><span class="label">La fiche du registre</span><button class="copy" type="button" data-copy>Copier</button></div>
+            <pre data-out aria-live="polite"></pre>
+          </div>
+          <p class="note">Collez-la dans le document « 05 · Registre » du dossier du club, une fiche par outil.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="entretien">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Étape 2 · Entretenir et transmettre</p>
+        <h2 class="h2">Le calendrier<br><span class="turf">d'entretien</span></h2>
+        <p class="lead">Un assistant vieillit vite : les tarifs changent, les créneaux bougent, les outils modifient leurs menus. Quelques rendez-vous fixes suffisent à le garder fiable.</p>
+      </div>
+      <div class="split">
+        <ol class="tl">
+          <li><span class="when">À chaque modification</span><div><h4>Les six tests</h4><p>Dans une conversation neuve, puis la version datée dans le journal.</p></div></li>
+          <li><span class="when">Chaque trimestre</span><div><h4>La revue du registre</h4><p>Trente minutes en réunion de bureau : ce qui sert, ce qui ne sert plus, ce qui manque, ce qui doit être retesté.</p></div></li>
+          <li><span class="when">En juillet</span><div><h4>La mise à jour de rentrée</h4><p>Document Saison, calendrier, fiche du club, exemples de style : on remplace les anciens fichiers dans chaque assistant.</p></div></li>
+          <li><span class="when">À l'AG</span><div><h4>La passation</h4><p>Chaque responsable qui part transmet ses outils à son successeur, registre à la main.</p></div></li>
+          <li><span class="when">Quand l'outil change</span><div><h4>Le plan B</h4><p>Offre modifiée, fonction supprimée, changement d'outil : les instructions et les documents sont dans le dossier du club, on recrée l'assistant ailleurs.</p></div></li>
+        </ol>
+        <div>
+          <h3 class="h3">La passation en quatre gestes</h3>
+          <ul class="todo">
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>Les accès</b> : le successeur est ajouté au compte du club, celui qui part en est retiré, et les mots de passe partagés sont changés</span></li>
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>Le registre</b> : les fiches des outils sont mises à jour avec le nouveau responsable</span></li>
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>Une heure ensemble</b> : chaque outil est montré en vrai, avec ses défauts connus</span></li>
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>Le ménage</b> : celui qui part supprime de ses comptes personnels les copies d'outils et de documents du club</span></li>
+          </ul>
+          <p class="warn">Un outil important créé sur un compte personnel se recrée sur le compte du club avant la passation, pas après : une fois le bénévole parti, il est souvent trop tard.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="route">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Étape 3 · Réaliser</p>
+        <h2 class="h2">La feuille de route<br><span class="turf">en huit étapes</span></h2>
+        <p class="lead">Chaque étape s'appuie sur un module du niveau 2. Faites-les dans l'ordre, sur les vrais outils de votre club, et cochez au fur et à mesure. Comptez quelques semaines : c'est un chantier de bureau, pas une soirée.</p>
+      </div>
+      <div class="road" id="check" data-key="fair-n2-module5" data-name="Module 5">
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">01</span>
+            <h3 class="h3">Choisir ses outils</h3>
+            <p>Avant de construire, on fait l'inventaire des tâches qui reviennent, et on décide pour chacune : un assistant, un modèle, ou rien du tout.</p>
+            <p class="from">Vu dans le <a href="formation-n2-4.html#modele">module 4</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="choisir">Étape faite</label>
+          </div>
+          <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre data-club>[Fiche du club]
+Voici les tâches qui reviennent dans notre club, avec leur fréquence et qui les fait (par fonction) : <i>[liste]</i>. Classe-les dans un tableau : « un assistant » (un domaine entier, avec des documents et des règles propres), « un modèle » (une tâche précise et récurrente), « rien » (trop rare, ou à ne pas confier à l'IA, comme tout ce qui touche à la santé ou aux conflits). Justifie chaque choix en une ligne.</pre></div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">02</span>
+            <h3 class="h3">Le dossier du club</h3>
+            <p>Le dossier « IA du club » sur le compte du club, avec ses cinq rangements, la fiche du club à jour et sa page « Lisez-moi ».</p>
+            <p class="from">Vu dans le <a href="formation-n2-4.html#bibliotheque">module 4</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="dossier">Étape faite</label>
+          </div>
+          <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre data-club>[Fiche du club]
+Rédige la page « Lisez-moi » de notre dossier « IA du club » : à quoi il sert, comment il est rangé (00 Lisez-moi, 01 Fiche du club, 02 Assistants, 03 Modèles, 04 Documents de référence, 05 Registre), les règles d'or (aucune donnée personnelle, on relit, on vérifie les faits à la source), qui contacter. Une page, ton simple.</pre></div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">03</span>
+            <h3 class="h3">L'assistant du secrétariat</h3>
+            <p>Ses instructions C.O.A.C.H., créé sur le compte du club, les six tests passés, la version datée.</p>
+            <p class="from">Vu dans le <a href="formation-n2-1.html#generateur">module 1</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="secretariat">Étape faite</label>
+          </div>
+          <div class="leg-box">
+            <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre>Voici les instructions de notre assistant du secrétariat. Propose dix demandes de test réalistes pour notre club : cinq cas normaux variés et cinq pièges (information manquante, hors mission, donnée personnelle, décision, situation grave), avec le comportement attendu pour chacun, en tableau.
+<i>[Instructions]</i></pre></div>
+            <p class="warn">Faites passer les tests vous-même, dans une conversation neuve avec l'assistant. Pas dans la conversation qui a écrit les tests.</p>
+          </div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">04</span>
+            <h3 class="h3">Les documents de référence</h3>
+            <p>Le document Saison, le calendrier, la ligne éditoriale : datés, sans contradiction, passés au test du gymnase.</p>
+            <p class="from">Vu dans le <a href="formation-n2-2.html#preparer">module 2</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="documents">Étape faite</label>
+          </div>
+          <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre>Voici les documents que je vais joindre à nos assistants. Pour chacun, vérifie : la date de mise à jour et le responsable figurent-ils en tête ? Chaque information n'apparaît-elle qu'à un seul endroit ? Y a-t-il des contradictions entre documents, des dates incomplètes, des données personnelles, des identifiants, des informations internes ? Présente-le en tableau, sans rien corriger.
+<i>[Documents]</i></pre></div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">05</span>
+            <h3 class="h3">Un deuxième assistant</h3>
+            <p>Celui de la communication ou celui des éducateurs, selon les besoins de votre club. Avec ses documents, ses six tests adaptés, et son partage restreint.</p>
+            <p class="from">Vu dans les <a href="formation-n2-2.html#generateur">modules 2</a> et <a href="formation-n2-3.html#generateur">3</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="deuxieme">Étape faite</label>
+          </div>
+          <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre data-club>[Fiche du club]
+Je veux créer un assistant pour <i>[la communication ou les éducateurs]</i> dans notre club. Pose-moi des questions, une par une, pour écrire ses instructions en cinq rubriques : Contexte, Objectif, Appuis, Consignes, Halte. Insiste sur la rubrique Halte : <i>[droit à l'image et situations de crise, ou santé et sécurité des enfants]</i>. Puis rédige-les en une page maximum.</pre></div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">06</span>
+            <h3 class="h3">Les cinq premiers modèles</h3>
+            <p>Les tâches les plus pénibles du bureau, chacune avec sa fiche modèle complète, rangées dans la bibliothèque.</p>
+            <p class="from">Vu dans le <a href="formation-n2-4.html#generateur">module 4</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="modeles">Étape faite</label>
+          </div>
+          <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre>Voici une demande qui marche bien pour nous. Transforme-la en fiche modèle en six rubriques : code et nom, à quoi elle sert et quand, les champs à remplir entre crochets, la demande complète (sans date, nom ni montant en dur, avec la règle [À COMPLÉTER]), les points à vérifier, responsable et version.
+<i>[Demande]</i></pre></div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">07</span>
+            <h3 class="h3">Le registre rempli</h3>
+            <p>Une fiche par outil, tout sur le compte du club. Ce qui est encore sur un compte personnel est recréé.</p>
+            <p class="from">Vu à l'<a href="#registre">étape 1</a> de ce module</p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="registre">Étape faite</label>
+          </div>
+          <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre>Voici le registre des outils d'IA de notre club. Signale tout outil sur un compte personnel, sans responsable, sans version, sans test depuis plus de trois mois, ou avec des documents joints qui pourraient contenir des données personnelles. Classe ces points du plus urgent au moins urgent.
+<i>[Registre]</i></pre></div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">08</span>
+            <h3 class="h3">Présenter au bureau</h3>
+            <p>Quinze minutes de démonstration en réunion, le calendrier d'entretien adopté, un responsable par outil. La boîte à outils appartient désormais au club.</p>
+            <p class="from">Vu dans le <a href="formation-n2-4.html#adopter">module 4</a> et à l'<a href="#entretien">étape 2</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="bureau">Étape faite</label>
+          </div>
+          <div class="leg-box">
+            <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre data-club>[Fiche du club]
+Prépare une présentation de 15 minutes au bureau sur nos outils d'IA : ce qui existe (d'après le registre ci-dessous), une démonstration à faire en direct, les règles d'or, le calendrier d'entretien (tests à chaque modification, revue trimestrielle, mise à jour en juillet, passation à l'AG) et les décisions à prendre (responsables, compte du club). Un plan minuté.
+<i>[Registre]</i></pre></div>
+            <ul class="todo">
+              <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Chaque outil a un responsable, désigné par sa fonction</span></li>
+              <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Tout est sur le compte du club</span></li>
+              <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>La première revue trimestrielle est datée</span></li>
+              <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Le bureau a validé les règles d'or</span></li>
+            </ul>
+          </div>
+        </div>
+        <p class="road-score" id="score" aria-live="polite">0 sur 8</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="exercices">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Étape 4 · S'entraîner</p>
+        <h2 class="h2">Deux exercices<br><span class="turf">avant la passation</span></h2>
+        <p class="lead">Les deux moments où un club perd ses outils : quand personne ne les recense, et quand quelqu'un s'en va.</p>
+      </div>
+
+      <div class="sub" style="margin-top:0">
+        <h3 class="h3">Exercice 1 · Le registre de l'AS Exemple</h3>
+        <p>Voici le premier registre du club, rempli en décembre. Cinq lignes signalent un problème à régler en priorité. Trouvez-les.</p>
+      </div>
+      <div class="spot">
+        <div class="spot-doc lines">
+          <h4>05 · Registre des outils · décembre 2026</h4>
+          <button class="s">Assistant Secrétariat · ChatGPT (GPT) · compte du club · responsable : secrétariat · version 2, octobre · tests : octobre, 6 sur 6</button>
+          <button class="s" data-err="Sur le compte personnel de Théo : si Théo part, l'assistant part avec lui. À recréer sur le compte du club, avant toute passation.">Assistant Communication · Claude (projet) · compte personnel de Théo · responsable : communication · version 1 · tests : novembre, 6 sur 6</button>
+          <button class="s" data-err="Jamais testé : on ne sait pas comment il réagit à une blessure ou à un choc à la tête. Il est pourtant utilisé par huit éducateurs. Les six tests, tout de suite.">Assistant Séances · Gemini (Gem) · compte du club · responsable : technique · version 1 · tests : jamais</button>
+          <button class="s" data-err="Un fichier de licenciés joint à un assistant : données personnelles, souvent de mineurs. À retirer immédiatement, et à signaler au président.">Assistant Trésorerie · ChatGPT (GPT) · compte du club · documents : Budget 2026, Licenciés 2026.xlsx</button>
+          <button class="s">Modèles BUR (5) · dossier du club · responsable : secrétariat · version 2, novembre</button>
+          <button class="s" data-err="Un assistant public peut être utilisé par n'importe qui : il doit être partagé par lien restreint aux seuls bénévoles concernés.">Assistant Buvette · ChatGPT (GPT) · compte du club · partage : public, dans la boutique de GPT</button>
+          <button class="s" data-err="« Celui qui l'a fait » n'est pas un responsable : il faut une fonction du club qui en répond, et qui sera transmise à l'AG.">Modèles EVT (3) · dossier du club · responsable : celui qui l'a fait · version 1</button>
+          <button class="s">Document Saison 2026-2027 · dossier du club · responsable : secrétariat · mis à jour le 15 septembre</button>
+        </div>
+        <div class="spot-act">
+          <button class="btn btn-turf spot-go" type="button">Vérifier</button>
+          <p class="spot-res" aria-live="polite">5 erreurs à trouver.</p>
+        </div>
+      </div>
+
+      <div class="sub">
+        <h3 class="h3">Exercice 2 · La passation de Camille</h3>
+        <p>Juin. Camille quitte le secrétariat après trois saisons. La nouvelle secrétaire n'a jamais utilisé l'IA. L'AG a lieu dans quinze jours.</p>
+      </div>
+      <div class="exo" style="background:var(--ink);border-color:var(--ink)">
+        <div class="ex-txt">
+          <span class="label">La consigne</span>
+          <ol>
+            <li><span>Listez ce que Camille doit faire avant l'AG, et ce qui se fait avec la nouvelle secrétaire.</span></li>
+            <li><span>Dites ce que la nouvelle secrétaire doit avoir fait avant d'utiliser seule l'assistant.</span></li>
+          </ol>
+        </div>
+        <div class="ex-box">
+          <details class="sol">
+            <summary>Voir le corrigé</summary>
+            <div class="sol-in">
+              <p><b>Avant l'AG, Camille</b></p>
+              <ul>
+                <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Vérifie dans le registre que tous ses outils sont sur le compte du club, et recrée ceux qui ne le sont pas.</span></li>
+                <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Met à jour les fiches : versions, derniers tests, défauts connus (« il se trompe encore sur les jours fériés »).</span></li>
+                <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Range dans le dossier du club tout ce qui traîne dans ses documents personnels.</span></li>
+              </ul>
+              <p><b>Avec la nouvelle secrétaire</b></p>
+              <ul>
+                <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Une heure ensemble : l'assistant et les modèles SEC montrés sur des cas réels, la règle d'or rappelée.</span></li>
+                <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Les accès : elle est ajoutée au compte du club, Camille en est retirée, les mots de passe partagés sont changés.</span></li>
+                <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Le registre indique la nouvelle responsable, et Camille supprime ses copies personnelles.</span></li>
+              </ul>
+              <p><b>Avant d'utiliser l'assistant seule</b>, la nouvelle secrétaire a suivi au moins le niveau 0 (la règle d'or, la vérification) et a fait elle-même passer les six tests à l'assistant : c'est la meilleure façon de comprendre ce qu'il fait, et ce qu'il ne fait pas.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="memo">
+        <div>
+          <p class="label"><span class="sq"></span>À retenir</p>
+          <h2 class="h2" style="margin-top:14px">Le niveau 2<br><span class="turf">en cinq points</span></h2>
+        </div>
+        <ol>
+          <li><span><b>C.O.A.C.H., puis six tests.</b> Contexte, Objectif, Appuis, Consignes, Halte. Et aucun assistant ne sert avant d'avoir passé ses tests.</span></li>
+          <li><span><b>Des documents qu'on afficherait au gymnase.</b> Datés, sans contradiction, sans donnée personnelle ni identifiant. Les faits sourcés.</span></li>
+          <li><span><b>Partager, c'est tout montrer.</b> Lien restreint, un seul responsable, jamais public.</span></li>
+          <li><span><b>Un modèle pour une tâche.</b> Une fiche en six rubriques, une bibliothèque rangée sur le compte du club.</span></li>
+          <li><span><b>Les outils appartiennent au club.</b> Un registre, un calendrier d'entretien, une passation à chaque AG.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="quiz">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Étape 5 · Le quiz final</p>
+        <h2 class="h2">Douze questions,<br>dix pour réussir</h2>
+        <p class="lead">Des questions sur les cinq modules du niveau 2. Vous pouvez recommencer autant de fois que vous voulez : seul votre meilleur score compte.</p>
+      </div>
+      <form class="quiz" id="quizf" novalidate></form>
+      <div class="quiz-act">
+        <button class="btn btn-turf" type="submit" form="quizf">Voir mon score</button>
+        <button class="btn btn-ghost" type="button" id="quizf-reset">Recommencer</button>
+        <p class="quiz-res" id="quizf-res" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="attestation">
+    <div class="wrap">
+      <div class="head">
+        <p class="label"><span class="sq"></span>Étape 6</p>
+        <h2 class="h2">Votre<br><span class="turf">attestation</span></h2>
+        <p class="lead">Elle se débloque quand les cinq modules et le quiz final sont validés. Votre nom reste sur cet appareil : il ne sert qu'à l'impression.</p>
+      </div>
+      <div class="att">
+        <div class="att-cfg">
+          <div class="field"><label for="a-name">Prénom et nom</label><input id="a-name" data-k="name" autocomplete="name" placeholder="Camille Exemple"></div>
+          <div class="field"><label for="a-club">Club</label><input id="a-club" data-k="club" placeholder="AS Exemple Handball"></div>
+          <ul class="reqs" id="reqs"></ul>
+          <button class="btn btn-turf" type="button" id="print-att" disabled>Imprimer l'attestation</button>
+          <p class="att-msg" id="att-msg"></p>
+        </div>
+        <article class="cert locked" id="cert" aria-label="Aperçu de l'attestation">
+          <img src="assets/logo/fair-logo-horizontal.svg" alt="FAIR" onerror="this.remove()">
+          <span class="k">Attestation de formation</span>
+          <h3>Niveau 2<br><span>validé</span></h3>
+          <span class="who" id="c-name">Prénom Nom</span>
+          <p>a suivi les cinq modules du niveau 2 « Ses outils sur mesure » de la formation FAIR « Former les Associations à l'IA Responsable » et réussi le quiz final<span id="c-club"></span>.</p>
+          <ol><li>L'assistant du secrétariat</li><li>L'assistant de la communication</li><li>L'assistant des éducateurs</li><li>Les modèles du bureau</li><li>La boîte à outils du club</li></ol>
+          <span class="date" id="c-date"></span>
+        </article>
+      </div>
+
+      <div class="next suite-cta">
+        <div class="head" style="margin:0">
+          <p class="label"><span class="sq"></span><span id="suite-k">Après le niveau 2</span></p>
+          <h2 class="h2">Niveau 3 :<br><span class="turf">financer et développer</span></h2>
+          <p class="lead">Vos outils sont en place. Le niveau 3 les met au service des grands projets du club : dossiers de subvention, partenariats, projet associatif et bilans pour les financeurs. Il est ouvert sur demande.</p>
+        </div>
+        <div class="actions">
+          <a class="btn btn-turf" id="ask-access" href="mailto:contact@fair-asso.fr">Demander l'accès</a>
+          <a class="btn btn-ghost" href="formation-n2.html">Tout le niveau 2</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>FAIR · Former les Associations à l'IA Responsable</span>
+    <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/formation.js"></script>
+<script>
+(function(){
+  // Étape 1 : la fiche du registre, avec ce qu'il reste à régler
+  FAIR.builder(document.getElementById('registre'),'fair-n2-registre',function(v){
+    var todo=[];
+    if(v.compte==='perso')todo.push('Recréer l\'outil sur le compte du club avant toute passation.');
+    if(!v.resp)todo.push('Désigner un responsable, par sa fonction.');
+    if(v.type==='Assistant'&&!v.test)todo.push('Faire passer les six tests.');
+    if(v.type!=='Document de référence'&&!v.version)todo.push('Dater la version en service.');
+    if(v.docs)todo.push('Vérifier que les documents joints passent le test du gymnase.');
+    return (v.nom||'[Nom de l\'outil]')+'\n'+
+      'Type : '+v.type+' · Outil : '+v.outil+'\n'+
+      'Compte : '+(v.compte==='perso'?'personnel (à transférer)':'compte du club')+'\n'+
+      'Responsable : '+(v.resp||'[fonction]')+' · Utilisateurs : '+(v.users||'[fonctions]')+'\n'+
+      'Documents joints : '+(v.docs||'aucun')+'\n'+
+      'Version en service : '+(v.version||'[n · mois année]')+'\n'+
+      (v.type==='Assistant'?'Derniers tests : '+(v.test||'[date, résultat]')+'\n':'')+
+      'Prochaine revue : '+v.revue+'\n\n'+
+      'À RÉGLER\n'+(todo.length?todo.map(function(t){return '- '+t}).join('\n'):'- Rien pour l\'instant. Rendez-vous à la prochaine revue.');
+  });
+
+  // Étape 5 : quiz final
+  var KEY_Q='fair-n2-quiz';
+  FAIR.quiz(document.getElementById('quizf'),KEY_Q,[
+    ["Un assistant configuré…",["Garde ses instructions, ses documents et ses limites, mais peut toujours se tromper","Apprend de chaque conversation","Vérifie ses réponses avant de les donner"],0,"Il n'apprend pas seul et on relit toujours. Pour l'améliorer, on modifie ses instructions. (Module 1)"],
+    ["Que signifient les lettres C.O.A.C.H. ?",["Club, Organisation, Action, Communication, Hiérarchie","Contexte, Objectif, Appuis, Consignes, Halte","Contrôle, Ordre, Accord, Charte, Hygiène"],1,"Les cinq rubriques des instructions d'un assistant. (Module 1)"],
+    ["Après avoir modifié la rubrique Appuis d'un assistant, vous…",["Refaites les six tests dans une conversation neuve, puis datez la version","Refaites seulement le test qui posait problème","Ne refaites rien, c'est une petite modification"],0,"Une correction peut en dérégler une autre. (Module 1)"],
+    ["Une règle Halte bien écrite vise…",["Des sujets : « les mineurs », « la santé »","Des données et des situations précises, et dit quoi faire à la place","Tout ce qui pourrait poser problème, pour être tranquille"],1,"Une règle trop large bloque l'assistant. On nomme les données, on dit ce qui est permis et vers qui renvoyer. (Module 1)"],
+    ["Avant de joindre un document à un assistant, vous vous demandez…",["S'il est assez long","Si vous l'afficheriez au gymnase","S'il est au bon format de couleur"],1,"Ses utilisateurs peuvent faire ressortir le contenu des documents. Rien de personnel, d'interne ou d'identifiant. (Module 2)"],
+    ["Le tarif U11 change. Dans l'assistant, vous…",["Ajoutez un nouveau document avec le bon tarif","Mettez à jour le document Saison et remplacez l'ancien fichier","Le dites à l'assistant dans une conversation"],1,"Une information à un seul endroit, une seule version. (Module 2)"],
+    ["À quoi sert la ligne « Sources » sous chaque post ?",["À citer les auteurs du post","À rendre visible toute information qui ne vient ni des documents ni de la demande","À améliorer le référencement"],1,"Une information sans source se supprime ou se vérifie. La ligne ne se publie pas. (Module 2)"],
+    ["Un éducateur demande à l'assistant si un enfant qui a mal au genou peut jouer samedi. L'assistant…",["Donne un diagnostic probable","Ne donne ni diagnostic ni avis de reprise et renvoie vers les parents et un médecin","Propose de le faire jouer sans sauter"],1,"Pas de médecin, pas d'avis de reprise. (Module 3)"],
+    ["Comment partager l'assistant des éducateurs ?",["Publié dans la boutique de GPT, pour que tout le monde en profite","Par lien restreint aux éducateurs, avec une seule personne qui le modifie","En donnant le mot de passe du compte du club"],1,"Partager un assistant, c'est partager ses instructions et ses documents. (Module 3)"],
+    ["Lequel de ces modèles est bien nommé ?",["TRE-02 · Relance famille Martin","BUR-03 · Convocation AG · version finale","SEC-02 · Changement de salle · version 1 · septembre 2026 · secrétariat"],2,"Un code, un nom générique, une version datée, une fonction responsable. (Module 4)"],
+    ["L'assistant de la communication est sur le compte personnel de Théo. Que faire ?",["Rien tant que Théo est au club","Le recréer sur le compte du club et le noter dans le registre","Demander à Théo son mot de passe"],1,"Un outil important se recrée sur le compte du club avant la passation, pas après. (Module 5)"],
+    ["À quel rythme revoit-on le registre des outils ?",["Une fois, à sa création","Chaque trimestre, avec une mise à jour en juillet et une passation à l'AG","Seulement quand un outil plante"],1,"Un calendrier d'entretien simple garde les outils fiables et transmissibles. (Module 5)"]
+  ],10,function(){reqs()});
+
+  // Étape 6 : attestation
+  var KEY_A='fair-attestation';
+  var att=FAIR.store(KEY_A);
+  var inputs=[].slice.call(document.querySelectorAll('.att-cfg input'));
+  var btn=document.getElementById('print-att'),msg=document.getElementById('att-msg'),cert=document.getElementById('cert');
+  function reqs(){
+    var list=FAIR.N2.map(function(m,i){return {t:'Module '+(i+1)+' · '+m.name,ok:FAIR.done(m),url:m.url+'#bilan'}});
+    list[4].url='#route';
+    list.push({t:'Quiz final · 10 sur 12 minimum',ok:(FAIR.store(KEY_Q).best||0)>=10,url:'#quiz'});
+    var ul=document.getElementById('reqs');ul.innerHTML='';
+    list.forEach(function(r){
+      var li=document.createElement('li');li.className=r.ok?'ok':'';
+      var d=document.createElement('span');d.className='dot';d.setAttribute('aria-hidden','true');
+      var a=document.createElement('a');a.href=r.url;a.textContent=r.t;
+      var s=document.createElement('span');s.className='sr-only';s.textContent=r.ok?' : validé':' : à faire';
+      li.appendChild(d);li.appendChild(a);li.appendChild(s);ul.appendChild(li);
+    });
+    var left=list.filter(function(r){return !r.ok}).length;
+    btn.disabled=!!left;
+    cert.classList.toggle('locked',!!left);
+    msg.textContent=left?'Encore '+left+(left>1?' étapes':' étape')+' avant de débloquer l\'attestation.':'Tout est validé : imprimez-la, ou enregistrez-la en PDF depuis la fenêtre d\'impression.';
+    document.getElementById('suite-k').textContent=left?'Après le niveau 2':'Niveau 2 validé · La suite';
+  }
+
+  // La suite : e-mail de demande d'accès pré-rempli
+  document.getElementById('ask-access').href='mailto:contact@fair-asso.fr?subject='+encodeURIComponent("Accès au niveau 3 de la formation FAIR")+'&body='+encodeURIComponent("Bonjour,\n\nJ'ai suivi le niveau 2 de la formation FAIR et je souhaite accéder au niveau 3.\n\nClub : \nVille : \nNombre de bénévoles intéressés : \n\nMerci !");
+  function cardText(save){
+    var v={};inputs.forEach(function(i){v[i.dataset.k]=i.value.trim()});
+    document.getElementById('c-name').textContent=v.name||'Prénom Nom';
+    document.getElementById('c-club').textContent=v.club?', au titre du club '+v.club:'';
+    if(save)FAIR.store(KEY_A,v);
+  }
+  inputs.forEach(function(i){i.value=att[i.dataset.k]||'';i.addEventListener('input',function(){cardText(true)})});
+  document.getElementById('c-date').textContent='Délivrée le '+new Date().toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'});
+  btn.addEventListener('click',function(){window.print()});
+  cardText(false);reqs();
+  document.addEventListener('fair:progress',reqs);
+})();
+</script>
+</body>
+</html>
