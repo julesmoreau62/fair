@@ -24,7 +24,6 @@ Former les Associations à l'IA Responsable : site et supports de formation pour
 - `refonte/assets/css/formation.css` et `assets/js/formation.js` : style et comportements communs aux pages de formation
 - `refonte/assets/css/niveau.css` : composants des modules du niveau 1 (objectifs, générateurs, exercices, « repérez les erreurs », bibliothèques, quiz)
 - `refonte/assets/formation/` : captures du module 1 (`claude-N.png`, `chatgpt-N.png`, `gemini-N.png`)
-- `Site FAIR.html` : ancien site, conservé tel quel
 - `medias-bonus/` : médias non utilisés
 - Logos FAIR (SVG) à la racine
 
