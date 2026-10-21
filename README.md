@@ -12,7 +12,7 @@ Former les Associations à l'IA Responsable : site et supports de formation pour
   3. L'IA sans risque (vérifier, protéger, arnaques, charte IA)
   4. Fichiers, photos, voix
   5. Mon premier dossier (feuille de route, quiz, attestation)
-- `refonte/formation-n1.html` : accueil du niveau 1 « L'IA au quotidien du club » (sur accès, pas de lien public pour l'instant)
+- `refonte/formation-n1.html` : accueil du niveau 1 « L'IA au quotidien du club » (ouvert pour l'instant, lié depuis `formation.html` et `formation-5.html`)
 - `refonte/formation-n1-1.html` à `formation-n1-5.html` : les cinq modules du niveau 1, avec le club fil rouge « AS Exemple Handball »
   1. Écrire aux adhérents (fiche du club, convocations en série, méthode C.A.L.M.E., FALC et traduction)
   2. Réseaux et affiches (ligne éditoriale, calendrier, posts, visuels, droit à l'image)
