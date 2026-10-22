@@ -5,11 +5,21 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Formation · Niveau 2 · FAIR</title>
 <meta name="description" content="Niveau 2 de la formation FAIR : les outils sur mesure du club. Des assistants configurés pour le secrétariat, la communication et les éducateurs, et des modèles partagés par tout le bureau.">
+<link rel="canonical" href="https://fair-asso.fr/formation-n2.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FAIR">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://fair-asso.fr/formation-n2.html">
+<meta property="og:title" content="Formation · Niveau 2 · FAIR">
+<meta property="og:description" content="Niveau 2 de la formation FAIR : les outils sur mesure du club. Des assistants configurés pour le secrétariat, la communication et les éducateurs, et des modèles partagés par tout le bureau.">
+<meta property="og:image" content="https://fair-asso.fr/assets/img/poster-hero.jpg">
+<meta property="og:image:alt" content="Un joueur frappe un ballon sur un terrain synthétique, de nuit">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#07111F">
 <link rel="icon" href="assets/logo/fair-icone.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
-<link rel="stylesheet" href="assets/css/formation.css?v=2">
-<link rel="stylesheet" href="assets/css/niveau.css?v=1">
+<link rel="stylesheet" href="assets/css/formation.css?v=3">
+<link rel="stylesheet" href="assets/css/niveau.css?v=3">
 <style>
 /* Progression globale */
 .bar{width:100%;max-width:560px;display:grid;gap:10px;margin-top:8px}
@@ -31,7 +41,7 @@
 .mod-txt h3{font-family:var(--f-display);font-weight:850;font-stretch:66%;text-transform:uppercase;font-size:1.7rem;line-height:1}
 .mod-txt p{color:var(--ink-2);font-size:.96rem;line-height:1.5;max-width:66ch}
 .mod-txt ul{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
-.mod-txt ul li{font-size:.8rem;padding:4px 10px;border-radius:999px;border:1px solid var(--line-c);color:var(--ink-2)}
+.mod-txt ul li{font-size:.8rem;padding:4px 10px;border-radius:4px;border:1px solid var(--line-c);color:var(--ink-2)}
 .mod-txt .mod-meta{display:flex;flex-wrap:wrap;gap:6px 16px;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.04em;color:var(--ink-2);text-transform:uppercase;margin-top:4px}
 .mod-meta .st.done{color:var(--turf-ink)}
 .mod .btn{min-width:150px}
@@ -43,12 +53,11 @@
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="check" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></symbol>
-  <symbol id="lock" viewBox="0 0 20 20"><rect x="4.5" y="9" width="11" height="8" rx="1.5"/><path d="M7 9V6.5a3 3 0 0 1 6 0V9"/></symbol>
 </svg>
 
 <header class="hdr">
   <div class="wrap hdr-in">
-    <a class="brand" href="index.html" aria-label="FAIR, retour à l'accueil"><img src="assets/logo/fair-logo-blanc.svg" alt="FAIR"></a>
+    <a class="brand" href="index.html" aria-label="FAIR, retour à l'accueil"><img src="assets/logo/fair-logo-blanc-court.svg" alt="FAIR"></a>
     <nav aria-label="Navigation">
       <a class="opt" href="index.html#clubs">Clubs</a>
       <a class="opt" href="index.html#partenaires">Fédérations</a>
@@ -61,20 +70,21 @@
 <main id="contenu">
   <section class="hero">
     <div class="wrap hero-in">
-      <p class="label"><span class="sq"></span><a href="formation.html">Formation FAIR</a> · Niveau 2 sur 5</p>
-      <h1><small>Ses outils sur mesure</small>Niveau <span class="turf">2</span></h1>
+      <p class="label"><a href="formation.html">Formation FAIR</a> · Niveau 2 sur 5</p>
+      <h1>Niveau 2 : ses outils sur mesure</h1>
       <p class="lead">Au niveau 1, vous faisiez travailler l'IA demande après demande. Au niveau 2, vous construisez les outils du club : des assistants configurés une fois pour le secrétariat, la communication et les éducateurs, et des modèles que tout le bureau réutilise. Pour que les bonnes pratiques ne dépendent plus d'une seule personne.</p>
       <ul class="meta">
         <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>5 modules</li>
         <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>5 h 30 au total</li>
         <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>13 exercices corrigés</li>
-        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>4 générateurs d'outils</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>5 générateurs</li>
         <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Attestation à la fin</li>
       </ul>
       <div class="bar" aria-live="polite">
         <div class="bar-track" id="bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
         <p id="bar-txt">0 module validé sur 5</p>
       </div>
+      <a class="btn btn-turf" id="go" href="formation-n2-1.html">Commencer le module 1</a>
       <p class="pre0" id="pre1" hidden><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Le niveau 2 s'appuie sur le niveau 1 : la fiche du club, la consigne [À COMPLÉTER], la méthode C.A.L.M.E. et le droit à l'image. <a href="formation-n1.html">Il vous reste <b id="pre1-n">5</b> à valider au niveau 1</a>, commencez par là si ces outils ne vous disent rien.</span></p>
     </div>
   </section>
@@ -82,8 +92,8 @@
   <section class="sec chalk">
     <div class="wrap">
       <div class="head">
-        <p class="label"><span class="sq"></span>Ce qui change</p>
-        <h2 class="h2">De la demande<br>à <span class="turf">l'outil</span></h2>
+        <p class="label">Ce qui change</p>
+        <h2 class="h2">De la demande<br>à l'outil</h2>
         <p class="lead">Une bonne demande sert une fois. Un outil bien construit sert toute la saison, à tout le club, et continue de servir quand son auteur passe la main.</p>
       </div>
       <div class="tips">
@@ -114,7 +124,7 @@
   <section class="sec chalk" id="modules" style="padding-top:0">
     <div class="wrap">
       <div class="head">
-        <p class="label"><span class="sq"></span>Le parcours</p>
+        <p class="label">Le parcours</p>
         <h2 class="h2">Cinq modules,<br>dans l'ordre</h2>
         <p class="lead">Chaque module construit un outil réel du club, et se termine par un quiz et une check-list. Votre progression est enregistrée sur cet appareil uniquement : rien n'est envoyé.</p>
       </div>
@@ -172,17 +182,17 @@
       </ol>
 
       <div class="head after">
-        <p class="label"><span class="sq"></span>Toute la formation</p>
+        <p class="label">Toute la formation</p>
         <h3 class="h3">Six niveaux, une marche à la fois</h3>
         <p class="lead">Chaque niveau s'appuie sur le précédent. La difficulté et la profondeur augmentent à chaque marche.</p>
       </div>
       <ol class="levels">
-        <li class="lv free" style="--i:0"><span class="n">0</span><b>Les fondamentaux</b><a class="tag" id="lv0" href="formation.html">Gratuit</a></li>
-        <li class="lv free" style="--i:1"><span class="n">1</span><b>L'IA au quotidien du club</b><a class="tag" id="lv1" href="formation-n1.html">Revoir le niveau 1</a></li>
-        <li class="lv up" style="--i:2"><span class="n">2</span><b>Ses outils sur mesure</b><span class="tag">Vous êtes ici</span></li>
-        <li class="lv" style="--i:3"><span class="n">3</span><b>Financer et développer</b><span class="tag"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Sur accès</span></li>
-        <li class="lv" style="--i:4"><span class="n">4</span><b>Automatiser à plusieurs</b><span class="tag"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Sur accès</span></li>
-        <li class="lv" style="--i:5"><span class="n">5</span><b>Référent IA du club</b><span class="tag"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Sur accès</span></li>
+        <li class="lv free"><span class="n">0</span><b>Les fondamentaux</b><a class="tag" id="lv0" href="formation.html">Gratuit</a></li>
+        <li class="lv free"><span class="n">1</span><b>L'IA au quotidien du club</b><a class="tag" id="lv1" href="formation-n1.html">Revoir le niveau 1</a></li>
+        <li class="lv up"><span class="n">2</span><b>Ses outils sur mesure</b><span class="tag">Vous êtes ici</span></li>
+        <li class="lv"><span class="n">3</span><b>Financer et développer</b><a class="tag" href="formation-n3.html">Découvrir le niveau 3</a></li>
+        <li class="lv"><span class="n">4</span><b>Automatiser à plusieurs</b><a class="tag" href="formation-n4.html">Découvrir le niveau 4</a></li>
+        <li class="lv"><span class="n">5</span><b>Référent IA du club</b><span class="tag">Bientôt</span></li>
       </ol>
     </div>
   </section>
@@ -190,8 +200,8 @@
   <section class="sec" id="fil-rouge">
     <div class="wrap">
       <div class="head">
-        <p class="label"><span class="sq"></span>Le fil rouge</p>
-        <h2 class="h2">L'AS Exemple,<br><span class="turf">une saison plus tard</span></h2>
+        <p class="label">Le fil rouge</p>
+        <h2 class="h2">L'AS Exemple,<br>une saison plus tard</h2>
         <p class="lead">Le club du niveau 1 a pris de bonnes habitudes. Mais elles tiennent dans l'ordinateur de Camille, et le reste du bureau s'y met chacun de son côté.</p>
       </div>
       <div class="case" style="margin-top:0">
@@ -201,14 +211,14 @@
           <dl>
             <dt>Licenciés</dt><dd>260, dont 165 jeunes de moins de 18 ans</dd>
             <dt>Équipes</dt><dd>12, une équipe U11 de plus cette saison</dd>
-            <dt>Outils</dt><dd>Un compte ChatGPT au nom du club, des comptes personnels pour le reste</dd>
+            <dt>Outils</dt><dd>Des comptes personnels, chacun de son côté, et rien de rangé pour le club</dd>
             <dt>Acquis</dt><dd>La fiche du club, une trentaine de demandes dans un document de Camille</dd>
             <dt>Projet</dt><dd>Équiper le secrétariat, la communication et les éducateurs avant la fin de l'année</dd>
           </dl>
         </article>
         <div>
           <ul class="week">
-            <li><b>Camille</b><span>Secrétaire, deuxième saison. Ses demandes marchent bien, mais elle les recolle à chaque fois et elle est la seule à les connaître. Elle veut un assistant qui « sait déjà ».</span></li>
+            <li><b>Camille</b><span>Secrétaire, troisième saison. Ses demandes marchent bien, mais elle les recolle à chaque fois et elle est la seule à les connaître. Elle veut un assistant qui « sait déjà ».</span></li>
             <li><b>Théo</b><span>Responsable communication, 22 ans, joueur en seniors. Rapide sur les réseaux, moins sur le droit à l'image. Ses posts n'ont jamais le même ton.</span></li>
             <li><b>Nadia</b><span>Responsable technique, éducatrice diplômée. Elle voudrait que les six éducateurs débutants préparent leurs séances dans le cadre du projet sportif du club.</span></li>
             <li><b>Le bureau</b><span>Un nouveau trésorier arrive. Le président veut « que tout soit rangé quelque part » avant la prochaine AG.</span></li>
@@ -222,8 +232,8 @@
   <section class="sec chalk" id="ressources">
     <div class="wrap">
       <div class="head">
-        <p class="label"><span class="sq"></span>Ressources</p>
-        <h2 class="h2">À garder<br><span class="turf">sous la main</span></h2>
+        <p class="label">Ressources</p>
+        <h2 class="h2">À garder<br>sous la main</h2>
       </div>
       <div class="lib">
         <article class="card">
@@ -248,8 +258,8 @@
   <section class="sec">
     <div class="wrap next">
       <div class="head" style="margin:0">
-        <p class="label"><span class="sq"></span>En groupe, c'est mieux</p>
-        <h2 class="h2">Un atelier<br><span class="turf">dans votre club</span></h2>
+        <p class="label">En groupe, c'est mieux</p>
+        <h2 class="h2">Un atelier<br>dans votre club</h2>
         <p class="lead">FAIR anime le niveau 2 avec votre bureau : en une demi-journée, vous repartez avec vos premiers assistants testés et votre bibliothèque de modèles.</p>
       </div>
       <div class="actions">
@@ -267,19 +277,25 @@
   </div>
 </footer>
 
-<script src="assets/js/formation.js"></script>
+<script src="assets/js/formation.js?v=2"></script>
 <script>
 (function(){
   // Barre de progression et boutons de chaque module
   function paint(){
-    var n=0;
+    var n=0,next=-1;
+    FAIR.N2.forEach(function(m,i){if(next<0&&FAIR.count(m.key)<m.n)next=i});
     FAIR.N2.forEach(function(m,i){
-      var row=document.querySelector('.mod[data-m="'+(i+1)+'"]');
+      var row=document.querySelector('.mod[data-m="'+(i+1)+'"]'),btn=row.querySelector('.btn');
       var c=FAIR.count(m.key),ok=c>=m.n;
       if(ok)n++;
       row.classList.toggle('is-done',ok);
-      row.querySelector('.btn').textContent=ok?'Revoir':c?'Reprendre':'Commencer';
+      btn.textContent=ok?'Revoir':c?'Reprendre':'Commencer';
+      btn.classList.toggle('btn-turf',i===next);
+      btn.classList.toggle('btn-ghost',i!==next);
     });
+    var go=document.getElementById('go');
+    if(next<0){go.textContent='Passer au niveau 3';go.href='formation-n3.html'}
+    else{go.textContent=(FAIR.count(FAIR.N2[next].key)?'Reprendre':'Commencer')+' le module '+(next+1);go.href=FAIR.N2[next].url}
     [].forEach.call(document.querySelectorAll('#bar span'),function(s,i){s.classList.toggle('on',i<n)});
     document.getElementById('bar-txt').textContent=n===5?'5 modules validés sur 5 · Niveau 2 terminé':n+(n>1?' modules validés':' module validé')+' sur 5';
   }

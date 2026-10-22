@@ -5,10 +5,20 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Formation · Module 5 · FAIR</title>
 <meta name="description" content="Module 5 de la formation FAIR : un vrai dossier du club traité de bout en bout avec l'IA, un quiz de dix questions et l'attestation « Niveau 0 validé ».">
+<link rel="canonical" href="https://fair-asso.fr/formation-5.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FAIR">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://fair-asso.fr/formation-5.html">
+<meta property="og:title" content="Formation · Module 5 · FAIR">
+<meta property="og:description" content="Module 5 de la formation FAIR : un vrai dossier du club traité de bout en bout avec l'IA, un quiz de dix questions et l'attestation « Niveau 0 validé ».">
+<meta property="og:image" content="https://fair-asso.fr/assets/img/poster-hero.jpg">
+<meta property="og:image:alt" content="Un joueur frappe un ballon sur un terrain synthétique, de nuit">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#07111F">
 <link rel="icon" href="assets/logo/fair-icone.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
-<link rel="stylesheet" href="assets/css/formation.css?v=2">
+<link rel="stylesheet" href="assets/css/formation.css?v=3">
 <style>
 /* Choisir le dossier */
 .picks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
@@ -84,7 +94,7 @@
 .cert .who{font-size:1.3rem;font-weight:700;border-bottom:1px solid var(--line-c);padding-bottom:6px;min-width:60%}
 .cert p{color:var(--ink-2);font-size:.95rem;max-width:46ch}
 .cert ol{display:flex;flex-wrap:wrap;justify-content:center;gap:6px}
-.cert ol li{font-size:.8rem;padding:6px 10px;border-radius:999px;border:1px solid var(--line-c)}
+.cert ol li{font-size:.8rem;padding:6px 10px;border-radius:4px;border:1px solid var(--line-c)}
 .cert .date{font-family:var(--f-mono);font-size:.74rem;color:var(--ink-2)}
 .att-msg{font-size:.9rem;color:var(--fog)}
 @media (max-width:900px){.att{grid-template-columns:minmax(0,1fr)}}
@@ -94,11 +104,6 @@
 .demo-txt{display:grid;gap:18px;align-content:start}
 .demo-txt p{color:var(--mist);font-size:.98rem}
 .demo-txt .from{font-family:var(--f-mono);font-size:.7rem;color:var(--fog);letter-spacing:.05em;text-transform:uppercase}
-.gain{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line-n);border:1px solid var(--line-n);border-radius:6px;overflow:hidden}
-.gain div{display:grid;gap:8px;padding:18px 18px 20px;background:var(--night)}
-.gain b{font-family:var(--f-display);font-weight:900;font-stretch:62%;text-transform:uppercase;font-size:clamp(2.4rem,4vw,3.2rem);line-height:.85}
-.gain .before b{color:var(--fog);text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:3px}
-.gain .after b{color:var(--turf)}
 .demo-box{display:grid;gap:12px}
 .out{border-radius:8px;background:var(--paper);color:var(--ink);overflow:hidden}
 .out .label{display:flex;padding:12px 16px;border-bottom:1px solid var(--line-c);color:var(--ink-2)}
@@ -127,12 +132,11 @@
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="check" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></symbol>
-  <symbol id="lock" viewBox="0 0 20 20"><rect x="4.5" y="9" width="11" height="8" rx="1.5"/><path d="M7 9V6.5a3 3 0 0 1 6 0V9"/></symbol>
 </svg>
 
 <header class="hdr">
   <div class="wrap hdr-in">
-    <a class="brand" href="index.html" aria-label="FAIR, retour à l'accueil"><img src="assets/logo/fair-logo-blanc.svg" alt="FAIR"></a>
+    <a class="brand" href="index.html" aria-label="FAIR, retour à l'accueil"><img src="assets/logo/fair-logo-blanc-court.svg" alt="FAIR"></a>
     <nav aria-label="Navigation">
       <a class="opt" href="index.html#clubs">Clubs</a>
       <a class="opt" href="index.html#partenaires">Fédérations</a>
@@ -145,8 +149,8 @@
 <main id="contenu">
   <section class="hero">
     <div class="wrap hero-in">
-      <p class="label"><span class="sq"></span><a href="formation.html">Formation FAIR · Niveau 0</a> · Module 5 sur 5</p>
-      <h1><small>Mise en pratique</small>Mon premier<br><span class="turf">dossier</span></h1>
+      <p class="label"><a href="formation.html">Formation FAIR · Niveau 0</a> · Module 5 sur 5</p>
+      <h1>Mon premier dossier</h1>
       <p class="lead">Tout ce que vous avez appris, appliqué à un vrai projet du club. Choisissez un dossier, suivez la feuille de route, passez le quiz et repartez avec votre attestation.</p>
       <ul class="meta">
         <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>45 minutes</li>
@@ -166,7 +170,7 @@
   <section class="sec chalk" id="choisir">
     <div class="wrap">
       <div class="head">
-        <p class="label"><span class="sq"></span>Étape 1</p>
+        <p class="label">Étape 1</p>
         <h2 class="h2">Choisissez<br>votre dossier</h2>
         <p class="lead">Prenez celui qui correspond à un besoin réel du club dans les prochaines semaines. La feuille de route s'adapte à votre choix.</p>
       </div>
@@ -182,8 +186,8 @@
   <section class="sec" id="realiser">
     <div class="wrap">
       <div class="head">
-        <p class="label"><span class="sq"></span>Étape 2</p>
-        <h2 class="h2">La feuille<br><span class="turf">de route</span></h2>
+        <p class="label">Étape 2</p>
+        <h2 class="h2">La feuille<br>de route</h2>
         <p class="lead" id="road-lead">Choisissez d'abord un dossier ci-dessus : les demandes de chaque étape s'adapteront.</p>
       </div>
       <div class="road" id="check" data-key="fair-module5" data-name="Module 5">
@@ -191,7 +195,7 @@
           <div class="leg-txt">
             <span class="leg-n">01</span>
             <h3 class="h3">Cadrer le projet</h3>
-            <p>Laissez l'IA vous poser les bonnes questions avant de produire quoi que ce soit.</p>
+            <p>Laissez l'IA vous poser les bonnes questions avant de produire quoi que ce soit. Répondez-lui en quelques lignes, sans nom ni coordonnées.</p>
             <p class="from">Vu dans le <a href="formation-2.html#affiner">module 2</a></p>
             <label class="leg-done"><input class="tick" type="checkbox" data-k="cadrer">Étape faite</label>
           </div>
@@ -201,7 +205,7 @@
           <div class="leg-txt">
             <span class="leg-n">02</span>
             <h3 class="h3">Le premier livrable</h3>
-            <p>Une demande complète avec les quatre briques C.L.U.B. Remplacez les passages en vert.</p>
+            <p>Dans la même conversation, collez cette demande complète avec les quatre briques C.L.U.B. L'IA s'appuiera aussi sur vos réponses de l'étape 1. Remplacez les passages en vert.</p>
             <p class="from">Vu dans le <a href="formation-2.html#methode">module 2</a></p>
             <label class="leg-done"><input class="tick" type="checkbox" data-k="livrable">Étape faite</label>
           </div>
@@ -211,7 +215,7 @@
           <div class="leg-txt">
             <span class="leg-n">03</span>
             <h3 class="h3">S'appuyer sur un document</h3>
-            <p>Joignez un document existant du club, nettoyé de toute donnée personnelle.</p>
+            <p>Joignez un document existant du club, nettoyé de toute donnée personnelle. Pas de document de ce genre au club ? Remplacez « Voici en pièce jointe… » par quelques lignes qui décrivent la situation.</p>
             <p class="from">Vu dans le <a href="formation-4.html#joindre">module 4</a></p>
             <label class="leg-done"><input class="tick" type="checkbox" data-k="document">Étape faite</label>
           </div>
@@ -266,7 +270,7 @@
   <section class="sec chalk" id="quiz">
     <div class="wrap">
       <div class="head">
-        <p class="label"><span class="sq"></span>Étape 3</p>
+        <p class="label">Étape 3</p>
         <h2 class="h2">Dix questions,<br>huit pour réussir</h2>
         <p class="lead">Une question par module, et quelques-unes en plus. Vous pouvez recommencer autant de fois que vous voulez.</p>
       </div>
@@ -282,9 +286,9 @@
   <section class="sec" id="attestation">
     <div class="wrap">
       <div class="head">
-        <p class="label"><span class="sq"></span>Étape 4</p>
-        <h2 class="h2">Votre<br><span class="turf">attestation</span></h2>
-        <p class="lead">Elle se débloque quand les cinq modules et le quiz sont validés. Votre nom reste sur cet appareil : il ne sert qu'à l'impression.</p>
+        <p class="label">Étape 4</p>
+        <h2 class="h2">Votre<br>attestation</h2>
+        <p class="lead">Elle se débloque quand les cinq modules et le quiz sont validés. Vous avez suivi un atelier FAIR ? Ouvrez chaque module et cochez sa check-list : ce que vous avez fait en atelier compte. Votre nom reste sur cet appareil : il ne sert qu'à l'impression.</p>
       </div>
       <div class="att">
         <div class="att-cfg">
@@ -310,8 +314,8 @@
   <section class="sec chalk">
     <div class="wrap">
       <div class="head">
-        <p class="label"><span class="sq"></span>Votre parcours</p>
-        <h2 class="h2">Le niveau 0,<br><span class="turf">module par module</span></h2>
+        <p class="label">Votre parcours</p>
+        <h2 class="h2">Le niveau 0,<br>module par module</h2>
       </div>
       <nav class="path" aria-label="Modules du niveau 0" style="background:var(--line-c);border-color:var(--line-c)">
         <a href="formation-1.html"><span class="label">Module 1</span><b>Créer ses comptes</b><span class="st" data-m="1"></span></a>
@@ -326,8 +330,8 @@
   <section class="sec" id="suite">
     <div class="wrap">
       <div class="head">
-        <p class="label"><span class="sq"></span><span id="suite-k">Après le niveau 0</span></p>
-        <h2 class="h2">Niveau 1 :<br><span class="turf">l'IA au quotidien</span></h2>
+        <p class="label"><span id="suite-k">Après le niveau 0</span></p>
+        <h2 class="h2">Niveau 1 :<br>l'IA au quotidien</h2>
         <p class="lead">Le niveau 0 vous a appris à bien demander. Le niveau 1 l'applique aux tâches qui reviennent chaque semaine au club : les messages, les réunions, les réseaux, les séances. Trois exemples tirés des modules :</p>
       </div>
 
@@ -340,25 +344,21 @@
       <div class="panel demo" role="tabpanel" id="p-conv" aria-labelledby="t-conv">
         <div class="demo-txt">
           <h3 class="h3">Les convocations du week-end</h3>
-          <p>Chaque jeudi soir, un message par équipe, écrit à la main avec les horaires, les lieux et la tenue. Avec une seule demande et le planning collé dessous, tout est prêt d'un coup.</p>
-          <div class="gain">
-            <div class="before"><span class="label">Avant</span><b>1 h 30</b></div>
-            <div class="after"><span class="label">Avec l'IA</span><b>10 min</b></div>
-          </div>
+          <p>Chaque jeudi soir, un message par équipe, écrit à la main avec les horaires, les lieux et la tenue. Avec une seule demande et le planning collé dessous, tous les messages sont prêts d'un coup : il reste à les relire.</p>
           <p class="from">Niveau 1 · Module 1 · Écrire aux adhérents</p>
         </div>
         <div class="demo-box">
           <div class="prompt"><div class="prompt-top"><span class="label">La demande</span><button class="copy" type="button" data-copy>Copier</button></div><pre>Je suis secrétaire d'un club de handball. Voici le planning du week-end. Rédige un message WhatsApp de convocation par équipe : adversaire, lieu, heure de rendez-vous (1 h avant le match), tenue rouge, et demande de confirmation avant vendredi 18 h. Ton direct et sympa, 4 lignes maximum par message.
 
 U11 · samedi 14 h · contre HBC Rive Droite · gymnase Jean-Moulin
-U13 · samedi 16 h · à l'extérieur · salle des Tilleuls, Villeneuve
+U13 · samedi 16 h · à l'extérieur, contre US Saint-Martin · gymnase Coubertin, Saint-Martin
 Seniors F · dimanche 15 h · contre ASL Plaine · gymnase Jean-Moulin</pre></div>
           <div class="out"><span class="label">Exemple de résultat (extrait)</span><pre><b>U11 · Match samedi contre HBC Rive Droite</b>
 Rendez-vous à 13 h au gymnase Jean-Moulin, en tenue rouge, gourde pleine.
 Merci de confirmer la présence de votre enfant avant vendredi 18 h !
 
-<b>U13 · Déplacement samedi à Villeneuve</b>
-Rendez-vous à 15 h directement à la salle des Tilleuls, en tenue rouge.
+<b>U13 · Déplacement samedi contre US Saint-Martin</b>
+Rendez-vous à 15 h directement au gymnase Coubertin, à Saint-Martin, en tenue rouge.
 Pensez au covoiturage, et confirmez avant vendredi 18 h !</pre></div>
         </div>
       </div>
@@ -367,23 +367,19 @@ Pensez au covoiturage, et confirmez avant vendredi 18 h !</pre></div>
         <div class="demo-txt">
           <h3 class="h3">Le compte rendu de réunion</h3>
           <p>La réunion de bureau est enregistrée avec l'accord de tous, puis transcrite. L'IA en tire les décisions et les actions : il ne reste qu'à relire et envoyer.</p>
-          <div class="gain">
-            <div class="before"><span class="label">Avant</span><b>2 h</b></div>
-            <div class="after"><span class="label">Avec l'IA</span><b>15 min</b></div>
-          </div>
           <p class="from">Niveau 1 · Module 3 · Réunions et AG</p>
         </div>
         <div class="demo-box">
           <div class="prompt"><div class="prompt-top"><span class="label">La demande</span><button class="copy" type="button" data-copy>Copier</button></div><pre>Voici la transcription de notre réunion de bureau d'hier, avec les noms remplacés par les fonctions. Rédige le compte rendu en trois parties : les décisions prises, les actions (qui, quoi, pour quand) et les points reportés. Une page maximum, phrases courtes, aucune information qui ne figure pas dans la transcription.</pre></div>
           <div class="out"><span class="label">Exemple de résultat (extrait)</span><pre><b>Décisions</b>
-· Le tournoi de Pâques est maintenu le 12 avril, inscription à 5 € par équipe.
+· Le tournoi de printemps est maintenu le samedi 10 avril, inscription à 5 € par équipe.
 
 <b>Actions</b>
-· Réserver le gymnase · Secrétaire · avant le 15 mars
-· Commander les médailles · Trésorier · avant le 1er avril
+· Réserver le gymnase auprès de la mairie · Secrétaire · avant le 15 mars
 
 <b>Reporté</b>
-· L'achat d'un minibus, à revoir lors de l'assemblée générale.</pre></div>
+· Les médailles : la trésorière peut les commander une fois le nombre d'équipes connu, à revoir à la prochaine réunion.
+· Le minibus : renvoyé à l'ordre du jour de l'assemblée générale.</pre></div>
         </div>
       </div>
 
@@ -391,10 +387,6 @@ Pensez au covoiturage, et confirmez avant vendredi 18 h !</pre></div>
         <div class="demo-txt">
           <h3 class="h3">La séance des U9</h3>
           <p>L'éducateur bénévole décrit son groupe, son matériel et son thème. L'IA propose une séance complète, qu'il ajuste à ses joueurs : c'est lui qui garde la main.</p>
-          <div class="gain">
-            <div class="before"><span class="label">Avant</span><b>45 min</b></div>
-            <div class="after"><span class="label">Avec l'IA</span><b>5 min</b></div>
-          </div>
           <p class="from">Niveau 1 · Module 4 · Préparer ses séances</p>
         </div>
         <div class="demo-box">
@@ -412,11 +404,11 @@ Deux colonnes, un slalom chacune. Consigne : « Le ballon reste collé à ton pi
         <p>Même format que le niveau 0 : des demandes prêtes à copier, une check-list à la fin de chaque module et une attestation.</p>
       </div>
       <ol class="mods1">
-        <li><span class="label"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Module 1</span><b>Écrire aux adhérents</b><p>Convocations, mails aux parents, réponse à un message délicat.</p></li>
-        <li><span class="label"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Module 2</span><b>Réseaux et affiches</b><p>Posts de résultats, calendrier de publication, visuels d'événements.</p></li>
-        <li><span class="label"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Module 3</span><b>Réunions et AG</b><p>Ordre du jour, transcription, compte rendu, rapport moral.</p></li>
-        <li><span class="label"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Module 4</span><b>Préparer ses séances</b><p>Plans d'entraînement par âge, variantes, inclusion.</p></li>
-        <li><span class="label"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Module 5</span><b>La rentrée du club</b><p>Le kit de rentrée de bout en bout, quiz et attestation.</p></li>
+        <li><span class="label">Module 1</span><b>Écrire aux adhérents</b><p>Convocations, mails aux parents, réponse à un message délicat.</p></li>
+        <li><span class="label">Module 2</span><b>Réseaux et affiches</b><p>Posts de résultats, calendrier de publication, visuels d'événements.</p></li>
+        <li><span class="label">Module 3</span><b>Réunions et AG</b><p>Ordre du jour, transcription, compte rendu, rapport moral.</p></li>
+        <li><span class="label">Module 4</span><b>Préparer ses séances</b><p>Plans d'entraînement par âge, variantes, inclusion.</p></li>
+        <li><span class="label">Module 5</span><b>La rentrée du club</b><p>Le kit de rentrée de bout en bout, quiz et attestation.</p></li>
       </ol>
 
       <div class="sub">
@@ -424,19 +416,18 @@ Deux colonnes, un slalom chacune. Consigne : « Le ballon reste collé à ton pi
         <p>Six niveaux, du premier compte à la fonction de référent IA du club. La difficulté et la profondeur augmentent à chaque marche.</p>
       </div>
       <ol class="levels">
-        <li class="lv free" style="--i:0"><span class="n">0</span><b>Les fondamentaux</b><span class="tag" id="lv0">Gratuit</span></li>
-        <li class="lv up" style="--i:1"><span class="n">1</span><b>L'IA au quotidien du club</b><span class="tag"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Sur accès</span></li>
-        <li class="lv" style="--i:2"><span class="n">2</span><b>Ses outils sur mesure</b><span class="tag"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Sur accès</span></li>
-        <li class="lv" style="--i:3"><span class="n">3</span><b>Financer et développer</b><span class="tag"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Sur accès</span></li>
-        <li class="lv" style="--i:4"><span class="n">4</span><b>Automatiser à plusieurs</b><span class="tag"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Sur accès</span></li>
-        <li class="lv" style="--i:5"><span class="n">5</span><b>Référent IA du club</b><span class="tag"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Sur accès</span></li>
+        <li class="lv free"><span class="n">0</span><b>Les fondamentaux</b><span class="tag" id="lv0">Gratuit</span></li>
+        <li class="lv up"><span class="n">1</span><b>L'IA au quotidien du club</b><a class="tag" href="formation-n1.html">Découvrir le niveau 1</a></li>
+        <li class="lv"><span class="n">2</span><b>Ses outils sur mesure</b><a class="tag" href="formation-n2.html">Découvrir le niveau 2</a></li>
+        <li class="lv"><span class="n">3</span><b>Financer et développer</b><a class="tag" href="formation-n3.html">Découvrir le niveau 3</a></li>
+        <li class="lv"><span class="n">4</span><b>Automatiser à plusieurs</b><a class="tag" href="formation-n4.html">Découvrir le niveau 4</a></li>
+        <li class="lv"><span class="n">5</span><b>Référent IA du club</b><span class="tag">Bientôt</span></li>
       </ol>
 
       <div class="next suite-cta">
-        <p class="lead">Les niveaux 1 à 5 sont ouverts sur demande, pour un bénévole ou pour tout le bureau. Écrivez-nous avec le nom de votre club : nous revenons vers vous avec les modalités d'accès.</p>
+        <p class="lead">Les niveaux 1 à 4 sont en accès libre, à votre rythme, pour un bénévole ou pour tout le bureau. Le niveau 5 arrive bientôt.</p>
         <div class="actions">
           <a class="btn btn-turf" href="formation-n1.html">Ouvrir le niveau 1</a>
-          <a class="btn btn-ghost" id="ask-access" href="mailto:contact@fair-asso.fr">Demander l'accès</a>
           <a class="btn btn-ghost" href="index.html#contact">Ou un atelier au club</a>
         </div>
       </div>
@@ -451,7 +442,7 @@ Deux colonnes, un slalom chacune. Consigne : « Le ballon reste collé à ton pi
   </div>
 </footer>
 
-<script src="assets/js/formation.js"></script>
+<script src="assets/js/formation.js?v=2"></script>
 <script>
 (function(){
   var esc=function(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')};
@@ -505,7 +496,7 @@ Deux colonnes, un slalom chacune. Consigne : « Le ballon reste collé à ton pi
 
   // Étape 3 : quiz
   var QUIZ=[
-    ["Avec quelle adresse e-mail créer les comptes IA du club ?",["La mienne, c'est plus simple","Celle du club","Peu importe"],1,"Avec l'adresse du club, le compte reste au club quand un bénévole s'en va. (Module 1)"],
+    ["Trois bénévoles veulent utiliser ChatGPT pour le club. Vous…",["Créez un compte du club et partagez le mot de passe","Laissez chacun créer son propre compte","Prêtez-leur votre compte personnel"],1,"Les conditions des outils interdisent de partager un compte, et chacun verrait l'historique des autres. Ce qui doit rester au club se range dans les documents du club. (Module 1)"],
     ["Que contient une demande bien construite ?",["Le contexte, le livrable, les lecteurs et la forme attendue","Un maximum de formules de politesse","Un seul mot-clé, comme dans un moteur de recherche"],0,"C.L.U.B. : Contexte, Livrable, Usagers, Bornes. (Module 2)"],
     ["La première réponse ne vous convient pas. Que faire ?",["Ouvrir une nouvelle conversation et tout réécrire","Changer d'outil","Demander une retouche dans la même conversation"],2,"L'IA garde le contexte : une retouche ciblée va plus vite que tout recommencer. (Module 2)"],
     ["L'IA cite un article du règlement fédéral. Vous…",["Le vérifiez sur le site de la fédération","Le copiez tel quel, elle a l'air sûre d'elle","Lui demandez si elle est certaine"],0,"L'IA peut inventer avec aplomb, et se confirmer elle-même. Seule la source officielle fait foi. (Module 3)"],
@@ -589,8 +580,6 @@ Deux colonnes, un slalom chacune. Consigne : « Le ballon reste collé à ton pi
     document.getElementById('lv0').textContent=left?'Gratuit':'Gratuit · Validé';
   }
 
-  // La suite : e-mail de demande d'accès pré-rempli
-  document.getElementById('ask-access').href='mailto:contact@fair-asso.fr?subject='+encodeURIComponent("Accès au niveau 1 de la formation FAIR")+'&body='+encodeURIComponent("Bonjour,\n\nJ'ai suivi le niveau 0 de la formation FAIR et je souhaite accéder au niveau 1.\n\nClub : \nVille : \nNombre de bénévoles intéressés : \n\nMerci !");
   function cardText(save){
     var v={};inputs.forEach(function(i){v[i.dataset.k]=i.value.trim()});
     document.getElementById('c-name').textContent=v.name||'Prénom Nom';

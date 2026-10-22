@@ -33,6 +33,15 @@ Les fichiers `poster-*.jpg` sont les images d'attente de ces vidéos (même aute
 | vestiaire.jpg | Polina Tankilevitch | https://www.pexels.com/photo/locker-room-in-sports-club-3875521/ |
 | coachs.jpg | Franco Monsalvo | https://www.pexels.com/photo/soccer-coaches-discussing-strategy-outdoors-32101180/ |
 | regroupement.jpg | Omar Ramadan | https://www.pexels.com/photo/soccer-team-in-a-huddle-10719279/ |
+
+## Médias en réserve (`medias-bonus/`)
+
+Non utilisés sur la page, gardés pour d'autres supports (réseaux sociaux, présentations). Les photos `terrain-*.jpg` illustraient l'ancien bandeau « Tous les terrains » de l'accueil :
+
+| Fichier | Auteur | Source |
+|---|---|---|
+| projecteurs.jpg | Steve Pancrate | https://www.pexels.com/photo/floodlights-on-black-stand-4135333/ |
+| equipe-nuit.jpg | Ollie Craig | https://www.pexels.com/photo/large-group-huddle-on-athletic-field-at-night-33879976/ |
 | terrain-football.jpg | Franco Monsalvo | https://www.pexels.com/photo/illuminated-soccer-field-goal-at-night-37391237/ |
 | terrain-judo.jpg | juan idier Alba Enriquez | https://www.pexels.com/photo/young-ethnic-judoists-performing-nage-waza-technique-4392782/ |
 | terrain-basket.jpg | Reinis Brūzītis | https://www.pexels.com/photo/two-basketballs-on-blue-indoor-court-34688570/ |
@@ -43,13 +52,4 @@ Les fichiers `poster-*.jpg` sont les images d'attente de ces vidéos (même aute
 | terrain-rugby.jpg | Pablo Hsm | https://www.pexels.com/photo/a-rugby-ball-on-the-field-16566938/ |
 | terrain-boxe.jpg | Tima Miroshnichenko | https://www.pexels.com/photo/hanging-punching-bags-in-a-gym-5750886/ |
 | terrain-handball.jpg | Bechir Lachiheb | https://www.pexels.com/photo/dynamic-handball-match-in-indoor-sports-arena-32250680/ |
-
-## Médias en réserve (`medias-bonus/`)
-
-Non utilisés sur la page, gardés pour d'autres supports (réseaux sociaux, présentations) :
-
-| Fichier | Auteur | Source |
-|---|---|---|
-| projecteurs.jpg | Steve Pancrate | https://www.pexels.com/photo/floodlights-on-black-stand-4135333/ |
-| equipe-nuit.jpg | Ollie Craig | https://www.pexels.com/photo/large-group-huddle-on-athletic-field-at-night-33879976/ |
 | pill-*.jpg | recadrages de terrain-football, poster-soiree et mains | voir ci-dessus |

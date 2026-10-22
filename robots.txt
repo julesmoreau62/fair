@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /index-version-longue
+Disallow: /medias-bonus/
+
+Sitemap: https://fair-asso.fr/sitemap.xml

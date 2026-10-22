@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Formation · Niveau 3 · FAIR</title>
+<meta name="description" content="Niveau 3 de la formation FAIR : financer et développer les projets du club. Le projet associatif, les dossiers de subvention, les partenaires et mécènes, et les bilans pour les financeurs.">
+<link rel="canonical" href="https://fair-asso.fr/formation-n3.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FAIR">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://fair-asso.fr/formation-n3.html">
+<meta property="og:title" content="Formation · Niveau 3 · FAIR">
+<meta property="og:description" content="Niveau 3 de la formation FAIR : financer et développer les projets du club. Le projet associatif, les dossiers de subvention, les partenaires et mécènes, et les bilans pour les financeurs.">
+<meta property="og:image" content="https://fair-asso.fr/assets/img/poster-hero.jpg">
+<meta property="og:image:alt" content="Un joueur frappe un ballon sur un terrain synthétique, de nuit">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#07111F">
+<link rel="icon" href="assets/logo/fair-icone.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/css/formation.css?v=3">
+<link rel="stylesheet" href="assets/css/niveau.css?v=3">
+<style>
+/* Progression globale */
+.bar{width:100%;max-width:560px;display:grid;gap:10px;margin-top:8px}
+.bar-track{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.bar-track span{height:8px;border-radius:4px;background:var(--line-n);transition:background-color .3s}
+.bar-track span.on{background:var(--turf)}
+.bar p{font-family:var(--f-mono);font-size:.76rem;color:var(--fog)}
+.pre0{max-width:760px;display:flex;gap:14px;align-items:flex-start;padding:14px 18px;border:1px solid var(--line-n);border-radius:6px;font-size:.92rem;color:var(--mist)}
+.pre0[hidden]{display:none}
+.pre0 a{color:var(--turf-hi)}
+
+/* Liste des modules */
+.mods{display:grid;gap:12px}
+.mod{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:20px clamp(20px,3vw,40px);align-items:center;padding:26px clamp(20px,3vw,32px);border:1px solid var(--line-c);border-radius:6px;background:var(--paper);transition:border-color .25s}
+.mod:hover{border-color:var(--ink-2)}
+.mod.is-done{border-color:var(--turf-ink);box-shadow:inset 4px 0 0 var(--turf-ink)}
+.mod-n{font-family:var(--f-display);font-weight:900;font-stretch:62%;font-size:4.4rem;line-height:.8;color:var(--turf-ink);align-self:start}
+.mod-txt{display:grid;gap:8px}
+.mod-txt h3{font-family:var(--f-display);font-weight:850;font-stretch:66%;text-transform:uppercase;font-size:1.7rem;line-height:1}
+.mod-txt p{color:var(--ink-2);font-size:.96rem;line-height:1.5;max-width:66ch}
+.mod-txt ul{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.mod-txt ul li{font-size:.8rem;padding:4px 10px;border-radius:4px;border:1px solid var(--line-c);color:var(--ink-2)}
+.mod-txt .mod-meta{display:flex;flex-wrap:wrap;gap:6px 16px;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.04em;color:var(--ink-2);text-transform:uppercase;margin-top:4px}
+.mod-meta .st.done{color:var(--turf-ink)}
+.mod .btn{min-width:150px}
+.mod.is-done .btn{background:transparent;border-color:var(--line-c);color:var(--ink)}
+@media (max-width:760px){.mod{grid-template-columns:minmax(0,1fr)}.mod-n{font-size:3.2rem}.mod .btn{justify-self:start}}
+.head.after{margin-top:clamp(64px,8vw,104px)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="check" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></symbol>
+</svg>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="index.html" aria-label="FAIR, retour à l'accueil"><img src="assets/logo/fair-logo-blanc-court.svg" alt="FAIR"></a>
+    <nav aria-label="Navigation">
+      <a class="opt" href="index.html#clubs">Clubs</a>
+      <a class="opt" href="index.html#partenaires">Fédérations</a>
+      <a href="formation.html" aria-current="page">Formation</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <section class="hero">
+    <div class="wrap hero-in">
+      <p class="label"><a href="formation.html">Formation FAIR</a> · Niveau 3 sur 5</p>
+      <h1>Niveau 3 : financer et développer</h1>
+      <p class="lead">Au niveau 2, vous avez construit les outils du club. Au niveau 3, vous les mettez au service de ses grands projets : écrire le projet associatif, convaincre les financeurs publics et les entreprises du territoire, puis rendre compte de ce que leur argent a permis. Avec une règle qui ne bouge pas : chaque chiffre se prouve.</p>
+      <ul class="meta">
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>5 modules</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>6 h au total</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>14 exercices corrigés</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>5 générateurs</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Attestation à la fin</li>
+      </ul>
+      <div class="bar" aria-live="polite">
+        <div class="bar-track" id="bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+        <p id="bar-txt">0 module validé sur 5</p>
+      </div>
+      <a class="btn btn-turf" id="go" href="formation-n3-1.html">Commencer le module 1</a>
+      <p class="pre0" id="pre2" hidden><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Le niveau 3 s'appuie sur les niveaux 1 et 2 : la fiche du club, la consigne [À COMPLÉTER], les assistants et le dossier « IA du club ». <a href="formation-n2.html">Il vous reste <b id="pre2-n">5</b> à valider au niveau 2</a>, commencez par là si ces outils ne vous disent rien.</span></p>
+    </div>
+  </section>
+
+  <section class="sec chalk">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Ce qui change</p>
+        <h2 class="h2">De l'outil<br>au projet</h2>
+        <p class="lead">Un dossier de subvention, c'est de l'écriture, et l'IA y excelle. C'est aussi un engagement signé, des chiffres qu'on doit pouvoir prouver et un bilan à rendre. C'est là que le niveau 3 vous attend.</p>
+      </div>
+      <div class="tips">
+        <article class="tip">
+          <span class="n">01 · Le projet</span>
+          <h3>Tout part de là</h3>
+          <p>Les financeurs ne financent pas un club qui a besoin d'argent : ils financent un projet qui répond à un besoin. Le projet associatif s'écrit avant le premier dossier.</p>
+        </article>
+        <article class="tip">
+          <span class="n">02 · La méthode</span>
+          <h3>É.Q.U.I.P.E.</h3>
+          <p>État des lieux, Qui, Utilité, Itinéraire, Prix, Évaluation : six rubriques pour décrire chaque action, réutilisées dans tous vos dossiers.</p>
+        </article>
+        <article class="tip">
+          <span class="n">03 · La règle d'or</span>
+          <h3>Chaque chiffre se prouve</h3>
+          <p>Le président signe et certifie les informations exactes. L'IA rédige, le club prouve : aucun chiffre, aucun partenaire, aucun résultat sans sa source.</p>
+        </article>
+        <article class="tip key">
+          <span class="n">04 · Le cycle</span>
+          <h3>Demander, réaliser, rendre compte</h3>
+          <p>Un financement se mérite deux fois : en le demandant, puis en montrant honnêtement ce qu'il a permis. C'est le bilan qui fait le renouvellement.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="modules" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Le parcours</p>
+        <h2 class="h2">Cinq modules,<br>dans l'ordre</h2>
+        <p class="lead">Chaque module fait avancer un vrai projet du club, et se termine par un quiz et une check-list. Votre progression est enregistrée sur cet appareil uniquement : rien n'est envoyé.</p>
+      </div>
+      <ol class="mods">
+        <li class="mod" data-m="1">
+          <span class="mod-n" aria-hidden="true">01</span>
+          <div class="mod-txt">
+            <h3>Le projet du club</h3>
+            <p>Le diagnostic chiffré du club sans aucune donnée personnelle, l'enquête auprès des adhérents, les axes et les objectifs, et la fiche action É.Q.U.I.P.E. qui servira dans tous vos dossiers.</p>
+            <ul><li>Diagnostic</li><li>Enquête</li><li>Méthode É.Q.U.I.P.E.</li><li>Fiche action</li></ul>
+            <p class="mod-meta"><span>1 h 15</span><span>3 exercices</span><span class="st" data-lv="3" data-m="1"></span></p>
+          </div>
+          <a class="btn btn-turf" href="formation-n3-1.html">Commencer</a>
+        </li>
+        <li class="mod" data-m="2">
+          <span class="mod-n" aria-hidden="true">02</span>
+          <div class="mod-txt">
+            <h3>Le dossier de subvention</h3>
+            <p>Qui finance quoi, l'appel à projets lu comme l'instructeur, le budget prévisionnel calculé et équilibré, la rédaction avec l'IA sans rien inventer, et les pièces à réunir avant de signer.</p>
+            <ul><li>Financeurs</li><li>Appel à projets</li><li>Budget prévisionnel</li><li>Rédaction</li></ul>
+            <p class="mod-meta"><span>1 h 15</span><span>3 exercices</span><span class="st" data-lv="3" data-m="2"></span></p>
+          </div>
+          <a class="btn btn-turf" href="formation-n3-2.html">Commencer</a>
+        </li>
+        <li class="mod" data-m="3">
+          <span class="mod-n" aria-hidden="true">03</span>
+          <div class="mod-txt">
+            <h3>Partenaires et mécènes</h3>
+            <p>Une offre de partenariat honnête, la différence entre parrainage et mécénat, la proposition personnalisée, le rendez-vous préparé, la convention et le suivi des partenaires.</p>
+            <ul><li>Offre de partenariat</li><li>Parrainage ou mécénat</li><li>Rendez-vous</li><li>Convention</li></ul>
+            <p class="mod-meta"><span>1 h</span><span>3 exercices</span><span class="st" data-lv="3" data-m="3"></span></p>
+          </div>
+          <a class="btn btn-turf" href="formation-n3-3.html">Commencer</a>
+        </li>
+        <li class="mod" data-m="4">
+          <span class="mod-n" aria-hidden="true">04</span>
+          <div class="mod-txt">
+            <h3>Rendre compte</h3>
+            <p>Les indicateurs suivis toute la saison, le bilan honnête, le tableau prévu et réalisé, le compte rendu financier dans les délais, et les mêmes chiffres pour le financeur, les partenaires et l'AG.</p>
+            <ul><li>Suivi</li><li>Bilan honnête</li><li>Compte rendu financier</li><li>Rapport d'activité</li></ul>
+            <p class="mod-meta"><span>1 h</span><span>3 exercices</span><span class="st" data-lv="3" data-m="4"></span></p>
+          </div>
+          <a class="btn btn-turf" href="formation-n3-4.html">Commencer</a>
+        </li>
+        <li class="mod" data-m="5">
+          <span class="mod-n" aria-hidden="true">05</span>
+          <div class="mod-txt">
+            <h3>La saison des financements</h3>
+            <p>Le suivi de chaque demande, le calendrier des financeurs, le dossier permanent, puis la feuille de route en huit étapes pour financer votre projet. Le quiz final et l'attestation « Niveau 3 validé ».</p>
+            <ul><li>Suivi des demandes</li><li>Calendrier</li><li>Quiz final</li><li>Attestation</li></ul>
+            <p class="mod-meta"><span>1 h 30</span><span>2 exercices</span><span class="st" data-lv="3" data-m="5"></span></p>
+          </div>
+          <a class="btn btn-turf" href="formation-n3-5.html">Commencer</a>
+        </li>
+      </ol>
+
+      <div class="head after">
+        <p class="label">Toute la formation</p>
+        <h3 class="h3">Six niveaux, une marche à la fois</h3>
+        <p class="lead">Chaque niveau s'appuie sur le précédent. La difficulté et la profondeur augmentent à chaque marche.</p>
+      </div>
+      <ol class="levels">
+        <li class="lv free"><span class="n">0</span><b>Les fondamentaux</b><a class="tag" id="lv0" href="formation.html">Gratuit</a></li>
+        <li class="lv free"><span class="n">1</span><b>L'IA au quotidien du club</b><a class="tag" id="lv1" href="formation-n1.html">Revoir le niveau 1</a></li>
+        <li class="lv free"><span class="n">2</span><b>Ses outils sur mesure</b><a class="tag" id="lv2" href="formation-n2.html">Revoir le niveau 2</a></li>
+        <li class="lv up"><span class="n">3</span><b>Financer et développer</b><span class="tag">Vous êtes ici</span></li>
+        <li class="lv"><span class="n">4</span><b>Automatiser à plusieurs</b><a class="tag" href="formation-n4.html">Découvrir le niveau 4</a></li>
+        <li class="lv"><span class="n">5</span><b>Référent IA du club</b><span class="tag">Bientôt</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec" id="fil-rouge">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Le fil rouge</p>
+        <h2 class="h2">L'AS Exemple<br>voit plus grand</h2>
+        <p class="lead">Le club a pris de bonnes habitudes et rangé ses outils. Il veut maintenant grandir : des équipes de filles, du handball pour les adultes, le quartier voisin. Il lui manque un projet écrit, et l'argent pour le réaliser.</p>
+      </div>
+      <div class="case" style="margin-top:0">
+        <article class="who-card">
+          <span class="label">Où en est le club</span>
+          <h3>AS Exemple Handball</h3>
+          <dl>
+            <dt>Licenciés</dt><dd>280, dont 175 jeunes et seulement 38 filles</dd>
+            <dt>Budget</dt><dd>86 000 € par an, dont 15 % de subventions et 9 % de partenaires</dd>
+            <dt>Outils</dt><dd>Trois assistants, leurs instructions rangées dans le dossier « IA du club »</dd>
+            <dt>Financements</dt><dd>La subvention de la commune et deux partenaires. Aucun dossier fédéral</dd>
+            <dt>Projet</dt><dd>2027-2030 : les filles, le sport-santé, le quartier des Tilleuls, un minibus</dd>
+          </dl>
+        </article>
+        <div>
+          <ul class="week">
+            <li><b>Camille</b><span>A passé la main au secrétariat en juin. Devenue vice-présidente chargée des projets, elle doit trouver de quoi les financer. Elle connaît l'IA, pas encore les financeurs.</span></li>
+            <li><b>Le trésorier</b><span>Deuxième saison au bureau. Il tient les comptes au centime près et se méfie des chiffres « arrondis » de l'IA.</span></li>
+            <li><b>Nadia</b><span>Responsable technique. Elle porte la future équipe de filles et les séances au quartier des Tilleuls, à 800 mètres du gymnase.</span></li>
+            <li><b>Théo</b><span>À la communication. Il connaît les commerçants autour du gymnase : c'est lui qui ira voir les futurs partenaires.</span></li>
+            <li><b>Le défi</b><span>Financer les projets du club sans rien promettre qu'il ne pourra tenir, ni écrire un chiffre qu'il ne pourrait prouver.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="ressources">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Ressources</p>
+        <h2 class="h2">À garder<br>sous la main</h2>
+      </div>
+      <div class="lib">
+        <article class="card">
+          <div class="card-top"><span class="label">Module 1</span><h3>La fiche action É.Q.U.I.P.E.</h3></div>
+          <pre>Les six rubriques de chaque action du projet, avec ce qu'il reste à régler avant de la présenter à un financeur.</pre>
+          <div class="card-foot"><a class="btn btn-turf" href="formation-n3-1.html#generateur">Ouvrir le générateur</a></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="label">Module 2</span><h3>Le budget prévisionnel</h3></div>
+          <pre>Le budget d'une action calculé et vérifié : équilibre, cofinancements, bénévolat valorisé. Les calculs ne passent pas par l'IA.</pre>
+          <div class="card-foot"><a class="btn btn-ghost" href="formation-n3-2.html#budget">Ouvrir le budget</a></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="label">Niveau 1</span><h3>La fiche du club</h3></div>
+          <pre>Elle reste la base : les demandes et les générateurs du niveau 3 la reprennent automatiquement si elle est remplie.</pre>
+          <div class="card-foot"><a class="btn btn-ghost" href="formation-n1-1.html#fiche">Voir ma fiche</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap next">
+      <div class="head" style="margin:0">
+        <p class="label">En groupe, c'est mieux</p>
+        <h2 class="h2">Un atelier<br>dans votre club</h2>
+        <p class="lead">FAIR anime le niveau 3 avec votre bureau : en une demi-journée, vous repartez avec votre première fiche action, son budget et le calendrier de vos demandes.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-turf" href="formation-n3-1.html">Commencer le module 1</a>
+        <a class="btn btn-ghost" href="index.html#contact">Demander un atelier</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>FAIR · Former les Associations à l'IA Responsable</span>
+    <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/formation.js?v=2"></script>
+<script>
+(function(){
+  // Barre de progression et boutons de chaque module
+  function paint(){
+    var n=0,next=-1;
+    FAIR.N3.forEach(function(m,i){if(next<0&&FAIR.count(m.key)<m.n)next=i});
+    FAIR.N3.forEach(function(m,i){
+      var row=document.querySelector('.mod[data-m="'+(i+1)+'"]'),btn=row.querySelector('.btn');
+      var c=FAIR.count(m.key),ok=c>=m.n;
+      if(ok)n++;
+      row.classList.toggle('is-done',ok);
+      btn.textContent=ok?'Revoir':c?'Reprendre':'Commencer';
+      btn.classList.toggle('btn-turf',i===next);
+      btn.classList.toggle('btn-ghost',i!==next);
+    });
+    var go=document.getElementById('go');
+    if(next<0){go.textContent='Passer au niveau 4';go.href='formation-n4.html'}
+    else{go.textContent=(FAIR.count(FAIR.N3[next].key)?'Reprendre':'Commencer')+' le module '+(next+1);go.href=FAIR.N3[next].url}
+    [].forEach.call(document.querySelectorAll('#bar span'),function(s,i){s.classList.toggle('on',i<n)});
+    document.getElementById('bar-txt').textContent=n===5?'5 modules validés sur 5 · Niveau 3 terminé':n+(n>1?' modules validés':' module validé')+' sur 5';
+  }
+  paint();
+  document.addEventListener('fair:progress',paint);
+
+  // Rappel du niveau 2 s'il n'est pas terminé
+  var left=FAIR.N2.filter(function(m){return !FAIR.done(m)}).length;
+  document.getElementById('pre2').hidden=!left;
+  document.getElementById('pre2-n').textContent=left+(left>1?' modules':' module');
+  document.getElementById('lv2').textContent=left?'Revoir le niveau 2':'Validé · Revoir';
+  document.getElementById('lv1').textContent=FAIR.N1.every(FAIR.done)?'Validé · Revoir':'Revoir le niveau 1';
+  document.getElementById('lv0').textContent=FAIR.MODULES.every(FAIR.done)?'Gratuit · Validé':'Gratuit';
+})();
+</script>
+</body>
+</html>

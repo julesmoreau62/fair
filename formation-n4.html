@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Formation · Niveau 4 · FAIR</title>
+<meta name="description" content="Niveau 4 de la formation FAIR : automatiser à plusieurs. Choisir ce qui s'automatise, des données propres et protégées, des flux sans code avec une personne qui valide, l'IA en équipe et un club qui tient quand un bénévole s'en va.">
+<link rel="canonical" href="https://fair-asso.fr/formation-n4.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FAIR">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://fair-asso.fr/formation-n4.html">
+<meta property="og:title" content="Formation · Niveau 4 · FAIR">
+<meta property="og:description" content="Niveau 4 de la formation FAIR : automatiser à plusieurs. Choisir ce qui s'automatise, des données propres et protégées, des flux sans code avec une personne qui valide, l'IA en équipe et un club qui tient quand un bénévole s'en va.">
+<meta property="og:image" content="https://fair-asso.fr/assets/img/poster-hero.jpg">
+<meta property="og:image:alt" content="Un joueur frappe un ballon sur un terrain synthétique, de nuit">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#07111F">
+<link rel="icon" href="assets/logo/fair-icone.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/css/formation.css?v=3">
+<link rel="stylesheet" href="assets/css/niveau.css?v=3">
+<style>
+/* Progression globale */
+.bar{width:100%;max-width:560px;display:grid;gap:10px;margin-top:8px}
+.bar-track{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.bar-track span{height:8px;border-radius:4px;background:var(--line-n);transition:background-color .3s}
+.bar-track span.on{background:var(--turf)}
+.bar p{font-family:var(--f-mono);font-size:.76rem;color:var(--fog)}
+.pre0{max-width:760px;display:flex;gap:14px;align-items:flex-start;padding:14px 18px;border:1px solid var(--line-n);border-radius:6px;font-size:.92rem;color:var(--mist)}
+.pre0[hidden]{display:none}
+.pre0 a{color:var(--turf-hi)}
+
+/* Liste des modules */
+.mods{display:grid;gap:12px}
+.mod{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:20px clamp(20px,3vw,40px);align-items:center;padding:26px clamp(20px,3vw,32px);border:1px solid var(--line-c);border-radius:6px;background:var(--paper);transition:border-color .25s}
+.mod:hover{border-color:var(--ink-2)}
+.mod.is-done{border-color:var(--turf-ink);box-shadow:inset 4px 0 0 var(--turf-ink)}
+.mod-n{font-family:var(--f-display);font-weight:900;font-stretch:62%;font-size:4.4rem;line-height:.8;color:var(--turf-ink);align-self:start}
+.mod-txt{display:grid;gap:8px}
+.mod-txt h3{font-family:var(--f-display);font-weight:850;font-stretch:66%;text-transform:uppercase;font-size:1.7rem;line-height:1}
+.mod-txt p{color:var(--ink-2);font-size:.96rem;line-height:1.5;max-width:66ch}
+.mod-txt ul{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.mod-txt ul li{font-size:.8rem;padding:4px 10px;border-radius:4px;border:1px solid var(--line-c);color:var(--ink-2)}
+.mod-txt .mod-meta{display:flex;flex-wrap:wrap;gap:6px 16px;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.04em;color:var(--ink-2);text-transform:uppercase;margin-top:4px}
+.mod-meta .st.done{color:var(--turf-ink)}
+.mod .btn{min-width:150px}
+.mod.is-done .btn{background:transparent;border-color:var(--line-c);color:var(--ink)}
+@media (max-width:760px){.mod{grid-template-columns:minmax(0,1fr)}.mod-n{font-size:3.2rem}.mod .btn{justify-self:start}}
+.head.after{margin-top:clamp(64px,8vw,104px)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="check" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></symbol>
+</svg>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="index.html" aria-label="FAIR, retour à l'accueil"><img src="assets/logo/fair-logo-blanc-court.svg" alt="FAIR"></a>
+    <nav aria-label="Navigation">
+      <a class="opt" href="index.html#clubs">Clubs</a>
+      <a class="opt" href="index.html#partenaires">Fédérations</a>
+      <a href="formation.html" aria-current="page">Formation</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <section class="hero">
+    <div class="wrap hero-in">
+      <p class="label"><a href="formation.html">Formation FAIR</a> · Niveau 4 sur 5</p>
+      <h1>Niveau 4 : automatiser à plusieurs</h1>
+      <p class="lead">Au niveau 3, vous avez financé les projets du club. Au niveau 4, vous lui rendez du temps : les tâches qui reviennent chaque semaine se font seules, les bénévoles travaillent avec l'IA dans un même espace, et chaque automatisation a un responsable, une personne qui valide et un plan B. Sans jamais perdre la main sur les données des adhérents.</p>
+      <ul class="meta">
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>5 modules</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>6 h 15 au total</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>14 exercices corrigés</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>5 générateurs</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Attestation à la fin</li>
+      </ul>
+      <div class="bar" aria-live="polite">
+        <div class="bar-track" id="bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+        <p id="bar-txt">0 module validé sur 5</p>
+      </div>
+      <a class="btn btn-turf" id="go" href="formation-n4-1.html">Commencer le module 1</a>
+      <p class="pre0" id="pre3" hidden><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Le niveau 4 s'appuie sur les niveaux précédents : la fiche du club, les assistants, le registre des outils et la règle « chaque chiffre se prouve ». <a href="formation-n3.html">Il vous reste <b id="pre3-n">5</b> à valider au niveau 3</a>, commencez par là si ces outils ne vous disent rien.</span></p>
+    </div>
+  </section>
+
+  <section class="sec chalk">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Ce qui change</p>
+        <h2 class="h2">Du coup de main<br>au relais</h2>
+        <p class="lead">Une demande à l'IA fait gagner dix minutes. Une automatisation bien construite fait gagner deux heures chaque semaine, à tout le club. Mal construite, elle envoie le mauvais message à trois cents familles. Ce niveau vous apprend à faire la différence.</p>
+      </div>
+      <div class="tips">
+        <article class="tip">
+          <span class="n">01 · L'automatisation</span>
+          <h3>Une tâche qui se fait seule</h3>
+          <p>Au niveau 2, l'assistant attendait qu'on lui parle. Une automatisation se déclenche seule, à une heure ou sur un événement, et enchaîne des étapes fixées à l'avance.</p>
+        </article>
+        <article class="tip">
+          <span class="n">02 · La méthode</span>
+          <h3>R.E.L.A.I.S.</h3>
+          <p>Répétitif, Enchaînement, Limites, Arbitre, Incident, Suivi : six questions à se poser avant de confier une tâche à une machine.</p>
+        </article>
+        <article class="tip">
+          <span class="n">03 · La règle d'or</span>
+          <h3>Une personne valide</h3>
+          <p>Rien n'atteint une famille, un partenaire ou un financeur sans avoir été relu. L'IA prépare, le club envoie. Et aucune décision sur une personne n'est automatisée.</p>
+        </article>
+        <article class="tip key">
+          <span class="n">04 · Le collectif</span>
+          <h3>Pas de boîte noire</h3>
+          <p>Chaque automatisation est documentée, surveillée, et connue d'au moins deux personnes. Quand son créateur s'en va, elle continue, ou elle s'arrête proprement.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="modules" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Le parcours</p>
+        <h2 class="h2">Cinq modules,<br>dans l'ordre</h2>
+        <p class="lead">Chaque module met en place une partie de l'organisation du club, et se termine par un quiz et une check-list. Votre progression est enregistrée sur cet appareil uniquement : rien n'est envoyé.</p>
+      </div>
+      <ol class="mods">
+        <li class="mod" data-m="1">
+          <span class="mod-n" aria-hidden="true">01</span>
+          <div class="mod-txt">
+            <h3>Ce qui s'automatise</h3>
+            <p>Assistant, automatisation ou agent, l'inventaire des tâches qui reviennent, le calcul du temps vraiment gagné, ce qu'on automatise et ce qu'on garde humain, et la méthode R.E.L.A.I.S.</p>
+            <ul><li>Inventaire des tâches</li><li>Feu vert, orange, rouge</li><li>Méthode R.E.L.A.I.S.</li><li>Fiche d'automatisation</li></ul>
+            <p class="mod-meta"><span>1 h 15</span><span>3 exercices</span><span class="st" data-lv="4" data-m="1"></span></p>
+          </div>
+          <a class="btn btn-turf" href="formation-n4-1.html">Commencer</a>
+        </li>
+        <li class="mod" data-m="2">
+          <span class="mod-n" aria-hidden="true">02</span>
+          <div class="mod-txt">
+            <h3>Des données propres</h3>
+            <p>Un formulaire qui ne demande que le nécessaire, la santé des mineurs laissée aux familles, un tableur unique et partagé par morceaux, la mention d'information, le registre et la pseudonymisation avant l'IA.</p>
+            <ul><li>Formulaire minimal</li><li>Tableur unique</li><li>Mention d'information</li><li>Pseudonymiser</li></ul>
+            <p class="mod-meta"><span>1 h 15</span><span>3 exercices</span><span class="st" data-lv="4" data-m="2"></span></p>
+          </div>
+          <a class="btn btn-turf" href="formation-n4-2.html">Commencer</a>
+        </li>
+        <li class="mod" data-m="3">
+          <span class="mod-n" aria-hidden="true">03</span>
+          <div class="mod-txt">
+            <h3>Construire un flux</h3>
+            <p>Déclencheur, étapes, conditions, actions : les outils du plus simple au plus puissant, l'IA qui prépare sans décider, les six tests sur un faux tableur, le journal et le bouton d'arrêt.</p>
+            <ul><li>Anatomie d'un flux</li><li>Outils sans code</li><li>L'IA dans le flux</li><li>Tester et arrêter</li></ul>
+            <p class="mod-meta"><span>1 h 15</span><span>3 exercices</span><span class="st" data-lv="4" data-m="3"></span></p>
+          </div>
+          <a class="btn btn-turf" href="formation-n4-3.html">Commencer</a>
+        </li>
+        <li class="mod" data-m="4">
+          <span class="mod-n" aria-hidden="true">04</span>
+          <div class="mod-txt">
+            <h3>L'IA en équipe</h3>
+            <p>Un espace d'équipe au nom du club, un compte par bénévole, les règles d'équipe d'une page, les réunions sans enregistrement caché, les agents tenus en laisse et les départs sans rien perdre.</p>
+            <ul><li>Espace d'équipe</li><li>Règles d'équipe</li><li>Agents</li><li>Arrivées et départs</li></ul>
+            <p class="mod-meta"><span>1 h</span><span>3 exercices</span><span class="st" data-lv="4" data-m="4"></span></p>
+          </div>
+          <a class="btn btn-turf" href="formation-n4-4.html">Commencer</a>
+        </li>
+        <li class="mod" data-m="5">
+          <span class="mod-n" aria-hidden="true">05</span>
+          <div class="mod-txt">
+            <h3>Le club en relais</h3>
+            <p>Le registre des automatisations, le plan de continuité quand un outil tombe ou qu'un bénévole part, puis la feuille de route en huit étapes. Le quiz final et l'attestation « Niveau 4 validé ».</p>
+            <ul><li>Registre</li><li>Plan de continuité</li><li>Quiz final</li><li>Attestation</li></ul>
+            <p class="mod-meta"><span>1 h 30</span><span>2 exercices</span><span class="st" data-lv="4" data-m="5"></span></p>
+          </div>
+          <a class="btn btn-turf" href="formation-n4-5.html">Commencer</a>
+        </li>
+      </ol>
+
+      <div class="head after">
+        <p class="label">Toute la formation</p>
+        <h3 class="h3">Six niveaux, une marche à la fois</h3>
+        <p class="lead">Chaque niveau s'appuie sur le précédent. La difficulté et la profondeur augmentent à chaque marche.</p>
+      </div>
+      <ol class="levels">
+        <li class="lv free"><span class="n">0</span><b>Les fondamentaux</b><a class="tag" id="lv0" href="formation.html">Gratuit</a></li>
+        <li class="lv free"><span class="n">1</span><b>L'IA au quotidien du club</b><a class="tag" id="lv1" href="formation-n1.html">Revoir le niveau 1</a></li>
+        <li class="lv free"><span class="n">2</span><b>Ses outils sur mesure</b><a class="tag" id="lv2" href="formation-n2.html">Revoir le niveau 2</a></li>
+        <li class="lv free"><span class="n">3</span><b>Financer et développer</b><a class="tag" id="lv3" href="formation-n3.html">Revoir le niveau 3</a></li>
+        <li class="lv up"><span class="n">4</span><b>Automatiser à plusieurs</b><span class="tag">Vous êtes ici</span></li>
+        <li class="lv"><span class="n">5</span><b>Référent IA du club</b><span class="tag">Bientôt</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec" id="fil-rouge">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Le fil rouge</p>
+        <h2 class="h2">L'AS Exemple<br>manque de bras</h2>
+        <p class="lead">Le club a grandi : plus d'équipes, plus de projets, plus de familles. Les bénévoles, eux, ne sont pas plus nombreux, et passent leurs soirées sur les mêmes tâches. Un jeune joueur propose de « tout automatiser ».</p>
+      </div>
+      <div class="case" style="margin-top:0">
+        <article class="who-card">
+          <span class="label">Où en est le club</span>
+          <h3>AS Exemple Handball</h3>
+          <dl>
+            <dt>Licenciés</dt><dd>310, dont 190 jeunes</dd>
+            <dt>Équipes</dt><dd>15, dont deux équipes de filles, et un créneau sport-santé</dd>
+            <dt>Bénévoles</dt><dd>14 réguliers, dont 4 nouveaux cette saison</dd>
+            <dt>Outils</dt><dd>Trois assistants, le dossier « IA du club », le registre des outils</dd>
+            <dt>Le chiffre</dt><dd>9 heures par semaine passées sur des tâches qui reviennent à l'identique</dd>
+          </dl>
+        </article>
+        <div>
+          <ul class="week">
+            <li><b>Malik</b><span>21 ans, joueur en seniors, étudiant en informatique. Il a déjà relié le formulaire d'inscription à un tableur, et veut « tout automatiser » d'ici Noël.</span></li>
+            <li><b>La secrétaire</b><span>Arrivée l'an dernier. Elle passe ses vendredis soir à envoyer quinze convocations, et redoute l'erreur qui partirait chez trois cents familles.</span></li>
+            <li><b>Camille</b><span>Vice-présidente chargée des projets. Le niveau 3 lui a appris ce que coûte un chiffre faux : elle veut des garde-fous avant la vitesse.</span></li>
+            <li><b>Le président</b><span>Une seule question : « Si Malik part en Erasmus l'an prochain, qui fait tourner tout ça ? »</span></li>
+            <li><b>Le défi</b><span>Rendre du temps aux bénévoles sans créer de boîte noire : chaque automatisation comprise, surveillée, et reprise par quelqu'un d'autre.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="ressources">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Ressources</p>
+        <h2 class="h2">À garder<br>sous la main</h2>
+      </div>
+      <div class="lib">
+        <article class="card">
+          <div class="card-top"><span class="label">Module 1</span><h3>La fiche R.E.L.A.I.S.</h3></div>
+          <pre>Chaque automatisation décrite avant d'être construite, avec son verdict (feu vert, orange ou rouge) et ce qu'il reste à régler.</pre>
+          <div class="card-foot"><a class="btn btn-turf" href="formation-n4-1.html#generateur">Ouvrir le générateur</a></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="label">Module 2</span><h3>La mention d'information</h3></div>
+          <pre>Le texte à placer sous chaque formulaire du club : qui collecte, pourquoi, qui y a accès, combien de temps, quels droits.</pre>
+          <div class="card-foot"><a class="btn btn-ghost" href="formation-n4-2.html#generateur">Écrire la mention</a></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="label">Niveau 2</span><h3>Le registre des outils</h3></div>
+          <pre>Il accueille désormais vos automatisations et vos agents, avec leur arbitre, leur personne de secours et leur plan B : vous le compléterez au module 5.</pre>
+          <div class="card-foot"><a class="btn btn-ghost" href="formation-n2-5.html#registre">Voir le registre</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap next">
+      <div class="head" style="margin:0">
+        <p class="label">En groupe, c'est mieux</p>
+        <h2 class="h2">Un atelier<br>dans votre club</h2>
+        <p class="lead">FAIR anime le niveau 4 avec votre bureau : en une demi-journée, vous repartez avec vos trois premières automatisations décrites, leurs garde-fous et leurs responsables.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-turf" href="formation-n4-1.html">Commencer le module 1</a>
+        <a class="btn btn-ghost" href="index.html#contact">Demander un atelier</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>FAIR · Former les Associations à l'IA Responsable</span>
+    <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/formation.js?v=2"></script>
+<script>
+(function(){
+  // Barre de progression et boutons de chaque module
+  function paint(){
+    var n=0,next=-1;
+    FAIR.N4.forEach(function(m,i){if(next<0&&FAIR.count(m.key)<m.n)next=i});
+    FAIR.N4.forEach(function(m,i){
+      var row=document.querySelector('.mod[data-m="'+(i+1)+'"]'),btn=row.querySelector('.btn');
+      var c=FAIR.count(m.key),ok=c>=m.n;
+      if(ok)n++;
+      row.classList.toggle('is-done',ok);
+      btn.textContent=ok?'Revoir':c?'Reprendre':'Commencer';
+      btn.classList.toggle('btn-turf',i===next);
+      btn.classList.toggle('btn-ghost',i!==next);
+    });
+    var go=document.getElementById('go');
+    if(next<0){go.textContent='Voir mon attestation';go.href='formation-n4-5.html#attestation'}
+    else{go.textContent=(FAIR.count(FAIR.N4[next].key)?'Reprendre':'Commencer')+' le module '+(next+1);go.href=FAIR.N4[next].url}
+    [].forEach.call(document.querySelectorAll('#bar span'),function(s,i){s.classList.toggle('on',i<n)});
+    document.getElementById('bar-txt').textContent=n===5?'5 modules validés sur 5 · Niveau 4 terminé':n+(n>1?' modules validés':' module validé')+' sur 5';
+  }
+  paint();
+  document.addEventListener('fair:progress',paint);
+
+  // Rappel du niveau 3 s'il n'est pas terminé
+  var left=FAIR.N3.filter(function(m){return !FAIR.done(m)}).length;
+  document.getElementById('pre3').hidden=!left;
+  document.getElementById('pre3-n').textContent=left+(left>1?' modules':' module');
+  document.getElementById('lv3').textContent=left?'Revoir le niveau 3':'Validé · Revoir';
+  document.getElementById('lv2').textContent=FAIR.N2.every(FAIR.done)?'Validé · Revoir':'Revoir le niveau 2';
+  document.getElementById('lv1').textContent=FAIR.N1.every(FAIR.done)?'Validé · Revoir':'Revoir le niveau 1';
+  document.getElementById('lv0').textContent=FAIR.MODULES.every(FAIR.done)?'Gratuit · Validé':'Gratuit';
+})();
+</script>
+</body>
+</html>

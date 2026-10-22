@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Formation · Niveau 3 · Module 5 · FAIR</title>
+<meta name="description" content="Niveau 3, module 5 de la formation FAIR : la saison des financements. Le suivi de chaque demande, le calendrier des financeurs, le dossier permanent, la feuille de route en huit étapes, le quiz final et l'attestation « Niveau 3 validé ».">
+<link rel="canonical" href="https://fair-asso.fr/formation-n3-5.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FAIR">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://fair-asso.fr/formation-n3-5.html">
+<meta property="og:title" content="Formation · Niveau 3 · Module 5 · FAIR">
+<meta property="og:description" content="Niveau 3, module 5 de la formation FAIR : la saison des financements. Le suivi de chaque demande, le calendrier des financeurs, le dossier permanent, la feuille de route en huit étapes, le quiz final et l'attestation « Niveau 3 validé ».">
+<meta property="og:image" content="https://fair-asso.fr/assets/img/poster-hero.jpg">
+<meta property="og:image:alt" content="Un joueur frappe un ballon sur un terrain synthétique, de nuit">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#07111F">
+<link rel="icon" href="assets/logo/fair-icone.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/css/formation.css?v=3">
+<link rel="stylesheet" href="assets/css/niveau.css?v=3">
+<style>
+/* Feuille de route */
+.road{display:grid;gap:0}
+.leg{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:20px clamp(28px,4vw,56px);padding-block:clamp(24px,3vw,36px);border-top:1px solid var(--line-n)}
+.leg-txt{display:grid;gap:10px;align-content:start}
+.leg-n{font-family:var(--f-display);font-weight:900;font-stretch:62%;font-size:3.2rem;line-height:.8;color:var(--turf)}
+.leg-txt p{color:var(--mist);font-size:.96rem}
+.leg-txt .from{font-family:var(--f-mono);font-size:.7rem;color:var(--fog);letter-spacing:.05em;text-transform:uppercase}
+.leg-txt .from a{color:var(--turf-hi);text-decoration:none}
+.leg-done{display:flex;gap:12px;align-items:center;padding:12px 14px;border:1px solid var(--line-n);border-radius:6px;cursor:pointer;font-weight:600;font-size:.94rem;justify-self:start}
+.leg-done:has(input:checked){border-color:var(--turf);color:var(--turf-hi)}
+.leg-done .tick{border-color:var(--fog);margin:0}
+.leg-box{display:grid;gap:12px;align-content:start}
+.road-score{font-family:var(--f-mono);font-size:.78rem;color:var(--fog);border-top:1px solid var(--line-n);padding-top:18px}
+.road-score.done{color:var(--turf)}
+@media (max-width:860px){.leg{grid-template-columns:minmax(0,1fr)}}
+
+/* Attestation */
+.att{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:28px clamp(28px,4vw,56px);align-items:start}
+.att-cfg{display:grid;gap:18px}
+.reqs{display:grid;gap:8px}
+.reqs li{display:flex;gap:12px;align-items:center;padding:12px 14px;border:1px solid var(--line-n);border-radius:6px;font-size:.94rem}
+.reqs li a{color:var(--mist)}
+.reqs .dot{flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--fog);display:grid;place-items:center}
+.reqs li.ok{border-color:rgba(31,181,122,.6)}
+.reqs li.ok .dot{background:var(--turf);border-color:var(--turf)}
+.reqs li.ok .dot::after{content:"";width:10px;height:5px;border-left:2.5px solid var(--on-turf);border-bottom:2.5px solid var(--on-turf);transform:translateY(-1px) rotate(-45deg)}
+.cert{background:var(--paper);color:var(--ink);border-radius:8px;padding:clamp(28px,4vw,48px);display:grid;gap:18px;justify-items:center;text-align:center;border:10px solid var(--chalk-2);box-shadow:0 30px 60px -30px rgba(0,0,0,.7);position:relative}
+.cert.locked{filter:grayscale(1);opacity:.55}
+.cert img{height:40px;width:auto}
+.cert .k{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.cert h3{font-family:var(--f-display);font-weight:900;font-stretch:62%;text-transform:uppercase;font-size:clamp(2.4rem,5vw,3.6rem);line-height:.86}
+.cert h3 span{color:var(--turf-ink)}
+.cert .who{font-size:1.3rem;font-weight:700;border-bottom:1px solid var(--line-c);padding-bottom:6px;min-width:60%}
+.cert p{color:var(--ink-2);font-size:.95rem;max-width:46ch}
+.cert ol{display:flex;flex-wrap:wrap;justify-content:center;gap:6px}
+.cert ol li{font-size:.8rem;padding:6px 10px;border-radius:4px;border:1px solid var(--line-c)}
+.cert .date{font-family:var(--f-mono);font-size:.74rem;color:var(--ink-2)}
+.att-msg{font-size:.9rem;color:var(--fog)}
+@media (max-width:900px){.att{grid-template-columns:minmax(0,1fr)}}
+
+/* La suite */
+.suite-cta{margin-top:clamp(48px,6vw,72px);padding-top:clamp(32px,4vw,48px);border-top:1px solid var(--line-n)}
+
+@media print{
+  body{background:#fff}
+  body>*:not(main),main>*:not(#attestation),#attestation .head,#attestation .att-cfg,#attestation .att-msg,#attestation .suite-cta{display:none!important}
+  #attestation{padding:0;background:#fff}
+  .att{display:block}
+  .cert{box-shadow:none;border-color:#E1E6DE}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="check" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></symbol>
+</svg>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="index.html" aria-label="FAIR, retour à l'accueil"><img src="assets/logo/fair-logo-blanc-court.svg" alt="FAIR"></a>
+    <nav aria-label="Navigation">
+      <a class="opt" href="index.html#clubs">Clubs</a>
+      <a class="opt" href="index.html#partenaires">Fédérations</a>
+      <a href="formation.html" aria-current="page">Formation</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <section class="hero">
+    <div class="wrap hero-in">
+      <p class="label"><a href="formation-n3.html">Formation FAIR · Niveau 3</a> · Module 5 sur 5</p>
+      <h1>La saison des financements</h1>
+      <p class="lead">Un club qui finance ses projets ne court pas après les dates limites : il connaît son calendrier, garde ses pièces à jour et suit chaque demande, de la première ligne au bilan. Ce module met tout cela en place, puis la feuille de route en huit étapes pour financer votre propre projet, avant le quiz final et l'attestation « Niveau 3 validé ».</p>
+      <ul class="meta">
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>1 h 30</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Modules 1 à 4 conseillés</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>2 exercices corrigés</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>8 étapes avec leur demande</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Attestation à la fin</li>
+      </ul>
+      <nav class="steps-nav six" aria-label="Étapes du module">
+        <a href="#suivi"><b>1. Suivre</b><span>La fiche de chaque demande</span></a>
+        <a href="#calendrier"><b>2. Planifier</b><span>Le calendrier et le dossier permanent</span></a>
+        <a href="#route"><b>3. Réaliser</b><span>La feuille de route en 8 étapes</span></a>
+        <a href="#exercices"><b>4. S'entraîner</b><span>Deux exercices</span></a>
+        <a href="#quiz"><b>5. Le quiz final</b><span>Douze questions, dix pour réussir</span></a>
+        <a href="#attestation"><b>6. Attestation</b><span>Niveau 3 validé</span></a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="objectifs">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Objectifs</p>
+        <h2 class="h2">À la fin<br>de ce module</h2>
+      </div>
+      <ol class="goals">
+        <li><b>Chaque demande a sa fiche</b>Financeur, montants, échéances, pièces, responsable : où elle en est, et ce qu'il reste à faire.</li>
+        <li><b>Votre calendrier est posé</b>Les campagnes de vos financeurs, et ce qui doit être prêt trois semaines avant chaque date limite.</li>
+        <li><b>Le dossier permanent est à jour</b>Statuts, comptes, rapport d'activité, attestations : prêts en dix minutes, rangés à l'abri.</li>
+        <li><b>Le travail est partagé</b>Un responsable par dossier, le trésorier sur les budgets, le président sur les signatures.</li>
+        <li><b>Votre projet est financé</b>Les huit étapes de la feuille de route faites, sur une vraie action du club.</li>
+        <li><b>Votre attestation est imprimée</b>Quiz final réussi, « Niveau 3 validé » au nom de votre club.</li>
+      </ol>
+
+      <div class="case">
+        <article class="who-card">
+          <span class="label">Le cas du module</span>
+          <h3>L'année de Camille</h3>
+          <p>Septembre. Camille fait le compte de sa première année : six dossiers déposés, quatre conventions de partenariat, trois bilans rendus. Deux dossiers ont été bouclés la veille de la date limite, un compte rendu financier a été oublié, et le président a signé un budget qu'il n'avait pas lu. Le bureau décide de s'organiser.</p>
+        </article>
+        <ul class="week">
+          <li><b>Septembre</b><span>Une fiche par demande, rassemblées dans un tableau de suivi rangé dans le dossier du club.</span></li>
+          <li><b>Octobre</b><span>Le calendrier de l'année est posé, le dossier permanent mis à jour après l'AG.</span></li>
+          <li><b>Novembre</b><span>Le suivi des demandes devient le premier point de chaque réunion de bureau.</span></li>
+          <li><b>Mars</b><span>Le dossier fédéral est déposé dix jours avant la date limite, budget relu par le trésorier.</span></li>
+          <li><b>Juin</b><span>À l'AG, le trésorier présente les financements de l'année en une page. Personne ne cherche plus rien.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="suivi">
+    <div class="wrap">
+      <div class="build">
+        <div>
+          <div class="head" style="margin-bottom:24px">
+            <p class="label">Étape 1 · Suivre</p>
+            <h3 class="h3">La fiche de chaque demande</h3>
+            <p style="color:var(--mist)">Une fiche par demande de subvention ou de partenariat, toutes rangées dans le tableau de suivi du club. Remplissez-la pour votre demande en cours : elle vous dit aussi ce qu'il reste à faire, selon où en est le dossier.</p>
+          </div>
+          <div class="fields">
+            <div class="field"><label for="s-fin">Financeur et dispositif</label><input id="s-fin" data-f="fin" placeholder="Agence nationale du Sport · Projet sportif fédéral 2027"></div>
+            <div class="field"><label for="s-action">Action concernée</label><input id="s-action" data-f="action" placeholder="Le hand au quartier des Tilleuls"></div>
+            <div class="two">
+              <div class="field">
+                <span style="font-weight:600">Type</span>
+                <div class="opts">
+                  <label><input type="radio" name="stype" data-f="type" value="Subvention" checked>Subvention</label>
+                  <label><input type="radio" name="stype" data-f="type" value="Partenariat ou mécénat">Partenariat ou mécénat</label>
+                </div>
+              </div>
+              <div class="field"><label for="s-statut">Où en est la demande</label>
+                <select id="s-statut" data-f="statut"><option>En préparation</option><option>Déposée</option><option>Accordée</option><option>Refusée</option><option>Bilan rendu</option></select>
+              </div>
+            </div>
+            <div class="two">
+              <div class="field"><label for="s-limite">Date limite de dépôt</label><input id="s-limite" data-f="limite" placeholder="15 avril 2027"></div>
+              <div class="field"><label for="s-resp">Responsable du dossier</label><input id="s-resp" data-f="resp" placeholder="vice-présidence"></div>
+            </div>
+            <div class="two">
+              <div class="field"><label for="s-dem">Montant demandé (€)</label><input id="s-dem" data-f="demande" inputmode="decimal" placeholder="1 800"></div>
+              <div class="field"><label for="s-acc">Montant accordé (€)</label><input id="s-acc" data-f="accorde" inputmode="decimal" placeholder="1 500"></div>
+            </div>
+            <div class="field">
+              <span style="font-weight:600">Pièces réunies</span>
+              <div class="opts">
+                <label><input type="checkbox" data-f="pieces" value="Projet associatif">Projet associatif</label>
+                <label><input type="checkbox" data-f="pieces" value="Fiche action">Fiche action</label>
+                <label><input type="checkbox" data-f="pieces" value="Budget de l'action">Budget de l'action</label>
+                <label><input type="checkbox" data-f="pieces" value="Statuts et liste du bureau">Statuts et bureau</label>
+                <label><input type="checkbox" data-f="pieces" value="Comptes approuvés">Comptes approuvés</label>
+                <label><input type="checkbox" data-f="pieces" value="Rapport d'activité">Rapport d'activité</label>
+                <label><input type="checkbox" data-f="pieces" value="RIB">RIB</label>
+              </div>
+            </div>
+            <div class="two">
+              <div class="field">
+                <span style="font-weight:600">Validation</span>
+                <div class="opts">
+                  <label><input type="checkbox" data-f="bureau" value="oui">Le bureau a validé</label>
+                </div>
+              </div>
+              <div class="field"><label for="s-ech">Bilan à rendre avant le</label><input id="s-ech" data-f="echeance" placeholder="30 juin 2028"></div>
+            </div>
+          </div>
+        </div>
+        <div class="build-out">
+          <div class="prompt">
+            <div class="prompt-top"><span class="label">La fiche de suivi</span><button class="copy" type="button" data-copy>Copier</button></div>
+            <pre data-out aria-live="polite"></pre>
+          </div>
+          <p class="note">Collez-la dans le tableau de suivi des demandes, rangé dans le dossier du club. Le RIB et les pièces signées restent dans le dossier permanent, jamais dans l'IA.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="calendrier">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Étape 2 · Planifier</p>
+        <h2 class="h2">Le calendrier<br>des financements</h2>
+        <p class="lead">Chaque financeur a son rythme, et il revient chaque année. Posé une fois en septembre, le calendrier dit ce qui arrive, ce qu'il faut préparer et quand. Les dates exactes changent d'une année à l'autre : on les recopie depuis le site de chaque financeur, et on les met à jour.</p>
+      </div>
+      <div class="split">
+        <ol class="tl">
+          <li><span class="when">Septembre</span><div><h4>Le point de rentrée</h4><p>Le calendrier de l'année, les fiches de suivi ouvertes, les partenaires relancés pour la saison.</p></div></li>
+          <li><span class="when">Automne</span><div><h4>La commune</h4><p>La demande pour l'année suivante, souvent à rendre en fin d'année avec le budget du club. La mairie donne sa date.</p></div></li>
+          <li><span class="when">Hiver</span><div><h4>Les appels à projets</h4><p>Département, région, FDVA, fondations : on ne répond qu'à ceux qui servent le projet du club.</p></div></li>
+          <li><span class="when">Printemps</span><div><h4>La campagne fédérale</h4><p>Le Projet sportif fédéral, via votre fédération, sur Le Compte Asso. Le compte rendu de l'année précédente est souvent exigé avant tout nouveau dépôt.</p></div></li>
+          <li><span class="when">Juin</span><div><h4>Les bilans et l'AG</h4><p>Bilans des partenaires, rapport d'activité, comptes approuvés : ils nourrissent les dossiers de l'année suivante.</p></div></li>
+          <li><span class="when">Après la clôture</span><div><h4>Les comptes rendus financiers</h4><p>Un par subvention publique affectée, dans les six mois qui suivent la fin de l'exercice.</p></div></li>
+        </ol>
+        <div>
+          <div class="prompt" style="background:var(--ink);border-color:var(--ink)">
+            <div class="prompt-top"><span class="label">Construire le calendrier</span><button class="copy" type="button" data-copy>Copier</button></div>
+<pre>Voici nos financeurs et nos partenaires, avec les dates relevées sur leurs sites pour cette année : <i>[liste et dates]</i>. Construis notre calendrier mois par mois, de septembre à août : les dates limites, et pour chacune ce qui doit être prêt trois semaines avant (pièces, budget, validation du bureau, signature). Ajoute les bilans et les comptes rendus financiers à rendre : <i>[échéances]</i>. N'ajoute aucune date que je ne t'ai pas donnée.</pre>
+          </div>
+          <p class="warn">Une date limite se recopie depuis le site du financeur, jamais depuis la mémoire de l'IA : les campagnes changent chaque année, et un dossier en retard n'est pas instruit.</p>
+        </div>
+      </div>
+
+      <div class="sub">
+        <h3 class="h3">Le dossier permanent</h3>
+        <p>Les pièces que presque tous les financeurs demandent, réunies une fois, à jour, prêtes à joindre.</p>
+      </div>
+      <div class="split">
+        <ul class="todo">
+          <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>Les statuts à jour</b> et le dernier récépissé de la préfecture</span></li>
+          <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>La liste des membres du bureau</b>, avec leurs fonctions</span></li>
+          <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>Les numéros RNA et SIRET</b></span></li>
+          <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>Le RIB</b> au nom de l'association</span></li>
+          <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>Les comptes des deux dernières années</b>, approuvés en AG</span></li>
+          <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>Le dernier rapport d'activité</b> et le procès-verbal de l'AG</span></li>
+          <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>Le projet associatif</b> en vigueur, et sa synthèse d'une page</span></li>
+          <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>Les attestations</b> d'assurance et d'affiliation à la fédération</span></li>
+        </ul>
+        <div>
+          <p>Le dossier permanent se met à jour une fois par an, juste après l'AG, par une personne désignée. Il se range dans le dossier du club, avec des droits restreints : il contient des informations bancaires.</p>
+          <p class="warn">Il ne va pas dans le dossier « IA du club », et rien de ce qu'il contient ne se joint à un assistant. Le RIB, les statuts signés et les comptes détaillés n'ont rien à faire dans une conversation avec l'IA.</p>
+        </div>
+      </div>
+
+      <div class="sub">
+        <h3 class="h3">Qui fait quoi</h3>
+        <p>Un dossier porté par une seule personne s'arrête quand elle s'arrête. Le travail se partage, et chacun sait ce qu'il signe.</p>
+      </div>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th scope="col">Qui</th><th scope="col">Son rôle dans chaque demande</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Le responsable du dossier</th><td>Lit l'appel à projets, rédige avec l'IA à partir de la fiche action, réunit les pièces, tient la fiche de suivi</td></tr>
+            <tr><th scope="row">Le responsable de l'action</th><td>Fournit les faits, relève les indicateurs toute la saison, écrit le bilan de terrain</td></tr>
+            <tr><th scope="row">Le trésorier</th><td>Construit et vérifie les budgets, le compte rendu financier et, s'il y en a, les reçus fiscaux</td></tr>
+            <tr><th scope="row">Le président</th><td>Relit la liste des affirmations, signe, et engage le club</td></tr>
+            <tr><th scope="row">Le bureau</th><td>Valide chaque demande avant le dépôt, et chaque convention avant la signature</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="route">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Étape 3 · Réaliser</p>
+        <h2 class="h2">La feuille de route<br>en huit étapes</h2>
+        <p class="lead">Chaque étape s'appuie sur un module du niveau 3. Faites-les dans l'ordre, sur une vraie action de votre club, et cochez au fur et à mesure. Comptez une saison : c'est le rythme des financeurs, pas celui d'une soirée.</p>
+      </div>
+      <div class="road" id="check" data-key="fair-n3-module5" data-name="Module 5">
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">01</span>
+            <h3 class="h3">Le diagnostic et l'enquête</h3>
+            <p>Les chiffres du club sur plusieurs saisons, en totaux sourcés, et l'avis des adhérents recueilli par une enquête anonyme.</p>
+            <p class="from">Vu dans le <a href="formation-n3-1.html#diagnostic">module 1</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="diagnostic">Étape faite</label>
+          </div>
+          <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre data-club>[Fiche du club]
+Voici les chiffres de notre club sur plusieurs saisons, en totaux, sans aucune donnée personnelle : <i>[tableaux]</i>. Analyse-les : les évolutions nettes, les publics peu présents, les fragilités. Pour chaque constat, cite le tableau et le chiffre d'où il vient. N'ajoute aucun chiffre extérieur et ne propose aucune solution.</pre></div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">02</span>
+            <h3 class="h3">Le projet choisi</h3>
+            <p>Trois axes, des objectifs mesurables et datés, choisis par le bureau et présentés aux adhérents avant l'AG.</p>
+            <p class="from">Vu dans le <a href="formation-n3-1.html#axes">module 1</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="projet">Étape faite</label>
+          </div>
+          <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre data-club>[Fiche du club]
+Voici notre diagnostic et la synthèse de l'enquête auprès des adhérents. Propose trois à cinq axes possibles pour notre projet <i>[période]</i> : pour chacun, le constat qui le justifie (avec son chiffre), deux objectifs mesurables et datés, ce qu'il demanderait en bénévoles, le risque principal. Ne classe pas les axes : le bureau choisira.
+<i>[Diagnostic]</i>
+<i>[Synthèse]</i></pre></div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">03</span>
+            <h3 class="h3">Une fiche action</h3>
+            <p>La fiche É.Q.U.I.P.E. de l'action à financer en premier, avec ses indicateurs, relue en instructeur.</p>
+            <p class="from">Vu dans le <a href="formation-n3-1.html#generateur">module 1</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="fiche">Étape faite</label>
+          </div>
+          <div class="leg-box">
+            <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre>Tu instruis des demandes de subvention pour une collectivité. Relis cette fiche action comme tu le ferais : ce qui est clair, ce qui est flou, ce qui manque, les affirmations sans preuve, les incohérences entre objectifs, coût et indicateurs. Ne réécris rien.
+<i>[Fiche action]</i></pre></div>
+            <p class="warn">Faites-la relire aussi par un membre du bureau qui ne connaît pas l'action : s'il ne comprend pas, l'instructeur non plus.</p>
+          </div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">04</span>
+            <h3 class="h3">Le bon financeur</h3>
+            <p>Le dispositif choisi pour ses priorités, son appel à projets lu en entier, ses exigences relevées avec leurs citations.</p>
+            <p class="from">Vu dans le <a href="formation-n3-2.html#lire">module 2</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="financeur">Étape faite</label>
+          </div>
+          <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre>Voici l'appel à projets <i>[dispositif et année]</i>. Fais-en la liste des exigences en tableau : la règle, la citation exacte entre guillemets, la page. Rubriques : dates, éligibilité, exclusions, priorités, montants, pièces, obligations après le financement. N'ajoute aucune règle, signale ce qui est ambigu.</pre></div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">05</span>
+            <h3 class="h3">Le budget et le dossier</h3>
+            <p>Le budget équilibré sur devis, les rubriques rédigées à partir de la fiche, la liste des affirmations vérifiée, la signature du président, le dépôt avant la date limite.</p>
+            <p class="from">Vu dans le <a href="formation-n3-2.html#budget">module 2</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="dossier">Étape faite</label>
+          </div>
+          <div class="leg-box">
+            <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre data-club>[Fiche du club]
+Rédige la rubrique « <i>[rubrique]</i> » de notre demande à <i>[financeur]</i>, en <i>[nombre]</i> caractères maximum, uniquement à partir de la fiche action et de la grille ci-dessous. Aucun fait ajouté : [À COMPLÉTER]. Termine par la liste des affirmations à vérifier avant la signature.
+<i>[Fiche action]</i>
+<i>[Grille]</i></pre></div>
+            <p class="warn">Le budget se calcule dans le générateur du module 2 ou au tableur, pas dans la conversation avec l'IA.</p>
+          </div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">06</span>
+            <h3 class="h3">Un partenaire</h3>
+            <p>L'offre du club avec ses vrais chiffres, une proposition sur mesure, un rendez-vous préparé, le bon cadre, une convention signée.</p>
+            <p class="from">Vu dans le <a href="formation-n3-3.html#generateur">module 3</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="partenaire">Étape faite</label>
+          </div>
+          <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre data-club>[Fiche du club]
+Rédige un e-mail de 10 lignes à <i>[type d'entreprise]</i>, qui <i>[lien avec le club]</i>, pour demander un rendez-vous de 20 minutes au sujet de <i>[projet]</i>. Commence par ce que le partenariat peut lui apporter. Nos chiffres, à reprendre tels quels : <i>[chiffres]</i>. Aucun chiffre ajouté, aucun superlatif.</pre></div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">07</span>
+            <h3 class="h3">Le suivi et le bilan</h3>
+            <p>Le tableau de suivi tenu toute la saison, le bilan honnête, le compte rendu financier rendu dans les délais.</p>
+            <p class="from">Vu dans le <a href="formation-n3-4.html#generateur">module 4</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="bilan">Étape faite</label>
+          </div>
+          <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre>Rédige le bilan qualitatif de l'action <i>[action]</i> en une page, à partir de ce tableau prévu et réalisé et de ces faits uniquement : <i>[tableau]</i> <i>[faits]</i>. Plan : ce qui a été fait et pour qui, les résultats face aux objectifs, ce qui a marché, ce qui a coincé, ce que le club change. Écris les écarts tels qu'ils sont. Aucune citation inventée.</pre></div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">08</span>
+            <h3 class="h3">L'organisation</h3>
+            <p>Les fiches de suivi, le calendrier de l'année, le dossier permanent et les rôles de chacun, présentés et validés en réunion de bureau.</p>
+            <p class="from">Vu aux <a href="#suivi">étapes 1</a> et <a href="#calendrier">2</a> de ce module</p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="organisation">Étape faite</label>
+          </div>
+          <div class="leg-box">
+            <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre data-club>[Fiche du club]
+Prépare une présentation de 15 minutes au bureau sur l'organisation de nos financements : le calendrier de l'année, le tableau de suivi des demandes, le dossier permanent, qui fait quoi (responsable du dossier, responsable de l'action, trésorier, président) et les décisions à prendre. Un plan minuté.
+<i>[Calendrier]</i>
+<i>[Suivi des demandes]</i></pre></div>
+            <ul class="todo">
+              <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Chaque demande a un responsable, désigné par sa fonction</span></li>
+              <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Le dossier permanent est à jour, avec des droits restreints</span></li>
+              <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Le calendrier de l'année est validé par le bureau</span></li>
+              <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Le suivi des demandes est un point fixe des réunions de bureau</span></li>
+            </ul>
+          </div>
+        </div>
+        <p class="road-score" id="score" aria-live="polite">0 sur 8</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="exercices">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Étape 4 · S'entraîner</p>
+        <h2 class="h2">Deux exercices<br>de fin de saison</h2>
+        <p class="lead">Les deux moments où un club perd de l'argent : quand personne ne suit ses demandes, et quand un refus décourage tout le monde.</p>
+      </div>
+
+      <div class="sub" style="margin-top:0">
+        <h3 class="h3">Exercice 1 · Le tableau de suivi de l'AS Exemple</h3>
+        <p>Voici le tableau de suivi des demandes du club, en novembre. Cinq lignes signalent un problème à régler en priorité. Trouvez-les.</p>
+      </div>
+      <div class="spot">
+        <div class="spot-doc lines">
+          <h4>Suivi des demandes · novembre 2027</h4>
+          <button class="s">Projet sportif fédéral 2027 · Le hand aux Tilleuls · accordée 1 500 € sur 1 800 € · responsable : vice-présidence · compte rendu avant le 30 juin 2028</button>
+          <button class="s" data-err="« À définir » : personne ne suivra la réponse, ni le bilan. Un responsable par demande, désigné par sa fonction.">Commune 2028 · fonctionnement du club · déposée · responsable : à définir</button>
+          <button class="s" data-err="Une date limite se recopie depuis le site du financeur. « D'après l'IA » n'est pas une source : le dossier risque d'arriver trop tard.">Département · minibus · en préparation · date limite : « vers mars, d'après l'IA »</button>
+          <button class="s" data-err="Accordée, mais une convention ni lue ni signée : on ne lance pas l'action et on ne dépense rien avant de savoir à quoi le club s'engage.">Fondation d'entreprise · créneau sport-santé · accordée 4 000 € · convention : reçue, pas encore lue</button>
+          <button class="s">Garage du centre · minibus · parrainage 3 000 € · convention signée le 12 février · facture envoyée</button>
+          <button class="s" data-err="Des contreparties qui pèsent bien trop lourd face au don : ce n'est plus du mécénat. À requalifier en parrainage, ou à réduire à une mention discrète.">Mutuelle · sport-santé · mécénat 2 000 € · contreparties : logo sur tous les supports, stand à chaque match, 20 invitations</button>
+          <button class="s" data-err="Un compte rendu financier en retard bloque les nouvelles demandes auprès de ce financeur, et peut conduire à un remboursement. C'est la priorité du bureau.">FDVA 2026 · fonctionnement · accordée 1 200 € · compte rendu financier : non rendu, délai dépassé</button>
+          <button class="s">Boulangerie · tournoi de quartier · mécénat en nature 400 € · reçu fiscal remis · remerciée dans le bilan</button>
+        </div>
+        <div class="spot-act">
+          <button class="btn btn-turf spot-go" type="button">Vérifier</button>
+          <p class="spot-res" aria-live="polite">5 erreurs à trouver.</p>
+        </div>
+      </div>
+
+      <div class="sub">
+        <h3 class="h3">Exercice 2 · Le refus</h3>
+        <p>Juillet. La région a refusé le dossier du créneau sport-santé. Le courrier dit seulement : « Votre projet n'a pas été retenu au regard du nombre important de demandes et des critères de l'appel à projets. » Le président veut « tout renvoyer ailleurs, tel quel ».</p>
+      </div>
+      <div class="exo" style="background:var(--ink);border-color:var(--ink)">
+        <div class="ex-txt">
+          <span class="label">La consigne</span>
+          <ol>
+            <li><span>Que faire avant de redéposer ailleurs ?</span></li>
+            <li><span>Que demander à l'IA, et que ne pas lui demander ?</span></li>
+          </ol>
+        </div>
+        <div class="ex-box">
+          <details class="sol">
+            <summary>Voir le corrigé</summary>
+            <div class="sol-in">
+              <p><b>1. Comprendre avant de renvoyer</b></p>
+              <ul>
+                <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Demander un retour à l'instructeur : un appel de dix minutes, poli, pour savoir ce qui a manqué. C'est souvent possible, et précieux.</span></li>
+                <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Relire le dossier avec la grille de l'appel à projets : quelle exigence était mal remplie, ou pas montrée ?</span></li>
+                <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Choisir le prochain financeur pour ses priorités, pas pour sa date limite, et adapter l'angle sans changer les faits.</span></li>
+              </ul>
+              <p><b>2. Ce qu'on demande à l'IA</b> : relire le dossier en instructeur, comparer la fiche action à la grille du nouveau financeur, préparer les questions pour l'appel. Ce qu'on ne lui demande pas : « réécris-le pour qu'il passe » sans faits nouveaux, ni deviner les raisons du refus.</p>
+<pre>Voici notre dossier refusé, la grille de l'appel à projets et le courrier de refus. Sans deviner les raisons du refus, liste les exigences de la grille que notre dossier remplit mal ou ne montre pas, avec la phrase en cause. Puis prépare cinq questions à poser à l'instructeur pour comprendre ce qui a manqué.</pre>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="memo">
+        <div>
+          <p class="label">À retenir</p>
+          <h2 class="h2" style="margin-top:14px">Le niveau 3<br>en cinq points</h2>
+        </div>
+        <ol>
+          <li><span><b>Le projet d'abord.</b> Un diagnostic chiffré, les adhérents consultés, des objectifs mesurables, une fiche É.Q.U.I.P.E. par action.</span></li>
+          <li><span><b>Chaque chiffre se prouve.</b> Les règles depuis l'appel à projets, les montants sur devis, les calculs hors de l'IA, les affirmations vérifiées avant la signature.</span></li>
+          <li><span><b>Le bon cadre avec les partenaires.</b> Une offre vraie, parrainage ou mécénat bien choisi, une convention avant le premier versement.</span></li>
+          <li><span><b>Un bilan honnête, à l'heure.</b> Les indicateurs suivis toute la saison, les écarts expliqués, le compte rendu financier dans les six mois.</span></li>
+          <li><span><b>Une organisation qui tient.</b> Un calendrier, un dossier permanent, une fiche de suivi et un responsable par demande.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="quiz">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Étape 5 · Le quiz final</p>
+        <h2 class="h2">Douze questions,<br>dix pour réussir</h2>
+        <p class="lead">Des questions sur les cinq modules du niveau 3. Vous pouvez recommencer autant de fois que vous voulez : seul votre meilleur score compte.</p>
+      </div>
+      <form class="quiz" id="quizf" novalidate></form>
+      <div class="quiz-act">
+        <button class="btn btn-turf" type="submit" form="quizf">Voir mon score</button>
+        <button class="btn btn-ghost" type="button" id="quizf-reset">Recommencer</button>
+        <p class="quiz-res" id="quizf-res" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="attestation">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Étape 6</p>
+        <h2 class="h2">Votre<br>attestation</h2>
+        <p class="lead">Elle se débloque quand les cinq modules et le quiz final sont validés. Votre nom reste sur cet appareil : il ne sert qu'à l'impression.</p>
+      </div>
+      <div class="att">
+        <div class="att-cfg">
+          <div class="field"><label for="a-name">Prénom et nom</label><input id="a-name" data-k="name" autocomplete="name" placeholder="Camille Exemple"></div>
+          <div class="field"><label for="a-club">Club</label><input id="a-club" data-k="club" placeholder="AS Exemple Handball"></div>
+          <ul class="reqs" id="reqs"></ul>
+          <button class="btn btn-turf" type="button" id="print-att" disabled>Imprimer l'attestation</button>
+          <p class="att-msg" id="att-msg"></p>
+        </div>
+        <article class="cert locked" id="cert" aria-label="Aperçu de l'attestation">
+          <img src="assets/logo/fair-logo-horizontal.svg" alt="FAIR" onerror="this.remove()">
+          <span class="k">Attestation de formation</span>
+          <h3>Niveau 3<br><span>validé</span></h3>
+          <span class="who" id="c-name">Prénom Nom</span>
+          <p>a suivi les cinq modules du niveau 3 « Financer et développer » de la formation FAIR « Former les Associations à l'IA Responsable » et réussi le quiz final<span id="c-club"></span>.</p>
+          <ol><li>Le projet du club</li><li>Le dossier de subvention</li><li>Partenaires et mécènes</li><li>Rendre compte</li><li>La saison des financements</li></ol>
+          <span class="date" id="c-date"></span>
+        </article>
+      </div>
+
+      <div class="next suite-cta">
+        <div class="head" style="margin:0">
+          <p class="label"><span id="suite-k">Après le niveau 3</span></p>
+          <h2 class="h2">Niveau 4 :<br>automatiser à plusieurs</h2>
+          <p class="lead">Vos projets sont financés et suivis. Le niveau 4 apprend à automatiser ce qui se répète et à faire travailler l'IA à plusieurs dans le club, sans jamais perdre la main sur les données des adhérents.</p>
+        </div>
+        <div class="actions">
+          <a class="btn btn-turf" href="formation-n4.html">Découvrir le niveau 4</a>
+          <a class="btn btn-ghost" href="formation-n3.html">Tout le niveau 3</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>FAIR · Former les Associations à l'IA Responsable</span>
+    <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/formation.js?v=2"></script>
+<script>
+(function(){
+  // Montants saisis : « 1 800 », « 1800,50 » ou « 1 800 € »
+  function num(s){var n=parseFloat(String(s||'').replace(/[\s  €]/g,'').replace(',','.'));return isNaN(n)?0:n}
+  function eur(n){return Math.round(n).toLocaleString('fr-FR')+' €'}
+
+  // Étape 1 : la fiche de suivi d'une demande, avec ce qu'il reste à faire selon son statut
+  FAIR.builder(document.getElementById('suivi'),'fair-n3-suivi',function(v){
+    var ALL=['Projet associatif','Fiche action','Budget de l\'action','Statuts et liste du bureau','Comptes approuvés','Rapport d\'activité','RIB'];
+    var p=v.pieces||[],manque=ALL.filter(function(x){return p.indexOf(x)<0});
+    var sub=v.type==='Subvention',ok=(v.bureau||[]).length>0,dem=num(v.demande),acc=num(v.accorde),s=v.statut,todo=[];
+    if(!v.resp)todo.push('Désigner un responsable du dossier, par sa fonction.');
+    if(s==='En préparation'){
+      if(!v.limite)todo.push('Noter la date limite, recopiée depuis le site du financeur.');
+      if(sub&&manque.length)todo.push('Réunir les pièces qui manquent : '+manque.join(', ')+'.');
+      if(!ok)todo.push('Faire valider la demande par le bureau avant le dépôt.');
+      todo.push('Relire la liste des affirmations avec le président avant la signature.');
+    }
+    if(s==='Déposée')todo.push('Ranger une copie datée du dossier déposé avec les documents du club, et noter quand la réponse est attendue.');
+    if(s==='Accordée'){
+      if(dem&&acc&&acc<dem)todo.push('Accordé moins que demandé : ajuster le budget de l\'action ou trouver le complément, et prévenir le financeur si l\'action change.');
+      todo.push(sub?'Signer la convention si elle est prévue, et lancer le tableau de suivi des indicateurs.':'Signer la convention de partenariat avant le premier versement.');
+      if(!v.echeance)todo.push(sub?'Noter la date limite du compte rendu financier : dans les six mois qui suivent la fin de l\'exercice, ou plus tôt si la convention le prévoit.':'Noter la date du bilan à envoyer au partenaire.');
+    }
+    if(s==='Refusée')todo.push('Demander à l\'instructeur ce qui a manqué : la réponse servira au prochain dossier.');
+    if(s==='Bilan rendu')todo.push('Archiver le dossier complet, et noter la prochaine campagne dans le calendrier.');
+    return 'SUIVI · '+(v.fin||'[financeur et dispositif]')+'\n'+
+      'Action : '+(v.action||'[action]')+'\n'+
+      'Type : '+v.type+' · Statut : '+s+'\n'+
+      'Responsable : '+(v.resp||'[fonction]')+' · Date limite : '+(v.limite||'[date, depuis le site du financeur]')+'\n'+
+      'Demandé : '+(dem?eur(dem):'[montant]')+(acc?' · Accordé : '+eur(acc)+(dem?' ('+Math.round(acc/dem*100)+' %)':''):'')+'\n'+
+      (sub?'Pièces réunies : '+(ALL.length-manque.length)+' sur '+ALL.length+'\n':'')+
+      'Validée par le bureau : '+(ok?'oui':'non')+'\n'+
+      'Bilan à rendre avant le : '+(v.echeance||'[date]')+'\n\n'+
+      'À FAIRE\n'+(todo.length?todo.map(function(t){return '- '+t}).join('\n'):'- Rien pour l\'instant. Prochain point à la réunion de bureau.');
+  });
+
+  // Étape 5 : quiz final
+  var KEY_Q='fair-n3-quiz';
+  FAIR.quiz(document.getElementById('quizf'),KEY_Q,[
+    ["Pourquoi le projet associatif vient-il avant les dossiers ?",["Les financeurs financent un projet qui répond à un besoin, et chaque dossier en découle","C'est une obligation légale pour toute association","Pour compléter le dossier permanent"],0,"Le projet donne la cohérence : un constat, des objectifs, des fiches actions. (Module 1)"],
+    ["Pour le diagnostic du club, l'IA reçoit…",["Le fichier des licenciés, pour qu'elle compte","Des totaux, sourcés et datés","Rien : elle connaît déjà les chiffres du sport"],1,"On exporte des totaux, pas des personnes. Et aucun chiffre ne vient de la mémoire de l'IA. (Module 1)"],
+    ["Que signifie É.Q.U.I.P.E. ?",["État des lieux, Qui, Utilité, Itinéraire, Prix, Évaluation","Équipe, Qualité, Union, Investissement, Partenaires, Engagement","Écoute, Questions, Urgence, Information, Projet, Équilibre"],0,"Six rubriques pour chaque action, réutilisées dans tous les dossiers. (Module 1)"],
+    ["Le résumé de l'IA et la note de cadrage ne disent pas la même chose sur les dépenses éligibles. Vous suivez…",["Le résumé, plus clair","La note de cadrage : dates, montants et exclusions se recopient depuis la source","La version la plus favorable au club"],1,"Les résumés adoucissent les règles. La source fait foi. (Module 2)"],
+    ["Un budget prévisionnel d'action est solide quand…",["Il est équilibré, chiffré sur devis, cofinancé, avec le bénévolat valorisé","Un seul financeur en paie 100 %","L'IA a estimé les coûts"],0,"Et ses calculs se font au tableur, pas dans la conversation. (Module 2)"],
+    ["Avant de signer le dossier, le président…",["Vérifie la liste des affirmations contre leurs sources : il certifie les informations exactes","Fait confiance à la rédaction de l'IA","Demande à l'IA si tout est juste"],0,"La signature engage le club : chaque chiffre se prouve. (Module 2)"],
+    ["Une entreprise paie 3 000 € pour son logo sur le minibus et des posts réguliers. C'est…",["Du mécénat, avec un reçu fiscal","Du parrainage, facturé par le club","Une subvention"],1,"Une visibilité proportionnée au prix : c'est une prestation. (Module 3)"],
+    ["Un club peut remettre un reçu fiscal à un mécène…",["Toujours","S'il remplit les conditions de l'intérêt général, et si les contreparties restent très inférieures au don","Si l'IA le confirme"],1,"En cas de doute : le trésorier, un conseiller, l'administration fiscale. (Module 3)"],
+    ["Les coordonnées des entreprises démarchées…",["Se collent dans l'IA pour personnaliser les e-mails","Restent dans le tableau de suivi du club","Se partagent avec les autres partenaires"],1,"L'IA rédige à partir d'un type d'entreprise et d'un lien avec le club. (Module 3)"],
+    ["Objectif : 15 licences. Résultat : 11. Le bilan dit…",["« Objectif largement atteint »","11 pour 15, avec l'explication et ce que le club change","Rien sur ce point"],1,"Un écart dit et expliqué rend le bilan crédible. (Module 4)"],
+    ["Le compte rendu financier d'une subvention publique affectée se rend…",["Dans les six mois qui suivent la fin de l'exercice pour lequel elle a été accordée","Quand le club a le temps","Seulement si l'action a réussi"],0,"C'est une obligation, et la condition de toute nouvelle demande. (Module 4)"],
+    ["Une date limite de dépôt se trouve…",["Dans la mémoire de l'IA","Sur le site du financeur, pour l'année en cours","Dans le calendrier de l'an dernier"],1,"Les campagnes changent chaque année : on recopie la date depuis la source. (Module 5)"]
+  ],10,function(){reqs()});
+
+  // Étape 6 : attestation
+  var KEY_A='fair-attestation';
+  var att=FAIR.store(KEY_A);
+  var inputs=[].slice.call(document.querySelectorAll('.att-cfg input'));
+  var btn=document.getElementById('print-att'),msg=document.getElementById('att-msg'),cert=document.getElementById('cert');
+  function reqs(){
+    var list=FAIR.N3.map(function(m,i){return {t:'Module '+(i+1)+' · '+m.name,ok:FAIR.done(m),url:m.url+'#bilan'}});
+    list[4].url='#route';
+    list.push({t:'Quiz final · 10 sur 12 minimum',ok:(FAIR.store(KEY_Q).best||0)>=10,url:'#quiz'});
+    var ul=document.getElementById('reqs');ul.innerHTML='';
+    list.forEach(function(r){
+      var li=document.createElement('li');li.className=r.ok?'ok':'';
+      var d=document.createElement('span');d.className='dot';d.setAttribute('aria-hidden','true');
+      var a=document.createElement('a');a.href=r.url;a.textContent=r.t;
+      var s=document.createElement('span');s.className='sr-only';s.textContent=r.ok?' : validé':' : à faire';
+      li.appendChild(d);li.appendChild(a);li.appendChild(s);ul.appendChild(li);
+    });
+    var left=list.filter(function(r){return !r.ok}).length;
+    btn.disabled=!!left;
+    cert.classList.toggle('locked',!!left);
+    msg.textContent=left?'Encore '+left+(left>1?' étapes':' étape')+' avant de débloquer l\'attestation.':'Tout est validé : imprimez-la, ou enregistrez-la en PDF depuis la fenêtre d\'impression.';
+    document.getElementById('suite-k').textContent=left?'Après le niveau 3':'Niveau 3 validé · La suite';
+  }
+
+  function cardText(save){
+    var v={};inputs.forEach(function(i){v[i.dataset.k]=i.value.trim()});
+    document.getElementById('c-name').textContent=v.name||'Prénom Nom';
+    document.getElementById('c-club').textContent=v.club?', au titre du club '+v.club:'';
+    if(save)FAIR.store(KEY_A,v);
+  }
+  inputs.forEach(function(i){i.value=att[i.dataset.k]||'';i.addEventListener('input',function(){cardText(true)})});
+  document.getElementById('c-date').textContent='Délivrée le '+new Date().toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'});
+  btn.addEventListener('click',function(){window.print()});
+  cardText(false);reqs();
+  document.addEventListener('fair:progress',reqs);
+})();
+</script>
+</body>
+</html>

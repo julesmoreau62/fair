@@ -5,11 +5,21 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Formation · Niveau 1 · FAIR</title>
 <meta name="description" content="Niveau 1 de la formation FAIR : l'IA au quotidien du club. Messages aux adhérents, réseaux sociaux, réunions et AG, séances d'entraînement et rentrée du club, avec exercices corrigés.">
+<link rel="canonical" href="https://fair-asso.fr/formation-n1.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FAIR">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://fair-asso.fr/formation-n1.html">
+<meta property="og:title" content="Formation · Niveau 1 · FAIR">
+<meta property="og:description" content="Niveau 1 de la formation FAIR : l'IA au quotidien du club. Messages aux adhérents, réseaux sociaux, réunions et AG, séances d'entraînement et rentrée du club, avec exercices corrigés.">
+<meta property="og:image" content="https://fair-asso.fr/assets/img/poster-hero.jpg">
+<meta property="og:image:alt" content="Un joueur frappe un ballon sur un terrain synthétique, de nuit">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#07111F">
 <link rel="icon" href="assets/logo/fair-icone.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
-<link rel="stylesheet" href="assets/css/formation.css?v=2">
-<link rel="stylesheet" href="assets/css/niveau.css?v=1">
+<link rel="stylesheet" href="assets/css/formation.css?v=3">
+<link rel="stylesheet" href="assets/css/niveau.css?v=3">
 <style>
 /* Progression globale */
 .bar{width:100%;max-width:560px;display:grid;gap:10px;margin-top:8px}
@@ -31,7 +41,7 @@
 .mod-txt h3{font-family:var(--f-display);font-weight:850;font-stretch:66%;text-transform:uppercase;font-size:1.7rem;line-height:1}
 .mod-txt p{color:var(--ink-2);font-size:.96rem;line-height:1.5;max-width:66ch}
 .mod-txt ul{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
-.mod-txt ul li{font-size:.8rem;padding:4px 10px;border-radius:999px;border:1px solid var(--line-c);color:var(--ink-2)}
+.mod-txt ul li{font-size:.8rem;padding:4px 10px;border-radius:4px;border:1px solid var(--line-c);color:var(--ink-2)}
 .mod-txt .mod-meta{display:flex;flex-wrap:wrap;gap:6px 16px;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.04em;color:var(--ink-2);text-transform:uppercase;margin-top:4px}
 .mod-meta .st.done{color:var(--turf-ink)}
 .mod .btn{min-width:150px}
@@ -53,12 +63,11 @@
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="check" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></symbol>
-  <symbol id="lock" viewBox="0 0 20 20"><rect x="4.5" y="9" width="11" height="8" rx="1.5"/><path d="M7 9V6.5a3 3 0 0 1 6 0V9"/></symbol>
 </svg>
 
 <header class="hdr">
   <div class="wrap hdr-in">
-    <a class="brand" href="index.html" aria-label="FAIR, retour à l'accueil"><img src="assets/logo/fair-logo-blanc.svg" alt="FAIR"></a>
+    <a class="brand" href="index.html" aria-label="FAIR, retour à l'accueil"><img src="assets/logo/fair-logo-blanc-court.svg" alt="FAIR"></a>
     <nav aria-label="Navigation">
       <a class="opt" href="index.html#clubs">Clubs</a>
       <a class="opt" href="index.html#partenaires">Fédérations</a>
@@ -71,8 +80,8 @@
 <main id="contenu">
   <section class="hero">
     <div class="wrap hero-in">
-      <p class="label"><span class="sq"></span><a href="formation.html">Formation FAIR</a> · Niveau 1 sur 5</p>
-      <h1><small>L'IA au quotidien du club</small>Niveau <span class="turf">1</span></h1>
+      <p class="label"><a href="formation.html">Formation FAIR</a> · Niveau 1 sur 5</p>
+      <h1>Niveau 1 : l'IA au quotidien du club</h1>
       <p class="lead">Le niveau 0 vous a appris à bien demander. Le niveau 1 l'applique aux tâches qui reviennent chaque semaine au club : les messages aux familles, les réseaux, les réunions, les séances et la rentrée. Avec de vrais dossiers, des exercices corrigés et un club fil rouge du premier au dernier module.</p>
       <ul class="meta">
         <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>5 modules</li>
@@ -85,6 +94,7 @@
         <div class="bar-track" id="bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
         <p id="bar-txt">0 module validé sur 5</p>
       </div>
+      <a class="btn btn-turf" id="go" href="formation-n1-1.html">Commencer le module 1</a>
       <p class="pre0" id="pre0" hidden><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Le niveau 1 suppose les réflexes du niveau 0 : la méthode C.L.U.B., la vérification et la règle d'or sur les données. <a href="formation.html">Il vous reste <b id="pre0-n">5</b> à valider au niveau 0</a>, faites-les d'abord si vous débutez.</span></p>
     </div>
   </section>
@@ -92,8 +102,8 @@
   <section class="sec chalk">
     <div class="wrap">
       <div class="head">
-        <p class="label"><span class="sq"></span>Ce qui change</p>
-        <h2 class="h2">Plus loin<br>que le <span class="turf">niveau 0</span></h2>
+        <p class="label">Ce qui change</p>
+        <h2 class="h2">Plus loin<br>que le niveau 0</h2>
         <p class="lead">Le niveau 0 donnait les bases, une demande à la fois. Le niveau 1 traite des dossiers complets, avec des méthodes propres à chaque tâche et des exercices où l'on se trompe pour apprendre.</p>
       </div>
       <div class="tips">
@@ -124,7 +134,7 @@
   <section class="sec chalk" id="modules" style="padding-top:0">
     <div class="wrap">
       <div class="head">
-        <p class="label"><span class="sq"></span>Le parcours</p>
+        <p class="label">Le parcours</p>
         <h2 class="h2">Cinq modules,<br>dans l'ordre</h2>
         <p class="lead">Chaque module se termine par un quiz et une check-list. Votre progression est enregistrée sur cet appareil uniquement : rien n'est envoyé.</p>
       </div>
@@ -182,17 +192,17 @@
       </ol>
 
       <div class="head after">
-        <p class="label"><span class="sq"></span>Toute la formation</p>
+        <p class="label">Toute la formation</p>
         <h3 class="h3">Six niveaux, une marche à la fois</h3>
         <p class="lead">Chaque niveau s'appuie sur le précédent. La difficulté et la profondeur augmentent à chaque marche.</p>
       </div>
       <ol class="levels">
-        <li class="lv free" style="--i:0"><span class="n">0</span><b>Les fondamentaux</b><span class="tag" id="lv0">Gratuit</span></li>
-        <li class="lv up" style="--i:1"><span class="n">1</span><b>L'IA au quotidien du club</b><span class="tag">Vous êtes ici</span></li>
-        <li class="lv" style="--i:2"><span class="n">2</span><b>Ses outils sur mesure</b><a class="tag" href="formation-n2.html">Découvrir le niveau 2</a></li>
-        <li class="lv" style="--i:3"><span class="n">3</span><b>Financer et développer</b><span class="tag"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Sur accès</span></li>
-        <li class="lv" style="--i:4"><span class="n">4</span><b>Automatiser à plusieurs</b><span class="tag"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Sur accès</span></li>
-        <li class="lv" style="--i:5"><span class="n">5</span><b>Référent IA du club</b><span class="tag"><svg class="ico-lk" aria-hidden="true"><use href="#lock"/></svg>Sur accès</span></li>
+        <li class="lv free"><span class="n">0</span><b>Les fondamentaux</b><span class="tag" id="lv0">Gratuit</span></li>
+        <li class="lv up"><span class="n">1</span><b>L'IA au quotidien du club</b><span class="tag">Vous êtes ici</span></li>
+        <li class="lv"><span class="n">2</span><b>Ses outils sur mesure</b><a class="tag" href="formation-n2.html">Découvrir le niveau 2</a></li>
+        <li class="lv"><span class="n">3</span><b>Financer et développer</b><a class="tag" href="formation-n3.html">Découvrir le niveau 3</a></li>
+        <li class="lv"><span class="n">4</span><b>Automatiser à plusieurs</b><a class="tag" href="formation-n4.html">Découvrir le niveau 4</a></li>
+        <li class="lv"><span class="n">5</span><b>Référent IA du club</b><span class="tag">Bientôt</span></li>
       </ol>
     </div>
   </section>
@@ -200,8 +210,8 @@
   <section class="sec" id="fil-rouge">
     <div class="wrap">
       <div class="head">
-        <p class="label"><span class="sq"></span>Le fil rouge</p>
-        <h2 class="h2">L'AS Exemple<br><span class="turf">Handball</span></h2>
+        <p class="label">Le fil rouge</p>
+        <h2 class="h2">L'AS Exemple<br>Handball</h2>
         <p class="lead">Un club imaginaire, mais des situations bien réelles. Vous le retrouverez dans chaque module, avec ses contraintes et ses bonnes volontés.</p>
       </div>
       <div class="case" style="margin-top:0">
@@ -233,8 +243,8 @@
   <section class="sec chalk" id="ressources">
     <div class="wrap">
       <div class="head">
-        <p class="label"><span class="sq"></span>Ressources</p>
-        <h2 class="h2">À garder<br><span class="turf">sous la main</span></h2>
+        <p class="label">Ressources</p>
+        <h2 class="h2">À garder<br>sous la main</h2>
       </div>
       <div class="lib">
         <article class="card">
@@ -259,8 +269,8 @@
   <section class="sec">
     <div class="wrap next">
       <div class="head" style="margin:0">
-        <p class="label"><span class="sq"></span>En groupe, c'est mieux</p>
-        <h2 class="h2">Un atelier<br><span class="turf">dans votre club</span></h2>
+        <p class="label">En groupe, c'est mieux</p>
+        <h2 class="h2">Un atelier<br>dans votre club</h2>
         <p class="lead">FAIR anime le niveau 1 dans les clubs, avec vos bénévoles et sur vos propres dossiers : vos convocations, votre AG, votre rentrée.</p>
       </div>
       <div class="actions">
@@ -278,19 +288,25 @@
   </div>
 </footer>
 
-<script src="assets/js/formation.js"></script>
+<script src="assets/js/formation.js?v=2"></script>
 <script>
 (function(){
   // Barre de progression et boutons de chaque module
   function paint(){
-    var n=0;
+    var n=0,next=-1;
+    FAIR.N1.forEach(function(m,i){if(next<0&&FAIR.count(m.key)<m.n)next=i});
     FAIR.N1.forEach(function(m,i){
-      var row=document.querySelector('.mod[data-m="'+(i+1)+'"]');
+      var row=document.querySelector('.mod[data-m="'+(i+1)+'"]'),btn=row.querySelector('.btn');
       var c=FAIR.count(m.key),ok=c>=m.n;
       if(ok)n++;
       row.classList.toggle('is-done',ok);
-      row.querySelector('.btn').textContent=ok?'Revoir':c?'Reprendre':'Commencer';
+      btn.textContent=ok?'Revoir':c?'Reprendre':'Commencer';
+      btn.classList.toggle('btn-turf',i===next);
+      btn.classList.toggle('btn-ghost',i!==next);
     });
+    var go=document.getElementById('go');
+    if(next<0){go.textContent='Passer au niveau 2';go.href='formation-n2.html'}
+    else{go.textContent=(FAIR.count(FAIR.N1[next].key)?'Reprendre':'Commencer')+' le module '+(next+1);go.href=FAIR.N1[next].url}
     [].forEach.call(document.querySelectorAll('#bar span'),function(s,i){s.classList.toggle('on',i<n)});
     document.getElementById('bar-txt').textContent=n===5?'5 modules validés sur 5 · Niveau 1 terminé':n+(n>1?' modules validés':' module validé')+' sur 5';
   }

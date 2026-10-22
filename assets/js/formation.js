@@ -2,7 +2,7 @@
 var FAIR=(function(){
   // Les modules du niveau 0 : clé de la check-list et nombre de cases
   var MODULES=[
-    {key:'fair-module1',n:7,url:'formation-1.html',name:'Créer ses comptes'},
+    {key:'fair-module1',n:4,url:'formation-1.html',name:'Créer ses comptes'},
     {key:'fair-module2',n:6,url:'formation-2.html',name:'Bien demander'},
     {key:'fair-module3',n:6,url:'formation-3.html',name:"L'IA sans risque"},
     {key:'fair-module4',n:6,url:'formation-4.html',name:'Fichiers, photos, voix'},
@@ -23,6 +23,22 @@ var FAIR=(function(){
     {key:'fair-n2-module3',n:9,url:'formation-n2-3.html',name:"L'assistant des éducateurs"},
     {key:'fair-n2-module4',n:9,url:'formation-n2-4.html',name:'Les modèles du bureau'},
     {key:'fair-n2-module5',n:8,url:'formation-n2-5.html',name:'La boîte à outils du club'}
+  ];
+  // Les modules du niveau 3, même principe (blocs .st[data-lv="3"])
+  var N3=[
+    {key:'fair-n3-module1',n:9,url:'formation-n3-1.html',name:'Le projet du club'},
+    {key:'fair-n3-module2',n:9,url:'formation-n3-2.html',name:'Le dossier de subvention'},
+    {key:'fair-n3-module3',n:9,url:'formation-n3-3.html',name:'Partenaires et mécènes'},
+    {key:'fair-n3-module4',n:9,url:'formation-n3-4.html',name:'Rendre compte'},
+    {key:'fair-n3-module5',n:8,url:'formation-n3-5.html',name:'La saison des financements'}
+  ];
+  // Les modules du niveau 4, même principe (blocs .st[data-lv="4"])
+  var N4=[
+    {key:'fair-n4-module1',n:9,url:'formation-n4-1.html',name:"Ce qui s'automatise"},
+    {key:'fair-n4-module2',n:9,url:'formation-n4-2.html',name:'Des données propres'},
+    {key:'fair-n4-module3',n:9,url:'formation-n4-3.html',name:'Construire un flux'},
+    {key:'fair-n4-module4',n:9,url:'formation-n4-4.html',name:"L'IA en équipe"},
+    {key:'fair-n4-module5',n:8,url:'formation-n4-5.html',name:'Le club en relais'}
   ];
 
   // Mémoire sur l'appareil, sans planter si le stockage est bloqué
@@ -55,7 +71,7 @@ var FAIR=(function(){
   // Affiche l'état de chaque module dans les blocs .st[data-m]
   function progress(){
     [].forEach.call(document.querySelectorAll('.st[data-m]'),function(st){
-      var m=({1:N1,2:N2}[st.dataset.lv]||MODULES)[+st.dataset.m-1],n=count(m.key);
+      var m=({1:N1,2:N2,3:N3,4:N4}[st.dataset.lv]||MODULES)[+st.dataset.m-1],n=count(m.key);
       st.textContent=n>=m.n?'Validé':n?n+' sur '+m.n+' cochés':'Pas commencé';
       st.classList.toggle('done',n>=m.n);
     });
@@ -146,6 +162,10 @@ var FAIR=(function(){
     var boxes=[].slice.call(check.querySelectorAll('input'));
     var score=document.getElementById('score');
     var saved=store(check.dataset.key);
+    // Une case retirée de la check-list ne compte plus dans la progression
+    var keys=boxes.map(function(b){return b.dataset.k});
+    var stale=Object.keys(saved).filter(function(k){return keys.indexOf(k)<0});
+    if(stale.length){stale.forEach(function(k){delete saved[k]});store(check.dataset.key,saved)}
     var update=function(){
       var n=boxes.filter(function(b){return b.checked}).length;
       score.textContent=n===boxes.length?n+' sur '+n+' · '+check.dataset.name+' validé, bravo !':n+' sur '+boxes.length;
@@ -272,5 +292,5 @@ var FAIR=(function(){
     });
   }
 
-  return {store:store,copy:copy,count:count,done:done,progress:progress,esc:esc,green:green,club:club,builder:builder,quiz:quiz,MODULES:MODULES,N1:N1,N2:N2};
+  return {store:store,copy:copy,count:count,done:done,progress:progress,esc:esc,green:green,club:club,builder:builder,quiz:quiz,MODULES:MODULES,N1:N1,N2:N2,N3:N3,N4:N4};
 })();

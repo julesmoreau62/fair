@@ -6,10 +6,16 @@
 <title>FAIR · Former les associations sportives à l'IA responsable</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="FAIR forme gratuitement les dirigeants et bénévoles de clubs sportifs à utiliser l'IA de façon responsable : sur vos vrais dossiers, avec des outils gratuits. Tous les sports, partout en France.">
+<link rel="canonical" href="https://fair-asso.fr/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="FAIR · Moins de paperasse. Plus de terrain.">
+<meta property="og:site_name" content="FAIR">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://fair-asso.fr/">
+<meta property="og:title" content="FAIR · Former les associations sportives à l'IA responsable">
 <meta property="og:description" content="Ateliers gratuits pour les clubs sportifs : utiliser l'IA de façon responsable, sur vos vrais dossiers.">
-<meta property="og:image" content="assets/img/poster-hero.jpg">
+<meta property="og:image" content="https://fair-asso.fr/assets/img/poster-hero.jpg">
+<meta property="og:image:alt" content="Un joueur frappe un ballon sur un terrain synthétique, de nuit">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#07111F">
 <link rel="icon" href="assets/logo/fair-icone.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
@@ -58,7 +64,7 @@ button{font:inherit;color:inherit}
 :focus:not(:focus-visible){outline:none}
 ::selection{background:var(--turf);color:var(--on-turf)}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.skip{position:fixed;left:max(16px,env(safe-area-inset-left,0px));top:-80px;z-index:100;background:var(--turf);color:var(--on-turf);padding:12px 18px;border-radius:999px;font-weight:700;text-decoration:none}
+.skip{position:fixed;left:max(16px,env(safe-area-inset-left,0px));top:-80px;z-index:100;background:var(--turf);color:var(--on-turf);padding:12px 18px;border-radius:4px;font-weight:700;text-decoration:none}
 .skip:focus{top:calc(12px + env(safe-area-inset-top,0px))}
 .wrap{width:100%;max-width:1560px;margin-inline:auto;padding-left:max(var(--pad),env(safe-area-inset-left,0px));padding-right:max(var(--pad),env(safe-area-inset-right,0px))}
 .sec{position:relative;padding-block:clamp(80px,9vw,140px)}
@@ -66,7 +72,6 @@ button{font:inherit;color:inherit}
 
 /* ---------- Typo ---------- */
 .label{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:.7rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;line-height:1.35;color:var(--fog)}
-.label .sq{width:7px;height:7px;background:var(--turf);flex:none}
 .chalk .label{color:var(--ink-2)}
 .h2{font-family:var(--f-display);font-weight:850;font-stretch:62%;text-transform:uppercase;font-size:clamp(2.8rem,6.4vw,6.6rem);line-height:.86;letter-spacing:-.006em;text-wrap:balance;overflow-wrap:break-word}
 .h3{font-family:var(--f-display);font-weight:850;font-stretch:66%;text-transform:uppercase;font-size:clamp(1.8rem,2.6vw,2.5rem);line-height:.92}
@@ -81,31 +86,23 @@ button{font:inherit;color:inherit}
 @media (max-width:900px){.sec-head{grid-template-columns:minmax(0,1fr)}}
 
 /* ---------- Boutons ---------- */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:54px;padding:0 26px;border-radius:999px;font:600 .98rem/1.1 var(--f-body);text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background-color .25s,color .25s,border-color .25s;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:54px;padding:0 26px;border-radius:4px;font:600 .98rem/1.1 var(--f-body);text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background-color .25s,color .25s,border-color .25s;white-space:nowrap}
 .btn-turf{background:var(--turf);color:var(--on-turf)}
 .btn-turf:hover{background:var(--turf-hi)}
 .btn-ghost{border-color:rgba(237,240,234,.35);color:var(--chalk);background:rgba(7,17,31,.18)}
 .btn-ghost:hover{border-color:var(--chalk)}
 .chalk .btn-ghost{border-color:var(--line-c);color:var(--ink);background:transparent}
 .chalk .btn-ghost:hover{border-color:var(--ink)}
-.btn-ar{position:relative;width:18px;height:18px;overflow:hidden;flex:none}
-.btn-ar svg{position:absolute;inset:0;width:18px;height:18px;transition:transform .5s var(--ease)}
-.btn-ar svg+svg{transform:translateX(-150%)}
-.btn:hover .btn-ar svg{transform:translateX(150%)}
-.btn:hover .btn-ar svg+svg{transform:translateX(0)}
+.btn-ar{width:18px;height:18px;flex:none;transition:transform .3s var(--ease)}
+.btn:hover .btn-ar{transform:translateX(3px)}
 .ico-arr{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .ico-ck{fill:none;stroke:var(--turf);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
 .chalk .ico-ck{stroke:var(--turf-ink)}
 .lg-disc{fill:var(--lg-disc)}.lg-spark{fill:var(--lg-spark)}.lg-word{fill:var(--lg-word)}
 
-/* ---------- Habillage : grain, progression, curseur ---------- */
-.grain{position:fixed;inset:0;z-index:70;pointer-events:none;opacity:.055;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain 1s steps(5) infinite}
-@keyframes grain{0%{background-position:0 0}20%{background-position:-40px 30px}40%{background-position:30px -50px}60%{background-position:-60px -20px}80%{background-position:50px 40px}100%{background-position:0 0}}
+/* ---------- Habillage : progression, image qui suit ---------- */
 .progress{position:fixed;inset:0 0 auto;height:2px;z-index:60;pointer-events:none}
 .progress i{display:block;height:100%;background:var(--turf);transform-origin:left;transform:scaleX(0)}
-.cursor{position:fixed;left:0;top:0;z-index:80;width:34px;height:34px;margin:-17px 0 0 -17px;border:1.5px solid var(--turf);border-radius:50%;pointer-events:none;opacity:0;transition:width .35s var(--ease),height .35s var(--ease),margin .35s var(--ease),background-color .3s,opacity .3s}
-.cursor.is-vis{opacity:1}
-.cursor.is-link{width:66px;height:66px;margin:-33px 0 0 -33px;background:rgba(31,181,122,.16)}
 .follow{position:fixed;left:0;top:0;z-index:40;width:clamp(220px,19vw,300px);aspect-ratio:4/5;pointer-events:none;opacity:0;transition:opacity .35s;border-radius:4px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(10,21,37,.5)}
 .follow.is-on{opacity:1}
 .follow img{width:100%;height:100%;object-fit:cover}
@@ -123,7 +120,7 @@ button{font:inherit;color:inherit}
 .nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:var(--turf);transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease)}
 .nav a:hover::after{transform:scaleX(1);transform-origin:left}
 .hdr .btn{min-height:46px;padding:0 20px;font-size:.92rem}
-.menu-btn{display:none;align-items:center;gap:10px;min-height:46px;padding:0 18px;border-radius:999px;border:1.5px solid rgba(237,240,234,.35);background:transparent;cursor:pointer;font-weight:600;font-size:.92rem}
+.menu-btn{display:none;align-items:center;gap:10px;min-height:46px;padding:0 18px;border-radius:4px;border:1.5px solid rgba(237,240,234,.35);background:transparent;cursor:pointer;font-weight:600;font-size:.92rem}
 .mb-i{position:relative;width:16px;height:10px}
 .mb-i::before,.mb-i::after{content:"";position:absolute;left:0;right:0;height:2px;background:currentColor;transition:transform .4s var(--ease),top .4s var(--ease)}
 .mb-i::before{top:0}.mb-i::after{top:8px}
@@ -142,40 +139,25 @@ button{font:inherit;color:inherit}
 .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;isolation:isolate;background:var(--night)}
 .hero-media{position:absolute;inset:0;z-index:-2;transform-origin:50% 35%;will-change:transform}
 .hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,17,31,.72) 0%,rgba(7,17,31,.12) 26%,rgba(7,17,31,.2) 50%,rgba(7,17,31,.88) 84%,var(--night) 100%),radial-gradient(70% 55% at 80% 15%,rgba(31,181,122,.18),transparent 70%)}
-.hero-in{position:relative;display:grid;gap:clamp(16px,2.4vw,28px);padding-top:calc(112px + env(safe-area-inset-top,0px));padding-bottom:clamp(24px,3vw,40px)}
+.hero-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,17,31,.72) 0%,rgba(7,17,31,.12) 26%,rgba(7,17,31,.2) 50%,rgba(7,17,31,.88) 84%,var(--night) 100%)}
+.hero-in{position:relative;display:grid;gap:clamp(16px,2.4vw,28px);padding-top:calc(112px + env(safe-area-inset-top,0px));padding-bottom:clamp(40px,6vw,88px)}
 .eyebrow{color:var(--chalk)}
-.hero-title{font-family:var(--f-display);font-weight:900;font-stretch:62%;text-transform:uppercase;font-size:clamp(4.2rem,min(23vw,22svh),16rem);line-height:.8;letter-spacing:-.014em}
-.hero-title .ln{display:block}
-.hero-title .ln>span{display:inline-block}
-.hero-title .ln-sm{font-size:.3em;line-height:1.05;font-stretch:72%;letter-spacing:.004em;margin-bottom:.2em}
-.hero-title .ln-g{color:var(--turf)}
+.hero-title{max-width:17ch;font-family:var(--f-display);font-weight:800;font-stretch:78%;font-size:clamp(2.7rem,min(7.4vw,11svh),7.2rem);line-height:.98;letter-spacing:-.018em;text-wrap:balance}
 .hero-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:22px 56px;align-items:end}
 .hero-row .lead{color:var(--mist);max-width:46ch}
 .actions{display:flex;flex-wrap:wrap;gap:12px}
 .hero-meta{position:absolute;top:calc(108px + env(safe-area-inset-top,0px));right:max(var(--pad),env(safe-area-inset-right,0px));display:grid;gap:10px;justify-items:end}
 .hero-meta li{display:inline-flex;align-items:center;gap:8px;color:var(--chalk)}
 .hero-meta svg{width:14px;height:14px}
-.vbtn{display:inline-flex;align-items:center;gap:8px;margin-top:6px;padding:7px 12px 7px 10px;border-radius:999px;border:1px solid rgba(237,240,234,.3);background:rgba(7,17,31,.35);cursor:pointer;font:500 .62rem/1 var(--f-mono);letter-spacing:.07em;text-transform:uppercase;color:var(--chalk)}
+.vbtn{display:inline-flex;align-items:center;gap:8px;margin-top:6px;padding:7px 12px 7px 10px;border-radius:4px;border:1px solid rgba(237,240,234,.3);background:rgba(7,17,31,.35);cursor:pointer;font:500 .62rem/1 var(--f-mono);letter-spacing:.07em;text-transform:uppercase;color:var(--chalk)}
 .vbtn:hover{border-color:var(--chalk)}
 .vbtn svg{width:11px;height:11px;fill:var(--chalk)}
 .vbtn .i-play,.is-paused .vbtn .i-pause{display:none}
 .is-paused .vbtn .i-play{display:block}
-.hero-stats{border-top:1px solid var(--line-n);background:rgba(7,17,31,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
-.hs-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
-.hs{display:flex;align-items:center;gap:14px;padding-block:18px;min-width:0}
-.hs+.hs{padding-left:clamp(14px,2vw,28px);border-left:1px solid var(--line-n)}
-.hs-n{font-family:var(--f-display);font-weight:900;font-stretch:62%;font-size:clamp(2rem,3.1vw,3rem);line-height:.9;flex:none;font-variant-numeric:tabular-nums}
-.hs:first-child .hs-n{color:var(--turf)}
-.hs-l{font-size:.9rem;line-height:1.3;color:var(--mist)}
 @media (max-width:900px){
   .hero-row{grid-template-columns:minmax(0,1fr)}
   .hero-meta{position:static;display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px}
   .vbtn{margin-top:0}
-  .hs-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .hs{flex-direction:column;align-items:flex-start;gap:6px;padding-block:14px}
-  .hs:nth-child(3){padding-left:0;border-left:0}
-  .hs:nth-child(n+3){border-top:1px solid var(--line-n)}
 }
 
 /* ---------- La deuxième soirée ---------- */
@@ -191,7 +173,7 @@ button{font:inherit;color:inherit}
 .tl time{font-family:var(--f-mono);font-size:.9rem;font-variant-numeric:tabular-nums;transition:color .4s}
 .tl .t{font-weight:600;line-height:1.3;min-width:0}
 .tl .t small{display:block;font-weight:400;font-size:.86rem;opacity:.85}
-.tl .tag{justify-self:start;font-family:var(--f-mono);font-size:.6rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;border-radius:999px;border:1px solid var(--line-n);white-space:nowrap;transition:background-color .4s,color .4s,border-color .4s}
+.tl .tag{justify-self:start;font-family:var(--f-mono);font-size:.6rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;border-radius:4px;border:1px solid var(--line-n);white-space:nowrap;transition:background-color .4s,color .4s,border-color .4s}
 .tl .tag.help{color:var(--turf);border-color:rgba(31,181,122,.45)}
 .tl button[aria-pressed="true"]{color:var(--chalk)}
 .tl button[aria-pressed="true"] time{color:var(--turf)}
@@ -225,9 +207,11 @@ button{font:inherit;color:inherit}
 .d-qs legend{padding:0;margin-bottom:10px;font-weight:600;font-size:.98rem;line-height:1.35}
 .d-opts{display:flex;flex-wrap:wrap;gap:8px}
 .d-opts input{position:absolute;opacity:0;width:1px;height:1px}
-.d-opts label{display:inline-flex;align-items:center;min-height:40px;padding:0 15px;border-radius:999px;border:1px solid var(--line-n);font-size:.88rem;font-weight:600;color:var(--mist);cursor:pointer;transition:background-color .25s,color .25s,border-color .25s}
+.d-opts label{display:inline-flex;align-items:center;gap:9px;min-height:40px;padding:0 14px 0 12px;border-radius:4px;border:1px solid var(--line-n);font-size:.88rem;font-weight:600;color:var(--mist);cursor:pointer;transition:background-color .25s,color .25s,border-color .25s}
+.d-opts label::before{content:"";flex:none;width:13px;height:13px;border-radius:50%;border:1.5px solid rgba(237,240,234,.4);transition:border-color .25s,background-color .25s,box-shadow .25s}
 .d-opts label:hover{border-color:var(--mist)}
-.d-opts input:checked+label{background:var(--turf);border-color:var(--turf);color:var(--on-turf)}
+.d-opts input:checked+label{background:rgba(31,181,122,.1);border-color:var(--turf);color:var(--chalk)}
+.d-opts input:checked+label::before{border-color:var(--turf);background:var(--turf);box-shadow:inset 0 0 0 2.5px var(--night)}
 .d-opts input:focus-visible+label{outline:3px solid var(--turf);outline-offset:3px}
 .d-res{display:grid;gap:14px;align-content:center;padding:clamp(22px,2.4vw,30px);background:var(--navy);border-left:1px solid var(--line-n);min-width:0}
 .d-res .label{color:var(--mist)}
@@ -296,10 +280,10 @@ button{font:inherit;color:inherit}
 .demo-bar .who{display:flex;align-items:center;gap:10px;font-weight:700;font-size:.95rem}
 .spark-ico{width:30px;height:30px;border-radius:8px;background:var(--navy);display:grid;place-items:center;flex:none}
 .spark-ico svg{width:15px;height:15px;fill:var(--paper)}
-.tag-ex{font-family:var(--f-mono);font-size:.62rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--turf-ink);background:rgba(31,181,122,.14);padding:6px 10px;border-radius:999px}
+.tag-ex{font-family:var(--f-mono);font-size:.62rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--turf-ink);background:rgba(31,181,122,.14);padding:6px 10px;border-radius:4px}
 .demo-tabs{display:flex;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line-c);overflow-x:auto;scrollbar-width:none}
 .demo-tabs::-webkit-scrollbar{display:none}
-.demo-tabs button{flex:none;border:1px solid var(--line-c);background:transparent;border-radius:999px;padding:8px 14px;font-size:.84rem;font-weight:600;cursor:pointer;transition:background-color .25s,color .25s,border-color .25s}
+.demo-tabs button{flex:none;border:1px solid var(--line-c);background:transparent;border-radius:4px;padding:8px 14px;font-size:.84rem;font-weight:600;cursor:pointer;transition:background-color .25s,color .25s,border-color .25s}
 .demo-tabs button:hover{border-color:var(--ink)}
 .demo-tabs button[aria-selected="true"]{background:var(--ink);color:var(--chalk);border-color:var(--ink)}
 .demo-body{display:grid;gap:16px;align-content:start;padding:22px 20px 70px;min-height:500px}
@@ -313,7 +297,7 @@ button{font:inherit;color:inherit}
 .doc-text li{position:relative;padding-left:18px}
 .doc-text li::before{content:"";position:absolute;left:0;top:.72em;width:8px;height:2px;background:var(--turf)}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;padding:6px 11px;border-radius:999px;border:1px solid var(--line-c)}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;padding:6px 11px;border-radius:4px;border:1px solid var(--line-c)}
 .chip svg{width:13px;height:13px}
 .chip.ok{background:rgba(31,181,122,.14);border-color:transparent;color:var(--turf-ink)}
 .chip.pop{animation:pop .45s var(--ease) both}
@@ -326,27 +310,11 @@ button{font:inherit;color:inherit}
 @keyframes dot{0%,100%{transform:translateY(0);opacity:.4}50%{transform:translateY(-4px);opacity:1}}
 .fade-in{animation:fadein .5s ease both}
 @keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.replay{position:absolute;right:14px;bottom:14px;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-c);background:var(--paper);border-radius:999px;padding:8px 14px;font-size:.8rem;font-weight:600;cursor:pointer}
+.replay{position:absolute;right:14px;bottom:14px;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-c);background:var(--paper);border-radius:4px;padding:8px 14px;font-size:.8rem;font-weight:600;cursor:pointer}
 .replay:hover{border-color:var(--ink)}
 .replay svg{width:14px;height:14px}
 @media (max-width:1000px){.atelier-grid{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:560px){.demo-body{min-height:560px;padding-inline:14px}}
-
-/* ---------- Tous les terrains ---------- */
-.terrains{background:var(--night);padding-block:clamp(80px,9vw,130px);overflow:hidden}
-.t-head{margin-bottom:clamp(34px,4vw,56px)}
-.t-head .lead{color:var(--fog)}
-.t-marquee{overflow:hidden}
-.t-track{display:flex;width:max-content;animation:tmarq 70s linear infinite}
-.t-marquee:hover .t-track,.is-paused .t-track{animation-play-state:paused}
-.t-set{display:flex;gap:16px;padding-right:16px}
-@keyframes tmarq{to{transform:translateX(-50%)}}
-.t-card{position:relative;flex:none;width:clamp(210px,19vw,290px);height:clamp(290px,26vw,400px);overflow:hidden;border-radius:4px;background:var(--night-2)}
-.t-card img{width:100%;height:100%;object-fit:cover;filter:grayscale(.92) brightness(.7) contrast(1.08);transition:filter .7s ease,transform 1.1s var(--ease)}
-.t-card:hover img{filter:none;transform:scale(1.05)}
-.t-card figcaption{position:absolute;left:0;right:0;bottom:0;display:grid;gap:8px;padding:20px 18px;background:linear-gradient(180deg,transparent,rgba(7,17,31,.92))}
-.t-card figcaption .label{color:var(--turf)}
-.t-card strong{font-family:var(--f-display);font-weight:900;font-stretch:62%;text-transform:uppercase;font-size:clamp(2rem,2.6vw,2.8rem);line-height:.86}
 
 /* ---------- Partenaires ---------- */
 .partners{position:relative;overflow:hidden;isolation:isolate;background:var(--night)}
@@ -354,7 +322,7 @@ button{font:inherit;color:inherit}
 .p-media video{width:100%;height:100%;object-fit:cover;opacity:.6}
 .p-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,var(--night) 0%,rgba(7,17,31,.5) 26%,rgba(7,17,31,.62) 66%,var(--night) 100%)}
 .chips-n{display:flex;flex-wrap:wrap;gap:8px}
-.chips-n li{font-size:.86rem;font-weight:600;padding:8px 14px;border-radius:999px;border:1px solid var(--line-n);background:rgba(7,17,31,.45)}
+.chips-n li{font-size:.86rem;font-weight:600;padding:8px 14px;border-radius:4px;border:1px solid var(--line-n);background:rgba(7,17,31,.45)}
 .pillars{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,1.6vw,22px)}
 .pillar.key{border-color:rgba(31,181,122,.55);background:rgba(10,52,40,.62)}
 .pillar{display:grid;gap:16px;align-content:start;padding:clamp(24px,2.6vw,36px);border:1px solid var(--line-n);border-radius:6px;background:rgba(7,17,31,.6);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);min-width:0}
@@ -395,9 +363,9 @@ button{font:inherit;color:inherit}
 .contact-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(40px,6vw,100px);align-items:start}
 .c-text{display:grid;gap:22px;justify-items:start;min-width:0}
 .c-text .lead{color:var(--ink-2)}
-.mailbox{display:flex;flex-wrap:wrap;align-items:center;gap:12px;width:100%;padding:10px 10px 10px 22px;border-radius:999px;background:var(--paper);border:1.5px solid var(--ink)}
+.mailbox{display:flex;flex-wrap:wrap;align-items:center;gap:12px;width:100%;padding:10px 10px 10px 22px;border-radius:6px;background:var(--paper);border:1.5px solid var(--ink)}
 .mailbox code{flex:1 1 200px;min-width:0;font-family:var(--f-body);font-weight:700;font-size:clamp(1.05rem,1.6vw,1.3rem);color:var(--ink);word-break:break-all;-webkit-user-select:all;user-select:all}
-.copy{font:600 .88rem/1 var(--f-body);padding:12px 16px;border-radius:999px;border:1.5px solid var(--ink);background:var(--ink);color:var(--chalk);cursor:pointer;transition:background-color .25s,border-color .25s,color .25s}
+.copy{font:600 .88rem/1 var(--f-body);padding:12px 16px;border-radius:4px;border:1.5px solid var(--ink);background:var(--ink);color:var(--chalk);cursor:pointer;transition:background-color .25s,border-color .25s,color .25s}
 .copy:hover{background:var(--navy);border-color:var(--navy)}
 .copy[data-done]{background:var(--turf);border-color:var(--turf);color:var(--on-turf)}
 .mail-link{display:inline-flex;align-items:center;gap:10px;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--turf);padding-bottom:2px}
@@ -409,8 +377,6 @@ button{font:inherit;color:inherit}
 .person b{display:block;font-size:1.05rem}
 .person span span{color:var(--ink-2);font-size:.92rem}
 .sheet{background:var(--paper);border-radius:6px;border:1px solid var(--line-c);overflow:hidden;box-shadow:0 50px 90px -60px rgba(10,21,37,.55);min-width:0}
-.sheet-pitch{display:block;width:100%;height:auto;background:var(--turf)}
-.sheet-pitch *{fill:none;stroke:rgba(255,255,255,.85);stroke-width:2}
 .sheet-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line-c);background:var(--chalk-2)}
 .sheet pre{margin:0;padding:22px 22px 26px;font-family:var(--f-mono);font-size:.8rem;line-height:1.95;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--ink)}
 .sheet pre i{font-style:normal;color:var(--turf-ink);background:rgba(31,181,122,.13);padding:1px 4px;border-radius:3px}
@@ -426,8 +392,7 @@ button{font:inherit;color:inherit}
 .foot-col .label{color:var(--chalk);margin-bottom:6px}
 .foot-col a{text-decoration:none;justify-self:start}
 .foot-col a:hover{color:var(--chalk)}
-.foot-word{display:block;width:100%;height:auto;margin-top:clamp(44px,6vw,84px);fill:var(--chalk)}
-.foot-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:12px 28px;padding-top:22px;padding-bottom:calc(26px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line-n);font-size:.85rem}
+.foot-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:12px 28px;margin-top:clamp(48px,6vw,84px);padding-top:22px;padding-bottom:calc(26px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line-n);font-size:.85rem}
 .credits summary{cursor:pointer;color:var(--chalk)}
 .credits p{max-width:90ch;margin-top:10px;line-height:1.7}
 .credits a{color:var(--mist)}
@@ -435,8 +400,7 @@ button{font:inherit;color:inherit}
 
 /* ---------- Mouvement réduit ---------- */
 @media (prefers-reduced-motion:reduce){
-  .grain,.dots i,.caret::after,.t-track{animation:none}
-  .t-marquee{overflow-x:auto}
+  .dots i,.caret::after{animation:none}
   *,*::before,*::after{transition-duration:.01ms!important}
 }
 </style>
@@ -452,9 +416,6 @@ button{font:inherit;color:inherit}
       <path class="lg-spark" d="M73.73 27.07 Q73.73 32.67 79.33 32.67 Q73.73 32.67 73.73 38.27 Q73.73 32.67 68.13 32.67 Q73.73 32.67 73.73 27.07Z"/>
       <path class="lg-word" d="M190.482 37.244V47.93H168.174V59.474H184.866V69.848H168.174V92.0H154.836V37.244Z M235.588 82.328H215.152L211.876 92.0H197.914L217.726 37.244H233.17L252.982 92.0H238.864ZM232.156 72.032 225.37 51.986 218.662 72.032Z M276.326 37.244V92.0H262.988V37.244Z M317.922 92.0 306.534 71.33H303.336V92.0H289.998V37.244H312.384Q318.858 37.244 323.421 39.506Q327.984 41.768 330.246 45.707Q332.508 49.646 332.508 54.482Q332.508 59.942 329.427 64.232Q326.346 68.522 320.34 70.316L332.976 92.0ZM303.336 61.892H311.604Q315.27 61.892 317.103 60.098Q318.936 58.304 318.936 55.028Q318.936 51.908 317.103 50.114Q315.27 48.32 311.604 48.32H303.336Z"/>
     </symbol>
-    <symbol id="fair-word" viewBox="154.3 36.7 179.2 55.8">
-      <path d="M190.482 37.244V47.93H168.174V59.474H184.866V69.848H168.174V92.0H154.836V37.244Z M235.588 82.328H215.152L211.876 92.0H197.914L217.726 37.244H233.17L252.982 92.0H238.864ZM232.156 72.032 225.37 51.986 218.662 72.032Z M276.326 37.244V92.0H262.988V37.244Z M317.922 92.0 306.534 71.33H303.336V92.0H289.998V37.244H312.384Q318.858 37.244 323.421 39.506Q327.984 41.768 330.246 45.707Q332.508 49.646 332.508 54.482Q332.508 59.942 329.427 64.232Q326.346 68.522 320.34 70.316L332.976 92.0ZM303.336 61.892H311.604Q315.27 61.892 317.103 60.098Q318.936 58.304 318.936 55.028Q318.936 51.908 317.103 50.114Q315.27 48.32 311.604 48.32H303.336Z"/>
-    </symbol>
     <symbol id="spark" viewBox="0 0 24 24"><path d="M12 1.5Q12 12 22.5 12Q12 12 12 22.5Q12 12 1.5 12Q12 12 12 1.5Z"/></symbol>
     <symbol id="check" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></symbol>
     <symbol id="arr" viewBox="0 0 24 24"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></symbol>
@@ -465,7 +426,6 @@ button{font:inherit;color:inherit}
 </svg>
 
 <a class="skip" href="#contenu">Aller au contenu</a>
-<div class="grain" aria-hidden="true"></div>
 <div class="progress" aria-hidden="true"><i></i></div>
 
 <header class="hdr" id="hdr">
@@ -492,7 +452,7 @@ button{font:inherit;color:inherit}
     <a href="#contact">Contact <small>Un mail suffit</small></a>
   </nav>
   <div class="wrap menu-foot">
-    <a class="btn btn-turf" href="#contact"><span>Demander un atelier</span><span class="btn-ar" aria-hidden="true"><svg class="ico-arr"><use href="#arr"/></svg><svg class="ico-arr"><use href="#arr"/></svg></span></a>
+    <a class="btn btn-turf" href="#contact"><span>Demander un atelier</span><svg class="btn-ar ico-arr" aria-hidden="true"><use href="#arr"/></svg></a>
     <span class="label">Gratuit pour les clubs · Partout en France</span>
   </div>
 </div>
@@ -507,17 +467,13 @@ button{font:inherit;color:inherit}
     <div class="hero-shade" aria-hidden="true"></div>
 
     <div class="wrap hero-in">
-      <p class="label eyebrow"><span class="sq" aria-hidden="true"></span><span class="sr-only">Former les Associations à l'IA Responsable</span><span class="scr" aria-hidden="true">Former les Associations à l'IA Responsable</span></p>
-      <h1 class="hero-title" id="hero-title">
-        <span class="ln ln-sm"><span>Moins de paperasse.</span></span>
-        <span class="ln"><span>Plus de</span></span>
-        <span class="ln ln-g"><span>terrain.</span></span>
-      </h1>
+      <p class="label eyebrow">Notre mission</p>
+      <h1 class="hero-title" id="hero-title">Former les associations sportives à&nbsp;l'IA responsable.</h1>
       <div class="hero-row">
-        <p class="lead">FAIR forme gratuitement les dirigeants et bénévoles de clubs à utiliser l'intelligence artificielle de façon responsable&nbsp;: sur vos vrais dossiers, avec des outils gratuits, à votre rythme.</p>
+        <p class="lead">Des ateliers gratuits pour les dirigeants et bénévoles de clubs, sur vos vrais dossiers et avec des outils sans abonnement. Vous gardez la main sur ce que l'IA écrit et sur les données de vos adhérents.</p>
         <div class="actions">
-          <a class="btn btn-turf" href="#contact" data-magnetic><span>Demander un atelier</span><span class="btn-ar" aria-hidden="true"><svg class="ico-arr"><use href="#arr"/></svg><svg class="ico-arr"><use href="#arr"/></svg></span></a>
-          <a class="btn btn-ghost" href="#partenaires" data-magnetic>Vous êtes une fédération&nbsp;?</a>
+          <a class="btn btn-turf" href="#contact"><span>Demander un atelier</span><svg class="btn-ar ico-arr" aria-hidden="true"><use href="#arr"/></svg></a>
+          <a class="btn btn-ghost" href="#partenaires">Vous êtes une fédération&nbsp;?</a>
         </div>
       </div>
       <ul class="hero-meta label" aria-label="En bref">
@@ -527,22 +483,13 @@ button{font:inherit;color:inherit}
         <li><button class="vbtn" id="vbtn" type="button" aria-pressed="false"><svg class="i-pause" aria-hidden="true"><use href="#pause"/></svg><svg class="i-play" aria-hidden="true"><use href="#play"/></svg><span class="vb-l">Pause</span></button></li>
       </ul>
     </div>
-
-    <div class="hero-stats">
-      <div class="wrap hs-grid">
-        <p class="hs"><span class="hs-n">0&nbsp;€</span><span class="hs-l">pour les clubs, ateliers et capsules compris</span></p>
-        <p class="hs"><span class="hs-n">3</span><span class="hs-l">thèmes, plus quatre modules courts à la carte</span></p>
-        <p class="hs"><span class="hs-n">3&nbsp;h</span><span class="hs-l">d'atelier sur un document réel du club</span></p>
-        <p class="hs"><span class="hs-n">J+30</span><span class="hs-l">un suivi pour mesurer le temps gagné</span></p>
-      </div>
-    </div>
   </section>
 
   <!-- LA DEUXIÈME SOIRÉE -->
   <section class="sec soiree" id="soiree" aria-labelledby="soiree-title">
     <div class="wrap soiree-grid">
       <div class="s-head" data-rise>
-        <p class="label"><span class="sq" aria-hidden="true"></span>Mardi soir, chez un dirigeant bénévole</p>
+        <p class="label">Mardi soir, chez un dirigeant bénévole</p>
         <h2 class="h2" id="soiree-title">Après l'entraînement, la deuxième soirée commence.</h2>
         <p class="lead">Mails, dossiers, affiches, comptes rendus&nbsp;: dans la plupart des clubs, ce travail repose sur deux ou trois bénévoles. C'est ce temps-là que FAIR vous aide à récupérer.</p>
       </div>
@@ -570,7 +517,7 @@ button{font:inherit;color:inherit}
   <section class="sec diag" id="diagnostic" aria-labelledby="diag-title">
     <div class="wrap diag-grid">
       <div class="d-head" data-rise>
-        <p class="label"><span class="sq" aria-hidden="true"></span>Auto-diagnostic · 1 minute</p>
+        <p class="label">Auto-diagnostic · 1 minute</p>
         <h2 class="h2" id="diag-title">Combien d'heures votre club peut récupérer&nbsp;?</h2>
         <p class="lead">Quatre questions sur votre quotidien. On vous dit par où commencer, et le résultat se glisse directement dans votre demande d'atelier.</p>
       </div>
@@ -625,7 +572,7 @@ button{font:inherit;color:inherit}
     <div class="wrap">
       <div class="sec-head" data-rise>
         <div class="lft">
-          <p class="label"><span class="sq" aria-hidden="true"></span>Parcours club</p>
+          <p class="label">Parcours club</p>
           <h2 class="h2" id="clubs-title">Trois thèmes, vos vrais dossiers.</h2>
         </div>
         <p class="lead">Suivez le parcours complet ou commencez par le thème qui vous presse le plus. Chaque atelier part d'un document dont votre club a réellement besoin.</p>
@@ -654,7 +601,7 @@ button{font:inherit;color:inherit}
 
       <div class="mods" data-rise>
         <div class="mods-head">
-          <p class="label"><span class="sq" aria-hidden="true"></span>Modules courts, à ajouter au parcours</p>
+          <p class="label">Modules courts, à ajouter au parcours</p>
           <p>À la carte, selon ce qui pèse le plus dans votre club.</p>
         </div>
         <ul class="mods-grid">
@@ -689,7 +636,7 @@ button{font:inherit;color:inherit}
   <section class="sec atelier" id="atelier" aria-labelledby="atelier-title">
     <div class="wrap atelier-grid">
       <div class="atelier-text" data-rise>
-        <p class="label"><span class="sq" aria-hidden="true"></span>Concrètement</p>
+        <p class="label">Concrètement</p>
         <h2 class="h2" id="atelier-title">Ce que votre club garde après l'atelier.</h2>
         <ul class="kit">
           <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Une fiche de présentation du club, à réutiliser dans chaque demande à l'IA</span></li>
@@ -697,7 +644,7 @@ button{font:inherit;color:inherit}
           <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Un assistant IA paramétré pour votre club</span></li>
           <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Une charte IA du club, prête à faire voter en assemblée générale</span></li>
           <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Un référent IA formé, qui transmet au reste du bureau</span></li>
-          <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Une attestation pour chaque bénévole formé, et le label «&nbsp;Club IA responsable&nbsp;» à la fin du parcours</span></li>
+          <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Une attestation pour chaque bénévole formé, et le <a href="label.html">label «&nbsp;Club IA responsable&nbsp;»</a> à la fin du parcours</span></li>
         </ul>
         <p class="note">Toutes les demandes sont lues, d'où qu'elles viennent en France. Les interventions sont programmées selon les disponibilités et les besoins de chaque club.</p>
       </div>
@@ -727,45 +674,6 @@ button{font:inherit;color:inherit}
     </div>
   </section>
 
-  <!-- TOUS LES TERRAINS -->
-  <section class="terrains" id="terrains" aria-labelledby="terrains-title">
-    <div class="wrap sec-head t-head" data-rise>
-      <div class="lft">
-        <p class="label"><span class="sq" aria-hidden="true"></span>Tous les sports</p>
-        <h2 class="h2" id="terrains-title">Tous les terrains.</h2>
-      </div>
-      <p class="lead">Gazon, tatami ou terre battue&nbsp;: d'un club à l'autre, les dossiers se ressemblent. Votre sport n'est pas dans la liste&nbsp;? Il est le bienvenu.</p>
-    </div>
-    <div class="t-marquee">
-      <div class="t-track">
-        <div class="t-set">
-          <figure class="t-card"><img src="assets/img/terrain-football.jpg" alt="But de football éclairé par les projecteurs, de nuit" width="1000" height="1250" loading="lazy"><figcaption><span class="label">Football</span><strong>Gazon</strong></figcaption></figure>
-          <figure class="t-card"><img src="assets/img/terrain-judo.jpg" alt="Deux judokas pendant une projection" width="1400" height="1152" loading="lazy"><figcaption><span class="label">Judo</span><strong>Tatami</strong></figcaption></figure>
-          <figure class="t-card"><img src="assets/img/terrain-basket.jpg" alt="Deux ballons de basket posés sur un parquet" width="1400" height="934" loading="lazy"><figcaption><span class="label">Basket</span><strong>Parquet</strong></figcaption></figure>
-          <figure class="t-card"><img src="assets/img/terrain-tennis.jpg" alt="Balle de tennis sur un court en terre battue" width="1000" height="1500" loading="lazy"><figcaption><span class="label">Tennis</span><strong>Terre battue</strong></figcaption></figure>
-          <figure class="t-card"><img src="assets/img/terrain-petanque.jpg" alt="Joueurs de pétanque et boules sur le sable" width="1400" height="934" loading="lazy"><figcaption><span class="label">Pétanque</span><strong>Sable</strong></figcaption></figure>
-          <figure class="t-card"><img src="assets/img/terrain-athletisme.jpg" alt="Couloirs numérotés d'une piste d'athlétisme" width="1400" height="934" loading="lazy"><figcaption><span class="label">Athlétisme</span><strong>Tartan</strong></figcaption></figure>
-          <figure class="t-card"><img src="assets/img/terrain-natation.jpg" alt="Ligne d'eau rouge dans un bassin" width="1400" height="788" loading="lazy"><figcaption><span class="label">Natation</span><strong>Bassin</strong></figcaption></figure>
-          <figure class="t-card"><img src="assets/img/terrain-rugby.jpg" alt="Ballon de rugby sur la pelouse, devant les poteaux" width="1400" height="939" loading="lazy"><figcaption><span class="label">Rugby</span><strong>Pelouse</strong></figcaption></figure>
-          <figure class="t-card"><img src="assets/img/terrain-boxe.jpg" alt="Sacs de frappe suspendus dans une salle de boxe" width="1400" height="934" loading="lazy"><figcaption><span class="label">Boxe</span><strong>Salle</strong></figcaption></figure>
-          <figure class="t-card"><img src="assets/img/terrain-handball.jpg" alt="Handballeur en suspension dans un gymnase" width="1000" height="1487" loading="lazy"><figcaption><span class="label">Handball</span><strong>Gymnase</strong></figcaption></figure>
-        </div>
-        <div class="t-set" aria-hidden="true">
-          <figure class="t-card"><img src="assets/img/terrain-football.jpg" alt="" width="1000" height="1250" loading="lazy"><figcaption><span class="label">Football</span><strong>Gazon</strong></figcaption></figure>
-          <figure class="t-card"><img src="assets/img/terrain-judo.jpg" alt="" width="1400" height="1152" loading="lazy"><figcaption><span class="label">Judo</span><strong>Tatami</strong></figcaption></figure>
-          <figure class="t-card"><img src="assets/img/terrain-basket.jpg" alt="" width="1400" height="934" loading="lazy"><figcaption><span class="label">Basket</span><strong>Parquet</strong></figcaption></figure>
-          <figure class="t-card"><img src="assets/img/terrain-tennis.jpg" alt="" width="1000" height="1500" loading="lazy"><figcaption><span class="label">Tennis</span><strong>Terre battue</strong></figcaption></figure>
-          <figure class="t-card"><img src="assets/img/terrain-petanque.jpg" alt="" width="1400" height="934" loading="lazy"><figcaption><span class="label">Pétanque</span><strong>Sable</strong></figcaption></figure>
-          <figure class="t-card"><img src="assets/img/terrain-athletisme.jpg" alt="" width="1400" height="934" loading="lazy"><figcaption><span class="label">Athlétisme</span><strong>Tartan</strong></figcaption></figure>
-          <figure class="t-card"><img src="assets/img/terrain-natation.jpg" alt="" width="1400" height="788" loading="lazy"><figcaption><span class="label">Natation</span><strong>Bassin</strong></figcaption></figure>
-          <figure class="t-card"><img src="assets/img/terrain-rugby.jpg" alt="" width="1400" height="939" loading="lazy"><figcaption><span class="label">Rugby</span><strong>Pelouse</strong></figcaption></figure>
-          <figure class="t-card"><img src="assets/img/terrain-boxe.jpg" alt="" width="1400" height="934" loading="lazy"><figcaption><span class="label">Boxe</span><strong>Salle</strong></figcaption></figure>
-          <figure class="t-card"><img src="assets/img/terrain-handball.jpg" alt="" width="1000" height="1487" loading="lazy"><figcaption><span class="label">Handball</span><strong>Gymnase</strong></figcaption></figure>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- FÉDÉRATIONS ET PARTENAIRES -->
   <section class="sec partners" id="partenaires" aria-labelledby="part-title">
     <div class="p-media" aria-hidden="true"><video muted loop playsinline preload="none" poster="assets/img/poster-aerien.jpg" data-src="assets/video/aerien.mp4"></video></div>
@@ -773,7 +681,7 @@ button{font:inherit;color:inherit}
     <div class="wrap">
       <div class="sec-head" data-rise>
         <div class="lft">
-          <p class="label"><span class="sq" aria-hidden="true"></span>Fédérations, comités, collectivités</p>
+          <p class="label">Fédérations, comités, collectivités</p>
           <h2 class="h2" id="part-title">Un programme prêt à déployer auprès de vos clubs.</h2>
         </div>
         <div class="rgt">
@@ -795,7 +703,7 @@ button{font:inherit;color:inherit}
         <article class="pillar" data-rise>
           <p class="label">Pour vous</p>
           <h3 class="h3">Des résultats mesurés</h3>
-          <ul><li>Diagnostic numérique de chaque club, avant et après</li><li>Temps passé sur les tâches mesuré avant et après</li><li>Suivi à un mois et bilan transmis</li><li>Le label «&nbsp;Club IA responsable&nbsp;» pour les clubs qui terminent le parcours</li></ul>
+          <ul><li>Diagnostic numérique de chaque club, avant et après</li><li>Temps passé sur les tâches mesuré avant et après</li><li>Suivi à un mois et bilan transmis</li><li>Le <a href="label.html">label «&nbsp;Club IA responsable&nbsp;»</a> pour les clubs qui terminent le parcours</li></ul>
         </article>
         <article class="pillar" data-rise>
           <p class="label">Pour tous</p>
@@ -805,7 +713,7 @@ button{font:inherit;color:inherit}
       </div>
       <div class="p-foot">
         <p>La démarche s'appuie sur un travail de recherche universitaire en management du sport, mené à l'Université de Lille.</p>
-        <a class="btn btn-turf" href="#contact" data-magnetic><span>Parler d'un programme</span><span class="btn-ar" aria-hidden="true"><svg class="ico-arr"><use href="#arr"/></svg><svg class="ico-arr"><use href="#arr"/></svg></span></a>
+        <a class="btn btn-turf" href="#contact"><span>Parler d'un programme</span><svg class="btn-ar ico-arr" aria-hidden="true"><use href="#arr"/></svg></a>
       </div>
     </div>
   </section>
@@ -816,7 +724,7 @@ button{font:inherit;color:inherit}
       <div class="ap-head" data-rise>
         <div class="bigR" aria-hidden="true"><span class="r-out">R</span><span class="r-fill">R</span></div>
         <div class="lft">
-          <p class="label"><span class="sq" aria-hidden="true"></span>Notre approche</p>
+          <p class="label">Notre approche</p>
           <h2 class="h2" id="ap-title">Une IA responsable, concrètement.</h2>
         </div>
         <p class="lead">Le «&nbsp;R&nbsp;» de FAIR n'est pas décoratif. Six règles guident chaque atelier et chaque capsule.</p>
@@ -836,7 +744,7 @@ button{font:inherit;color:inherit}
   <section class="chalk sec contact" id="contact" aria-labelledby="contact-title">
     <div class="wrap contact-grid">
       <div class="c-text" data-rise>
-        <p class="label"><span class="sq" aria-hidden="true"></span>Contact</p>
+        <p class="label">Contact</p>
         <h2 class="h2" id="contact-title">Un mail suffit.</h2>
         <p class="lead">Club, fédération, collectivité ou simple curiosité&nbsp;: nous répondons à chaque message.</p>
         <div class="mailbox">
@@ -851,7 +759,6 @@ button{font:inherit;color:inherit}
         </div>
       </div>
       <div class="sheet" data-rise>
-        <svg class="sheet-pitch" viewBox="0 0 600 120" aria-hidden="true" preserveAspectRatio="xMidYMid slice"><rect x="12" y="12" width="576" height="96"/><path d="M300 12V108"/><circle cx="300" cy="60" r="26"/><rect x="12" y="34" width="54" height="52"/><rect x="534" y="34" width="54" height="52"/></svg>
         <div class="sheet-head"><span class="label">Feuille de match · Modèle de message pour les clubs</span><button class="copy" type="button" id="copy-tpl" data-target="tpl">Copier le modèle</button></div>
 <pre id="tpl">Bonjour,
 
@@ -876,15 +783,14 @@ Merci et à bientôt,
       </div>
       <nav class="foot-col" aria-label="Clubs"><p class="label">Clubs</p><a href="#diagnostic">L'auto-diagnostic</a><a href="#clubs">Le parcours</a><a href="#atelier">L'atelier</a><a href="formation.html">La formation en ligne</a><a href="#contact">Demander un atelier</a></nav>
       <nav class="foot-col" aria-label="Fédérations"><p class="label">Fédérations</p><a href="#partenaires">Le programme</a><a href="#approche">Notre approche</a><a href="#contact">Nous contacter</a></nav>
-      <nav class="foot-col" aria-label="L'association"><p class="label">L'association</p><a href="#soiree">Le constat</a><a href="#contact">Contact</a></nav>
+      <nav class="foot-col" aria-label="L'association"><p class="label">L'association</p><a href="#soiree">Le constat</a><a href="label.html">Le label</a><a href="#contact">Contact</a></nav>
     </div>
-    <svg class="foot-word" viewBox="154.3 36.7 179.2 55.8" aria-hidden="true"><use href="#fair-word"/></svg>
     <div class="foot-bottom">
       <span>Association loi 1901 en cours de création</span>
       <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
       <details class="credits">
         <summary>Crédits photos et vidéos</summary>
-        <p>Images et vidéos issues de <a href="https://www.pexels.com" rel="noopener" target="_blank">Pexels</a>, sous licence Pexels (utilisation libre)&nbsp;: Pressmaster, Hugo Butery, Gokuldham Nar, just a hobby, nn.TON.nn, cottonbro studio, Polina Tankilevitch, Franco Monsalvo, Omar Ramadan, juan idier Alba Enriquez, Reinis Brūzītis, Daniel Neves Cotta, Bohdan Hyrovych, SHVETS production, Pablo Hsm, Tima Miroshnichenko, Bechir Lachiheb.</p>
+        <p>Images et vidéos issues de <a href="https://www.pexels.com" rel="noopener" target="_blank">Pexels</a>, sous licence Pexels (utilisation libre)&nbsp;: Pressmaster, Hugo Butery, Gokuldham Nar, just a hobby, nn.TON.nn, cottonbro studio, Polina Tankilevitch, Franco Monsalvo, Omar Ramadan.</p>
       </details>
     </div>
   </div>
@@ -981,35 +887,6 @@ Merci et à bientôt,
   }), { rootMargin: '200px 0px' }) : null;
   vids.forEach(v => { v.muted = true; if (vio) vio.observe(v); else if (stepOk(v)) playVid(v); });
 
-  /* Images du bandeau « Tous les terrains » : chargées avant d'entrer à l'écran */
-  if (hasIO) {
-    const gio = new IntersectionObserver(es => {
-      if (!es.some(e => e.isIntersecting)) return;
-      gio.disconnect();
-      $$('.t-card img').forEach(img => { img.loading = 'eager'; });
-    }, { rootMargin: '100% 0px' });
-    gio.observe($('#terrains'));
-  }
-
-  /* ---------- Texte qui se décode ---------- */
-  function scramble(el, dur) {
-    const fin = el.textContent, g = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    let t0 = null;
-    const step = now => {
-      if (t0 === null) t0 = now;
-      const p = Math.min(1, (now - t0) / dur), n = Math.floor(fin.length * p);
-      let s = fin.slice(0, n);
-      for (let i = n; i < fin.length; i++) s += /\s/.test(fin[i]) ? fin[i] : g[(Math.random() * g.length) | 0];
-      el.textContent = s;
-      if (p < 1) requestAnimationFrame(step); else el.textContent = fin;
-    };
-    requestAnimationFrame(step);
-  }
-  if (!reduce) {
-    const scr = $('.scr');
-    if (scr) setTimeout(() => scramble(scr, 1100), 300);
-  }
-
   /* ---------- La deuxième soirée : étapes automatiques ou au clic ---------- */
   const STEP_MS = 3200;
   const sBtns = $$('.tl button'), sMedia = $$('#soiree .sm');
@@ -1062,7 +939,7 @@ Merci et à bientôt,
     new IntersectionObserver(es => es.forEach(en => { sVis = en.isIntersecting; if (sVis) startAuto(); else stopAuto(); }), { threshold: 0.35 }).observe($('#soiree'));
   }
 
-  /* ---------- Pause globale (vidéos, bandeau, étapes) ---------- */
+  /* ---------- Pause globale (vidéos, étapes) ---------- */
   const vbtn = $('#vbtn');
   function setPaused(p) {
     paused = p;
@@ -1298,63 +1175,41 @@ Merci et à bientôt,
     });
   });
 
-  /* ---------- Curseur et image qui suit (souris uniquement) ---------- */
+  /* ---------- Image qui suit la souris sur les thèmes ---------- */
   if (fine && !reduce) {
-    const ring = mk('div', 'cursor'), fol = mk('div', 'follow'), fimg = mk('img');
-    ring.setAttribute('aria-hidden', 'true');
+    const fol = mk('div', 'follow'), fimg = mk('img');
     fol.setAttribute('aria-hidden', 'true');
     fimg.alt = '';
     fol.appendChild(fimg);
-    d.body.append(ring, fol);
-    let mx = -200, my = -200, rx = mx, ry = my, fx = mx, fy = my, raf = 0;
+    d.body.appendChild(fol);
+    let mx = -200, my = -200, fx = mx, fy = my, raf = 0;
     const loop = () => {
       raf = 0;
-      rx += (mx - rx) * 0.24; ry += (my - ry) * 0.24;
       fx += (mx - fx) * 0.12; fy += (my - fy) * 0.12;
-      ring.style.transform = `translate3d(${rx}px,${ry}px,0)`;
       const rot = Math.max(-10, Math.min(10, (mx - fx) * 0.06));
       fol.style.transform = `translate3d(${fx}px,${fy}px,0) translate(-50%,-50%) rotate(${rot}deg)`;
-      if (Math.abs(mx - rx) + Math.abs(my - ry) + Math.abs(mx - fx) + Math.abs(my - fy) > 0.6) raf = requestAnimationFrame(loop);
+      if (Math.abs(mx - fx) + Math.abs(my - fy) > 0.6) raf = requestAnimationFrame(loop);
     };
     w.addEventListener('mousemove', e => {
       mx = e.clientX; my = e.clientY;
-      ring.classList.add('is-vis');
       if (!raf) raf = requestAnimationFrame(loop);
     }, { passive: true });
-    root.addEventListener('mouseleave', () => ring.classList.remove('is-vis'));
-    d.addEventListener('mouseover', e => {
-      ring.classList.toggle('is-link', !!e.target.closest('a, button, summary, .t-card'));
-    });
     $$('.theme[data-img]').forEach(li => {
       li.addEventListener('mouseenter', () => { fimg.src = li.dataset.img; fol.classList.add('is-on'); });
       li.addEventListener('mouseleave', () => fol.classList.remove('is-on'));
     });
-    if (G) {
-      $$('[data-magnetic]').forEach(b => {
-        const xTo = gsap.quickTo(b, 'x', { duration: 0.6, ease: 'power3' });
-        const yTo = gsap.quickTo(b, 'y', { duration: 0.6, ease: 'power3' });
-        b.addEventListener('mousemove', e => {
-          const r = b.getBoundingClientRect();
-          xTo((e.clientX - r.left - r.width / 2) * 0.25);
-          yTo((e.clientY - r.top - r.height / 2) * 0.35);
-        });
-        b.addEventListener('mouseleave', () => { xTo(0); yTo(0); });
-      });
-    }
   }
 
   /* ---------- Animations au défilement ---------- */
   if (!G) return;
   gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
-    gsap.from('.hero-title .ln > span', { yPercent: 38, skewY: 4, duration: 1.4, ease: 'expo.out', stagger: 0.09, delay: 0.1 });
-    gsap.from('.hero-row, .hero-meta, .hero-stats', { y: 34, duration: 1.3, ease: 'expo.out', stagger: 0.1, delay: 0.4 });
+    gsap.from('.hero-title, .hero-row, .hero-meta', { y: 34, duration: 1.3, ease: 'expo.out', stagger: 0.1, delay: 0.2 });
     const heroST = { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true };
     gsap.to('.hero-media', { scale: 1.14, yPercent: 9, ease: 'none', scrollTrigger: heroST });
     gsap.to('.hero-in', { yPercent: -14, ease: 'none', scrollTrigger: { ...heroST } });
     $$('[data-rise]').forEach(el => gsap.from(el, { y: 60, duration: 1.2, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 92%', once: true } }));
     gsap.fromTo('.steps-line i', { scaleX: 0 }, { scaleX: 1, ease: 'none', scrollTrigger: { trigger: '.steps', start: 'top 85%', end: 'bottom 55%', scrub: true } });
     gsap.fromTo('.r-fill', { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', scrollTrigger: { trigger: '.ap-head', start: 'top 85%', end: 'bottom 40%', scrub: true } });
-    gsap.fromTo('.foot-word', { yPercent: 28 }, { yPercent: 0, ease: 'none', scrollTrigger: { trigger: '.foot', start: 'top bottom', end: 'bottom bottom', scrub: true } });
   });
   w.addEventListener('load', () => ScrollTrigger.refresh());
   if (d.fonts && d.fonts.ready) d.fonts.ready.then(() => ScrollTrigger.refresh());

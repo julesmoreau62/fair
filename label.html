@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Le label « Club IA responsable » · FAIR</title>
+<meta name="description" content="Le label « Club IA responsable » reconnaît les clubs sportifs formés par FAIR à un usage responsable de l'IA : critères, règlement d'usage et liste des clubs labellisés.">
+<link rel="canonical" href="https://fair-asso.fr/label.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FAIR">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://fair-asso.fr/label.html">
+<meta property="og:title" content="Le label « Club IA responsable » · FAIR">
+<meta property="og:description" content="Le label « Club IA responsable » reconnaît les clubs sportifs formés par FAIR à un usage responsable de l'IA : critères, règlement d'usage et liste des clubs labellisés.">
+<meta property="og:image" content="https://fair-asso.fr/assets/img/poster-hero.jpg">
+<meta property="og:image:alt" content="Un joueur frappe un ballon sur un terrain synthétique, de nuit">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#07111F">
+<link rel="icon" href="assets/logo/fair-icone.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>
+:root{--night:#07111F;--night-2:#0D1B2E;--chalk:#EDF0EA;--fog:#A7B3C5;--mist:#CBD3DE;--turf:#1FB57A;--turf-hi:#43D99A;--line:rgba(237,240,234,.14)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--night);color:var(--mist);font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+main{max-width:760px;margin:0 auto;padding:clamp(32px,6vw,72px) 16px 72px}
+.back{display:inline-flex;gap:8px;font-family:"Martian Mono",ui-monospace,monospace;font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;color:var(--fog);text-decoration:none}
+.back:hover{color:var(--chalk)}
+h1{font-weight:900;font-stretch:62%;text-transform:uppercase;font-size:clamp(3rem,10vw,5.6rem);line-height:.86;color:var(--chalk);margin:28px 0 12px}
+.maj{font-family:"Martian Mono",ui-monospace,monospace;font-size:.72rem;color:var(--fog);margin:0 0 40px}
+h2{font-weight:850;font-stretch:66%;text-transform:uppercase;font-size:1.7rem;line-height:1;color:var(--chalk);margin:56px 0 16px;padding-top:24px;border-top:1px solid var(--line)}
+h3{font-weight:800;font-stretch:75%;font-size:1.15rem;line-height:1.2;color:var(--chalk);margin:32px 0 8px}
+p,ul,ol{margin:0 0 12px}
+ul,ol{padding-left:1.2em}
+li{margin-bottom:4px}
+strong{color:var(--chalk);font-weight:600}
+a{color:var(--turf-hi)}
+.note{border-left:3px solid var(--turf);padding:4px 0 4px 16px;color:var(--chalk)}
+.kicker{font-family:"Martian Mono",ui-monospace,monospace;font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;color:var(--turf-hi);margin:0 0 8px}
+
+/* En-tête : badge + accroche */
+.intro{display:grid;grid-template-columns:200px 1fr;gap:32px;align-items:center;margin-bottom:8px}
+.intro img{width:100%;height:auto;display:block}
+.intro .lead{font-size:1.15rem;color:var(--chalk);margin:0}
+@media (max-width:600px){.intro{grid-template-columns:1fr;gap:20px}.intro img{width:160px}}
+
+/* Atteste / n'atteste pas */
+.scope{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+.scope > div{background:var(--night-2);border:1px solid var(--line);border-radius:8px;padding:20px}
+.scope h3{margin-top:0}
+.scope ul{list-style:none;padding:0;margin:0}
+.scope li{position:relative;padding-left:26px}
+.scope li::before{position:absolute;left:0;top:0;font-weight:700}
+.scope .oui li::before{content:"✓";color:var(--turf-hi)}
+.scope .non li::before{content:"✕";color:var(--fog)}
+@media (max-width:600px){.scope{grid-template-columns:1fr}}
+
+/* Étapes */
+.steps{list-style:none;padding:0;counter-reset:s;display:grid;gap:12px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;margin:0}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--turf);color:var(--night);font-weight:800}
+
+/* Liste des clubs */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:"Martian Mono",ui-monospace,monospace;font-size:.68rem;letter-spacing:.07em;text-transform:uppercase;color:var(--fog);font-weight:500}
+tbody tr:last-child td{border-bottom:0}
+td.vide{color:var(--fog);text-align:center;padding:28px 14px}
+
+/* Règlement */
+.toc{columns:2;column-gap:32px;font-size:.92rem;padding-left:0;list-style:none}
+.toc li{break-inside:avoid}
+.toc a{text-decoration:none;color:var(--mist)}
+.toc a:hover{color:var(--chalk)}
+@media (max-width:600px){.toc{columns:1}}
+.reglement h3{scroll-margin-top:16px}
+.cta{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:4px;background:var(--turf);color:var(--night);font-weight:700;text-decoration:none}
+.cta:hover{background:var(--turf-hi)}
+:focus-visible{outline:3px solid var(--turf);outline-offset:3px}
+</style>
+</head>
+<body>
+<main>
+  <a class="back" href="index.html">← Retour au site</a>
+  <h1>Le label Club IA responsable</h1>
+  <p class="maj">Dernière mise à jour : 21 octobre 2026</p>
+
+  <div class="intro">
+    <img src="assets/label/label-club-ia-responsable-2026.svg" width="200" height="200" alt="Badge du label FAIR « Club IA responsable », édition 2026">
+    <p class="lead">Le label reconnaît les clubs sportifs qui ont formé leurs bénévoles avec FAIR et adopté une charte pour encadrer leur usage de l'intelligence artificielle. Il est <strong>gratuit</strong> et ouvert à <strong>tous les sports</strong>.</p>
+  </div>
+
+  <p class="note">Le label sera délivré dès que l'association FAIR sera déclarée en préfecture et que son conseil d'administration aura adopté le règlement ci-dessous. D'ici là, ce règlement est publié à l'état de projet.</p>
+
+  <h2 id="portee">Ce que garantit le label</h2>
+  <div class="scope">
+    <div class="oui">
+      <h3>Il atteste que le club</h3>
+      <ul>
+        <li>a formé au moins deux bénévoles avec FAIR</li>
+        <li>a désigné un référent IA</li>
+        <li>a voté une charte IA en assemblée générale ou en conseil d'administration</li>
+        <li>s'est engagé à relire tout contenu produit par l'IA et à protéger les données de ses adhérents</li>
+      </ul>
+    </div>
+    <div class="non">
+      <h3>Il n'atteste pas</h3>
+      <ul>
+        <li>la conformité au RGPD ou au règlement européen sur l'IA</li>
+        <li>la qualité des contenus produits par le club</li>
+        <li>la qualité d'un outil ou d'un service d'IA</li>
+        <li>un agrément d'une autorité publique ou d'une fédération</li>
+      </ul>
+    </div>
+  </div>
+  <p>Le label n'est pas une certification. Il est délivré par FAIR seule, pour deux saisons sportives.</p>
+
+  <h2 id="obtenir">Comment l'obtenir</h2>
+  <ol class="steps">
+    <li><span><strong>Suivre le parcours FAIR.</strong> Au moins deux membres du bureau ou bénévoles suivent le niveau 0 de la <a href="formation.html">formation</a>, dont un atelier animé par FAIR.</span></li>
+    <li><span><strong>Adopter une charte IA.</strong> Le club la fait voter en assemblée générale ou en conseil d'administration. Le module 3 de la formation fournit un modèle.</span></li>
+    <li><span><strong>Envoyer la demande.</strong> Le référent IA écrit à <a href="mailto:contact@fair-asso.fr?subject=Demande%20de%20label%20Club%20IA%20responsable">contact@fair-asso.fr</a> avec les attestations, la charte, l'extrait du procès-verbal du vote et le <a href="#annexe">formulaire d'engagement</a> signé.</span></li>
+    <li><span><strong>Recevoir la décision.</strong> Le bureau de FAIR répond sous 30 jours. En cas d'accord, le club reçoit le logo et une attestation d'attribution.</span></li>
+  </ol>
+
+  <h2 id="clubs">Les clubs labellisés</h2>
+  <p>Cette liste fait foi : un club qui affiche le label sans y figurer ne l'a pas reçu, ou ne l'a plus. Pour signaler un usage abusif, écrivez à <a href="mailto:contact@fair-asso.fr">contact@fair-asso.fr</a>.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th scope="col">Club</th><th scope="col">Ville</th><th scope="col">Discipline</th><th scope="col">Valable jusqu'au</th></tr></thead>
+      <tbody>
+        <!-- Une ligne par club labellisé, la plus récente en haut. Retirer la ligne « vide » au premier club.
+        <tr><td>AS Exemple Handball</td><td>Ardres (62)</td><td>Handball</td><td>31 août 2028</td></tr>
+        -->
+        <tr><td class="vide" colspan="4">Aucun club labellisé pour l'instant. Les premiers labels seront attribués après l'adoption du règlement.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="reglement">Règlement d'usage</h2>
+  <p class="kicker">Projet · version du 21 octobre 2026</p>
+  <ul class="toc">
+    <li><a href="#art1">1. Objet et titulaire du label</a></li>
+    <li><a href="#art2">2. Signification et portée</a></li>
+    <li><a href="#art3">3. Bénéficiaires</a></li>
+    <li><a href="#art4">4. Critères d'attribution</a></li>
+    <li><a href="#art5">5. Procédure et vérification</a></li>
+    <li><a href="#art6">6. Validité et renouvellement</a></li>
+    <li><a href="#art7">7. Gratuité</a></li>
+    <li><a href="#art8">8. Utilisation du nom et du logo</a></li>
+    <li><a href="#art9">9. Engagements du club</a></li>
+    <li><a href="#art10">10. Contrôle, suspension et retrait</a></li>
+    <li><a href="#art11">11. Recours</a></li>
+    <li><a href="#art12">12. Liste publique et données</a></li>
+    <li><a href="#art13">13. Responsabilité</a></li>
+    <li><a href="#art14">14. Modification et entrée en vigueur</a></li>
+    <li><a href="#annexe">Annexe. Formulaire d'engagement</a></li>
+  </ul>
+
+  <div class="reglement">
+    <h3 id="art1">Article 1 – Objet et titulaire du label</h3>
+    <p>Le présent règlement fixe les conditions d'attribution et d'utilisation du label « Club IA responsable » (ci-après « le label »).</p>
+    <p>Le label est créé et géré par l'association FAIR – Former les Associations à l'IA Responsable, association loi 1901 en cours de déclaration (ci-après « FAIR »).</p>
+    <p>Le nom et le logo du label sont la propriété de FAIR, qui en prépare le dépôt de marque à l'INPI. Les clubs labellisés reçoivent un droit d'usage gratuit, non exclusif et incessible, dans les limites du présent règlement.</p>
+
+    <h3 id="art2">Article 2 – Signification et portée du label</h3>
+    <p>Le label atteste qu'à la date de son attribution, le club :</p>
+    <ul>
+      <li>a suivi le parcours de formation FAIR défini à l'article 4 ;</li>
+      <li>a adopté une charte d'usage de l'intelligence artificielle ;</li>
+      <li>s'est engagé à respecter les règles d'usage responsable décrites à l'article 9.</li>
+    </ul>
+    <p>Le label <strong>n'atteste pas</strong> :</p>
+    <ul>
+      <li>que le club respecte le règlement général sur la protection des données (RGPD), le règlement européen sur l'IA ou toute autre obligation légale ;</li>
+      <li>la qualité ou l'exactitude des contenus que le club produit avec l'IA ;</li>
+      <li>la qualité d'outils ou de services d'IA, quels qu'ils soient.</li>
+    </ul>
+    <p>Le label n'est pas une certification au sens du Code de la consommation. Il est délivré par FAIR seule, sans agrément ni soutien d'une autorité publique, d'une fédération sportive ou de la CNIL, sauf accord écrit mentionné sur le site de FAIR.</p>
+
+    <h3 id="art3">Article 3 – Bénéficiaires</h3>
+    <p>Peut demander le label toute association sportive à but non lucratif déclarée en France (club, section omnisports, comité local), quelle que soit sa discipline.</p>
+    <p>Le label est attribué à l'association, et non à ses dirigeants ou bénévoles. Les bénévoles formés reçoivent une attestation individuelle de formation, distincte du label.</p>
+
+    <h3 id="art4">Article 4 – Critères d'attribution</h3>
+    <p>Le label est attribué au club qui remplit <strong>les quatre critères</strong> suivants :</p>
+    <ol>
+      <li><strong>Formation.</strong> Au moins deux membres du bureau ou bénévoles ont suivi le parcours FAIR, niveau 0 « Premiers pas » (modules 1 à 5), dont au moins un atelier animé par FAIR.</li>
+      <li><strong>Référent IA.</strong> Le club désigne un référent IA parmi les personnes formées. Il est le contact de FAIR pour le label.</li>
+      <li><strong>Charte IA.</strong> Le club a adopté une charte d'usage de l'IA, par un vote de son assemblée générale ou de son conseil d'administration. Elle couvre au minimum : la protection des données des adhérents, le droit à l'image (en particulier des mineurs), la relecture humaine des contenus produits et la vigilance face aux arnaques.</li>
+      <li><strong>Engagement.</strong> Le président du club a signé le formulaire d'engagement figurant en annexe.</li>
+    </ol>
+
+    <h3 id="art5">Article 5 – Procédure d'attribution et vérification</h3>
+    <ol>
+      <li><strong>Demande.</strong> Le référent IA envoie la demande à <a href="mailto:contact@fair-asso.fr">contact@fair-asso.fr</a> avec les pièces suivantes : les attestations de formation, la charte IA adoptée, l'extrait du procès-verbal du vote et le formulaire d'engagement signé.</li>
+      <li><strong>Vérification.</strong> FAIR vérifie les pièces. Les attestations générées sur le site de FAIR sont déclaratives : FAIR les recoupe avec sa propre liste des participants aux ateliers. FAIR peut demander un échange avec le référent IA.</li>
+      <li><strong>Décision.</strong> Le bureau de FAIR décide dans un délai de 30 jours après réception du dossier complet. Un membre de FAIR qui est aussi membre du club demandeur ne participe pas à la décision.</li>
+      <li><strong>Notification.</strong> FAIR informe le club par écrit. En cas d'attribution, elle lui remet le logo, ce règlement et une attestation d'attribution datée. Un refus est motivé et indique ce qui manque.</li>
+    </ol>
+
+    <h3 id="art6">Article 6 – Durée de validité et renouvellement</h3>
+    <p>Le label est valable pour deux saisons sportives, jusqu'au 31 août de la dernière saison couverte. L'année d'attribution accompagne toujours le logo (exemple : « Club IA responsable 2026 »).</p>
+    <p>Pour le renouveler, le club envoie avant l'échéance :</p>
+    <ul>
+      <li>la charte IA, mise à jour si besoin ;</li>
+      <li>le nom du référent IA en poste ;</li>
+      <li>la preuve qu'au moins une personne formée est toujours active au club, ou qu'une nouvelle personne a suivi la formation.</li>
+    </ul>
+    <p>Sans renouvellement, le club cesse d'utiliser le label à l'échéance.</p>
+
+    <h3 id="art7">Article 7 – Gratuité</h3>
+    <p>L'examen du dossier, l'attribution, le renouvellement et l'usage du label sont gratuits pour les clubs. Le label ne peut être ni acheté, ni obtenu en contrepartie d'un don, d'une adhésion à FAIR ou de l'achat d'un produit ou d'un service.</p>
+
+    <h3 id="art8">Article 8 – Règles d'utilisation du nom et du logo</h3>
+    <p>Le club labellisé peut utiliser le label sur ses supports de communication : site internet, réseaux sociaux, affiches, courriers, dossiers de subvention et club-house.</p>
+    <p>Il s'engage à :</p>
+    <ul>
+      <li>reproduire le logo fourni par FAIR sans le modifier (forme, couleurs, proportions), avec l'année d'attribution ;</li>
+      <li>l'utiliser seulement pendant la durée de validité du label ;</li>
+      <li>employer les formules « club labellisé Club IA responsable » ou « label FAIR Club IA responsable ».</li>
+    </ul>
+    <p>Il est interdit :</p>
+    <ul>
+      <li>d'employer les mots « certifié », « certification », « agréé » ou « conforme RGPD » à propos du label ;</li>
+      <li>d'apposer le label sur un produit vendu, ou de l'utiliser pour promouvoir un outil ou un service commercial ;</li>
+      <li>de laisser croire que le label est délivré par une autorité publique ou une fédération ;</li>
+      <li>de céder ou de prêter le label à une autre structure, même affiliée au club.</li>
+    </ul>
+
+    <h3 id="art9">Article 9 – Engagements du club labellisé</h3>
+    <p>Pendant toute la validité du label, le club s'engage à :</p>
+    <ul>
+      <li>appliquer sa charte IA et la tenir à disposition de ses adhérents ;</li>
+      <li>faire relire par une personne tout contenu produit avec l'IA avant de le diffuser ;</li>
+      <li>ne pas transmettre à un outil d'IA de données personnelles d'adhérents sans base légale ni précaution, en particulier les données de santé et celles des mineurs ;</li>
+      <li>ne pas diffuser d'image d'un mineur, modifiée ou générée par l'IA, sans l'accord de ses représentants légaux ;</li>
+      <li>informer FAIR de tout changement de référent IA dans un délai de deux mois ;</li>
+      <li>répondre aux demandes d'information de FAIR prévues à l'article 10.</li>
+    </ul>
+
+    <h3 id="art10">Article 10 – Contrôle, suspension et retrait</h3>
+    <p>FAIR peut demander au club, à tout moment, des informations sur l'application de sa charte IA, par exemple lors du suivi à un mois après l'atelier. Toute personne peut signaler un usage abusif du label à <a href="mailto:contact@fair-asso.fr">contact@fair-asso.fr</a>.</p>
+    <p>Si un manquement est constaté, FAIR envoie au club une mise en demeure écrite. Le club dispose de 30 jours pour présenter ses observations ou corriger la situation.</p>
+    <p>Sans réponse satisfaisante, le bureau de FAIR peut :</p>
+    <ul>
+      <li><strong>suspendre</strong> le label pour trois mois au plus, le temps que le club corrige la situation ;</li>
+      <li><strong>retirer</strong> le label en cas de manquement grave ou répété, notamment un usage trompeur du label ou une atteinte aux droits d'un mineur.</li>
+    </ul>
+    <p>En cas de suspension, de retrait ou de fin de validité, le club retire le logo de ses supports dans un délai de 30 jours. Un club dont le label a été retiré peut déposer une nouvelle demande après un an.</p>
+
+    <h3 id="art11">Article 11 – Recours</h3>
+    <p>Un club peut contester un refus, une suspension ou un retrait dans un délai de 30 jours, par écrit et de façon motivée. Le recours est examiné par le conseil d'administration de FAIR, sans les membres qui ont pris la première décision. Le club peut être entendu. La décision lui est notifiée dans les 60 jours.</p>
+    <p>Cette procédure ne prive pas le club de son droit de saisir le tribunal compétent.</p>
+
+    <h3 id="art12">Article 12 – Liste publique et données personnelles</h3>
+    <p>FAIR publie sur son site la <a href="#clubs">liste des clubs labellisés</a> : nom du club, ville, discipline et période de validité. Un club suspendu ou dont le label a été retiré n'apparaît plus sur cette liste.</p>
+    <p>FAIR traite les données des personnes citées dans les dossiers (référent IA, bénévoles formés, président) uniquement pour gérer le label. Elle les conserve pendant la durée du label, puis trois ans. Ces personnes peuvent exercer leurs droits auprès de <a href="mailto:contact@fair-asso.fr">contact@fair-asso.fr</a>, dans les conditions décrites dans la <a href="confidentialite.html">politique de confidentialité</a>. Aucune donnée personnelle n'est publiée sur la liste.</p>
+
+    <h3 id="art13">Article 13 – Responsabilité</h3>
+    <p>Le club reste seul responsable de ses usages de l'IA, des contenus qu'il diffuse et du respect de ses obligations légales. L'attribution du label n'engage pas la responsabilité de FAIR pour ces usages.</p>
+    <p>Le club répond de tout usage du label contraire au présent règlement. FAIR se réserve le droit d'agir contre tout usage non autorisé du nom ou du logo, par un club ou par un tiers.</p>
+
+    <h3 id="art14">Article 14 – Modification et entrée en vigueur</h3>
+    <p>Le présent règlement entrera en vigueur après son adoption par le conseil d'administration de FAIR. La date d'adoption sera indiquée sur cette page.</p>
+    <p>FAIR peut le modifier en suivant la même procédure. Les clubs labellisés sont informés par écrit au moins deux mois avant l'entrée en vigueur d'une modification. Les labels déjà attribués restent valables jusqu'à leur échéance, mais les nouvelles règles d'utilisation du logo s'appliquent à tous les clubs.</p>
+
+    <h3 id="annexe">Annexe – Formulaire d'engagement du club</h3>
+    <p>Le club joint à sa demande les informations suivantes : nom de l'association, numéro RNA ou SIRET, ville et discipline(s), président(e), référent IA (nom, e-mail), personnes formées et dates des ateliers, date d'adoption de la charte IA et instance qui l'a votée.</p>
+    <p>Puis le président ou la présidente signe la déclaration suivante :</p>
+    <p class="note">Je soussigné(e), [nom], président(e) de l'association [nom du club], déclare avoir pris connaissance du règlement d'usage du label « Club IA responsable » et l'accepter, que les informations et pièces jointes à la demande sont exactes, et engager le club à respecter les articles 8 et 9 pendant toute la validité du label. Fait à [ville], le [date]. Signature.</p>
+  </div>
+
+  <h2 id="contact">Une question ?</h2>
+  <p>Le label est réservé aux clubs qui ont suivi le parcours FAIR. Pour démarrer, demandez un atelier : c'est gratuit.</p>
+  <p><a class="cta" href="index.html#contact">Demander un atelier</a></p>
+</main>
+</body>
+</html>

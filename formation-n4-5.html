@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Formation · Niveau 4 · Module 5 · FAIR</title>
+<meta name="description" content="Niveau 4, module 5 de la formation FAIR : le club en relais. Le registre des automatisations, le plan de continuité, la feuille de route en huit étapes, le quiz final et l'attestation « Niveau 4 validé ».">
+<link rel="canonical" href="https://fair-asso.fr/formation-n4-5.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FAIR">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://fair-asso.fr/formation-n4-5.html">
+<meta property="og:title" content="Formation · Niveau 4 · Module 5 · FAIR">
+<meta property="og:description" content="Niveau 4, module 5 de la formation FAIR : le club en relais. Le registre des automatisations, le plan de continuité, la feuille de route en huit étapes, le quiz final et l'attestation « Niveau 4 validé ».">
+<meta property="og:image" content="https://fair-asso.fr/assets/img/poster-hero.jpg">
+<meta property="og:image:alt" content="Un joueur frappe un ballon sur un terrain synthétique, de nuit">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#07111F">
+<link rel="icon" href="assets/logo/fair-icone.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/css/formation.css?v=3">
+<link rel="stylesheet" href="assets/css/niveau.css?v=3">
+<style>
+/* Feuille de route */
+.road{display:grid;gap:0}
+.leg{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:20px clamp(28px,4vw,56px);padding-block:clamp(24px,3vw,36px);border-top:1px solid var(--line-n)}
+.leg-txt{display:grid;gap:10px;align-content:start}
+.leg-n{font-family:var(--f-display);font-weight:900;font-stretch:62%;font-size:3.2rem;line-height:.8;color:var(--turf)}
+.leg-txt p{color:var(--mist);font-size:.96rem}
+.leg-txt .from{font-family:var(--f-mono);font-size:.7rem;color:var(--fog);letter-spacing:.05em;text-transform:uppercase}
+.leg-txt .from a{color:var(--turf-hi);text-decoration:none}
+.leg-done{display:flex;gap:12px;align-items:center;padding:12px 14px;border:1px solid var(--line-n);border-radius:6px;cursor:pointer;font-weight:600;font-size:.94rem;justify-self:start}
+.leg-done:has(input:checked){border-color:var(--turf);color:var(--turf-hi)}
+.leg-done .tick{border-color:var(--fog);margin:0}
+.leg-box{display:grid;gap:12px;align-content:start}
+.road-score{font-family:var(--f-mono);font-size:.78rem;color:var(--fog);border-top:1px solid var(--line-n);padding-top:18px}
+.road-score.done{color:var(--turf)}
+@media (max-width:860px){.leg{grid-template-columns:minmax(0,1fr)}}
+
+/* Attestation */
+.att{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:28px clamp(28px,4vw,56px);align-items:start}
+.att-cfg{display:grid;gap:18px}
+.reqs{display:grid;gap:8px}
+.reqs li{display:flex;gap:12px;align-items:center;padding:12px 14px;border:1px solid var(--line-n);border-radius:6px;font-size:.94rem}
+.reqs li a{color:var(--mist)}
+.reqs .dot{flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--fog);display:grid;place-items:center}
+.reqs li.ok{border-color:rgba(31,181,122,.6)}
+.reqs li.ok .dot{background:var(--turf);border-color:var(--turf)}
+.reqs li.ok .dot::after{content:"";width:10px;height:5px;border-left:2.5px solid var(--on-turf);border-bottom:2.5px solid var(--on-turf);transform:translateY(-1px) rotate(-45deg)}
+.cert{background:var(--paper);color:var(--ink);border-radius:8px;padding:clamp(28px,4vw,48px);display:grid;gap:18px;justify-items:center;text-align:center;border:10px solid var(--chalk-2);box-shadow:0 30px 60px -30px rgba(0,0,0,.7);position:relative}
+.cert.locked{filter:grayscale(1);opacity:.55}
+.cert img{height:40px;width:auto}
+.cert .k{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.cert h3{font-family:var(--f-display);font-weight:900;font-stretch:62%;text-transform:uppercase;font-size:clamp(2.4rem,5vw,3.6rem);line-height:.86}
+.cert h3 span{color:var(--turf-ink)}
+.cert .who{font-size:1.3rem;font-weight:700;border-bottom:1px solid var(--line-c);padding-bottom:6px;min-width:60%}
+.cert p{color:var(--ink-2);font-size:.95rem;max-width:46ch}
+.cert ol{display:flex;flex-wrap:wrap;justify-content:center;gap:6px}
+.cert ol li{font-size:.8rem;padding:6px 10px;border-radius:4px;border:1px solid var(--line-c)}
+.cert .date{font-family:var(--f-mono);font-size:.74rem;color:var(--ink-2)}
+.att-msg{font-size:.9rem;color:var(--fog)}
+@media (max-width:900px){.att{grid-template-columns:minmax(0,1fr)}}
+
+/* La suite */
+.suite-cta{margin-top:clamp(48px,6vw,72px);padding-top:clamp(32px,4vw,48px);border-top:1px solid var(--line-n)}
+
+@media print{
+  body{background:#fff}
+  body>*:not(main),main>*:not(#attestation),#attestation .head,#attestation .att-cfg,#attestation .att-msg,#attestation .suite-cta{display:none!important}
+  #attestation{padding:0;background:#fff}
+  .att{display:block}
+  .cert{box-shadow:none;border-color:#E1E6DE}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="check" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></symbol>
+</svg>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="index.html" aria-label="FAIR, retour à l'accueil"><img src="assets/logo/fair-logo-blanc-court.svg" alt="FAIR"></a>
+    <nav aria-label="Navigation">
+      <a class="opt" href="index.html#clubs">Clubs</a>
+      <a class="opt" href="index.html#partenaires">Fédérations</a>
+      <a href="formation.html" aria-current="page">Formation</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <section class="hero">
+    <div class="wrap hero-in">
+      <p class="label"><a href="formation-n4.html">Formation FAIR · Niveau 4</a> · Module 5 sur 5</p>
+      <h1>Le club en relais</h1>
+      <p class="lead">Des flux, des agents, un espace d'équipe : tout cela n'a de valeur que si le club sait ce qui tourne, qui en répond, et quoi faire quand ça tombe. Ce module rassemble tout dans le registre et le plan de continuité, puis la feuille de route en huit étapes pour équiper votre club, avant le quiz final et l'attestation « Niveau 4 validé ».</p>
+      <ul class="meta">
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>1 h 30</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Modules 1 à 4 conseillés</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>2 exercices corrigés</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>8 étapes avec leur demande</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Attestation à la fin</li>
+      </ul>
+      <nav class="steps-nav six" aria-label="Étapes du module">
+        <a href="#registre"><b>1. Recenser</b><span>Le registre des automatisations</span></a>
+        <a href="#continuite"><b>2. Prévoir</b><span>Le plan de continuité</span></a>
+        <a href="#route"><b>3. Réaliser</b><span>La feuille de route en 8 étapes</span></a>
+        <a href="#exercices"><b>4. S'entraîner</b><span>Deux exercices</span></a>
+        <a href="#quiz"><b>5. Le quiz final</b><span>Douze questions, dix pour réussir</span></a>
+        <a href="#attestation"><b>6. Attestation</b><span>Niveau 4 validé</span></a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="objectifs">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Objectifs</p>
+        <h2 class="h2">À la fin<br>de ce module</h2>
+      </div>
+      <ol class="goals">
+        <li><b>Chaque automatisation a sa fiche</b>Ses données, son arbitre, son responsable et sa personne de secours, ses derniers tests, son plan B.</li>
+        <li><b>Un seul registre pour tout</b>Les assistants et les modèles du niveau 2, les automatisations et les agents du niveau 4 : un seul endroit.</li>
+        <li><b>Le club sait quoi faire quand ça tombe</b>Un plan de continuité : la panne, le départ, le compte piraté, l'outil qui change ses conditions.</li>
+        <li><b>La surveillance est planifiée</b>Le journal chaque semaine, les tests chaque trimestre, le registre présenté à l'AG.</li>
+        <li><b>Votre club est équipé</b>Les huit étapes de la feuille de route faites, sur vos vrais outils.</li>
+        <li><b>Votre attestation est imprimée</b>Quiz final réussi, « Niveau 4 validé » au nom de votre club.</li>
+      </ol>
+
+      <div class="case">
+        <article class="who-card">
+          <span class="label">Le cas du module</span>
+          <h3>Le samedi sans convocations</h3>
+          <p>Un vendredi de mars, aucune convocation n'est partie. L'offre gratuite de l'outil d'automatisation avait atteint son nombre d'exécutions du mois, et le flux s'était arrêté sans prévenir. Personne ne s'en est aperçu avant le samedi matin, quand des parents ont appelé pour savoir à quelle heure était le match.</p>
+        </article>
+        <ul class="week">
+          <li><b>Samedi</b><span>Trois équipes arrivent en retard, une déclare forfait. La secrétaire envoie le reste à la main, depuis son téléphone.</span></li>
+          <li><b>Lundi</b><span>Le bureau relit le journal : le flux ne tournait plus depuis jeudi, et l'outil avait envoyé un avertissement à l'adresse de Malik.</span></li>
+          <li><b>Mardi</b><span>Une alerte est ajoutée : sans envoi réussi le vendredi à 18 h, la secrétaire est prévenue.</span></li>
+          <li><b>Avril</b><span>Le plan de continuité est écrit : une page par automatisation, avec son plan B à la main.</span></li>
+          <li><b>Juin</b><span>À l'AG, le registre est présenté : six automatisations, deux personnes pour chacune, aucune boîte noire.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="registre">
+    <div class="wrap">
+      <div class="build">
+        <div>
+          <div class="head" style="margin-bottom:24px">
+            <p class="label">Étape 1 · Recenser</p>
+            <h3 class="h3">La fiche du registre</h3>
+            <p style="color:var(--mist)">Le registre du niveau 2 recensait les assistants et les modèles. Il accueille désormais les automatisations et les agents, avec ce qu'il faut pour les surveiller et les reprendre. Remplissez la fiche de votre première automatisation : elle vous dit aussi ce qu'il reste à régler.</p>
+          </div>
+          <div class="fields">
+            <div class="field"><label for="g-nom">Nom</label><input id="g-nom" data-f="nom" placeholder="Convocations du vendredi"></div>
+            <div class="two">
+              <div class="field">
+                <span style="font-weight:600">Type</span>
+                <div class="opts">
+                  <label><input type="radio" name="gtype" data-f="type" value="Automatisation" checked>Automatisation</label>
+                  <label><input type="radio" name="gtype" data-f="type" value="Agent">Agent</label>
+                </div>
+              </div>
+              <div class="field">
+                <span style="font-weight:600">Où tourne-t-il ?</span>
+                <div class="opts">
+                  <label><input type="radio" name="gcompte" data-f="compte" value="club" checked>Espace du club</label>
+                  <label><input type="radio" name="gcompte" data-f="compte" value="perso">Compte personnel</label>
+                </div>
+              </div>
+            </div>
+            <div class="field"><label for="g-outil">Outil</label><input id="g-outil" data-f="outil" placeholder="outil d'automatisation sans code, espace du club"></div>
+            <div class="field"><label for="g-donnees">Données utilisées</label><input id="g-donnees" data-f="donnees" placeholder="tableur des matchs (date, heure, lieu, adversaire), e-mails des familles par équipe"></div>
+            <div class="field"><label for="g-arbitre">Arbitre</label><input id="g-arbitre" data-f="arbitre" placeholder="l'éducateur de chaque équipe"></div>
+            <div class="two">
+              <div class="field"><label for="g-resp">Responsable</label><input id="g-resp" data-f="resp" placeholder="secrétariat"></div>
+              <div class="field"><label for="g-secours">Personne de secours</label><input id="g-secours" data-f="secours" placeholder="vice-présidence"></div>
+            </div>
+            <div class="two">
+              <div class="field"><label for="g-test">Derniers tests</label><input id="g-test" data-f="test" placeholder="février 2027, 6 sur 6"></div>
+              <div class="field"><label for="g-planb">Plan B, à la main</label><input id="g-planb" data-f="planb" placeholder="modèle SEC-01, envoyé par la secrétaire"></div>
+            </div>
+            <div class="field">
+              <span style="font-weight:600">Surveillance</span>
+              <div class="opts">
+                <label><input type="checkbox" data-f="alerte" value="oui">Une alerte prévient s'il ne tourne pas</label>
+                <label><input type="checkbox" data-f="doc" value="oui">Sa documentation est à jour</label>
+              </div>
+            </div>
+            <div class="field"><label for="g-revue">Prochaine revue</label>
+              <select id="g-revue" data-f="revue"><option>janvier</option><option>avril</option><option>juillet, avant la rentrée</option><option>octobre</option></select>
+            </div>
+          </div>
+        </div>
+        <div class="build-out">
+          <div class="prompt">
+            <div class="prompt-top"><span class="label">La fiche du registre</span><button class="copy" type="button" data-copy>Copier</button></div>
+            <pre data-out aria-live="polite"></pre>
+          </div>
+          <p class="note">Ajoutez-la au registre du niveau 2, à côté des assistants et des modèles : un seul registre pour tous les outils du club, revu chaque trimestre.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="continuite">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Étape 2 · Prévoir</p>
+        <h2 class="h2">Le plan<br>de continuité</h2>
+        <p class="lead">Toute automatisation finira par tomber en panne, et tout bénévole par partir. Le plan de continuité répond à quatre questions pour chaque outil : comment on s'en rend compte, qui prend le relais, comment on fait à la main, et comment on revient à la normale.</p>
+      </div>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th scope="col">Ce qui arrive</th><th scope="col">Comment on le voit</th><th scope="col">Ce qu'on fait</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Le flux s'arrête sans prévenir</th><td>L'alerte de silence, le journal relu chaque semaine</td><td>Le plan B à la main, puis on cherche la cause : limite de l'offre, mot de passe, tableur modifié</td></tr>
+            <tr><th scope="row">L'outil change ses conditions ou ses prix</th><td>Les messages de l'éditeur, envoyés à une adresse du club ; la revue trimestrielle</td><td>Le plan du flux et sa documentation sont dans le dossier du club : on le recrée ailleurs</td></tr>
+            <tr><th scope="row">Le responsable part</th><td>Le registre, la procédure de départ</td><td>La personne de secours reprend, avec la documentation</td></tr>
+            <tr><th scope="row">Un compte est piraté</th><td>Des envois ou des connexions inhabituels</td><td>On coupe les accès, on change les mots de passe, on vérifie les données exposées, on prévient le bureau</td></tr>
+            <tr><th scope="row">L'IA du flux se met à mal faire</th><td>L'arbitre refuse plusieurs brouillons de suite</td><td>On repasse à la main le temps de corriger ses consignes, puis on refait les tests</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="split" style="margin-top:clamp(40px,5vw,64px)">
+        <ol class="tl">
+          <li><span class="when">Chaque semaine</span><div><h4>Le journal</h4><p>Cinq minutes le lundi : tout est-il parti ? Une erreur ? Un silence ?</p></div></li>
+          <li><span class="when">Chaque trimestre</span><div><h4>Les tests et le registre</h4><p>Les six tests sur le faux tableur, et la revue du registre en réunion de bureau.</p></div></li>
+          <li><span class="when">Une fois par an</span><div><h4>L'exercice à la main</h4><p>Un vendredi, on coupe le flux et on fait les convocations avec le plan B, pour vérifier qu'il marche encore.</p></div></li>
+          <li><span class="when">En juillet</span><div><h4>La rentrée</h4><p>Les tableurs de la nouvelle saison, les comptes des nouveaux bénévoles, le ménage des données (module 2).</p></div></li>
+          <li><span class="when">À l'AG</span><div><h4>La transparence</h4><p>Le registre présenté aux adhérents : ce qui est automatisé, avec quelles données, sous la responsabilité de qui.</p></div></li>
+        </ol>
+        <div>
+          <div class="prompt" style="background:var(--ink);border-color:var(--ink)">
+            <div class="prompt-top"><span class="label">Écrire le plan de continuité</span><button class="copy" type="button" data-copy>Copier</button></div>
+<pre>Voici la fiche de notre automatisation <i>[nom]</i> : <i>[fiche du registre]</i>. Rédige son plan de continuité d'une page : comment on s'aperçoit d'une panne, qui prend le relais, le plan B pas à pas, comment on revient à la normale, et que faire si le responsable part ou si un compte est piraté. Compréhensible par un bénévole qui ne connaît pas l'outil.</pre>
+          </div>
+          <p class="warn">Un plan B qu'on n'a jamais essayé n'est pas un plan B. Si plus personne ne sait faire les convocations sans le flux, le club dépend d'un outil : faites l'exercice à la main une fois par an.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="route">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Étape 3 · Réaliser</p>
+        <h2 class="h2">La feuille de route<br>en huit étapes</h2>
+        <p class="lead">Chaque étape s'appuie sur un module du niveau 4. Faites-les dans l'ordre, sur les vrais outils de votre club, et cochez au fur et à mesure. Comptez quelques mois : une automatisation à la fois, la suivante quand la précédente tourne bien.</p>
+      </div>
+      <div class="road" id="check" data-key="fair-n4-module5" data-name="Module 5">
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">01</span>
+            <h3 class="h3">L'inventaire et le tri</h3>
+            <p>Les tâches répétitives mesurées pendant deux semaines, puis classées en feu vert, orange ou rouge.</p>
+            <p class="from">Vu dans le <a href="formation-n4-1.html#inventaire">module 1</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="inventaire">Étape faite</label>
+          </div>
+          <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre>Voici les tâches répétitives de notre club, avec leur temps par semaine : <i>[inventaire]</i>. Classe chacune : feu vert (automatisable sans risque), feu orange (automatisable avec une personne qui valide avant l'envoi), feu rouge (à ne jamais automatiser : décisions sur des personnes, santé, conflits). Justifie en une ligne.</pre></div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">02</span>
+            <h3 class="h3">La première fiche R.E.L.A.I.S.</h3>
+            <p>L'automatisation qui fait gagner le plus de temps sans toucher à une décision, décrite sans rubrique vide et validée par le bureau.</p>
+            <p class="from">Vu dans le <a href="formation-n4-1.html#generateur">module 1</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="fiche">Étape faite</label>
+          </div>
+          <div class="leg-box">
+            <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre>Aide-moi à décrire l'automatisation <i>[nom]</i> en six rubriques : Répétitif, Enchaînement, Limites, Arbitre, Incident, Suivi. Pose-moi les questions une par une. Si une rubrique reste vide, dis-le clairement au lieu de la remplir à ma place.</pre></div>
+            <p class="warn">Une rubrique vide, et on ne construit pas. Rien ne se construit non plus sans la validation du bureau.</p>
+          </div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">03</span>
+            <h3 class="h3">Des données propres</h3>
+            <p>Le formulaire minimal, la santé des mineurs laissée aux familles, le tableur unique, et chacun avec sa seule part.</p>
+            <p class="from">Vu dans le <a href="formation-n4-2.html#collecter">module 2</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="donnees">Étape faite</label>
+          </div>
+          <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre>Voici les questions de notre formulaire de <i>[usage]</i> : <i>[questions]</i>. Pour chacune, dis si elle est nécessaire à cet usage, facultative ou inutile, et pourquoi. Signale les cases cochées d'avance et les données sensibles. Propose la version la plus courte.</pre></div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">04</span>
+            <h3 class="h3">La mention et le registre des traitements</h3>
+            <p>La mention d'information sous chaque formulaire, une durée de conservation pour chaque usage, et le registre des traitements à jour.</p>
+            <p class="from">Vu dans le <a href="formation-n4-2.html#proteger">module 2</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="traitements">Étape faite</label>
+          </div>
+          <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre>Rédige le registre des traitements de notre club, en tableau, une ligne par usage : <i>[usages]</i>. Colonnes : finalité, personnes concernées, données, qui y accède, durée de conservation, outils, mesures de sécurité. Laisse [À COMPLÉTER] pour ce que je ne t'ai pas donné.</pre></div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">05</span>
+            <h3 class="h3">Le premier flux</h3>
+            <p>Construit dans l'espace du club, avec son arbitre, son journal et son bouton d'arrêt, et passé par les six tests sur un faux tableur.</p>
+            <p class="from">Vu dans le <a href="formation-n4-3.html#generateur">module 3</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="flux">Étape faite</label>
+          </div>
+          <div class="leg-box">
+            <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre>Voici notre automatisation : <i>[plan du flux]</i>. Rédige son plan de test en six cas : normal, information manquante, doublon, silence de l'arbitre, texte piégé, arrêt en cours. Pour chacun : ce qu'on fait, et ce qu'on doit observer.</pre></div>
+            <p class="warn">Jamais de test sur le vrai tableur : un essai sur de vraies familles, c'est un envoi.</p>
+          </div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">06</span>
+            <h3 class="h3">L'espace et les règles d'équipe</h3>
+            <p>Un espace au nom du club, un compte par bénévole, deux administrateurs, et les règles d'une page présentées à tous.</p>
+            <p class="from">Vu dans le <a href="formation-n4-4.html#generateur">module 4</a></p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="equipe">Étape faite</label>
+          </div>
+          <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre>Voici nos règles d'équipe pour l'IA : <i>[règles]</i>. Propose huit situations réalistes de bénévoles (pressés, enthousiastes, inquiets) et, pour chacune, ce que disent nos règles. Pour la présentation aux bénévoles.</pre></div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">07</span>
+            <h3 class="h3">Le registre et la continuité</h3>
+            <p>Une fiche par automatisation et par agent, une alerte en cas de silence, un plan B écrit et essayé.</p>
+            <p class="from">Vu aux <a href="#registre">étapes 1</a> et <a href="#continuite">2</a> de ce module</p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="registre">Étape faite</label>
+          </div>
+          <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre>Voici la fiche de notre automatisation <i>[nom]</i> : <i>[fiche du registre]</i>. Rédige son plan de continuité d'une page : comment on s'aperçoit d'une panne, qui prend le relais, le plan B pas à pas, comment on revient à la normale, et que faire si le responsable part ou si un compte est piraté.</pre></div>
+        </div>
+        <div class="leg">
+          <div class="leg-txt">
+            <span class="leg-n">08</span>
+            <h3 class="h3">Présenter au bureau</h3>
+            <p>Quinze minutes en réunion : ce qui tourne, ce que ça fait gagner, qui en répond, et le calendrier de surveillance adopté. Puis le registre présenté à l'AG.</p>
+            <p class="from">Vu dans tout le niveau 4</p>
+            <label class="leg-done"><input class="tick" type="checkbox" data-k="bureau">Étape faite</label>
+          </div>
+          <div class="leg-box">
+            <div class="prompt"><div class="prompt-top"><span class="label">Demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div><pre data-club>[Fiche du club]
+Prépare une présentation de 15 minutes au bureau sur nos automatisations : ce qui tourne (d'après le registre ci-dessous), le temps gagné, qui valide quoi, le plan de continuité, le calendrier de surveillance et les décisions à prendre. Un plan minuté.
+<i>[Registre]</i></pre></div>
+            <ul class="todo">
+              <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Chaque automatisation a un responsable et une personne de secours</span></li>
+              <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Le journal est relu chaque semaine, les tests refaits chaque trimestre</span></li>
+              <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Les règles d'équipe sont validées et connues de tous les bénévoles</span></li>
+              <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Le registre sera présenté à la prochaine AG</span></li>
+            </ul>
+          </div>
+        </div>
+        <p class="road-score" id="score" aria-live="polite">0 sur 8</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="exercices">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Étape 4 · S'entraîner</p>
+        <h2 class="h2">Deux exercices<br>de fin de saison</h2>
+        <p class="lead">Les deux moments où un club perd la main sur ses automatisations : quand personne ne sait ce qui tourne, et quand ça tombe sans prévenir.</p>
+      </div>
+
+      <div class="sub" style="margin-top:0">
+        <h3 class="h3">Exercice 1 · Le registre de l'AS Exemple</h3>
+        <p>Voici le registre des automatisations du club, en mai. Cinq lignes signalent un problème à régler en priorité. Trouvez-les.</p>
+      </div>
+      <div class="spot">
+        <div class="spot-doc lines">
+          <h4>Registre · automatisations et agents · mai 2027</h4>
+          <button class="s">Convocations du vendredi · automatisation · espace du club · arbitre : l'éducateur de chaque équipe · responsable : secrétariat · secours : vice-présidence · alerte : oui</button>
+          <button class="s" data-err="Un agent qui envoie seul : rien d'irréversible sans validation. Il prépare des brouillons, la secrétaire envoie.">Tri des e-mails du secrétariat · agent · peut répondre seul aux questions simples</button>
+          <button class="s" data-err="Un compte personnel et aucune personne de secours : une boîte noire. À recréer dans l'espace du club, avec une personne de secours.">Résultats du week-end · automatisation · compte personnel de Théo · secours : aucun</button>
+          <button class="s">Rappel aux bénévoles de la buvette · agenda du club · responsable : vice-présidence · aucun envoi aux familles</button>
+          <button class="s" data-err="Un envoi qui touche à l'argent, sans arbitre : c'est au minimum un feu orange. Le trésorier valide la liste et les messages.">Relances de cotisation · automatisation · envoi automatique aux familles, sans validation</button>
+          <button class="s" data-err="Des données de santé et un numéro de sécurité sociale pour un tournoi : à retirer du formulaire et à supprimer du tableur, tout de suite.">Inscriptions au tournoi · formulaire et tableur · données : nom, âge, allergies, n° de sécurité sociale</button>
+          <button class="s">Présences par équipe · tableur du club · chiffres seulement, sans noms · derniers tests : février</button>
+          <button class="s" data-err="« Malik sait » n'est pas une documentation. Un script que personne d'autre ne comprend s'arrête avec la personne qui l'a écrit.">Notes de frais · script dans le tableur · documentation : « Malik sait »</button>
+          <button class="s">Assistant « Mode d'emploi du club » · espace d'équipe · documents : règles d'équipe et procédures · revue : avril</button>
+        </div>
+        <div class="spot-act">
+          <button class="btn btn-turf spot-go" type="button">Vérifier</button>
+          <p class="spot-res" aria-live="polite">5 erreurs à trouver.</p>
+        </div>
+      </div>
+
+      <div class="sub">
+        <h3 class="h3">Exercice 2 · Le samedi sans convocations</h3>
+        <p>Reprenons le cas du module. Le flux de convocation s'est arrêté un jeudi, quand l'offre gratuite de l'outil a atteint sa limite du mois. L'avertissement de l'éditeur est arrivé sur l'adresse de Malik. Personne ne l'a vu avant le samedi matin.</p>
+      </div>
+      <div class="exo" style="background:var(--ink);border-color:var(--ink)">
+        <div class="ex-txt">
+          <span class="label">La consigne</span>
+          <ol>
+            <li><span>Qu'est-ce qui aurait dû alerter avant samedi ?</span></li>
+            <li><span>Rédigez le plan B de cette automatisation.</span></li>
+            <li><span>Que changer pour que cela ne se reproduise pas ?</span></li>
+          </ol>
+        </div>
+        <div class="ex-box">
+          <details class="sol">
+            <summary>Voir le corrigé</summary>
+            <div class="sol-in">
+              <p><b>1. Deux choses.</b> Une alerte de silence (« aucun envoi réussi le vendredi à 18 h »), qui aurait prévenu la secrétaire à temps pour envoyer à la main. Et l'avertissement de l'éditeur, qui aurait dû arriver sur une adresse du club relevée par deux personnes, pas sur celle de Malik.</p>
+              <p><b>2. Le plan B</b></p>
+<pre>PLAN B · CONVOCATIONS DU VENDREDI
+Si la secrétaire n'a pas reçu la confirmation d'envoi à 18 h, elle prévient les éducateurs. Chacun envoie la convocation de son équipe avec le modèle SEC-01, à partir du tableur des matchs, avant 20 h. La vice-présidence vérifie que les quinze équipes sont convoquées. Le lundi, la responsable cherche la cause et la note dans le registre.</pre>
+              <ul>
+                <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Noter dans le registre les limites de l'offre de l'outil (nombre d'exécutions, d'utilisateurs), et à qui l'éditeur écrit.</span></li>
+                <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Ajouter l'alerte de silence, et la tester.</span></li>
+                <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Faire le plan B une fois par an, un vendredi ordinaire, pour qu'il reste praticable.</span></li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="memo">
+        <div>
+          <p class="label">À retenir</p>
+          <h2 class="h2" style="margin-top:14px">Le niveau 4<br>en cinq points</h2>
+        </div>
+        <ol>
+          <li><span><b>On mesure, on trie, on décrit.</b> Le temps gagné sur une saison, feu vert, orange ou rouge, et une fiche R.E.L.A.I.S. sans rubrique vide.</span></li>
+          <li><span><b>Les données d'abord.</b> Le nécessaire, une source unique, chacun sa part, une mention d'information, et jamais le fichier dans l'IA.</span></li>
+          <li><span><b>L'IA prépare, une personne valide.</b> Rien n'atteint une famille sans arbitre, et aucune décision sur une personne n'est automatisée.</span></li>
+          <li><span><b>À plusieurs, avec des règles.</b> Un espace au nom du club, un compte par bénévole, des agents tenus en laisse, des départs réglés le jour même.</span></li>
+          <li><span><b>Pas de boîte noire.</b> Un registre, une alerte, un plan B essayé, et toujours deux personnes qui savent.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="quiz">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Étape 5 · Le quiz final</p>
+        <h2 class="h2">Douze questions,<br>dix pour réussir</h2>
+        <p class="lead">Des questions sur les cinq modules du niveau 4. Vous pouvez recommencer autant de fois que vous voulez : seul votre meilleur score compte.</p>
+      </div>
+      <form class="quiz" id="quizf" novalidate></form>
+      <div class="quiz-act">
+        <button class="btn btn-turf" type="submit" form="quizf">Voir mon score</button>
+        <button class="btn btn-ghost" type="button" id="quizf-reset">Recommencer</button>
+        <p class="quiz-res" id="quizf-res" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="attestation">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Étape 6</p>
+        <h2 class="h2">Votre<br>attestation</h2>
+        <p class="lead">Elle se débloque quand les cinq modules et le quiz final sont validés. Votre nom reste sur cet appareil : il ne sert qu'à l'impression.</p>
+      </div>
+      <div class="att">
+        <div class="att-cfg">
+          <div class="field"><label for="a-name">Prénom et nom</label><input id="a-name" data-k="name" autocomplete="name" placeholder="Camille Exemple"></div>
+          <div class="field"><label for="a-club">Club</label><input id="a-club" data-k="club" placeholder="AS Exemple Handball"></div>
+          <ul class="reqs" id="reqs"></ul>
+          <button class="btn btn-turf" type="button" id="print-att" disabled>Imprimer l'attestation</button>
+          <p class="att-msg" id="att-msg"></p>
+        </div>
+        <article class="cert locked" id="cert" aria-label="Aperçu de l'attestation">
+          <img src="assets/logo/fair-logo-horizontal.svg" alt="FAIR" onerror="this.remove()">
+          <span class="k">Attestation de formation</span>
+          <h3>Niveau 4<br><span>validé</span></h3>
+          <span class="who" id="c-name">Prénom Nom</span>
+          <p>a suivi les cinq modules du niveau 4 « Automatiser à plusieurs » de la formation FAIR « Former les Associations à l'IA Responsable » et réussi le quiz final<span id="c-club"></span>.</p>
+          <ol><li>Ce qui s'automatise</li><li>Des données propres</li><li>Construire un flux</li><li>L'IA en équipe</li><li>Le club en relais</li></ol>
+          <span class="date" id="c-date"></span>
+        </article>
+      </div>
+
+      <div class="next suite-cta">
+        <div class="head" style="margin:0">
+          <p class="label"><span id="suite-k">Après le niveau 4</span></p>
+          <h2 class="h2">Niveau 5 :<br>référent IA du club</h2>
+          <p class="lead">Votre club automatise sans perdre la main. Le niveau 5 forme la personne qui fera vivre tout cela dans la durée : le référent IA, qui forme les autres bénévoles, veille sur les outils et les règles, et porte la démarche du label « Club IA responsable ». Il est en préparation : écrivez-nous pour être tenu au courant de son ouverture.</p>
+        </div>
+        <div class="actions">
+          <a class="btn btn-turf" id="ask-access" href="mailto:contact@fair-asso.fr">Me prévenir à l'ouverture</a>
+          <a class="btn btn-ghost" href="formation-n4.html">Tout le niveau 4</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>FAIR · Former les Associations à l'IA Responsable</span>
+    <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/formation.js?v=2"></script>
+<script>
+(function(){
+  // Étape 1 : la fiche du registre, avec ce qu'il reste à régler
+  FAIR.builder(document.getElementById('registre'),'fair-n4-registre',function(v){
+    var todo=[],alerte=(v.alerte||[]).length>0,doc=(v.doc||[]).length>0,agent=v.type==='Agent';
+    if(v.compte==='perso')todo.push('Recréer l\'outil dans l\'espace du club, avant toute passation.');
+    if(!v.resp)todo.push('Désigner un responsable, par sa fonction.');
+    if(!v.secours)todo.push('Désigner une personne de secours, qui sait l\'arrêter et le relancer.');
+    if(!v.arbitre)todo.push(agent?'Un agent sans arbitre : retirez-lui le droit d\'agir seul.':'Désigner l\'arbitre, ou noter « aucun envoi » si le flux ne fait que préparer.');
+    if(/santé|sécurité sociale|IBAN|bancaire|allergie/i.test(v.donnees||''))todo.push('Des données sensibles dans un flux : à retirer, et à supprimer partout où elles sont passées.');
+    if(!alerte)todo.push('Ajouter une alerte : un flux qui s\'arrête ne prévient pas tout seul.');
+    if(!v.test)todo.push('Faire passer les six tests du module 3, sur le faux tableur.');
+    if(!doc)todo.push('Écrire sa documentation d\'une page.');
+    if(!v.planb)todo.push('Écrire le plan B, à la main, et l\'essayer une fois.');
+    return (v.nom||'[Nom de l\'automatisation]')+'\n'+
+      'Type : '+v.type+' · Outil : '+(v.outil||'[outil]')+'\n'+
+      'Où : '+(v.compte==='perso'?'compte personnel (à transférer)':'espace du club')+'\n'+
+      'Données : '+(v.donnees||'[les données utilisées]')+'\n'+
+      'Arbitre : '+(v.arbitre||'[qui valide, ou « aucun envoi »]')+'\n'+
+      'Responsable : '+(v.resp||'[fonction]')+' · Secours : '+(v.secours||'[fonction]')+'\n'+
+      'Alerte en cas de silence : '+(alerte?'oui':'non')+' · Documentation : '+(doc?'à jour':'à écrire')+'\n'+
+      'Derniers tests : '+(v.test||'[date, résultat]')+'\n'+
+      'Plan B : '+(v.planb||'[à la main]')+'\n'+
+      'Prochaine revue : '+v.revue+'\n\n'+
+      'À RÉGLER\n'+(todo.length?todo.map(function(t){return '- '+t}).join('\n'):'- Rien pour l\'instant. Rendez-vous à la prochaine revue.');
+  });
+
+  // Étape 5 : quiz final
+  var KEY_Q='fair-n4-quiz';
+  FAIR.quiz(document.getElementById('quizf'),KEY_Q,[
+    ["Une automatisation se distingue d'un assistant parce qu'elle…",["Se déclenche seule et enchaîne des étapes fixées à l'avance","Ne se trompe jamais","Remplace le bureau"],0,"L'assistant attend qu'on lui parle, l'automatisation agit seule : d'où les garde-fous. (Module 1)"],
+    ["Que signifie R.E.L.A.I.S. ?",["Répétitif, Enchaînement, Limites, Arbitre, Incident, Suivi","Rapide, Efficace, Léger, Automatique, Intelligent, Simple","Réseau, Échange, Lien, Accès, Information, Sécurité"],0,"Six rubriques à remplir avant de construire quoi que ce soit. (Module 1)"],
+    ["Lequel ne doit jamais être automatisé ?",["Un rappel d'agenda aux bénévoles","Le refus d'une inscription ou l'exclusion d'un enfant","Un accusé de réception"],1,"Une décision sur une personne reste humaine : feu rouge. (Module 1)"],
+    ["Pour la licence d'un mineur, le club reçoit…",["Les réponses au questionnaire de santé","L'attestation des parents, ou un certificat médical si une réponse est « oui »","Son dossier médical"],1,"Le questionnaire reste à la famille. (Module 2)"],
+    ["Un éducateur a besoin des contacts de son équipe. Vous lui partagez…",["Le tableur complet des adhérents","Un fichier séparé avec la seule liste de son équipe","Le mot de passe de la messagerie du club"],1,"Chacun sa part des données. (Module 2)"],
+    ["Une donnée pseudonymisée…",["N'est plus une donnée personnelle","Reste une donnée personnelle, et la correspondance reste au club","Peut être publiée sans risque"],1,"Seules des données vraiment anonymes, comme des totaux, sortent du cadre du RGPD. (Module 2)"],
+    ["Un nouveau flux se teste…",["Sur le vrai tableur, un jour calme","Sur un faux tableur, avec des cas piégés","Directement auprès d'une équipe"],1,"Un essai sur de vraies familles, c'est un envoi. (Module 3)"],
+    ["Dans un flux, l'étape d'IA…",["Envoie les messages","Classe ou prépare des brouillons, sans aucun droit d'envoyer","Décide qui reçoit quoi"],1,"L'IA prépare, une personne valide. (Module 3)"],
+    ["Combien de personnes administrent l'espace d'équipe du club ?",["Une","Deux","Tous les bénévoles"],1,"Deux, pour que le club ne dépende de personne. (Module 4)"],
+    ["Un agent ne doit jamais, seul…",["Lire une page","Envoyer, publier, payer ou supprimer","Préparer un brouillon"],1,"Rien d'irréversible sans validation. (Module 4)"],
+    ["Un bénévole quitte le club. Le jour même…",["On attend la prochaine revue","Son compte est retiré, ses autorisations révoquées, les mots de passe qu'il connaissait changés","On lui laisse un accès pour dépanner"],1,"Partir sans rien emporter. (Module 4)"],
+    ["Un flux s'arrête sans prévenir. Ce qui permet de s'en apercevoir à temps :",["Une alerte de silence et un journal relu chaque semaine","La confiance","Les appels des familles"],0,"Un flux qui se tait ne prévient pas tout seul. (Module 5)"]
+  ],10,function(){reqs()});
+
+  // Étape 6 : attestation
+  var KEY_A='fair-attestation';
+  var att=FAIR.store(KEY_A);
+  var inputs=[].slice.call(document.querySelectorAll('.att-cfg input'));
+  var btn=document.getElementById('print-att'),msg=document.getElementById('att-msg'),cert=document.getElementById('cert');
+  function reqs(){
+    var list=FAIR.N4.map(function(m,i){return {t:'Module '+(i+1)+' · '+m.name,ok:FAIR.done(m),url:m.url+'#bilan'}});
+    list[4].url='#route';
+    list.push({t:'Quiz final · 10 sur 12 minimum',ok:(FAIR.store(KEY_Q).best||0)>=10,url:'#quiz'});
+    var ul=document.getElementById('reqs');ul.innerHTML='';
+    list.forEach(function(r){
+      var li=document.createElement('li');li.className=r.ok?'ok':'';
+      var d=document.createElement('span');d.className='dot';d.setAttribute('aria-hidden','true');
+      var a=document.createElement('a');a.href=r.url;a.textContent=r.t;
+      var s=document.createElement('span');s.className='sr-only';s.textContent=r.ok?' : validé':' : à faire';
+      li.appendChild(d);li.appendChild(a);li.appendChild(s);ul.appendChild(li);
+    });
+    var left=list.filter(function(r){return !r.ok}).length;
+    btn.disabled=!!left;
+    cert.classList.toggle('locked',!!left);
+    msg.textContent=left?'Encore '+left+(left>1?' étapes':' étape')+' avant de débloquer l\'attestation.':'Tout est validé : imprimez-la, ou enregistrez-la en PDF depuis la fenêtre d\'impression.';
+    document.getElementById('suite-k').textContent=left?'Après le niveau 4':'Niveau 4 validé · La suite';
+  }
+
+  // La suite : e-mail pré-rempli pour être prévenu de l'ouverture du niveau 5
+  document.getElementById('ask-access').href='mailto:contact@fair-asso.fr?subject='+encodeURIComponent("Ouverture du niveau 5 de la formation FAIR")+'&body='+encodeURIComponent("Bonjour,\n\nJ'ai suivi le niveau 4 de la formation FAIR. Merci de me tenir au courant de l'ouverture du niveau 5.\n\nClub : \nVille : \nNombre de bénévoles intéressés : \n\nMerci !");
+  function cardText(save){
+    var v={};inputs.forEach(function(i){v[i.dataset.k]=i.value.trim()});
+    document.getElementById('c-name').textContent=v.name||'Prénom Nom';
+    document.getElementById('c-club').textContent=v.club?', au titre du club '+v.club:'';
+    if(save)FAIR.store(KEY_A,v);
+  }
+  inputs.forEach(function(i){i.value=att[i.dataset.k]||'';i.addEventListener('input',function(){cardText(true)})});
+  document.getElementById('c-date').textContent='Délivrée le '+new Date().toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'});
+  btn.addEventListener('click',function(){window.print()});
+  cardText(false);reqs();
+  document.addEventListener('fair:progress',reqs);
+})();
+</script>
+</body>
+</html>
