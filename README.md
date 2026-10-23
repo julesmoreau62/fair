@@ -10,7 +10,7 @@ Former les Associations à l'IA Responsable : site et supports de formation pour
 - `robots.txt` et `sitemap.xml` : référencement (adresse du site : https://fair-asso.fr). Ajoutez chaque nouvelle page publique au sitemap
 - `_redirects` : règles Netlify ; `index-version-longue.html`, `medias-bonus/` et `.claude/` restent dans le dossier mais renvoient une 404 en ligne
 - `assets/` : styles, scripts, polices, images, vidéos et logos du site
-- `formation.html` : accueil de la formation, niveau 0 et progression
+- `formation.html` : accueil de la formation (les six niveaux en bref, avec la progression de chacun), puis le niveau 0 (`#niveau-0`) et ses ressources
 - `formation-1.html` à `formation-5.html` : les cinq modules du niveau 0
   1. Créer ses comptes
   2. Bien demander (méthode C.L.U.B.)

@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Formation · Niveau 0 · FAIR</title>
-<meta name="description" content="Niveau 0 de la formation FAIR : cinq modules courts pour que chaque bénévole de club sportif utilise l'IA utilement et sans risque.">
+<title>Formation · FAIR</title>
+<meta name="description" content="La formation FAIR : six niveaux en ligne et gratuits pour les bénévoles de clubs sportifs, des fondamentaux de l'IA jusqu'au référent IA du club.">
 <link rel="canonical" href="https://fair-asso.fr/formation.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="FAIR">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:url" content="https://fair-asso.fr/formation.html">
-<meta property="og:title" content="Formation · Niveau 0 · FAIR">
-<meta property="og:description" content="Niveau 0 de la formation FAIR : cinq modules courts pour que chaque bénévole de club sportif utilise l'IA utilement et sans risque.">
+<meta property="og:title" content="Formation · FAIR">
+<meta property="og:description" content="La formation FAIR : six niveaux en ligne et gratuits pour les bénévoles de clubs sportifs, des fondamentaux de l'IA jusqu'au référent IA du club.">
 <meta property="og:image" content="https://fair-asso.fr/assets/img/poster-hero.jpg">
 <meta property="og:image:alt" content="Un joueur frappe un ballon sur un terrain synthétique, de nuit">
 <meta name="twitter:card" content="summary_large_image">
@@ -20,12 +20,32 @@
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <link rel="stylesheet" href="assets/css/formation.css?v=3">
 <style>
-/* Progression globale */
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+
+/* Les six niveaux */
+#niveaux{padding-top:0;scroll-margin-top:68px}
+.tiers{display:grid;gap:1px;background:var(--line-n);border:1px solid var(--line-n);border-radius:6px;overflow:hidden}
+.tier{display:grid;grid-template-columns:56px minmax(0,1fr) 200px 120px;gap:10px clamp(20px,3vw,40px);align-items:center;padding:22px clamp(18px,2.5vw,28px);background:var(--night);text-decoration:none;transition:background-color .25s}
+a.tier:hover{background:var(--night-2)}
+.tier .n{font-family:var(--f-display);font-weight:900;font-stretch:62%;font-size:3rem;line-height:.8;color:var(--fog)}
+.tier-txt{display:grid;gap:6px}
+.tier-txt b{font-family:var(--f-display);font-weight:850;font-stretch:66%;text-transform:uppercase;font-size:1.45rem;line-height:1}
+.tier-txt span{color:var(--mist);font-size:.95rem;line-height:1.5;max-width:62ch}
+.tier-meta{display:grid;gap:4px;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.04em;text-transform:uppercase;color:var(--fog)}
+.tier-meta .st.done{color:var(--turf)}
+.tier .go{justify-self:end;color:var(--turf-hi);font-weight:600;font-size:.92rem}
+.tier.cur{box-shadow:inset 3px 0 0 var(--turf)}
+.tier.cur .n{color:var(--turf)}
+.tier.soon b,.tier.soon .go{color:var(--fog)}
+.tiers-note{margin-top:16px;font-size:.9rem;color:var(--fog);max-width:72ch}
+@media (max-width:860px){.tier{grid-template-columns:44px minmax(0,1fr)}.tier .n{font-size:2.4rem;align-self:start}.tier-meta,.tier .go{grid-column:2;justify-self:start}}
+
+/* Niveau 0 : progression */
 .bar{width:100%;max-width:560px;display:grid;gap:10px;margin-top:8px}
 .bar-track{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
-.bar-track span{height:8px;border-radius:4px;background:var(--line-n);transition:background-color .3s}
-.bar-track span.on{background:var(--turf)}
-.bar p{font-family:var(--f-mono);font-size:.76rem;color:var(--fog)}
+.bar-track span{height:8px;border-radius:4px;background:var(--line-c);transition:background-color .3s}
+.bar-track span.on{background:var(--turf-ink)}
+.bar p{font-family:var(--f-mono);font-size:.76rem;color:var(--ink-2)}
 
 /* Liste des modules */
 .mods{display:grid;gap:12px}
@@ -41,7 +61,6 @@
 .mod .btn{min-width:150px}
 .mod.is-done .btn{background:transparent;border-color:var(--line-c);color:var(--ink)}
 @media (max-width:760px){.mod{grid-template-columns:minmax(0,1fr)}.mod-n{font-size:3.2rem}.mod .btn{justify-self:start}}
-.head.after{margin-top:clamp(64px,8vw,104px)}
 
 /* Ressources */
 .res{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
@@ -74,29 +93,81 @@
 <main id="contenu">
   <section class="hero">
     <div class="wrap hero-in">
-      <p class="label">Formation FAIR · En ligne et gratuite</p>
-      <h1>Niveau 0 : les fondamentaux</h1>
-      <p class="lead">Cinq modules courts pour que chaque bénévole du club utilise l'IA utilement et sans risque. Aucune connaissance technique n'est nécessaire : un ordinateur ou un téléphone suffit.</p>
+      <p class="label">En ligne, gratuite, à son rythme</p>
+      <h1>La formation FAIR</h1>
+      <p class="lead">Six niveaux pour les bénévoles de clubs sportifs, des premiers pas avec l'IA jusqu'au rôle de référent IA du club. Chaque niveau part de vrais dossiers de club et se termine par une attestation. Commencez par le niveau 0, ou directement là où vous en êtes.</p>
       <ul class="meta">
-        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>5 modules</li>
-        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>2 h 10 au total</li>
-        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>À son rythme</li>
-        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Attestation à la fin</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>6 niveaux</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Niveaux 0 à 4 en accès libre</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Plus de 25 heures de contenu</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Sans inscription</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Une attestation par niveau</li>
       </ul>
-      <div class="bar" aria-live="polite">
-        <div class="bar-track" id="bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-        <p id="bar-txt">0 module validé sur 5</p>
+      <div class="actions">
+        <a class="btn btn-turf" id="go" href="#niveau-0">Commencer par le niveau 0</a>
+        <a class="btn btn-ghost" href="#atelier">Un atelier dans votre club</a>
       </div>
-      <a class="btn btn-turf" id="go" href="formation-1.html">Commencer le module 1</a>
     </div>
   </section>
 
-  <section class="sec chalk" id="modules">
+  <section class="sec" id="niveaux">
     <div class="wrap">
       <div class="head">
         <p class="label">Le parcours</p>
-        <h2 class="h2">Cinq modules,<br>dans l'ordre</h2>
-        <p class="lead">Chaque module se termine par une check-list. Votre progression est enregistrée sur cet appareil uniquement : rien n'est envoyé, aucun compte n'est nécessaire.</p>
+        <h2 class="h2">Les six niveaux</h2>
+      </div>
+      <ol class="tiers">
+        <li><a class="tier" data-lv="0" href="#niveau-0">
+          <span class="n"><span class="sr-only">Niveau </span>0</span>
+          <span class="tier-txt"><b>Les fondamentaux</b><span>Créer son compte, bien formuler une demande, faire travailler l'IA sur un fichier ou une photo, et s'en servir sans risque pour les données des licenciés.</span></span>
+          <span class="tier-meta"><span>5 modules · 2 h 10</span><span class="st">Pas commencé</span></span>
+          <span class="go">Commencer</span>
+        </a></li>
+        <li><a class="tier" data-lv="1" href="formation-n1.html">
+          <span class="n"><span class="sr-only">Niveau </span>1</span>
+          <span class="tier-txt"><b>L'IA au quotidien du club</b><span>Les tâches de chaque semaine : les messages aux familles, les réseaux, les réunions et l'AG, les séances d'entraînement et la rentrée.</span></span>
+          <span class="tier-meta"><span>5 modules · 5 h 45</span><span class="st">Pas commencé</span></span>
+          <span class="go">Découvrir</span>
+        </a></li>
+        <li><a class="tier" data-lv="2" href="formation-n2.html">
+          <span class="n"><span class="sr-only">Niveau </span>2</span>
+          <span class="tier-txt"><b>Ses outils sur mesure</b><span>Des assistants configurés une fois pour le secrétariat, la communication et les éducateurs, et des modèles que tout le bureau réutilise.</span></span>
+          <span class="tier-meta"><span>5 modules · 5 h 30</span><span class="st">Pas commencé</span></span>
+          <span class="go">Découvrir</span>
+        </a></li>
+        <li><a class="tier" data-lv="3" href="formation-n3.html">
+          <span class="n"><span class="sr-only">Niveau </span>3</span>
+          <span class="tier-txt"><b>Financer et développer</b><span>Écrire le projet du club, monter un dossier de subvention, convaincre partenaires et mécènes, puis rendre compte de l'argent reçu.</span></span>
+          <span class="tier-meta"><span>5 modules · 6 h</span><span class="st">Pas commencé</span></span>
+          <span class="go">Découvrir</span>
+        </a></li>
+        <li><a class="tier" data-lv="4" href="formation-n4.html">
+          <span class="n"><span class="sr-only">Niveau </span>4</span>
+          <span class="tier-txt"><b>Automatiser à plusieurs</b><span>Repérer ce qui s'automatise, construire ses premiers flux et travailler avec l'IA à plusieurs, sans perdre la main sur les données des adhérents.</span></span>
+          <span class="tier-meta"><span>5 modules · 6 h 15</span><span class="st">Pas commencé</span></span>
+          <span class="go">Découvrir</span>
+        </a></li>
+        <li><div class="tier soon">
+          <span class="n"><span class="sr-only">Niveau </span>5</span>
+          <span class="tier-txt"><b>Référent IA du club</b><span>Former les autres bénévoles, veiller sur les outils et les règles, et porter la démarche du label « Club IA responsable ».</span></span>
+          <span class="tier-meta"><span>En préparation</span></span>
+          <span class="go">Bientôt</span>
+        </div></li>
+      </ol>
+      <p class="tiers-note">Chaque niveau s'appuie sur le précédent. Votre progression est enregistrée sur cet appareil uniquement : rien n'est envoyé, aucun compte n'est nécessaire.</p>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="niveau-0">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Pour commencer</p>
+        <h2 class="h2">Niveau 0 :<br>les fondamentaux</h2>
+        <p class="lead">Cinq modules courts pour que chaque bénévole du club utilise l'IA utilement et sans risque. Aucune connaissance technique n'est nécessaire : un ordinateur ou un téléphone suffit. Chaque module se termine par une check-list.</p>
+        <div class="bar" aria-live="polite">
+          <div class="bar-track" id="bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+          <p id="bar-txt">0 module validé sur 5</p>
+        </div>
       </div>
       <ol class="mods">
         <li class="mod" data-m="1">
@@ -145,27 +216,13 @@
           <a class="btn btn-turf" href="formation-5.html">Commencer</a>
         </li>
       </ol>
-
-      <div class="head after">
-        <p class="label">Et ensuite</p>
-        <h3 class="h3">Cinq niveaux pour aller plus loin</h3>
-        <p class="lead">Les niveaux 1 à 4 sont en accès libre, comme le niveau 0. Ils appliquent l'IA aux vrais dossiers du club, avec une difficulté et une profondeur qui augmentent à chaque marche. Le niveau 5 arrive bientôt.</p>
-      </div>
-      <ol class="levels">
-        <li class="lv free"><span class="n">0</span><b>Les fondamentaux</b><span class="tag">Gratuit · Vous êtes ici</span></li>
-        <li class="lv up"><span class="n">1</span><b>L'IA au quotidien du club</b><a class="tag" href="formation-n1.html">Découvrir le niveau 1</a></li>
-        <li class="lv"><span class="n">2</span><b>Ses outils sur mesure</b><a class="tag" href="formation-n2.html">Découvrir le niveau 2</a></li>
-        <li class="lv"><span class="n">3</span><b>Financer et développer</b><a class="tag" href="formation-n3.html">Découvrir le niveau 3</a></li>
-        <li class="lv"><span class="n">4</span><b>Automatiser à plusieurs</b><a class="tag" href="formation-n4.html">Découvrir le niveau 4</a></li>
-        <li class="lv"><span class="n">5</span><b>Référent IA du club</b><span class="tag">Bientôt</span></li>
-      </ol>
     </div>
   </section>
 
   <section class="sec" id="ressources">
     <div class="wrap">
       <div class="head">
-        <p class="label">Ressources</p>
+        <p class="label">Ressources du niveau 0</p>
         <h2 class="h2">À garder<br>sous la main</h2>
       </div>
       <div class="res">
@@ -191,7 +248,7 @@
     </div>
   </section>
 
-  <section class="sec chalk">
+  <section class="sec chalk" id="atelier">
     <div class="wrap next">
       <div class="head" style="margin:0">
         <p class="label">En groupe, c'est mieux</p>
@@ -216,8 +273,11 @@
 <script src="assets/js/formation.js?v=2"></script>
 <script>
 (function(){
-  // Barre de progression et boutons de chaque module : un seul bouton vert, sur le prochain module à faire
+  // Les niveaux ouverts : leurs modules et leur page d'accueil
+  var LV=[[FAIR.MODULES,'#niveau-0'],[FAIR.N1,'formation-n1.html'],[FAIR.N2,'formation-n2.html'],[FAIR.N3,'formation-n3.html'],[FAIR.N4,'formation-n4.html']];
+
   function paint(){
+    // Niveau 0 : barre de progression et boutons de chaque module, un seul bouton vert, sur le prochain module à faire
     var n=0,next=-1;
     FAIR.MODULES.forEach(function(m,i){if(next<0&&FAIR.count(m.key)<m.n)next=i});
     FAIR.MODULES.forEach(function(m,i){
@@ -229,14 +289,37 @@
       btn.classList.toggle('btn-turf',i===next);
       btn.classList.toggle('btn-ghost',i!==next);
     });
-    var go=document.getElementById('go');
-    if(next<0){go.textContent='Passer au niveau 1';go.href='formation-n1.html'}
-    else{go.textContent=(FAIR.count(FAIR.MODULES[next].key)?'Reprendre':'Commencer')+' le module '+(next+1);go.href=FAIR.MODULES[next].url}
     [].forEach.call(document.querySelectorAll('#bar span'),function(s,i){s.classList.toggle('on',i<n)});
     document.getElementById('bar-txt').textContent=n===5?'5 modules validés sur 5 · Niveau 0 terminé':n+(n>1?' modules validés':' module validé')+' sur 5';
+
+    // Les six niveaux : état de chacun, et le dernier niveau commencé
+    var last=-1;
+    LV.forEach(function(l,i){
+      var row=document.querySelector('.tier[data-lv="'+i+'"]'),st=row.querySelector('.st');
+      var d=l[0].filter(FAIR.done).length,started=l[0].some(function(m){return FAIR.count(m.key)>0});
+      if(started)last=i;
+      st.textContent=d===5?'Validé':d?d+(d>1?' modules validés':' module validé')+' sur 5':started?'En cours':'Pas commencé';
+      st.classList.toggle('done',d===5);
+      row.querySelector('.go').textContent=d===5?'Revoir':started?'Reprendre':i?'Découvrir':'Commencer';
+    });
+
+    // Le bouton du haut reprend là où l'on en est
+    var go=document.getElementById('go'),cur=0;
+    if(last<0){go.textContent='Commencer par le niveau 0';go.href='#niveau-0'}
+    else{
+      var mods=LV[last][0],k=-1;
+      mods.forEach(function(m,i){if(k<0&&!FAIR.done(m))k=i});
+      cur=last;
+      if(k>-1){go.textContent='Reprendre le niveau '+last+', module '+(k+1);go.href=mods[k].url}
+      else if(last<4){cur=last+1;go.textContent='Passer au niveau '+cur;go.href=LV[cur][1]}
+      else{go.textContent='Revoir le niveau 4';go.href=LV[4][1]}
+    }
+    [].forEach.call(document.querySelectorAll('.tier[data-lv]'),function(t){t.classList.toggle('cur',+t.dataset.lv===cur)});
   }
   paint();
   document.addEventListener('fair:progress',paint);
+  // Retour arrière depuis un module : la page sort du cache, on recalcule
+  window.addEventListener('pageshow',function(e){if(e.persisted)FAIR.progress()});
 })();
 </script>
 </body>
