@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Formation · Niveau 4 · Atelier : ma première tâche programmée · FAIR</title>
+<meta name="description" content="Atelier pratique du niveau 4 de la formation FAIR : copier le dépôt modèle dans un espace au nom du club, lancer un premier robot GitHub en mode essai, lire son journal, régler son horaire, relire ce que l'IA écrit et savoir tout arrêter.">
+<link rel="canonical" href="https://fair-asso.fr/formation-n4-atelier.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FAIR">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://fair-asso.fr/formation-n4-atelier.html">
+<meta property="og:title" content="Formation · Niveau 4 · Atelier : ma première tâche programmée · FAIR">
+<meta property="og:description" content="Copier le dépôt modèle au nom du club, lancer un premier robot GitHub en mode essai, lire son journal, régler son horaire et savoir tout arrêter.">
+<meta property="og:image" content="https://fair-asso.fr/assets/img/poster-hero.jpg">
+<meta property="og:image:alt" content="Un joueur frappe un ballon sur un terrain synthétique, de nuit">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#07111F">
+<link rel="icon" href="assets/logo/fair-icone.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/css/formation.css?v=3">
+<link rel="stylesheet" href="assets/css/niveau.css?v=3">
+<style>
+.code{font-family:var(--f-mono);font-size:.84em;letter-spacing:0}
+.prompt pre.mono{font-family:var(--f-mono);font-size:.8rem;line-height:1.7}
+.spot .s .code{font-size:.8em}
+.chalk .warn{color:var(--ink);border-left-color:var(--turf-ink)}
+.pas .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.goals.eight{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:980px){.goals.eight{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.goals.eight{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="check" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></symbol>
+</svg>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="index.html" aria-label="FAIR, retour à l'accueil"><img src="assets/logo/fair-logo-blanc-court.svg" alt="FAIR"></a>
+    <nav aria-label="Navigation">
+      <a class="opt" href="index.html#clubs">Clubs</a>
+      <a class="opt" href="index.html#partenaires">Fédérations</a>
+      <a href="formation.html" aria-current="page">Formation</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <section class="hero">
+    <div class="wrap hero-in">
+      <p class="label"><a href="formation-n4.html">Formation FAIR · Niveau 4</a> · Atelier pratique</p>
+      <h1>Ma première tâche programmée</h1>
+      <p class="lead">Un robot qui rappelle au bureau les échéances du club, chaque matin, sans que personne n'ait à y penser. Vous le copiez depuis le dépôt modèle de FAIR dans un espace au nom du club, vous le lancez en mode essai, vous lisez ce qu'il a fait, et vous savez l'arrêter. Pas une ligne de code à écrire.</p>
+      <ul class="meta">
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>1 h 30</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Modules 1 et 3 conseillés</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>3 exercices corrigés</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Un dépôt modèle à copier</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>À jour en octobre 2026</li>
+      </ul>
+      <nav class="steps-nav six" aria-label="Étapes de l'atelier">
+        <a href="#mots"><b>1. Les mots</b><span>Dépôt, robot, horaire</span></a>
+        <a href="#depot"><b>2. Le dépôt du club</b><span>Au nom du club, à deux</span></a>
+        <a href="#pas-a-pas"><b>3. Pas à pas</b><span>Copier, lancer, lire</span></a>
+        <a href="#horaire"><b>4. L'horaire</b><span>Lire et écrire un cron</span></a>
+        <a href="#relire"><b>5. Relire</b><span>Ce que l'IA écrit</span></a>
+        <a href="#casse"><b>6. Quand ça casse</b><span>Journal, alertes, arrêt</span></a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="objectifs">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Objectifs</p>
+        <h2 class="h2">À la fin<br>de cet atelier</h2>
+      </div>
+      <ol class="goals">
+        <li><b>Vous parlez GitHub</b>Dépôt, robot, horaire, exécution, journal, ticket, secret : huit mots suffisent.</li>
+        <li><b>Le dépôt appartient au club</b>Une organisation au nom du club, deux propriétaires, un compte personnel par bénévole.</li>
+        <li><b>Votre premier robot tourne en mode essai</b>Copié depuis le modèle, lancé à la main, son résumé lu et compris.</li>
+        <li><b>Vous écrivez un horaire</b>À l'heure de Paris, et jamais à l'heure pile.</li>
+        <li><b>Vous relisez ce que l'IA écrit</b>Huit points avant d'activer un robot, même s'il a l'air parfait.</li>
+        <li><b>Vous savez quand il casse</b>Le journal, les alertes, le robot de garde, et l'interrupteur qui arrête tout.</li>
+      </ol>
+
+      <div class="case">
+        <article class="who-card">
+          <span class="label">Le cas de l'atelier</span>
+          <h3>Le rappel qui n'est jamais venu</h3>
+          <p>Malgré la règle du bureau, Malik avait installé seul, sur son compte GitHub personnel, un robot qui rappelait les échéances du club. Dépôt public, « pour que ce soit gratuit ». Il marchait très bien, jusqu'au départ de Malik. En novembre, le dossier de subvention de la mairie part avec dix jours de retard : le rappel n'est jamais venu.</p>
+        </article>
+        <ul class="week">
+          <li><b>Mars</b><span>Malik crée le robot sur son compte. Personne d'autre n'y a accès, et le bureau ne sait pas vraiment qu'il existe.</span></li>
+          <li><b>Juin</b><span>Malik part faire ses études dans une autre ville. Plus personne ne modifie le dépôt.</span></li>
+          <li><b>Août</b><span>60 jours sans activité sur un dépôt public : GitHub coupe le robot. L'e-mail qui le signale part chez Malik, qui ne le lit pas.</span></li>
+          <li><b>Novembre</b><span>Pas de rappel pour le dossier de la mairie. Le trésorier s'en aperçoit dix jours après la date limite.</span></li>
+          <li><b>Décembre</b><span>Le bureau reprend tout : une organisation au nom du club, deux propriétaires, le modèle FAIR et un robot de garde.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="mots">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Étape 1 · Les mots</p>
+        <h2 class="h2">Dépôt, robot,<br>horaire</h2>
+        <p class="lead">GitHub est un service où l'on range des fichiers avec l'historique de chaque modification. GitHub Actions y ajoute des robots qui tournent à heure fixe, sur les ordinateurs de GitHub. L'interface est en anglais : voici les huit mots à connaître, et leur nom à l'écran.</p>
+      </div>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th scope="col">Le mot</th><th scope="col">À l'écran</th><th scope="col">Ce que c'est</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Le dépôt</th><td>Repository</td><td>Le dossier du projet : ses fichiers, et l'historique de chaque modification, avec qui l'a faite.</td></tr>
+            <tr><th scope="row">L'organisation</th><td>Organization</td><td>L'espace au nom du club, qui possède les dépôts. Les bénévoles y sont invités avec leur propre compte.</td></tr>
+            <tr><th scope="row">Le robot</th><td>Workflow</td><td>Un fichier du dossier <span class="code">.github/workflows</span> : quand il tourne, avec quels droits, et ce qu'il fait.</td></tr>
+            <tr><th scope="row">L'horaire</th><td>Schedule, cron</td><td>La ligne qui dit quand le robot se lance : <span class="code">17 7 * * *</span>, tous les jours à 7 h 17.</td></tr>
+            <tr><th scope="row">L'exécution et son journal</th><td>Run, logs</td><td>Chaque passage du robot, avec un résumé et le détail de chaque étape. C'est là qu'on regarde quand quelque chose cloche.</td></tr>
+            <tr><th scope="row">Le ticket</th><td>Issue</td><td>Une note dans l'onglet Issues, avec des cases à cocher. Les personnes qui suivent le dépôt reçoivent un e-mail.</td></tr>
+            <tr><th scope="row">La variable et le secret</th><td>Variables, secrets</td><td>Des réglages rangés à part : une variable se relit, un secret jamais, pas même par celui qui l'a saisi.</td></tr>
+            <tr><th scope="row">Le modèle</th><td>Template</td><td>Un dépôt prêt à copier, avec le bouton « Use this template ».</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="warn" style="margin-top:20px">GitHub n'est pas un endroit pour les données des adhérents, même dans un dépôt privé. Les robots de cet atelier n'en touchent aucune : des dates, des rôles, des pages publiques. Ceux qui en ont besoin se construisent dans le tableur du club (voir le <a href="formation-automatisations.html" style="color:var(--turf-hi)">catalogue des automatisations</a>).</p>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="depot">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Étape 2 · Le dépôt du club</p>
+        <h2 class="h2">Au nom du club,<br>à deux</h2>
+        <p class="lead">La leçon de Malik : un robot vit aussi longtemps que le compte qui le porte. Il se range donc dans une organisation au nom du club, que deux personnes savent administrer. C'est la règle du niveau 4, appliquée à GitHub.</p>
+      </div>
+      <div class="split">
+        <div>
+          <h3 class="h3">Avant de copier quoi que ce soit</h3>
+          <ul class="todo" style="margin-top:16px">
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Une <b>organisation au nom du club</b>, avec l'offre gratuite, créée avec une adresse e-mail du club</span></li>
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>Deux propriétaires</b> : le responsable des robots et la personne de secours</span></li>
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Un <b>compte personnel par bénévole</b>, invité dans l'organisation : jamais de compte partagé</span></li>
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>La <b>double authentification</b> activée sur chaque compte</span></li>
+            <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span>Au départ d'un bénévole : <b>accès retiré le jour même</b>, secrets qu'il connaissait changés</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="h3">Privé ou public ?</h3>
+          <div class="tbl-wrap" style="margin-top:16px">
+            <table class="tbl" style="min-width:0">
+              <thead><tr><th scope="col"></th><th scope="col">Privé</th><th scope="col">Public</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Qui voit les fichiers</th><td>Les membres invités</td><td>Tout le monde</td></tr>
+                <tr><th scope="row">Les robots</th><td>Gratuits jusqu'à 2 000 minutes par mois, largement assez</td><td>Gratuits</td></tr>
+                <tr><th scope="row">Le site gratuit</th><td class="n">Non</td><td class="y">Oui, avec GitHub Pages</td></tr>
+                <tr><th scope="row">La règle des 60 jours</th><td class="y">Ne s'applique pas</td><td class="n">Robots coupés après 60 jours sans modification</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note" style="color:var(--ink-2)">Les quatre robots du modèle ne contiennent aucune donnée personnelle : un seul dépôt public leur convient, si vous voulez le site. Sinon, choisissez le privé. Offres GitHub vérifiées en octobre 2026.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec pas" id="pas-a-pas">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Étape 3 · Pas à pas</p>
+        <h2 class="h2">Copier,<br>lancer, lire</h2>
+        <p class="lead">Le robot des rappels, du modèle à la première exécution. Comptez une demi-heure, à deux de préférence : le responsable et la personne de secours, chacun sur son compte.</p>
+      </div>
+      <div class="split">
+        <ol class="tl">
+          <li><span class="when">Étape 1</span><div><h4>Copier le modèle</h4><p>Sur la page du dépôt modèle, bouton vert « Use this template », puis « Create a new repository ». Propriétaire : l'organisation du club. Nom : par exemple robots-du-club.</p></div></li>
+          <li><span class="when">Étape 2</span><div><h4>Ouvrir l'onglet Actions</h4><p>Les quatre robots y sont listés. Si GitHub le demande, activez-les : ils restent en mode essai.</p></div></li>
+          <li><span class="when">Étape 3</span><div><h4>Lancer à la main</h4><p>« Rappels des obligations », bouton « Run workflow ». Dans la case de la date simulée, tapez 2026-11-06 : sept jours avant le dossier fictif de la mairie.</p></div></li>
+          <li><span class="when">Étape 4</span><div><h4>Lire le résumé</h4><p>Cliquez sur l'exécution. Le résumé affiche les échéances des 60 prochains jours et le ticket qui aurait été ouvert. Le détail est dans l'étape « Préparer les rappels du jour ».</p></div></li>
+          <li><span class="when">Étape 5</span><div><h4>Mettre les échéances du club</h4><p>Dans <span class="code">donnees/obligations.csv</span>, crayon « Edit » : remplacez les lignes d'exemple, avec des rôles, jamais des noms. « Commit changes », puis relancez.</p></div></li>
+          <li><span class="when">Étape 6</span><div><h4>Passer en réel, après le bureau</h4><p>La fiche R.E.L.A.I.S. validée, « Settings », « Secrets and variables », « Actions », onglet « Variables » : <span class="code">MODE_ESSAI</span> = non. Les rappels deviennent des tickets.</p></div></li>
+        </ol>
+        <div>
+          <div class="prompt">
+            <div class="prompt-top"><span class="label">Le résumé, en mode essai</span></div>
+<pre>Rappels du vendredi 6 novembre 2026
+
+Échéances des 60 prochains jours :
+· vendredi 13 novembre 2026 (dans 7 jours)
+  Déposer le dossier de subvention de la mairie
+  Trésorier
+· mardi 1er décembre 2026 (dans 25 jours)
+  Vérifier que les robots tournent
+  Administrateurs du dépôt
+· mardi 15 décembre 2026 (dans 39 jours)
+  Renouveler l'assurance du club
+  Président
+
+Rappel(s) à envoyer aujourd'hui : 1.
+
+Mode essai : ce ticket n'a pas été ouvert.
+Rappels du 6 novembre 2026
+Trésorier
+☐ Déposer le dossier de subvention de la mairie :
+  échéance le vendredi 13 novembre 2026 (dans 7 jours).</pre>
+          </div>
+          <p class="note">Le robot lit un tableau à cinq colonnes : la date, quoi, qui (un rôle), les jours de rappel (30, 7, 1…) et la répétition (« chaque année », « chaque mois »). Le jour même est toujours rappelé.</p>
+          <div class="actions">
+            <a class="btn btn-turf" href="https://github.com/julesmoreau62/modele-automatisations-club">Ouvrir le dépôt modèle</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="horaire">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Étape 4 · L'horaire</p>
+        <h2 class="h2">Lire<br>un cron</h2>
+        <p class="lead">La ligne cron dit quand le robot se lance, en cinq champs séparés par des espaces. Une étoile veut dire « tous ». Juste en dessous, la ligne timezone dit à quelle heure on compte.</p>
+      </div>
+      <div class="split">
+        <div class="tbl-wrap">
+          <table class="tbl" style="min-width:0">
+            <thead><tr><th scope="col">Champ</th><th scope="col">Valeurs</th><th scope="col">Dans « 17 7 * * 1 »</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Minute</th><td>0 à 59</td><td>17</td></tr>
+              <tr><th scope="row">Heure</th><td>0 à 23</td><td>7</td></tr>
+              <tr><th scope="row">Jour du mois</th><td>1 à 31</td><td>* : tous</td></tr>
+              <tr><th scope="row">Mois</th><td>1 à 12</td><td>* : tous</td></tr>
+              <tr><th scope="row">Jour de la semaine</th><td>0 (dimanche) à 6 (samedi)</td><td>1 : le lundi</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="prompt" style="background:var(--ink)">
+          <div class="prompt-top"><span class="label">Dans le fichier du robot</span></div>
+<pre class="mono">on:
+  schedule:
+    - cron: "17 7 * * 1"
+      timezone: "Europe/Paris"
+  workflow_dispatch:
+
+# Chaque lundi à 7 h 17, heure de Paris,
+# et un bouton pour le lancer à la main.</pre>
+        </div>
+      </div>
+      <div class="tips" style="margin-top:24px">
+        <article class="tip trap">
+          <span class="n">Piège · Le fuseau</span>
+          <h3>Sans timezone, l'heure universelle</h3>
+          <p>Sans la ligne timezone, GitHub compte en temps universel : à Paris, le robot passe une heure plus tard en hiver, deux heures plus tard en été.</p>
+        </article>
+        <article class="tip trap">
+          <span class="n">Piège · L'heure pile</span>
+          <h3>L'embouteillage de 7 h 00</h3>
+          <p>GitHub prévient que les exécutions peuvent être retardées aux heures chargées, surtout en début d'heure. 7 h 17 plutôt que 7 h 00.</p>
+        </article>
+        <article class="tip trap">
+          <span class="n">Piège · Le dimanche</span>
+          <h3>La semaine commence à 0</h3>
+          <p>0 pour dimanche, 1 pour lundi, 6 pour samedi. « 1-5 » veut dire du lundi au vendredi, « 1,4 » le lundi et le jeudi.</p>
+        </article>
+        <article class="tip key">
+          <span class="n">La règle</span>
+          <h3>Pas plus souvent que nécessaire</h3>
+          <p>GitHub n'accepte pas moins de cinq minutes entre deux exécutions, et un club n'en a jamais besoin : une fois par jour suffit presque toujours.</p>
+        </article>
+      </div>
+
+      <div class="sub">
+        <h3 class="h3">Exercice 1 · Trois horaires</h3>
+        <p>Le bureau veut trois robots. Écrivez la ligne cron de chacun, puis vérifiez avec le corrigé ou avec le traducteur juste en dessous.</p>
+      </div>
+      <div class="exo" style="background:var(--ink);border-color:var(--ink)">
+        <div class="ex-txt">
+          <span class="label">La consigne</span>
+          <ol>
+            <li><span>Écrivez la ligne cron des deux premiers besoins, avec le bon fuseau.</span></li>
+            <li><span>Dites à quelle heure part le troisième robot, en hiver et en été.</span></li>
+          </ol>
+        </div>
+        <div class="ex-box">
+          <div class="msg">
+            <span class="from">Les trois besoins</span>
+            <p><b>Le planning des bénévoles</b> : l'alerte des créneaux vides, le jeudi vers 19 h.</p>
+            <p><b>Le pointage de la rentrée</b> : chaque nuit vers 2 h, en septembre et en octobre seulement.</p>
+            <p><b>Le robot de Malik</b> : <span class="code">cron: "0 18 * * 5"</span>, sans ligne timezone.</p>
+          </div>
+          <details class="sol">
+            <summary>Voir le corrigé</summary>
+            <div class="sol-in">
+              <p><b>1. Le planning.</b> <span class="code">"7 19 * * 4"</span> : 19 h 07, le jeudi (4), avec <span class="code">timezone: "Europe/Paris"</span>. Pas 19 h 00, l'heure pile est embouteillée.</p>
+              <p><b>2. Le pointage.</b> <span class="code">"13 2 * 9,10 *"</span> : 2 h 13, tous les jours de septembre (9) et d'octobre (10), avec le même fuseau.</p>
+              <p><b>3. Le robot de Malik</b> part le vendredi à 18 h en temps universel, soit <b>19 h à Paris en hiver et 20 h en été</b>, avec un éventuel retard à l'heure pile. Correction : <span class="code">"11 18 * * 5"</span> et <span class="code">timezone: "Europe/Paris"</span>.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="traducteur">
+    <div class="wrap">
+      <div class="build">
+        <div>
+          <div class="head" style="margin-bottom:24px">
+            <p class="label">Étape 4 · À vous de jouer</p>
+            <h3 class="h3">Le traducteur d'horaire</h3>
+            <p style="color:var(--mist)">Dites quand votre robot doit tourner : les lignes à coller dans son fichier s'écrivent à droite, avec la phrase qui les explique et ce qu'il faut vérifier. Vos réponses restent sur cet appareil.</p>
+          </div>
+          <div class="fields">
+            <div class="field">
+              <span style="font-weight:600">Quand</span>
+              <div class="opts">
+                <label><input type="radio" name="tfreq" data-f="freq" value="jour" checked>Chaque jour</label>
+                <label><input type="radio" name="tfreq" data-f="freq" value="semaine">Certains jours de la semaine</label>
+                <label><input type="radio" name="tfreq" data-f="freq" value="mois">Une fois par mois</label>
+              </div>
+            </div>
+            <div class="field">
+              <span style="font-weight:600">Les jours de la semaine</span><small>Seulement si vous avez choisi « certains jours »</small>
+              <div class="opts">
+                <label><input type="checkbox" data-f="jours" value="1">Lundi</label>
+                <label><input type="checkbox" data-f="jours" value="2">Mardi</label>
+                <label><input type="checkbox" data-f="jours" value="3">Mercredi</label>
+                <label><input type="checkbox" data-f="jours" value="4">Jeudi</label>
+                <label><input type="checkbox" data-f="jours" value="5">Vendredi</label>
+                <label><input type="checkbox" data-f="jours" value="6">Samedi</label>
+                <label><input type="checkbox" data-f="jours" value="0">Dimanche</label>
+              </div>
+            </div>
+            <div class="two">
+              <div class="field"><label for="t-jourmois">Le jour du mois</label><small>Si « une fois par mois »</small><input id="t-jourmois" data-f="jourmois" type="number" min="1" max="31" placeholder="1"></div>
+              <div class="field"><label for="t-heure">L'heure, à Paris</label><small>Heures et minutes</small><input id="t-heure" data-f="heure" type="time" value="07:17"></div>
+            </div>
+            <div class="field"><label for="t-mois">Seulement certains mois</label><small>Facultatif : laissez vide pour toute l'année</small><input id="t-mois" data-f="mois" placeholder="septembre, octobre"></div>
+          </div>
+        </div>
+        <div class="build-out">
+          <div class="prompt">
+            <div class="prompt-top"><span class="label">Les lignes à coller</span><button class="copy" type="button" data-copy>Copier</button></div>
+            <pre data-out aria-live="polite"></pre>
+          </div>
+          <p class="note">À coller à la place du bloc <span class="code">on:</span> du robot, en gardant les espaces du début de ligne : dans ces fichiers, l'alignement compte.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="relire">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Étape 5 · Relire</p>
+        <h2 class="h2">Ce que l'IA écrit,<br>on le relit</h2>
+        <p class="lead">Pour adapter un robot ou en créer un, votre assistant IA écrit le fichier, vite et souvent bien. Mais il lui arrive de donner trop de droits, d'oublier le fuseau ou de proposer d'écrire un mot de passe en clair. Huit points avant d'activer quoi que ce soit. Un seul « non », et le robot reste en mode essai.</p>
+      </div>
+      <ol class="goals eight">
+        <li><b>Les droits au strict nécessaire</b>Un bloc <span class="code">permissions</span> en haut du fichier, et chaque droit sert : <span class="code">issues: write</span> pour ouvrir un ticket, rien de plus.</li>
+        <li><b>Rien de sensible dans le fichier</b>Mots de passe, clés et adresses passent par les secrets, et entrent dans les commandes par <span class="code">env:</span>.</li>
+        <li><b>Les outils extérieurs figés</b>Chaque ligne <span class="code">uses:</span> pointe vers une empreinte, une longue suite de chiffres et de lettres, pas vers <span class="code">@v7</span>.</li>
+        <li><b>L'heure de Paris</b><span class="code">timezone: "Europe/Paris"</span>, et pas à l'heure pile.</li>
+        <li><b>Le mode essai</b>Tant que le bureau n'a pas validé, rien ne sort du dépôt.</li>
+        <li><b>Un arrêt possible</b>L'interrupteur <span class="code">ROBOTS_ACTIFS</span> et une durée maximale, <span class="code">timeout-minutes</span>.</li>
+        <li><b>Aucune donnée personnelle</b>Le robot n'en lit ni n'en écrit, et le dépôt n'en contient aucune.</li>
+        <li><b>Documenté</b>Sa fiche R.E.L.A.I.S. et sa ligne du registre, avec un responsable et une personne de secours.</li>
+      </ol>
+
+      <div class="tips" style="margin-top:24px">
+        <article class="tip">
+          <span class="n">Les secrets · 01</span>
+          <h3>Variable ou secret ?</h3>
+          <p>Ce qui peut se lire va dans une variable : <span class="code">MODE_ESSAI</span>, l'adresse d'un tableau public. Ce qui ouvre une porte va dans un secret : mot de passe de messagerie, clé d'API, liste des adresses e-mail.</p>
+        </article>
+        <article class="tip">
+          <span class="n">Les secrets · 02</span>
+          <h3>Personne ne les relit</h3>
+          <p>Un secret ne s'affiche plus, même pour les propriétaires, et GitHub le masque dans les journaux. On ne le corrige pas : on le remplace.</p>
+        </article>
+        <article class="tip">
+          <span class="n">Les secrets · 03</span>
+          <h3>Le jeton du robot</h3>
+          <p>À chaque exécution, GitHub crée un jeton temporaire qui n'a que les droits du bloc <span class="code">permissions</span> et expire à la fin du travail. C'est lui qui ouvre les tickets : aucun mot de passe à fournir.</p>
+        </article>
+        <article class="tip key">
+          <span class="n">Les secrets · 04</span>
+          <h3>Au départ d'un bénévole</h3>
+          <p>On retire son accès, puis on change chaque secret qu'il a pu connaître. Un mot de passe dans un ancien fichier reste dans l'historique : on le change, on ne se contente pas de l'effacer.</p>
+        </article>
+      </div>
+
+      <div class="sub">
+        <h3 class="h3">Exercice 2 · Le robot de Malik</h3>
+        <p>Voici la description du robot que Malik avait écrit avec une IA, au printemps. Cinq lignes posent un vrai problème. Cliquez dessus, puis vérifiez.</p>
+      </div>
+      <div class="spot">
+        <div class="spot-doc lines">
+          <h4>Robot « Rappels du club » · version de Malik</h4>
+          <button class="s">Nom du robot : « Rappels du club ».</button>
+          <button class="s" data-err="Sans timezone, GitHub compte en temps universel : le robot passe à 8 h en hiver et à 9 h en été à Paris. Et à l'heure pile, il peut être retardé. Correction : 7 h 17, avec timezone: &quot;Europe/Paris&quot;.">Horaire : <span class="code">cron: "0 7 * * *"</span>, sans ligne timezone.</button>
+          <button class="s">Un bouton pour le lancer à la main (<span class="code">workflow_dispatch</span>).</button>
+          <button class="s" data-err="Tous les droits sur le dépôt, alors que le robot n'a besoin que de lire ses fichiers et d'ouvrir un ticket : contents: read et issues: write.">Droits : <span class="code">permissions: write-all</span>, « pour ne pas être bloqué ».</button>
+          <button class="s">Durée maximale : cinq minutes (<span class="code">timeout-minutes: 5</span>).</button>
+          <button class="s" data-err="Un mot de passe écrit dans le fichier est lisible par quiconque voit le dépôt, et il reste dans l'historique même après correction. Il va dans un secret, et on change le mot de passe.">Commande : <span class="code">python3 rappels.py --mot-de-passe Handball2026</span></button>
+          <button class="s" data-err="Des données de mineurs dans un dépôt public, lisibles par n'importe qui. Elles restent dans le tableur du club, et ce robot n'en a aucun besoin.">Fichier <span class="code">anniversaires.csv</span> : prénoms et dates de naissance des U13, « pour leur souhaiter leur anniversaire ».</button>
+          <button class="s">Le robot ouvre un ticket pour le bureau ; il n'écrit jamais aux familles.</button>
+          <button class="s" data-err="Le jour où Malik part, plus personne ne peut réparer le robot, et les alertes partent chez lui. Le dépôt va dans l'organisation du club, avec deux propriétaires.">Le dépôt est sur le compte personnel de Malik, seul à pouvoir le modifier.</button>
+          <button class="s">La fiche R.E.L.A.I.S. du robot est rangée dans le dossier <span class="code">docs</span>.</button>
+        </div>
+        <div class="spot-act">
+          <button class="btn btn-turf spot-go" type="button">Vérifier</button>
+          <p class="spot-res" aria-live="polite">5 erreurs à trouver.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="casse">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Étape 6 · Quand ça casse</p>
+        <h2 class="h2">Le journal,<br>les alertes, l'arrêt</h2>
+        <p class="lead">Un robot ne se plaint pas : il se tait. Quatre réflexes pour savoir quand il casse, et l'arrêter en une minute.</p>
+      </div>
+      <div class="tips">
+        <article class="tip">
+          <span class="n">01 · Le journal</span>
+          <h3>Ce qu'il a fait, étape par étape</h3>
+          <p>Onglet Actions, le robot, puis l'exécution : le résumé en haut, le détail de chaque étape en dessous. Une étape en rouge, et son message dit souvent quoi corriger.</p>
+        </article>
+        <article class="tip">
+          <span class="n">02 · Les alertes</span>
+          <h3>Qui est prévenu</h3>
+          <p>Quand un robot programmé échoue, GitHub prévient la personne qui a modifié sa ligne cron en dernier. Après un départ, le responsable décale l'horaire d'une minute depuis son compte : les alertes lui reviennent.</p>
+        </article>
+        <article class="tip">
+          <span class="n">03 · Les 60 jours</span>
+          <h3>Le dépôt public qui dort</h3>
+          <p>Sur un dépôt public, GitHub coupe les robots programmés après 60 jours sans activité. Le robot de garde prévient à 45 jours : une mise à jour d'un tableau suffit.</p>
+        </article>
+        <article class="tip key">
+          <span class="n">04 · L'arrêt</span>
+          <h3>En une minute</h3>
+          <p>Un robot : onglet Actions, « Disable workflow ». Tous : la variable <span class="code">ROBOTS_ACTIFS</span> à « non ». Les deux propriétaires savent le faire.</p>
+        </article>
+      </div>
+      <p class="warn" style="margin-top:20px">Le robot de garde du modèle vérifie chaque lundi que les autres tournent. Il ne peut pas se surveiller lui-même : la première ligne du calendrier des obligations demande une vérification humaine, le 1er de chaque mois.</p>
+
+      <div class="sub">
+        <h3 class="h3">Exercice 3 · Le rappel qui n'est jamais venu</h3>
+        <p>Reprenons le cas du début de l'atelier. Le bureau veut comprendre, et repartir sur de bonnes bases.</p>
+      </div>
+      <div class="exo">
+        <div class="ex-txt">
+          <span class="label">La consigne</span>
+          <ol>
+            <li><span>Quelles rubriques R.E.L.A.I.S. ont cédé ?</span></li>
+            <li><span>Qu'est-ce qui l'aurait signalé à temps ?</span></li>
+            <li><span>Que fait le bureau, dans l'ordre ?</span></li>
+          </ol>
+        </div>
+        <div class="ex-box">
+          <div class="msg">
+            <span class="from">Le rappel qui n'est jamais venu</span>
+            <p>Un robot sur le compte personnel de Malik, dans un dépôt public. Malik part en juin, le dépôt ne bouge plus, GitHub coupe le robot en août et prévient Malik. En novembre, le dossier de la mairie part avec dix jours de retard.</p>
+          </div>
+          <details class="sol">
+            <summary>Voir le corrigé</summary>
+            <div class="sol-in">
+              <p><b>1. Le Suivi et l'Incident.</b> Ni responsable désigné par le bureau, ni personne de secours, ni revue : le Suivi n'existait pas. Et l'Incident n'était pas prévu : l'alerte partait chez Malik, et personne ne savait relancer le robot. La règle du niveau 4, « rien sur un compte personnel », n'avait pas été tenue.</p>
+              <p><b>2. Trois choses l'auraient signalé.</b> Un robot de garde, qui aurait ouvert un ticket dès septembre. La vérification humaine du 1er du mois. Et un dépôt privé, où la règle des 60 jours ne s'applique pas.</p>
+              <p><b>3. Dans l'ordre</b></p>
+              <ul>
+                <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>Déposer le dossier quand même</b> et prendre contact avec la mairie.</span></li>
+                <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>Créer l'organisation du club</b>, avec deux propriétaires.</span></li>
+                <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>Copier le modèle</b> et y reprendre le tableau des obligations de Malik.</span></li>
+                <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>Écrire la fiche R.E.L.A.I.S.</b>, la faire valider, l'inscrire au registre.</span></li>
+                <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg><span><b>Activer le robot de garde</b> et la vérification du 1er du mois.</span></li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="kit">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Bibliothèque</p>
+        <h2 class="h2">Douze demandes<br>pour vos robots</h2>
+        <p class="lead">Pour faire écrire, comprendre, sécuriser et réparer un robot avec votre assistant IA. Remplacez les passages en vert. Avant de coller un fichier ou un journal, vérifiez qu'il ne contient ni adresse, ni mot de passe, ni donnée d'adhérent.</p>
+      </div>
+      <div class="filters" data-for="libA" role="group" aria-label="Filtrer les demandes">
+        <button class="chip" type="button" data-filter="all">Toutes</button>
+        <button class="chip" type="button" data-filter="ecrire">Écrire</button>
+        <button class="chip" type="button" data-filter="comprendre">Comprendre</button>
+        <button class="chip" type="button" data-filter="securiser">Sécuriser</button>
+        <button class="chip" type="button" data-filter="reparer">Réparer</button>
+      </div>
+      <div class="lib" id="libA">
+        <article class="card" data-cat="ecrire">
+          <div class="card-top"><span class="label">Écrire</span><h3>Adapter un robot du modèle</h3></div>
+          <pre>J'utilise le modèle FAIR « modele-automatisations-club ». Voici le fichier <i>[nom du fichier]</i> : <i>[collez-le]</i>. Je veux qu'il <i>[le changement voulu]</i>. Propose la modification la plus petite possible, explique chaque ligne changée, et ne touche ni aux droits, ni au mode essai, ni à l'interrupteur.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card" data-cat="ecrire">
+          <div class="card-top"><span class="label">Écrire</span><h3>Créer un nouveau robot</h3></div>
+          <pre>Écris un workflow GitHub Actions pour le dépôt de notre club qui <i>[ce qu'il doit faire]</i>, <i>[quand]</i>. Règles : horaire avec timezone « Europe/Paris », pas à l'heure pile ; bloc permissions minimal ; actions figées sur une empreinte de commit ; aucune donnée personnelle ; mode essai tant que la variable MODE_ESSAI ne vaut pas « non » ; arrêt avec la variable ROBOTS_ACTIFS ; timeout-minutes. Puis explique chaque ligne.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card" data-cat="ecrire">
+          <div class="card-top"><span class="label">Écrire</span><h3>La fiche R.E.L.A.I.S. du robot</h3></div>
+          <pre>Voici un robot GitHub Actions de notre club : <i>[collez le fichier]</i>. Rédige sa fiche R.E.L.A.I.S. (Répétitif, Enchaînement, Limites, Arbitre, Incident, Suivi), une ou deux phrases par rubrique, pour des bénévoles qui ne connaissent pas GitHub. Écris « à compléter » pour le responsable et la personne de secours.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card" data-cat="comprendre">
+          <div class="card-top"><span class="label">Comprendre</span><h3>Expliquer un robot ligne par ligne</h3></div>
+          <pre>Explique-moi ce fichier GitHub Actions ligne par ligne, comme à un bénévole qui n'a jamais programmé : <i>[collez le fichier]</i>. Dis-moi quand il tourne, ce qu'il peut lire et modifier, ce qui sort du dépôt, et ce qui se passe s'il échoue.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card" data-cat="comprendre">
+          <div class="card-top"><span class="label">Comprendre</span><h3>Traduire un horaire</h3></div>
+          <pre>Que veut dire cette ligne cron : <i>[la ligne]</i>, avec <i>[le fuseau indiqué, ou « sans timezone »]</i> ? Donne les cinq prochaines exécutions en heure de Paris, et signale si elle tombe à l'heure pile.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card" data-cat="comprendre">
+          <div class="card-top"><span class="label">Comprendre</span><h3>Lire un résumé d'exécution</h3></div>
+          <pre>Voici le résumé d'une exécution de notre robot, en mode essai : <i>[collez-le]</i>. Explique ce que le robot a fait, ce qu'il aurait fait hors mode essai, et ce que je dois vérifier avant de passer en réel.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card" data-cat="securiser">
+          <div class="card-top"><span class="label">Sécuriser</span><h3>Relire avant d'activer</h3></div>
+          <pre>Relis ce workflow avec ces huit points et réponds point par point, oui ou non, avec la ligne concernée : droits minimaux ; rien de sensible écrit dans le fichier ; actions figées sur une empreinte ; heure de Paris et pas à l'heure pile ; mode essai ; interrupteur et durée maximale ; aucune donnée personnelle ; documentation. Le fichier : <i>[collez-le]</i></pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card" data-cat="securiser">
+          <div class="card-top"><span class="label">Sécuriser</span><h3>Réduire les droits</h3></div>
+          <pre>Ce workflow a le bloc permissions suivant : <i>[le bloc]</i>. Il sert à <i>[ce qu'il fait]</i>. Quels droits sont vraiment nécessaires ? Propose le bloc le plus restreint et explique chaque droit gardé.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card" data-cat="securiser">
+          <div class="card-top"><span class="label">Sécuriser</span><h3>Préparer un départ</h3></div>
+          <pre>Un bénévole qui administrait le dépôt GitHub de notre club s'en va. Fais-moi la liste des choses à faire, dans l'ordre : accès et propriétaires, secrets qu'il connaissait, alertes des robots programmés, documentation. Nos robots : <i>[la liste]</i>.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card" data-cat="reparer">
+          <div class="card-top"><span class="label">Réparer</span><h3>Comprendre une erreur</h3></div>
+          <pre>Voici le journal d'une exécution en échec : <i>[collez-le, sans adresse ni mot de passe]</i>. Explique la cause la plus probable en termes simples, et ce que je dois changer. Ne propose pas d'élargir les droits sans m'expliquer pourquoi.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card" data-cat="reparer">
+          <div class="card-top"><span class="label">Réparer</span><h3>Le robot ne tourne plus</h3></div>
+          <pre>Notre robot GitHub Actions programmé ne s'est pas lancé depuis <i>[nombre]</i> jours. Le dépôt est <i>[public ou privé]</i>. Liste les causes possibles, de la plus probable à la moins probable, et comment vérifier chacune dans l'interface de GitHub.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+        <article class="card" data-cat="reparer">
+          <div class="card-top"><span class="label">Réparer</span><h3>Le message d'excuse</h3></div>
+          <pre>Notre robot a envoyé par erreur <i>[ce qui s'est passé]</i> à <i>[qui]</i>. Rédige un message court et honnête : ce qui s'est passé, ce qui a été arrêté, ce que le club change. Pas de jargon technique, pas de minimisation.</pre>
+          <div class="card-foot"><button class="copy" type="button" data-copy>Copier</button></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="memo">
+        <div>
+          <p class="label">À retenir</p>
+          <h2 class="h2" style="margin-top:14px">L'atelier<br>en cinq points</h2>
+        </div>
+        <ol>
+          <li><span><b>Le robot appartient au club.</b> Une organisation, deux propriétaires, un compte personnel par bénévole.</span></li>
+          <li><span><b>Rien de personnel dans un dépôt.</b> Les adhérents restent dans le tableur du club, même quand le dépôt est privé.</span></li>
+          <li><span><b>Le mode essai d'abord.</b> On lance à la main, on lit le résumé, le bureau valide la fiche, puis on passe en réel.</span></li>
+          <li><span><b>Un fichier relu en huit points.</b> Droits minimaux, rien de sensible, outils figés, heure de Paris, essai, arrêt, aucune donnée personnelle, documentation.</span></li>
+          <li><span><b>Un robot se tait quand il casse.</b> Le journal, les alertes, le robot de garde, la vérification du 1er du mois et l'interrupteur.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="quiz">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Quiz de l'atelier</p>
+        <h2 class="h2">Sept questions,<br>six pour réussir</h2>
+        <p class="lead">Réussi, il coche automatiquement sa case dans la check-list. Vous pouvez recommencer autant de fois que vous voulez.</p>
+      </div>
+      <form class="quiz" id="quizA" novalidate></form>
+      <div class="quiz-act">
+        <button class="btn btn-turf" type="submit" form="quizA">Voir mon score</button>
+        <button class="btn btn-ghost" type="button" id="quizA-reset">Recommencer</button>
+        <p class="quiz-res" id="quizA-res" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="bilan">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Check-list de fin</p>
+        <h2 class="h2">L'atelier,<br>validé&nbsp;?</h2>
+        <p class="lead">Cochez au fur et à mesure. Votre progression reste sur cet appareil, rien n'est envoyé.</p>
+      </div>
+      <div class="check" id="check" data-key="fair-n4-atelier" data-name="L'atelier">
+        <label><input type="checkbox" data-k="mots"><span>Je sais ce que sont un dépôt, un robot, une exécution, un ticket et un secret</span></label>
+        <label><input type="checkbox" data-k="depot"><span>Le dépôt est dans une organisation au nom du club, avec deux propriétaires</span></label>
+        <label><input type="checkbox" data-k="essai"><span>J'ai lancé un robot du modèle en mode essai et lu son résumé</span></label>
+        <label><input type="checkbox" data-k="cron"><span>J'écris un horaire à l'heure de Paris, et pas à l'heure pile</span></label>
+        <label><input type="checkbox" data-k="spot"><span>J'ai trouvé les erreurs du robot de Malik</span></label>
+        <label><input type="checkbox" data-k="relire"><span>Je relis tout robot écrit par une IA avec les huit points</span></label>
+        <label><input type="checkbox" data-k="arret"><span>Je sais où lire le journal, qui reçoit les alertes et comment tout arrêter</span></label>
+        <label><input type="checkbox" data-k="quiz"><span>J'ai réussi le quiz de l'atelier (6 sur 7 minimum)</span></label>
+      </div>
+      <p class="score" id="score" aria-live="polite">0 sur 8</p>
+    </div>
+  </section>
+
+  <section class="sec chalk">
+    <div class="wrap next">
+      <div class="head" style="margin:0">
+        <p class="label">Et ensuite</p>
+        <h2 class="h2">Le catalogue<br>des automatisations</h2>
+        <p class="lead">Votre premier robot tourne en mode essai. Choisissez la suite parmi douze recettes, en commençant par celle qui coûte le plus de temps et touche le moins de données.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-turf" href="formation-automatisations.html">Voir le catalogue</a>
+        <a class="btn btn-ghost" href="formation-n4.html">Tout le niveau 4</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>FAIR · Former les Associations à l'IA Responsable</span>
+    <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/formation.js?v=2"></script>
+<script>
+(function(){
+  // Étape 4 : le traducteur d'horaire, de l'heure de Paris à la ligne cron
+  var JOURS={1:'lundi',2:'mardi',3:'mercredi',4:'jeudi',5:'vendredi',6:'samedi',0:'dimanche'};
+  var MOIS=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+  function sans(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')}
+  function liste(t){return t.length<2?t.join(''):t.slice(0,-1).join(', ')+' et '+t[t.length-1]}
+  FAIR.builder(document.getElementById('traducteur'),'fair-n4-cron',function(v){
+    var hm=(v.heure||'07:17').split(':'),h=Math.min(+hm[0]||0,23),m=Math.min(+hm[1]||0,59),alertes=[],inconnus=[];
+    var heure=h+' h'+(m?' '+(m<10?'0':'')+m:'');
+    var jm='*',js='*',quand='chaque jour';
+    if(v.freq==='semaine'){
+      var jours=(v.jours||[]).slice().sort(function(a,b){return (+a+6)%7-(+b+6)%7});
+      if(!jours.length){jours=['1'];alertes.push('Aucun jour coché : le lundi est pris par défaut.')}
+      js=jours.join(',');
+      quand=jours.length===1?'chaque '+JOURS[jours[0]]:liste(jours.map(function(j){return 'le '+JOURS[j]}));
+    }else if(v.freq==='mois'){
+      var d=Math.min(Math.max(parseInt(v.jourmois,10)||1,1),31);
+      jm=String(d);quand='le '+(d===1?'1er':d)+' de chaque mois';
+      if(d>28)alertes.push('Certains mois n\'ont pas de '+d+' : ces mois-là, le robot ne tournera pas. Préférez un jour entre 1 et 28.');
+    }
+    var mois=[];
+    sans(v.mois||'').split(/[\s,;/]+/).forEach(function(w){
+      if(!w||w==='et')return;
+      var i=MOIS.map(sans).indexOf(w);
+      if(i<0)inconnus.push(w);else if(mois.indexOf(i+1)<0)mois.push(i+1);
+    });
+    mois.sort(function(a,b){return a-b});
+    if(inconnus.length)alertes.push('Mois non reconnu : '+inconnus.join(', ')+'. Écrivez-les en toutes lettres.');
+    if(mois.length)quand+=', '+liste(mois.map(function(i){return 'en '+MOIS[i-1]}))+',';
+    if(m===0||m===30)alertes.push('Décalez de quelques minutes : à '+heure+' pile, GitHub peut prendre du retard.');
+    if(h<6&&v.freq!=='mois')alertes.push('Un robot de nuit ne doit rien envoyer à des personnes : un ticket ou un brouillon, que l\'on lit le matin.');
+    var ligne=m+' '+h+' '+jm+' '+(mois.length?mois.join(','):'*')+' '+js;
+    return 'on:\n  schedule:\n    - cron: "'+ligne+'"\n      timezone: "Europe/Paris"\n  workflow_dispatch:\n\n'+
+      'EN CLAIR\n'+quand.charAt(0).toUpperCase()+quand.slice(1)+' à '+heure+', heure de Paris, et un bouton pour le lancer à la main.\n\n'+
+      'À VÉRIFIER\n'+(alertes.length?alertes.map(function(a){return '- '+a}).join('\n'):'- Rien à signaler. Lancez le robot une fois à la main avant de compter sur l\'horaire.');
+  });
+
+  // Quiz de l'atelier
+  FAIR.quiz(document.getElementById('quizA'),'fair-n4-atelier-quiz',[
+    ["Le robot des rappels du club se range…",["Sur le compte GitHub du bénévole qui le crée","Dans une organisation au nom du club, avec deux propriétaires","Sur un compte partagé par tout le bureau"],1,"Un robot vit aussi longtemps que le compte qui le porte. Et un compte par personne, jamais partagé."],
+    ["Un fichier avec les dates de naissance des U13 peut aller dans le dépôt…",["S'il est privé","Si le robot en a besoin","Jamais : les données des adhérents restent dans le tableur du club"],2,"Même dans un dépôt privé, aucune donnée d'adhérent : les robots qui en ont besoin se construisent dans le tableur du club."],
+    ["« 17 7 * * 1 », avec timezone « Europe/Paris », lance le robot…",["Chaque lundi à 7 h 17","Le 1er du mois à 7 h 17","Chaque jour à 17 h 07"],0,"Minute, heure, jour du mois, mois, jour de la semaine : 1, c'est le lundi."],
+    ["Sans ligne timezone, un robot réglé sur « 0 18 * * * » passe à Paris…",["À 18 h","À 19 h en hiver et 20 h en été","À 17 h"],1,"Sans fuseau, GitHub compte en temps universel. Et à l'heure pile, il peut prendre du retard."],
+    ["Le bloc permissions d'un robot qui lit ses fichiers et ouvre un ticket :",["write-all, pour ne pas être bloqué","Aucun bloc : GitHub choisit","contents: read et issues: write"],2,"Les droits au strict nécessaire, écrits en haut du fichier."],
+    ["Malik est parti, et un robot programmé qu'il avait réglé échoue. Qui reçoit l'alerte ?",["Les deux propriétaires","Malik, qui a modifié l'horaire en dernier","Personne"],1,"GitHub prévient la personne qui a modifié la ligne cron en dernier : le responsable décale l'horaire d'une minute depuis son compte."],
+    ["Pour arrêter tous les robots du dépôt en une minute :",["La variable ROBOTS_ACTIFS à « non »","Supprimer le dépôt","Attendre le prochain passage du robot de garde"],0,"L'interrupteur général. Pour un seul robot : onglet Actions, « Disable workflow »."]
+  ],6);
+})();
+</script>
+</body>
+</html>

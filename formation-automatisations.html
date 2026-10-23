@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Formation · Niveau 4 · Le catalogue des automatisations · FAIR</title>
+<meta name="description" content="Douze automatisations utiles à un club sportif, décrites en R.E.L.A.I.S. : rentrée, relances, obligations, planning des bénévoles, résultats, lettre du club, site, veille des appels à projets, indicateurs, sauvegarde. Avec l'outil le plus simple qui suffit et la demande à copier.">
+<link rel="canonical" href="https://fair-asso.fr/formation-automatisations.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FAIR">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://fair-asso.fr/formation-automatisations.html">
+<meta property="og:title" content="Formation · Niveau 4 · Le catalogue des automatisations · FAIR">
+<meta property="og:description" content="Douze automatisations utiles à un club sportif, décrites en R.E.L.A.I.S., avec l'outil le plus simple qui suffit et la demande à copier.">
+<meta property="og:image" content="https://fair-asso.fr/assets/img/poster-hero.jpg">
+<meta property="og:image:alt" content="Un joueur frappe un ballon sur un terrain synthétique, de nuit">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#07111F">
+<link rel="icon" href="assets/logo/fair-icone.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/css/formation.css?v=3">
+<link rel="stylesheet" href="assets/css/niveau.css?v=3">
+<style>
+/* Les recettes */
+.recs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
+.rec{display:grid;gap:14px;padding:24px 24px 22px;border:1px solid var(--line-n);border-radius:6px;background:var(--night-2)}
+.rec[hidden]{display:none}
+.rec .label{color:var(--turf)}
+.rec h3{font-family:var(--f-display);font-weight:850;font-stretch:66%;text-transform:uppercase;font-size:1.6rem;line-height:1}
+.rec>p{color:var(--mist);font-size:.96rem;line-height:1.5}
+.facts{display:flex;flex-wrap:wrap;gap:6px}
+.facts li{font-size:.8rem;line-height:1.3;padding:5px 10px;border-radius:4px;border:1px solid var(--line-n);color:var(--mist)}
+.facts li b{color:var(--chalk);font-weight:600}
+.facts li.perso{border-color:rgba(229,103,79,.55)}
+.facts li.ready{border-color:var(--turf);color:var(--turf-hi)}
+.rec details{border-top:1px solid var(--line-n);padding-top:12px}
+.rec summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;font-weight:600;color:var(--turf-hi)}
+.rec summary::-webkit-details-marker{display:none}
+.rec summary::after{content:"+";font-family:var(--f-mono);font-size:1.1rem;color:var(--turf)}
+.rec details[open] summary::after{content:"−"}
+.relais{display:grid;gap:10px;margin:16px 0 18px}
+.relais div{display:grid;grid-template-columns:26px minmax(0,1fr);gap:10px;font-size:.92rem;line-height:1.5;color:var(--mist)}
+.relais dt{font-family:var(--f-display);font-weight:900;font-stretch:62%;font-size:1.5rem;line-height:1;color:var(--turf)}
+.relais dd{margin:0}
+.relais dd b{color:var(--chalk)}
+.rec .prompt{background:var(--night)}
+.rec .prompt pre{font-size:.92rem}
+.rec .more{font-size:.9rem;color:var(--fog);margin-top:12px}
+.rec .more a{color:var(--turf-hi)}
+@media (max-width:900px){.recs{grid-template-columns:minmax(0,1fr)}}
+
+/* Le dépôt modèle */
+.repo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px clamp(28px,4vw,56px);align-items:start}
+.repo .prompt pre{font-family:var(--f-mono);font-size:.8rem;line-height:1.7}
+.repo .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+@media (max-width:860px){.repo{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="check" viewBox="0 0 20 20"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></symbol>
+</svg>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="index.html" aria-label="FAIR, retour à l'accueil"><img src="assets/logo/fair-logo-blanc-court.svg" alt="FAIR"></a>
+    <nav aria-label="Navigation">
+      <a class="opt" href="index.html#clubs">Clubs</a>
+      <a class="opt" href="index.html#partenaires">Fédérations</a>
+      <a href="formation.html" aria-current="page">Formation</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <section class="hero">
+    <div class="wrap hero-in">
+      <p class="label"><a href="formation-n4.html">Formation FAIR · Niveau 4</a> · Ressources</p>
+      <h1>Le catalogue des automatisations</h1>
+      <p class="lead">Douze automatisations réellement utiles à un club, de la rentrée à la veille des financements. Chacune est décrite en R.E.L.A.I.S., avec l'outil le plus simple qui suffit, ce qui reste humain, et la demande à copier pour que l'IA vous aide à la construire. Quatre sont prêtes à copier sur GitHub.</p>
+      <ul class="meta">
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>12 recettes</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>4 prêtes à copier</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Une fiche R.E.L.A.I.S. par recette</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>Modules 1 et 3 conseillés</li>
+        <li><svg class="ico-ck" aria-hidden="true"><use href="#check"/></svg>À jour en octobre 2026</li>
+      </ul>
+      <nav class="steps-nav" aria-label="Parties du catalogue">
+        <a href="#lire"><b>1. Lire une recette</b><span>Trois outils, une règle</span></a>
+        <a href="#recettes"><b>2. Les recettes</b><span>Douze automatisations</span></a>
+        <a href="#choisir"><b>3. Choisir</b><span>Par où commencer</span></a>
+        <a href="#depot"><b>4. Le dépôt modèle</b><span>Quatre robots à copier</span></a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="lire">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">1 · Lire une recette</p>
+        <h2 class="h2">Trois outils,<br>une règle</h2>
+        <p class="lead">Chaque recette indique l'outil le plus simple qui suffit. Le niveau 4 l'a montré : plus l'outil est puissant, plus il demande de compétences pour être repris. Une règle décide où se construit chaque automatisation : là où sont déjà les données qu'elle touche.</p>
+      </div>
+      <div class="tips">
+        <article class="tip">
+          <span class="n">Outil · Sans code</span>
+          <h3>Les fonctions intégrées et les outils sans code</h3>
+          <p>Rappels d'agenda, envois programmés, formulaires reliés à un tableur, puis Zapier, Make, n8n ou Power Automate si plusieurs services doivent se parler.</p>
+        </article>
+        <article class="tip">
+          <span class="n">Outil · Script dans le tableur</span>
+          <h3>Un petit programme dans le tableur du club</h3>
+          <p>Apps Script dans Google Sheets, scripts dans Excel en ligne : il tourne à heure fixe, à côté des données, sans les faire sortir. C'est l'outil des recettes qui touchent aux adhérents.</p>
+        </article>
+        <article class="tip">
+          <span class="n">Outil · GitHub</span>
+          <h3>Un robot dans un dépôt au nom du club</h3>
+          <p>Gratuit, journal de chaque exécution, droits réglés ligne par ligne. Réservé à ce qui ne contient aucune donnée personnelle : dates, pages publiques, horaires.</p>
+        </article>
+        <article class="tip key">
+          <span class="n">La règle</span>
+          <h3>Les adhérents restent dans le tableur du club</h3>
+          <p>Une recette marquée « données personnelles » se construit là où sont déjà ces données, dans l'espace du club. Jamais dans un dépôt GitHub, même privé, et jamais dans une demande à l'IA.</p>
+        </article>
+      </div>
+      <p class="note" style="color:var(--ink-2);margin-top:20px">Personne n'a besoin de savoir coder : la demande de chaque recette fait écrire le script par votre assistant IA, qui l'explique ensuite ligne par ligne. Vous le testez sur une copie du tableur remplie de données inventées, comme au module 3, et le bureau valide la fiche avant la mise en route.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="recettes">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">2 · Les recettes</p>
+        <h2 class="h2">Douze<br>automatisations</h2>
+        <p class="lead">Ouvrez une recette pour sa fiche R.E.L.A.I.S. et sa demande. Dans la demande, remplacez les passages en vert, et ne collez jamais de vraies données : seulement les noms des colonnes.</p>
+      </div>
+      <div class="filters" data-for="recs" role="group" aria-label="Filtrer les recettes">
+        <button class="chip" type="button" data-filter="all">Toutes</button>
+        <button class="chip" type="button" data-filter="secretariat">Secrétariat</button>
+        <button class="chip" type="button" data-filter="weekend">Le week-end</button>
+        <button class="chip" type="button" data-filter="communication">Communication</button>
+        <button class="chip" type="button" data-filter="financement">Financement</button>
+        <button class="chip" type="button" data-filter="continuite">Continuité</button>
+        <button class="chip" type="button" data-filter="pret">Prêtes à copier</button>
+      </div>
+      <div class="recs" id="recs">
+
+        <article class="rec" data-cat="secretariat">
+          <span class="label">Secrétariat · Script dans le tableur</span>
+          <h3>Le pointage de la rentrée</h3>
+          <p>Chaque nuit de septembre à octobre, la liste des dossiers à traiter : payés sans licence, licences sans paiement, pièces manquantes.</p>
+          <ul class="facts"><li><b>Quand</b> chaque nuit, sept.-oct.</li><li><b>IA</b> non</li><li class="perso"><b>Données personnelles</b> oui, dans le tableur</li></ul>
+          <details>
+            <summary>La fiche et la demande</summary>
+            <dl class="relais">
+              <div><dt>R</dt><dd><b>Répétitif.</b> 200 à 300 dossiers à rapprocher chaque rentrée : paiement, licence saisie, attestation de santé, autorisation parentale. Des soirées de pointage à la main.</dd></div>
+              <div><dt>E</dt><dd><b>Enchaînement.</b> La secrétaire colle chaque semaine l'export des paiements et celui des licences dans deux onglets. Chaque nuit, le script les compare à l'onglet des pièces reçues et remplit un onglet « À traiter ». Elle reçoit un e-mail avec le nombre de lignes, sans aucun nom.</dd></div>
+              <div><dt>L</dt><dd><b>Limites.</b> Le script reste dans le tableur et n'envoie les données nulle part. Aucune IA. Rien sur la santé : seulement « attestation reçue, oui ou non ». Il n'écrit à aucune famille.</dd></div>
+              <div><dt>A</dt><dd><b>Arbitre.</b> La secrétaire traite l'onglet et décide des relances.</dd></div>
+              <div><dt>I</dt><dd><b>Incident.</b> Si un export change de colonnes, le script s'arrête et le dit, au lieu de comparer de travers. Plan B : le pointage avec les filtres du tableur.</dd></div>
+              <div><dt>S</dt><dd><b>Suivi.</b> Responsable : le secrétariat. Secours : la trésorerie. Déclencheur coupé le 31 octobre, relancé à la rentrée suivante.</dd></div>
+            </dl>
+            <div class="prompt">
+              <div class="prompt-top"><span class="label">La demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div>
+<pre>Je suis bénévole dans un club sportif. Écris un script pour notre tableur <i>[Google Sheets ou Excel en ligne]</i> qui compare trois onglets : « Paiements » (colonnes : <i>[colonnes]</i>), « Licences » (colonnes : <i>[colonnes]</i>) et « Pièces » (colonnes : <i>[colonnes]</i>), en rapprochant les lignes par <i>[le numéro de licence]</i>.
+Il remplit un onglet « À traiter » avec trois listes : payé sans licence, licence sans paiement, dossier incomplet. Puis il m'envoie un e-mail avec seulement le nombre de lignes de chaque liste.
+Contraintes : aucun envoi aux familles, aucune donnée ne sort du tableur, et un arrêt avec un message clair si une colonne attendue manque.
+Explique-moi ensuite le script ligne par ligne, comment le faire tourner chaque nuit, et comment le tester sur une copie du tableur remplie de données inventées.</pre>
+            </div>
+          </details>
+        </article>
+
+        <article class="rec" data-cat="secretariat">
+          <span class="label">Secrétariat · Script dans le tableur</span>
+          <h3>Les relances de dossier</h3>
+          <p>Chaque lundi de la rentrée, des brouillons de relance prêts à relire, un par famille et par pièce manquante.</p>
+          <ul class="facts"><li><b>Quand</b> le lundi, sept.-oct.</li><li><b>IA</b> écrit les modèles, une fois</li><li class="perso"><b>Données personnelles</b> oui, dans le tableur</li></ul>
+          <details>
+            <summary>La fiche et la demande</summary>
+            <dl class="relais">
+              <div><dt>R</dt><dd><b>Répétitif.</b> 30 à 50 relances chaque lundi de la rentrée, presque toutes identiques.</dd></div>
+              <div><dt>E</dt><dd><b>Enchaînement.</b> Une fois pour toutes, l'IA rédige un modèle de relance par pièce manquante, sans aucun nom. Chaque lundi, le script complète les modèles avec le prénom du parent et la pièce, puis crée des brouillons dans la messagerie du club.</dd></div>
+              <div><dt>L</dt><dd><b>Limites.</b> L'IA ne voit jamais un nom ni une adresse : elle écrit les modèles, le tableur fait le reste. Le script crée des brouillons, il n'envoie rien. Aucune relance ne parle de santé : « une pièce manque », sans détail.</dd></div>
+              <div><dt>A</dt><dd><b>Arbitre.</b> La secrétaire relit chaque brouillon avant de l'envoyer.</dd></div>
+              <div><dt>I</dt><dd><b>Incident.</b> Des brouillons en double ou mal remplis : on les supprime et on corrige le tableur. Plan B : le modèle copié à la main.</dd></div>
+              <div><dt>S</dt><dd><b>Suivi.</b> Responsable : le secrétariat. Secours : la vice-présidence. Les modèles sont rangés dans le dossier du club.</dd></div>
+            </dl>
+            <div class="prompt">
+              <div class="prompt-top"><span class="label">La demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div>
+<pre>Écris un script pour notre tableur <i>[Google Sheets ou Excel en ligne]</i>. Pour chaque ligne de l'onglet « À traiter » dont la case « Relancer » est cochée, il crée un brouillon d'e-mail dans la messagerie du club, à partir du modèle de l'onglet « Modèles » qui correspond à la pièce manquante (colonnes : pièce, objet, texte avec [Prénom] et [Pièce]).
+Il ne doit rien envoyer : seulement créer les brouillons, puis décocher la case et noter la date dans la colonne « Brouillon créé ».
+Explique-moi le script ligne par ligne et comment le tester avec des lignes inventées et ma propre adresse.</pre>
+            </div>
+            <p class="more">Pour les modèles eux-mêmes, la bibliothèque du niveau 1, module 1 a des demandes prêtes : <a href="formation-n1-1.html">Écrire aux adhérents</a>.</p>
+          </details>
+        </article>
+
+        <article class="rec" data-cat="secretariat pret">
+          <span class="label">Secrétariat · GitHub</span>
+          <h3>Le calendrier des obligations</h3>
+          <p>Un rappel au bon rôle, 30 jours, 7 jours et la veille de chaque échéance du club : subventions, assurance, AG, préfecture.</p>
+          <ul class="facts"><li><b>Quand</b> chaque matin</li><li><b>IA</b> non</li><li><b>Données personnelles</b> aucune</li><li class="ready">Prête à copier</li></ul>
+          <details>
+            <summary>La fiche et la demande</summary>
+            <dl class="relais">
+              <div><dt>R</dt><dd><b>Répétitif.</b> Une dizaine d'échéances par saison, gardées en tête par une ou deux personnes. Un oubli peut coûter une subvention.</dd></div>
+              <div><dt>E</dt><dd><b>Enchaînement.</b> Chaque matin, le robot lit le tableau des obligations (date, quoi, qui, rappels) et, les jours de rappel, ouvre un ticket pour le rôle concerné, avec un e-mail si vous le réglez.</dd></div>
+              <div><dt>L</dt><dd><b>Limites.</b> Il prévient, il ne fait rien d'autre. Le tableau contient des rôles, jamais de noms. Aucune IA.</dd></div>
+              <div><dt>A</dt><dd><b>Arbitre.</b> La personne du rôle désigné agit et coche le ticket.</dd></div>
+              <div><dt>I</dt><dd><b>Incident.</b> Une ligne mal remplie fait échouer le robot, exprès, et l'alerte part. Le robot de garde surveille le reste. Plan B : relire le tableau à la main le 1er du mois.</dd></div>
+              <div><dt>S</dt><dd><b>Suivi.</b> Responsable et secours désignés en bureau. Revue à chaque changement de bureau.</dd></div>
+            </dl>
+            <div class="prompt">
+              <div class="prompt-top"><span class="label">La demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div>
+<pre>Voici le tableau des obligations de notre club sportif, avec les colonnes date, quoi, qui, rappels et répétition : <i>[collez vos lignes]</i>.
+Quelles échéances habituelles d'une association sportive en France manquent peut-être : assurance, assemblée générale, déclarations en préfecture, dossiers de subvention, reçus fiscaux des dons, renouvellements fédéraux ?
+Pour chacune, indique la source officielle où vérifier la règle. N'invente aucune date : je les vérifierai une par une avant de les ajouter.</pre>
+            </div>
+            <p class="more">Dans le dépôt modèle : <a href="https://github.com/julesmoreau62/modele-automatisations-club/blob/main/donnees/obligations.csv">le tableau d'exemple</a> et <a href="https://github.com/julesmoreau62/modele-automatisations-club/blob/main/.github/workflows/rappels-obligations.yml">le robot</a>. Les changements de dirigeants se déclarent en préfecture dans les trois mois (loi de 1901, article 5).</p>
+          </details>
+        </article>
+
+        <article class="rec" data-cat="secretariat">
+          <span class="label">Secrétariat · Script dans le tableur</span>
+          <h3>Les échéances des encadrants</h3>
+          <p>Deux mois avant chaque échéance, un rappel à l'encadrant concerné et un récapitulatif au responsable technique.</p>
+          <ul class="facts"><li><b>Quand</b> le 1er du mois</li><li><b>IA</b> non</li><li class="perso"><b>Données personnelles</b> oui, dans le tableur</li></ul>
+          <details>
+            <summary>La fiche et la demande</summary>
+            <dl class="relais">
+              <div><dt>R</dt><dd><b>Répétitif.</b> Carte professionnelle des éducateurs rémunérés (à renouveler tous les cinq ans), diplômes fédéraux, formations à recycler : des dates éparpillées que personne ne suit.</dd></div>
+              <div><dt>E</dt><dd><b>Enchaînement.</b> Le 1er du mois, le script lit l'onglet « Encadrants » (rôle, type d'échéance, date) et écrit à chaque encadrant dont l'échéance tombe dans les 60 jours, puis envoie la liste au responsable technique.</dd></div>
+              <div><dt>L</dt><dd><b>Limites.</b> Seulement la date et le type d'échéance : aucune copie de diplôme ni de pièce d'identité dans le tableur. Aucune IA.</dd></div>
+              <div><dt>A</dt><dd><b>Arbitre.</b> Le responsable technique vérifie que chaque renouvellement est fait.</dd></div>
+              <div><dt>I</dt><dd><b>Incident.</b> Un rappel non reçu se voit dans le récapitulatif. Plan B : la relecture de l'onglet en réunion technique.</dd></div>
+              <div><dt>S</dt><dd><b>Suivi.</b> Responsable : le responsable technique. Secours : le secrétariat. L'onglet est mis à jour à chaque arrivée et chaque départ.</dd></div>
+            </dl>
+            <div class="prompt">
+              <div class="prompt-top"><span class="label">La demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div>
+<pre>Écris un script pour notre tableur <i>[Google Sheets ou Excel en ligne]</i> qui, le 1er de chaque mois, lit l'onglet « Encadrants » (colonnes : <i>[colonnes]</i>). À chaque encadrant dont une échéance tombe dans les 60 jours, il envoie un e-mail court : le type d'échéance, la date, ce qu'il faut faire. Puis il envoie la liste complète au responsable technique.
+Aucune autre donnée que l'échéance et son type. Explique le script ligne par ligne, comment créer le déclencheur mensuel, et comment le tester avec des lignes inventées.</pre>
+            </div>
+          </details>
+        </article>
+
+        <article class="rec" data-cat="weekend">
+          <span class="label">Le week-end · Script dans le tableur</span>
+          <h3>Le planning des bénévoles</h3>
+          <p>Le jeudi, l'alerte des créneaux vides du week-end ; le vendredi, un rappel à chaque bénévole inscrit.</p>
+          <ul class="facts"><li><b>Quand</b> jeudi et vendredi soir</li><li><b>IA</b> non</li><li class="perso"><b>Données personnelles</b> oui, dans le tableur</li></ul>
+          <details>
+            <summary>La fiche et la demande</summary>
+            <dl class="relais">
+              <div><dt>R</dt><dd><b>Répétitif.</b> Table de marque, buvette, chauffeurs, jeunes arbitres : chaque semaine, des trous découverts le samedi matin.</dd></div>
+              <div><dt>E</dt><dd><b>Enchaînement.</b> Jeudi 19 h : le script repère les créneaux vides du week-end dans le planning et prévient le responsable. Vendredi 18 h : chaque bénévole inscrit reçoit le rappel de son créneau.</dd></div>
+              <div><dt>L</dt><dd><b>Limites.</b> Le planning ne contient que le prénom et l'adresse des bénévoles qui l'ont accepté. Pour un jeune arbitre mineur, le rappel part à l'adresse d'un parent. Aucune IA.</dd></div>
+              <div><dt>A</dt><dd><b>Arbitre.</b> Le responsable du week-end comble les créneaux vides.</dd></div>
+              <div><dt>I</dt><dd><b>Incident.</b> Pas d'alerte le jeudi ? Le responsable ouvre le planning lui-même. Plan B : le message au groupe des bénévoles.</dd></div>
+              <div><dt>S</dt><dd><b>Suivi.</b> Responsable : la vie du club. Secours : le secrétariat. Revue à la trêve.</dd></div>
+            </dl>
+            <div class="prompt">
+              <div class="prompt-top"><span class="label">La demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div>
+<pre>Écris un script pour notre tableur <i>[Google Sheets ou Excel en ligne]</i>. L'onglet « Planning » a les colonnes : date, créneau, poste, prénom du bénévole, e-mail.
+1. Le jeudi à 19 h, il m'envoie la liste des créneaux sans bénévole pour le samedi et le dimanche suivants.
+2. Le vendredi à 18 h, il envoie à chaque bénévole inscrit un rappel court de son créneau du week-end.
+Rien d'autre n'est envoyé. Explique le script ligne par ligne, comment créer les deux déclencheurs, et comment le tester avec des lignes inventées et ma propre adresse.</pre>
+            </div>
+          </details>
+        </article>
+
+        <article class="rec" data-cat="weekend communication">
+          <span class="label">Le week-end · Sans code</span>
+          <h3>Les résultats du dimanche</h3>
+          <p>Le dimanche soir, un brouillon de publication par équipe, prêt à relire, à partir des scores saisis par les éducateurs.</p>
+          <ul class="facts"><li><b>Quand</b> dimanche 20 h</li><li><b>IA</b> brouillons</li><li><b>Données personnelles</b> aucune : aucun nom de joueur</li></ul>
+          <details>
+            <summary>La fiche et la demande</summary>
+            <dl class="relais">
+              <div><dt>R</dt><dd><b>Répétitif.</b> Dix à quinze résultats à annoncer chaque dimanche soir, avec le même soin pour les défaites.</dd></div>
+              <div><dt>E</dt><dd><b>Enchaînement.</b> Chaque éducateur remplit un formulaire : équipe, adversaire, score, un fait de jeu sans nom. Le dimanche à 20 h, chaque réponse part à l'IA avec la fiche du club, et les brouillons arrivent par e-mail à la personne chargée de la communication.</dd></div>
+              <div><dt>L</dt><dd><b>Limites.</b> Aucun nom ni prénom de joueur, mineur ou majeur, ni dans le formulaire ni dans le brouillon. Pas de photo dans le flux. Rien n'est publié automatiquement.</dd></div>
+              <div><dt>A</dt><dd><b>Arbitre.</b> La personne chargée de la communication relit, corrige et publie.</dd></div>
+              <div><dt>I</dt><dd><b>Incident.</b> Pas de brouillon dimanche soir : on publie à la main lundi, à partir du formulaire. Arrêt : désactiver le flux dans l'outil du club.</dd></div>
+              <div><dt>S</dt><dd><b>Suivi.</b> Responsable : la communication. Secours : un éducateur. Revue à la trêve.</dd></div>
+            </dl>
+            <div class="prompt">
+              <div class="prompt-top"><span class="label">La demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div>
+<pre data-club>Je veux construire un flux avec <i>[outil sans code]</i>, dans l'espace du club : un formulaire où chaque éducateur saisit équipe, adversaire, score et un fait de jeu sans nom ; le dimanche à 20 h, chaque réponse est envoyée à l'IA avec la consigne ci-dessous, et le brouillon arrive par e-mail à la personne chargée de la communication. Guide-moi pas à pas, avec les autorisations les plus limitées possible.
+
+Consigne de l'étape d'IA : <i>[Fiche du club]</i> Rédige un post court pour annoncer ce résultat, sur le ton du club. Ne nomme aucun joueur ni aucune joueuse. N'ajoute rien qui ne soit pas dans les données. Si le match est perdu, reste positif sans minimiser.</pre>
+            </div>
+            <p class="more">Les règles de publication des résultats sont au niveau 1 : <a href="formation-n1-2.html">Réseaux et affiches</a>.</p>
+          </details>
+        </article>
+
+        <article class="rec" data-cat="communication">
+          <span class="label">Communication · Sans code</span>
+          <h3>La lettre du club</h3>
+          <p>Toute la semaine, chacun dépose ses infos dans un formulaire ; le vendredi, un brouillon de lettre mis en forme attend la relecture.</p>
+          <ul class="facts"><li><b>Quand</b> le vendredi</li><li><b>IA</b> mise en forme</li><li><b>Données personnelles</b> aucune dans le flux</li></ul>
+          <details>
+            <summary>La fiche et la demande</summary>
+            <dl class="relais">
+              <div><dt>R</dt><dd><b>Répétitif.</b> Chaque semaine, rassembler les infos des équipes, du bureau et des partenaires, éparpillées dans dix conversations.</dd></div>
+              <div><dt>E</dt><dd><b>Enchaînement.</b> Un formulaire « Une info pour la lettre » ouvert toute la semaine. Le vendredi à 9 h, le flux rassemble les réponses, l'IA les met en forme dans le modèle de la lettre, et le brouillon arrive dans l'outil d'envoi du club.</dd></div>
+              <div><dt>L</dt><dd><b>Limites.</b> L'IA met en forme, elle n'ajoute rien. La liste des destinataires reste dans l'outil d'envoi : elle ne passe jamais par l'IA. Aucun nom d'enfant.</dd></div>
+              <div><dt>A</dt><dd><b>Arbitre.</b> Le secrétariat relit, corrige et programme l'envoi.</dd></div>
+              <div><dt>I</dt><dd><b>Incident.</b> Pas de brouillon le vendredi : la lettre se fait à la main à partir des réponses du formulaire.</dd></div>
+              <div><dt>S</dt><dd><b>Suivi.</b> Responsable : le secrétariat. Secours : la communication.</dd></div>
+            </dl>
+            <div class="prompt">
+              <div class="prompt-top"><span class="label">La demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div>
+<pre data-club>Je veux construire un flux avec <i>[outil sans code]</i> : le vendredi à 9 h, il rassemble les réponses de la semaine au formulaire « Une info pour la lettre » (rubrique, titre, texte), les fait mettre en forme par l'IA avec la consigne ci-dessous, et crée un brouillon dans <i>[outil d'envoi]</i>, sans l'envoyer. Guide-moi pas à pas, avec les autorisations les plus limitées possible.
+
+Consigne de l'étape d'IA : <i>[Fiche du club]</i> Mets ces informations en forme pour la lettre hebdomadaire du club, rubrique par rubrique, sur le ton du club. N'ajoute aucune information. Si deux informations se contredisent, signale-le en tête du brouillon au lieu de choisir.</pre>
+            </div>
+          </details>
+        </article>
+
+        <article class="rec" data-cat="communication pret">
+          <span class="label">Communication · GitHub</span>
+          <h3>Le site qui se met à jour seul</h3>
+          <p>Chaque nuit, la page du club refaite à partir du tableau des matchs : prochains matchs, derniers résultats, entraînements.</p>
+          <ul class="facts"><li><b>Quand</b> chaque nuit</li><li><b>IA</b> non</li><li><b>Données personnelles</b> aucune</li><li class="ready">Prête à copier</li></ul>
+          <details>
+            <summary>La fiche et la demande</summary>
+            <dl class="relais">
+              <div><dt>R</dt><dd><b>Répétitif.</b> Les horaires et les résultats changent chaque semaine ; la page du club n'est jamais à jour.</dd></div>
+              <div><dt>E</dt><dd><b>Enchaînement.</b> Chaque nuit, et à chaque modification des tableaux, le robot refait la page à partir des matchs, des entraînements et de la fiche publique du club, puis la publie avec GitHub Pages.</dd></div>
+              <div><dt>L</dt><dd><b>Limites.</b> Uniquement des informations publiques : équipes, horaires, lieux, scores. Jamais de nom de joueur ni de photo. Le site gratuit exige un dépôt public : rien de privé n'y entre.</dd></div>
+              <div><dt>A</dt><dd><b>Arbitre.</b> La personne qui tient le tableau des matchs relit la page après chaque changement.</dd></div>
+              <div><dt>I</dt><dd><b>Incident.</b> Si la construction échoue, la page de la veille reste en ligne. Plan B : les horaires sur les réseaux du club.</dd></div>
+              <div><dt>S</dt><dd><b>Suivi.</b> Responsable : la communication. Secours : le secrétariat. Revue à la rentrée.</dd></div>
+            </dl>
+            <div class="prompt">
+              <div class="prompt-top"><span class="label">La demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div>
+<pre>J'utilise le modèle FAIR « modele-automatisations-club » pour le site de notre club. Explique-moi comment publier le tableau des matchs de notre tableur <i>[Google Sheets ou Excel en ligne]</i> au format CSV, à une adresse que le robot pourra lire, sans rendre public le reste du tableur. Puis aide-moi à adapter les couleurs du fichier site/style.css à celles du club : <i>[couleurs]</i>.</pre>
+            </div>
+            <p class="more">Dans le dépôt modèle : <a href="https://github.com/julesmoreau62/modele-automatisations-club/blob/main/.github/workflows/site-du-club.yml">le robot du site</a> et <a href="https://github.com/julesmoreau62/modele-automatisations-club/blob/main/donnees/matchs.csv">le tableau des matchs</a>.</p>
+          </details>
+        </article>
+
+        <article class="rec" data-cat="financement pret">
+          <span class="label">Financement · GitHub</span>
+          <h3>La veille des appels à projets</h3>
+          <p>Chaque lundi, les appels dont la date limite approche, relevés sur les sites des financeurs et triés pour le club.</p>
+          <ul class="facts"><li><b>Quand</b> le lundi</li><li><b>IA</b> facultative, pour trier</li><li><b>Données personnelles</b> aucune</li><li class="ready">Prête à copier</li></ul>
+          <details>
+            <summary>La fiche et la demande</summary>
+            <dl class="relais">
+              <div><dt>R</dt><dd><b>Répétitif.</b> Il faudrait parcourir chaque semaine les sites de la mairie, du département, de la région, de l'Agence nationale du sport et des fondations. Personne n'a le temps.</dd></div>
+              <div><dt>E</dt><dd><b>Enchaînement.</b> Le lundi, le robot lit les pages listées, relève les passages qui annoncent une date à venir, les trie avec les mots-clés de la fiche du club (ou avec l'IA si une clé est réglée), et ouvre un ticket.</dd></div>
+              <div><dt>L</dt><dd><b>Limites.</b> Pages publiques et fiche publique du club seulement. Les textes lus sur le web sont des données, pas des consignes : l'IA ne renvoie que le numéro des passages retenus, les liens viennent toujours de la liste des sources. Le robot ne candidate à rien.</dd></div>
+              <div><dt>A</dt><dd><b>Arbitre.</b> Le trésorier décide quels appels valent le temps d'un dossier.</dd></div>
+              <div><dt>I</dt><dd><b>Incident.</b> Une source qui ne répond plus est signalée dans le ticket. Si l'IA est en panne, le tri se fait par mots-clés.</dd></div>
+              <div><dt>S</dt><dd><b>Suivi.</b> Responsable : la trésorerie. Secours : la présidence. Sources revues chaque trimestre, dépense de l'IA plafonnée dans la console du fournisseur.</dd></div>
+            </dl>
+            <div class="prompt">
+              <div class="prompt-top"><span class="label">La demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div>
+<pre>Notre club de <i>[sport]</i> est à <i>[ville, département, région]</i>. Pour notre veille des appels à projets, quelles pages officielles devrions-nous surveiller : mairie, intercommunalité, département, région, service de l'État chargé des sports, comité et ligue de notre fédération, fondations d'entreprise du territoire ?
+Donne-moi l'adresse exacte de la page « appels à projets » ou « subventions » de chacun quand tu la connais, et dis-moi clairement quand tu n'es pas sûr : je vérifierai chaque lien.</pre>
+            </div>
+            <p class="more">Dans le dépôt modèle : <a href="https://github.com/julesmoreau62/modele-automatisations-club/blob/main/donnees/sources-veille.csv">les sources</a>, <a href="https://github.com/julesmoreau62/modele-automatisations-club/blob/main/donnees/fiche-club.md">la fiche publique du club</a> et <a href="https://github.com/julesmoreau62/modele-automatisations-club/blob/main/.github/workflows/veille-appels.yml">le robot</a>. La méthode des dossiers est au niveau 3 : <a href="formation-n3-5.html">La saison des financements</a>.</p>
+          </details>
+        </article>
+
+        <article class="rec" data-cat="financement">
+          <span class="label">Financement · Script dans le tableur</span>
+          <h3>Les indicateurs pour les financeurs</h3>
+          <p>Le 1er du mois, les chiffres de chaque action financée, tenus à jour à partir des feuilles de présence.</p>
+          <ul class="facts"><li><b>Quand</b> le 1er du mois</li><li><b>IA</b> facultative, sur les totaux</li><li class="perso"><b>Données personnelles</b> oui, dans le tableur</li></ul>
+          <details>
+            <summary>La fiche et la demande</summary>
+            <dl class="relais">
+              <div><dt>R</dt><dd><b>Répétitif.</b> Pour rendre compte d'une subvention, il faut des chiffres : séances, participants, nouvelles licences. Reconstitués en fin d'année, ils sont faux ou introuvables.</dd></div>
+              <div><dt>E</dt><dd><b>Enchaînement.</b> Le 1er du mois, le script compte dans l'onglet de présence de chaque action les séances tenues, les participants distincts et les licences prises, et met à jour l'onglet « Indicateurs ». En option, les totaux seuls partent à l'IA pour un brouillon de paragraphe de bilan.</dd></div>
+              <div><dt>L</dt><dd><b>Limites.</b> Seuls des totaux sortent du tableur ; l'IA ne voit jamais un nom. Chaque chiffre garde sa formule, pour pouvoir le prouver.</dd></div>
+              <div><dt>A</dt><dd><b>Arbitre.</b> Le trésorier vérifie chaque chiffre avant qu'il parte chez un financeur.</dd></div>
+              <div><dt>I</dt><dd><b>Incident.</b> Une feuille de présence oubliée se voit : une séance à zéro. Plan B : le comptage à la main, une fois par trimestre.</dd></div>
+              <div><dt>S</dt><dd><b>Suivi.</b> Responsable : la trésorerie. Secours : le référent de l'action.</dd></div>
+            </dl>
+            <div class="prompt">
+              <div class="prompt-top"><span class="label">La demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div>
+<pre>Écris un script pour notre tableur <i>[Google Sheets ou Excel en ligne]</i>. Chaque action financée a un onglet de présence (colonnes : date, identifiant du participant, présent oui ou non, licence prise oui ou non). Le 1er de chaque mois, le script met à jour l'onglet « Indicateurs » : par action, le nombre de séances tenues, de participants distincts et de licences prises, depuis le début de l'action et sur le mois écoulé.
+Les chiffres doivent rester des formules ou être accompagnés de leur calcul, pour pouvoir les vérifier. Rien ne sort du tableur. Explique le script ligne par ligne et comment le tester avec des données inventées.</pre>
+            </div>
+            <p class="more">Rendre compte aux financeurs : <a href="formation-n3-4.html">niveau 3, module 4</a>.</p>
+          </details>
+        </article>
+
+        <article class="rec" data-cat="continuite">
+          <span class="label">Continuité · Sans code</span>
+          <h3>La sauvegarde du dossier du club</h3>
+          <p>Chaque semaine, une copie du dossier du club dans un second emplacement qui appartient au club, et un essai de restauration chaque trimestre.</p>
+          <ul class="facts"><li><b>Quand</b> chaque semaine</li><li><b>IA</b> non</li><li class="perso"><b>Données personnelles</b> selon le dossier</li></ul>
+          <details>
+            <summary>La fiche et la demande</summary>
+            <dl class="relais">
+              <div><dt>R</dt><dd><b>Répétitif.</b> Statuts, procès-verbaux, consignes des assistants, modèles : tout vit dans un seul espace. Une suppression, un compte perdu, et tout disparaît.</dd></div>
+              <div><dt>E</dt><dd><b>Enchaînement.</b> Chaque semaine, une copie du dossier du club part vers un second emplacement du club, avec les fonctions de l'outil de stockage ou un outil sans code.</dd></div>
+              <div><dt>L</dt><dd><b>Limites.</b> La copie reste dans un espace du club, avec des accès aussi limités que l'original. Jamais sur un disque ou un compte personnel.</dd></div>
+              <div><dt>A</dt><dd><b>Arbitre.</b> Le responsable du registre vérifie la copie chaque mois.</dd></div>
+              <div><dt>I</dt><dd><b>Incident.</b> Une sauvegarde qui n'a jamais été restaurée n'est pas une sauvegarde : chaque trimestre, on restaure un fichier, pour de vrai.</dd></div>
+              <div><dt>S</dt><dd><b>Suivi.</b> Responsable : le secrétariat. Secours : la présidence. Inscrite au registre et au plan de continuité.</dd></div>
+            </dl>
+            <div class="prompt">
+              <div class="prompt-top"><span class="label">La demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div>
+<pre>Notre club range ses documents dans <i>[outil de stockage]</i>. Explique-moi comment faire chaque semaine une copie automatique du dossier du club vers un second emplacement qui appartient au club : d'abord avec les fonctions intégrées, puis avec un outil sans code si nécessaire.
+Pour chaque solution : les autorisations demandées, les limites de l'offre gratuite, et comment tester une restauration.</pre>
+            </div>
+            <p class="more">Le plan de continuité du club : <a href="formation-n4-5.html">niveau 4, module 5</a>.</p>
+          </details>
+        </article>
+
+        <article class="rec" data-cat="continuite pret">
+          <span class="label">Continuité · GitHub</span>
+          <h3>Le robot de garde</h3>
+          <p>Chaque lundi, il vérifie que les autres robots sont actifs, ont tourné et n'ont pas échoué, et prévient sinon.</p>
+          <ul class="facts"><li><b>Quand</b> le lundi</li><li><b>IA</b> non</li><li><b>Données personnelles</b> aucune</li><li class="ready">Prête à copier</li></ul>
+          <details>
+            <summary>La fiche et la demande</summary>
+            <dl class="relais">
+              <div><dt>R</dt><dd><b>Répétitif.</b> Les robots tombent en silence : une page déplacée, une ligne mal remplie, 60 jours sans activité sur un dépôt public.</dd></div>
+              <div><dt>E</dt><dd><b>Enchaînement.</b> Le lundi, il demande à GitHub l'état de chaque robot et ouvre un ticket s'il y a un problème : robot coupé, en échec, ou silencieux depuis trop longtemps.</dd></div>
+              <div><dt>L</dt><dd><b>Limites.</b> Il lit, il ne répare rien. Il ne peut pas se surveiller lui-même.</dd></div>
+              <div><dt>A</dt><dd><b>Arbitre.</b> Les deux propriétaires du dépôt traitent le ticket.</dd></div>
+              <div><dt>I</dt><dd><b>Incident.</b> S'il est lui-même arrêté, c'est la vérification humaine du 1er du mois qui le voit : c'est une ligne du calendrier des obligations.</dd></div>
+              <div><dt>S</dt><dd><b>Suivi.</b> Responsable et secours : les deux propriétaires du dépôt.</dd></div>
+            </dl>
+            <div class="prompt">
+              <div class="prompt-top"><span class="label">La demande à copier</span><button class="copy" type="button" data-copy>Copier</button></div>
+<pre>Voici le journal d'une exécution en échec d'un robot GitHub Actions de notre club : <i>[collez le journal, après avoir vérifié qu'il ne contient ni adresse ni mot de passe]</i>.
+Explique-moi simplement ce qui s'est passé, la cause la plus probable, et ce que je dois vérifier ou changer, étape par étape. Ne me propose pas de donner plus de droits au robot sans m'expliquer pourquoi.</pre>
+            </div>
+            <p class="more">Dans le dépôt modèle : <a href="https://github.com/julesmoreau62/modele-automatisations-club/blob/main/.github/workflows/robot-de-garde.yml">le robot de garde</a> et <a href="https://github.com/julesmoreau62/modele-automatisations-club/blob/main/donnees/robots.csv">la liste des robots surveillés</a>.</p>
+          </details>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk" id="choisir">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">3 · Choisir</p>
+        <h2 class="h2">Par où<br>commencer</h2>
+        <p class="lead">Une seule automatisation à la fois, en commençant par celle qui coûte le plus de temps et touche le moins de données. Trois questions suffisent pour choisir.</p>
+      </div>
+      <ol class="goals">
+        <li><b>Qu'est-ce qui coûte le plus de temps ?</b>Reprenez le carnet de bord des tâches du module 1 : la tâche qui revient le plus souvent, au plus de monde, passe en premier.</li>
+        <li><b>Peut-elle se passer de données personnelles ?</b>Si oui, GitHub ou un outil sans code conviennent. Sinon, elle se construit dans le tableur du club, et l'IA ne voit que des modèles ou des totaux.</li>
+        <li><b>Qui sera l'arbitre et la personne de secours ?</b>Sans ces deux noms, on ne construit pas. La fiche R.E.L.A.I.S. passe en bureau avant la mise en route.</li>
+      </ol>
+      <p class="warn" style="color:var(--ink);margin-top:24px">Notre conseil pour la première : <b>le calendrier des obligations</b>. Aucune donnée personnelle, aucune IA, une heure de mise en route, et le premier oubli évité rembourse largement le temps passé.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="depot">
+    <div class="wrap">
+      <div class="repo">
+        <div class="head" style="margin:0">
+          <p class="label">4 · Le dépôt modèle</p>
+          <h2 class="h2">Quatre robots<br>à copier</h2>
+          <p class="lead">Le calendrier des obligations, la veille des appels à projets, le site du club et le robot de garde, prêts à copier dans un dépôt au nom de votre club. Ils arrivent en mode essai, avec les données fictives de l'AS Exemple Handball : rien ne sort tant que le bureau n'a pas validé.</p>
+          <div class="actions">
+            <a class="btn btn-turf" href="https://github.com/julesmoreau62/modele-automatisations-club">Ouvrir le dépôt modèle</a>
+            <a class="btn btn-ghost" href="formation-n4-atelier.html">Suivre l'atelier pas à pas</a>
+          </div>
+        </div>
+        <div class="prompt">
+          <div class="prompt-top"><span class="label">Ce qu'il contient</span></div>
+<pre>.github/workflows/  les quatre robots : quand, avec quels droits
+scripts/            ce qu'ils font, en Python
+donnees/            les tableaux que les bénévoles tiennent
+  obligations.csv     échéances, rôles, rappels
+  sources-veille.csv  pages des financeurs
+  fiche-club.md       fiche publique, pour l'IA
+  matchs.csv          matchs et scores, sans nom
+site/               le modèle de la page du club
+docs/               fiches R.E.L.A.I.S., registre,
+                    relecture d'un robot en 8 points
+README.md           le mode d'emploi pas à pas</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chalk">
+    <div class="wrap next">
+      <div class="head" style="margin:0">
+        <p class="label">Et ensuite</p>
+        <h2 class="h2">Atelier :<br>ma première tâche programmée</h2>
+        <p class="lead">Une heure et demie pour copier le dépôt modèle au nom du club, lancer un premier robot en mode essai, lire son journal, régler son horaire et savoir l'arrêter.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-turf" href="formation-n4-atelier.html">Commencer l'atelier</a>
+        <a class="btn btn-ghost" href="formation-n4.html">Tout le niveau 4</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>FAIR · Former les Associations à l'IA Responsable</span>
+    <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/formation.js?v=2"></script>
+</body>
+</html>

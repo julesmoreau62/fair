@@ -45,6 +45,9 @@ Former les Associations à l'IA Responsable : site et supports de formation pour
   3. Construire un flux (anatomie d'un flux, outils du plus simple au plus puissant, l'IA qui prépare sans décider, six tests sur un faux tableur, générateur de plan de flux)
   4. L'IA en équipe (espace d'équipe, réunions sans enregistrement caché, générateur de règles d'équipe, agents, arrivées et départs)
   5. Le club en relais (registre des automatisations, plan de continuité, feuille de route en 8 étapes, quiz final, attestation « Niveau 4 validé »)
+- `formation-automatisations.html` : le catalogue des automatisations (12 recettes en R.E.L.A.I.S., filtrées par domaine, avec la demande à copier ; 4 sont prêtes dans le dépôt modèle). Lié depuis `formation-n4.html`, `formation-n4-3.html` et l'atelier
+- `formation-n4-atelier.html` : atelier pratique « Ma première tâche programmée », hors progression du niveau (check-list `fair-n4-atelier`, quiz `fair-n4-atelier-quiz`, traducteur d'horaire `fair-n4-cron`). Lié depuis `formation-n4.html`, `formation-n4-3.html`, `formation-n4-5.html` et le catalogue
+- Dépôt modèle des robots, à part : https://github.com/julesmoreau62/modele-automatisations-club (quatre workflows GitHub Actions, données fictives de l'AS Exemple Handball, mode essai par défaut). Les pages y renvoient : il doit rester public et marqué comme modèle (template)
 - `formation-fiches.html` : fiches mémo A4 à imprimer
 - `formation-animateur.html` : guide de l'animateur (2 séances de 2 h)
 - `assets/css/formation.css` et `assets/js/formation.js` : style et comportements communs aux pages de formation

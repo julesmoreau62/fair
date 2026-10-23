@@ -251,6 +251,21 @@
           <pre>Il accueille désormais vos automatisations et vos agents, avec leur arbitre, leur personne de secours et leur plan B : vous le compléterez au module 5.</pre>
           <div class="card-foot"><a class="btn btn-ghost" href="formation-n2-5.html#registre">Voir le registre</a></div>
         </article>
+        <article class="card">
+          <div class="card-top"><span class="label">Pour aller plus loin</span><h3>Le catalogue des automatisations</h3></div>
+          <pre>Douze automatisations utiles à un club, de la rentrée à la veille des financements, chacune avec sa fiche R.E.L.A.I.S. et la demande à copier pour la construire.</pre>
+          <div class="card-foot"><a class="btn btn-ghost" href="formation-automatisations.html">Voir le catalogue</a></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="label">Atelier pratique · 1 h 30</span><h3>Ma première tâche programmée</h3></div>
+          <pre>Copier le dépôt modèle au nom du club, lancer un premier robot en mode essai, lire son journal, régler son horaire et savoir tout arrêter.</pre>
+          <div class="card-foot"><a class="btn btn-ghost" href="formation-n4-atelier.html">Commencer l'atelier</a><small id="atelier-st"></small></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="label">Sur GitHub</span><h3>Le dépôt modèle</h3></div>
+          <pre>Quatre robots prêts à copier, en mode essai et avec des données fictives : rappels des obligations, veille des appels à projets, site du club, robot de garde.</pre>
+          <div class="card-foot"><a class="btn btn-ghost" href="https://github.com/julesmoreau62/modele-automatisations-club">Ouvrir le dépôt</a></div>
+        </article>
       </div>
     </div>
   </section>
@@ -310,6 +325,10 @@
   document.getElementById('lv2').textContent=FAIR.N2.every(FAIR.done)?'Validé · Revoir':'Revoir le niveau 2';
   document.getElementById('lv1').textContent=FAIR.N1.every(FAIR.done)?'Validé · Revoir':'Revoir le niveau 1';
   document.getElementById('lv0').textContent=FAIR.MODULES.every(FAIR.done)?'Gratuit · Validé':'Gratuit';
+
+  // L'atelier pratique, hors progression du niveau : son état sur sa carte
+  var a=FAIR.count('fair-n4-atelier');
+  document.getElementById('atelier-st').textContent=a>=8?'Validé':a?a+' sur 8 cochés':'';
 })();
 </script>
 </body>
