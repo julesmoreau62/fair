@@ -5,10 +5,14 @@ Former les Associations à l'IA Responsable : site et supports de formation pour
 ## Contenu
 
 - `index.html` : accueil du site ; pages légales `mentions-legales.html` et `confidentialite.html`
+- `assets/css/accueil.css` et `assets/js/accueil.js` : styles et comportements propres à l'accueil (refonte de novembre 2026, « le match retour » : vidéo plein écran, tableau d'affichage Paperasse / Terrain qui suit le défilement). Après modification, incrémentez leur numéro `?v=` dans `index.html` ; les pages de formation conservent leurs styles existants
+- Tableau d'affichage : le score et la période viennent des attributs `data-score="paperasse,terrain"`, `data-goal` et `data-phase` posés sur les sections et les étapes de la soirée dans `index.html`
+- `index-avant-refonte.html`, avec `assets/css/home.css`, `assets/js/home.js` et `assets/img/fair-terrain-hero.webp` : l'ancien accueil, gardé pour mémoire (non servi en ligne)
+- `assets/img/sports/` : photos du défilé « Tous les sports » ; `assets/video/` : vidéos de l'accueil, chacune avec son image d'attente `assets/img/poster-*.jpg`
 - `label.html` : le label « Club IA responsable » (portée, démarche, liste des clubs labellisés, règlement d'usage). Pour ajouter un club, copier la ligne d'exemple en commentaire dans le tableau `#clubs` et retirer la ligne « vide »
 - `404.html` : page « introuvable », servie automatiquement par Netlify
-- `robots.txt` et `sitemap.xml` : référencement (adresse du site : https://fair-asso.fr). Ajoutez chaque nouvelle page publique au sitemap
-- `_redirects` : règles Netlify ; `index-version-longue.html`, `medias-bonus/` et `.claude/` restent dans le dossier mais renvoient une 404 en ligne
+- `robots.txt` et `sitemap.xml` : référencement (adresse du site : https://fairassociation.fr). Ajoutez chaque nouvelle page publique au sitemap
+- `_redirects` : règles Netlify ; `index-version-longue.html`, `index-avant-refonte.html`, `medias-bonus/` et `.claude/` restent dans le dossier mais renvoient une 404 en ligne
 - `assets/` : styles, scripts, polices, images, vidéos et logos du site
 - `formation.html` : accueil de la formation (les six niveaux en bref, avec la progression de chacun), puis le niveau 0 (`#niveau-0`) et ses ressources
 - `formation-1.html` à `formation-5.html` : les cinq modules du niveau 0
@@ -64,7 +68,7 @@ Pour ajouter un module, déclarez-le dans `MODULES` (niveau 0), `N1` à `N4` (ni
 
 Après une modification de `formation.css`, `niveau.css` ou `formation.js`, augmentez le numéro `?v=` du lien dans les pages `formation*.html`, sinon les navigateurs peuvent garder l'ancienne version en cache.
 
-Les pages publiques portent une adresse de référence (`canonical`) et des balises de partage (`og:`) avec des adresses complètes en https://fair-asso.fr : à reprendre sur toute nouvelle page.
+Les pages publiques portent une adresse de référence (`canonical`) et des balises de partage (`og:`) avec des adresses complètes en https://fairassociation.fr : à reprendre sur toute nouvelle page.
 
 ## Aperçu local
 
