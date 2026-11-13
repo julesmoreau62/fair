@@ -1,0 +1,8 @@
+# GitHub Pages : fichiers de travail à ne pas servir en ligne
+# (équivalent du fichier _redirects utilisé par Netlify)
+exclude:
+  - index-avant-refonte.html
+  - index-version-longue.html
+  - medias-bonus
+  - README.md
+  - CREDITS.md
