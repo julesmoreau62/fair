@@ -81,3 +81,10 @@ Non utilisés sur la page, gardés pour d'autres supports (réseaux sociaux, pr�
 | terrain-boxe.jpg | Tima Miroshnichenko | https://www.pexels.com/photo/hanging-punching-bags-in-a-gym-5750886/ |
 | terrain-handball.jpg | Bechir Lachiheb | https://www.pexels.com/photo/dynamic-handball-match-in-indoor-sports-arena-32250680/ |
 | pill-*.jpg | recadrages de terrain-football, poster-soiree et mains | voir ci-dessus |
+
+## Logos des offres IA
+
+- Adobe, Anthropic, AWS, Google Cloud, Microsoft, OpenAI et Perplexity viennent de [Lobe Icons](https://github.com/lobehub/lobe-icons). [Licence MIT](assets/offres/LICENSE-lobe-icons.txt).
+- Google et France 2030 sont archivés sur Wikimedia Commons. [Google](https://commons.wikimedia.org/wiki/File:Google_Favicon_2025.svg) · [France 2030](https://commons.wikimedia.org/wiki/File:Logo_France_2030.svg)
+- Canva vient de [LogoAPI.sh](https://logoapi.sh/brand/canva.com).
+- ElevenLabs et Current AI viennent de leurs sites. [ElevenLabs](https://elevenlabs.io/brand) · [Current AI](https://www.currentai.org/fund)
