@@ -1,0 +1,135 @@
+.offers-header,
+.offers-footer {
+  background: var(--night);
+  color: var(--chalk);
+}
+
+.offers-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem 1.5rem;
+  padding-block: 1rem;
+}
+
+.offers-bar img {
+  height: auto;
+}
+
+.offers-hero {
+  background: radial-gradient(ellipse at 86% 100%, #154638, transparent 58%), var(--night);
+  color: var(--chalk);
+  padding-block: clamp(3rem, 7vw, 7rem);
+}
+
+.offers-hero h1 {
+  font-size: clamp(2.4rem, 8vw, 7rem);
+  line-height: .96;
+}
+
+.offers-hero .lead {
+  margin-block: 1.4rem;
+}
+
+.offers-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+  padding-block: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.offers-nav a {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: .5rem .95rem;
+  text-decoration: none;
+  font-weight: 650;
+}
+
+.offers-nav a:hover {
+  background: var(--paper);
+  border-color: var(--accent);
+}
+
+.offers-section {
+  padding-top: clamp(2.3rem, 6vw, 5rem);
+}
+
+.offers-section .h2 {
+  font-size: clamp(2rem, 5.5vw, 4rem);
+  text-wrap: wrap;
+}
+
+.offers-intro {
+  color: var(--ink-2);
+  margin-top: 1rem;
+  max-width: 68ch;
+}
+
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 315px), 1fr));
+  gap: 1rem;
+  margin-top: 1.3rem;
+}
+
+.offers-grid article {
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  padding: clamp(1rem, 3vw, 1.6rem);
+  background: var(--paper);
+  overflow-wrap: anywhere;
+}
+
+.offers-grid .offer-featured {
+  background: #e1f6e9;
+  border-color: var(--turf-ink);
+}
+
+.offers-grid h3 {
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.offer-benefit {
+  color: var(--turf-ink);
+  font-weight: 750;
+  line-height: 1.4;
+}
+
+.offer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem 1rem;
+  padding-top: .4rem;
+  margin-top: auto;
+  font-weight: 700;
+  font-size: .95rem;
+}
+
+.offer-links a:hover,
+.offers-advice a:hover {
+  color: var(--turf-ink);
+}
+
+.offers-advice {
+  margin-top: clamp(2.5rem, 6vw, 5rem);
+  padding-block: 1.5rem 3rem;
+  border-top: 1px solid var(--line);
+}
+
+.offers-advice ol {
+  list-style: decimal;
+  padding-inline-start: 1.35rem;
+  margin-block: 1rem;
+  max-width: 75ch;
+}
+
+.offers-advice li + li {
+  margin-top: .5rem;
+}
