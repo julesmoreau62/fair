@@ -172,18 +172,8 @@
   sizeThemes();
 
   /* ---------- Tableau d'affichage + soirée + mots : tout suit le défilement ---------- */
-  const board = $('#board'), bP = $('#b-p'), bT = $('#b-t'), bClock = $('#b-clock'), bPhase = $('#b-phase');
-  const goal = $('#goal'), goalT = $('#goal-t');
-  const markers = $$('[data-score],[data-phase]');
   const steps = $$('.tl li'), medias = $$('.tm'), clock = $('#clock');
-  let score = [0, 0], stepI = 0, goalTimer = 0, ticking = false;
-  function showGoal(text, pap) {
-    goalT.textContent = text;
-    goal.classList.toggle('pap', pap);
-    goal.classList.add('is-on');
-    clearTimeout(goalTimer);
-    goalTimer = setTimeout(() => goal.classList.remove('is-on'), 2600);
-  }
+  let stepI = 0, ticking = false;
   function setStep(i) {
     if (i === stepI) return;
     stepI = i;
@@ -195,28 +185,6 @@
     ticking = false;
     const y = scrollY, vh = innerHeight, max = Math.max(1, d.body.scrollHeight - vh);
     root.classList.toggle('scrolled', y > vh * 0.55);
-    board.classList.toggle('is-hero', y < 40);
-
-    let s = [0, 0], phase = "Coup d'envoi", text = '', last = null;
-    for (const m of markers) {
-      if (m.getBoundingClientRect().top > vh * 0.62) break;
-      last = m;
-      if (m.dataset.phase) phase = m.dataset.phase;
-      if (m.dataset.score) { s = m.dataset.score.split(',').map(Number); text = m.dataset.goal || ''; }
-    }
-    const final = last && last.id === 'contact';
-    bPhase.textContent = phase;
-    bClock.textContent = final ? "90'" : String(Math.min(89, Math.round(y / max * 90))).padStart(2, '0') + "'";
-    if (s[0] !== score[0] || s[1] !== score[1]) {
-      const up = s[0] + s[1] > score[0] + score[1], pap = s[0] > score[0];
-      bP.textContent = s[0]; bT.textContent = s[1];
-      if (up && !reduce) {
-        const el = pap ? bP : bT;
-        el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop');
-        if (text) showGoal(text, pap);
-      }
-      score = s;
-    }
 
     if (steps.length) {
       let best = 0, bd = Infinity;
