@@ -19,7 +19,7 @@
 <link rel="icon" href="assets/logo/fair-icone.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <link rel="preload" as="image" href="assets/img/poster-crepuscule.jpg">
-<link rel="stylesheet" href="assets/css/accueil.css?v=3">
+<link rel="stylesheet" href="assets/css/accueil.css?v=5">
 </head>
 <body>
 
@@ -61,21 +61,11 @@
     <a href="#partenaires"><span>05</span>Fédérations</a>
     <a href="formation.html"><span>06</span>Formation en ligne</a>
     <a href="offres-ia.html"><span>07</span>Offres IA</a>
-    <a href="#contact"><span>08</span>Contact</a>
+    <a href="fair-gestion.html"><span>08</span>Fair Gestion</a>
+    <a href="#contact"><span>09</span>Contact</a>
   </nav>
   <p class="menu-foot label">Gratuit pour les clubs · Tous les sports · Partout en France</p>
 </div>
-
-<!-- TABLEAU D'AFFICHAGE : décoratif, suit le défilement -->
-<div class="board is-hero" id="board" aria-hidden="true">
-  <span class="b-phase" id="b-phase">Coup d'envoi</span>
-  <span class="b-team b-pap"><i></i><span class="b-full">Paperasse</span><span class="b-short">PAP</span></span>
-  <span class="b-score"><b id="b-p">0</b><em>:</em><b id="b-t">0</b></span>
-  <span class="b-team b-ter"><span class="b-full">Terrain</span><span class="b-short">TER</span><i></i></span>
-  <span class="b-clock" id="b-clock">00'</span>
-  <span class="b-hint">Faites défiler&nbsp;: le match commence.</span>
-</div>
-<div class="goal" id="goal" aria-hidden="true"><b>But&nbsp;!</b><span id="goal-t"></span></div>
 
 <main id="contenu">
 
@@ -130,7 +120,7 @@
   </section>
 
   <!-- 3. LE CONSTAT : PREMIÈRE PÉRIODE -->
-  <section class="soiree panel dark" id="soiree" aria-labelledby="soiree-title" data-phase="1re période">
+  <section class="soiree panel dark" id="soiree" aria-labelledby="soiree-title">
     <div class="wrap">
       <div class="sec-head" data-rise>
         <p class="label"><span class="idx">1<sup>re</sup> période</span> On connaît la chanson</p>
@@ -148,9 +138,9 @@
         </figure>
         <ol class="tl" aria-label="Exemple : mardi soir d'un dirigeant bénévole">
           <li class="is-on" data-time="19:00"><time>19:00</time><h3>Entraînement des moins de 11&nbsp;ans</h3><p>La raison pour laquelle on est là.</p><span class="tag ok">Le cœur du club</span></li>
-          <li data-time="20:45" data-score="1,0" data-goal="Les mails des parents"><time>20:45</time><h3>Répondre aux mails des parents</h3><p>Horaires, covoiturage, licences.</p><span class="tag">FAIR peut aider</span></li>
-          <li data-time="21:20" data-score="2,0" data-goal="Le dossier de subvention"><time>21:20</time><h3>Dossier de subvention à rendre vendredi</h3><p>Projet associatif, budget, bilan.</p><span class="tag">FAIR peut aider</span></li>
-          <li data-time="22:30" data-score="3,0" data-goal="L'affiche de dimanche"><time>22:30</time><h3>Affiche du match de dimanche</h3><p>Réseaux sociaux, panneau du club-house.</p><span class="tag">FAIR peut aider</span></li>
+          <li data-time="20:45"><time>20:45</time><h3>Répondre aux mails des parents</h3><p>Horaires, covoiturage, licences.</p><span class="tag">FAIR peut aider</span></li>
+          <li data-time="21:20"><time>21:20</time><h3>Dossier de subvention à rendre vendredi</h3><p>Projet associatif, budget, bilan.</p><span class="tag">FAIR peut aider</span></li>
+          <li data-time="22:30"><time>22:30</time><h3>Affiche du match de dimanche</h3><p>Réseaux sociaux, panneau du club-house.</p><span class="tag">FAIR peut aider</span></li>
           <li data-time="23:10"><time>23:10</time><h3>Compte rendu du dernier bureau</h3><p>Des notes à remettre au propre.</p><span class="tag">FAIR peut aider</span></li>
         </ol>
       </div>
@@ -158,7 +148,7 @@
   </section>
 
   <!-- 4. MI-TEMPS : LES CHIFFRES -->
-  <section class="chiffres light" id="chiffres" aria-labelledby="chiffres-title" data-phase="Mi-temps">
+  <section class="chiffres light" id="chiffres" aria-labelledby="chiffres-title">
     <div class="wrap">
       <div class="sec-head center" data-rise>
         <p class="label"><span class="idx">Mi-temps</span> Causerie dans le vestiaire</p>
@@ -174,7 +164,7 @@
   </section>
 
   <!-- 5. DEUXIÈME PÉRIODE : LE PARCOURS -->
-  <section class="clubs light" id="clubs" aria-labelledby="clubs-title" data-phase="2e période" data-score="3,1" data-goal="Un atelier sur vos vrais dossiers">
+  <section class="clubs light" id="clubs" aria-labelledby="clubs-title">
     <div class="wrap">
       <div class="sec-head" data-rise>
         <p class="label"><span class="idx">2<sup>e</sup> période</span> À chaque club, son point de départ</p>
@@ -226,7 +216,7 @@
   </section>
 
   <!-- 6. L'ATELIER : DÉMO + KIT -->
-  <section class="atelier panel dusk" id="atelier" aria-labelledby="atelier-title" data-score="3,2" data-goal="L'IA prépare, vous validez">
+  <section class="atelier panel dusk" id="atelier" aria-labelledby="atelier-title">
     <div class="wrap atelier-grid">
       <div class="atelier-text" data-rise>
         <p class="label"><span class="idx">Apprendre. Faire. Garder.</span></p>
@@ -297,7 +287,7 @@
   </section>
 
   <!-- 8. L'ESPRIT FAIR -->
-  <section class="approche light" id="approche" aria-labelledby="ap-title" data-score="3,3" data-goal="Cinq règles, zéro donnée personnelle">
+  <section class="approche light" id="approche" aria-labelledby="ap-title">
     <div class="wrap">
       <div class="sec-head" data-rise>
         <p class="label"><span class="idx">Les règles du jeu</span></p>
@@ -315,7 +305,7 @@
   </section>
 
   <!-- 9. TEMPS ADDITIONNEL : AUTO-DIAGNOSTIC -->
-  <section class="diag light" id="diagnostic" aria-labelledby="diag-title" data-phase="Temps additionnel">
+  <section class="diag light" id="diagnostic" aria-labelledby="diag-title">
     <div class="wrap diag-grid">
       <div class="sec-head" data-rise>
         <p class="label"><span class="idx">Temps additionnel</span> Auto-diagnostic · 1 minute</p>
@@ -408,7 +398,7 @@
   </section>
 
   <!-- 11. COUP DE SIFFLET FINAL : CONTACT -->
-  <section class="contact light" id="contact" aria-labelledby="contact-title" data-phase="Coup de sifflet final" data-score="3,4" data-goal="Un mail, et on fait équipe">
+  <section class="contact light" id="contact" aria-labelledby="contact-title">
     <div class="beams" aria-hidden="true"></div>
     <div class="wrap">
       <div class="sec-head center" data-rise>
@@ -437,13 +427,13 @@ Merci et à bientôt,
         <div class="c-side" data-rise>
           <p class="fed-hint"><b>Fédération ou collectivité&nbsp;?</b> Indiquez le nombre de clubs que vous accompagnez et votre territoire&nbsp;: on revient vers vous avec une proposition de programme.</p>
           <div class="founders">
-            <p class="label">Les trois fondateurs</p>
-            <ul>
-              <li><span class="avatar" aria-hidden="true">JM</span><b>Jules Moreau</b></li>
-              <li><span class="avatar" aria-hidden="true">TP</span><b>Tanguy Pavat</b></li>
-              <li><span class="avatar" aria-hidden="true">WD</span><b>William David</b></li>
-            </ul>
-            <p>Tous les trois du Master International Sport Administration, Université de Lille.</p>
+            <p class="label">Le bureau</p>
+            <ol class="org" aria-label="Organigramme du bureau de FAIR">
+              <li class="org-top"><span class="avatar" aria-hidden="true">JM</span><span><b>Jules Moreau</b><small>Président</small></span></li>
+              <li><span class="avatar" aria-hidden="true">TP</span><span><b>Tanguy Pavat</b><small>Trésorier</small></span></li>
+              <li><span class="avatar" aria-hidden="true">WD</span><span><b>William David</b><small>Secrétaire</small></span></li>
+            </ol>
+            <p>Les trois fondateurs, tous du Master International Sport Administration, Université de Lille.</p>
           </div>
         </div>
       </div>
@@ -458,12 +448,12 @@ Merci et à bientôt,
         <svg viewBox="0 0 330 120" role="img" aria-label="FAIR"><use href="#fair-logo"/></svg>
         <p>Former les Associations à l'IA Responsable. Accompagnement gratuit des clubs sportifs, partout en France.</p>
       </div>
-      <nav class="foot-col" aria-label="Clubs"><p class="label">Clubs</p><a href="#clubs">Le parcours</a><a href="#atelier">L'atelier</a><a href="#diagnostic">L'auto-diagnostic</a><a href="formation.html">La formation en ligne</a><a href="offres-ia.html">Les offres IA</a><a href="#contact">Demander un atelier</a></nav>
+      <nav class="foot-col" aria-label="Clubs"><p class="label">Clubs</p><a href="#clubs">Le parcours</a><a href="#atelier">L'atelier</a><a href="#diagnostic">L'auto-diagnostic</a><a href="formation.html">La formation en ligne</a><a href="offres-ia.html">Les offres IA</a><a href="fair-gestion.html">Fair Gestion</a><a href="#contact">Demander un atelier</a></nav>
       <nav class="foot-col" aria-label="Fédérations"><p class="label">Fédérations</p><a href="#partenaires">Le programme</a><a href="#approche">Notre approche</a><a href="#contact">Nous contacter</a></nav>
       <nav class="foot-col" aria-label="L'association"><p class="label">L'association</p><a href="#soiree">Le constat</a><a href="label.html">Le label</a><a href="#contact">Contact</a></nav>
     </div>
     <div class="foot-bottom">
-      <span>Association loi 1901 en cours de création</span>
+      <span>Association loi 1901 déclarée · RNA W626007773</span>
       <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
       <details class="credits">
         <summary>Crédits des visuels</summary>
@@ -474,6 +464,6 @@ Merci et à bientôt,
 </footer>
 
 <script src="assets/js/lenis.min.js"></script>
-<script src="assets/js/accueil.js?v=1"></script>
+<script src="assets/js/accueil.js?v=2"></script>
 </body>
 </html>
